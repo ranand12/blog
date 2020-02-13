@@ -2,11 +2,11 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://localhost:4000/pets/lhasa-apso/</loc>
-<lastmod>2020-02-13T18:18:36-05:00</lastmod>
+<lastmod>2020-02-13T18:19:41-05:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/pets/tabby/</loc>
-<lastmod>2020-02-13T18:18:36-05:00</lastmod>
+<lastmod>2020-02-13T18:19:41-05:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/productivity/how-goals-failed-me/</loc>
@@ -18,15 +18,15 @@
 </url>
 <url>
 <loc>http://localhost:4000/recipes/chocolate-chip-cookies/</loc>
-<lastmod>2020-02-13T18:18:36-05:00</lastmod>
+<lastmod>2020-02-13T18:19:41-05:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/recipes/oatmeal-cookies/</loc>
-<lastmod>2020-02-13T18:18:36-05:00</lastmod>
+<lastmod>2020-02-13T18:19:41-05:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/recipes/peanut-butter-cookies/</loc>
-<lastmod>2020-02-13T18:18:36-05:00</lastmod>
+<lastmod>2020-02-13T18:19:41-05:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/about/</loc>
@@ -66,9 +66,6 @@
 </url>
 <url>
 <loc>http://localhost:4000/search/</loc>
-</url>
-<url>
-<loc>http://localhost:4000/sitemap/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/splash-page/</loc>
