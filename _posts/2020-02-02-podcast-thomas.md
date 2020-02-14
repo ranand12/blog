@@ -27,7 +27,7 @@ chapters:
 
 {% include podcast-player.html %}
 
-as Maurer who works as a Cloud Advocate in Microsoft. We talk about how Azure Stack helped his customer realize the value of Azure even when there were compliance need for the data not to leave the customer’s datacenters. Tom talks about how he keeps himself up to date with everything that’s happening in the Cloud world and his e-commerce website too.
+In this episode we talk with Thomas Maurer who works as a Cloud Advocate in Microsoft. We talk about how Azure Stack helped his customer realize the value of Azure even when there were compliance need for the data not to leave the customer’s datacenters. Tom talks about how he keeps himself up to date with everything that’s happening in the Cloud world and his e-commerce website too.
 
 **Thomas’s journey on how he got to where he is today (01:44)**
 
