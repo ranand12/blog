@@ -5,12 +5,13 @@ main:
     url: /categories/
   - title: "tags"
     url: /tags/
+  - title: "podcast"
+    url: /podcast/
   - title: "home"
     url: https://www.azuremonk.com/
   - title: "about"
     url: /about/
-  - title: "podcast"
-    url: /podcast/
+
 
 
 
