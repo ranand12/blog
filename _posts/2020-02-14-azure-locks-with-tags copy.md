@@ -11,7 +11,7 @@ tags:
 layout: single
 excerpt: "azure locks using azure tags copy"
 header:
-  og_image: /assets/blogposts/2020-02-14-azure-locks-with-tags/bannertag.png
+  og_image: /assets/blogposts/2020-02-14-azure-locks-with-tags/bannertag_new.png
   overlay_color: "#333"
   
 ---
