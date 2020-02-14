@@ -25,7 +25,7 @@ welcome to the "Cloud Solution Architect" podcast, where we talk to Azure archit
 
 [#8 - Mike Pfeiffer– cloudskills.io - shortening the learning curve for others](https://azuremonk.com/2019/11/18/ep8/)
 
-[(#7- Kevin Mack – the “welldocumented” nerd](https://azuremonk.com/2019/11/11/ep7/))
+[#7- Kevin Mack – the “welldocumented” nerd](https://azuremonk.com/2019/11/11/ep7/))
 
 [#6 – Abhijeet Jhala – Making a parking system “smart” using Azure](https://azuremonk.com/2019/11/01/ep6/)
 
