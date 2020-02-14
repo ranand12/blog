@@ -11,7 +11,7 @@ tags:
 layout: single
 excerpt: "azure locks using azure tags"
 header:
-  image: /assets/blogposts/2020-02-14-azure-locks-with-tags/banner.png
+  image: /assets/blogposts/2020-02-14-azure-locks-with-tags/bannertag.png
   caption: "blog.azuremonk.com"
 ---
 
