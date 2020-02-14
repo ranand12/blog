@@ -200,7 +200,7 @@ kramdown:
   enable_coderay: false
 
 collections:
-  portfolio:
+  docs:
     output: true
     permalink: /:collection/:path/
 
@@ -293,4 +293,17 @@ defaults:
     values:
       layout: single
       author_profile: true
+  # _docs
+  - scope:
+      path: ""
+      type: docs
+    values:
+      layout: single
+      read_time: false
+      author_profile: false
+      share: false
+      comments: false
+      sidebar:
+        nav: "docs"
+ 
 

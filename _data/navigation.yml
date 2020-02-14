@@ -9,3 +9,19 @@ main:
     url: https://www.azuremonk.com/
   - title: "About"
     url: /about/
+
+
+
+# documentation links
+docs:
+  - title: Getting Started with Azure
+    children:
+      - title: "Azure Fundamentals"
+        url: /docs/01-azure-fundamentals/
+  - title: Kubernetes
+    children:
+      - title: "01-Kubernetes concepts"
+        url: /docs/01-kubernetes-concepts/
+      - title: "02-Kubernetes the hard way"
+        url: /docs/02-kubernetes-the-hard-way/
+      
