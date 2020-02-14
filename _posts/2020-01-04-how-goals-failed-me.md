@@ -17,11 +17,12 @@ header:
   overlay_color: "#333"
 ---
 
- Voice in my head: Why on earth would someone want to listen to my systems or routine ???! You must be crazy. 
 
- I acknowledge but still ignore the voice and continue writing, Why ?? You have these folks to blame - [Dona Sarkar](https://www.youtube.com/watch?v=DEOvAu0knsU) , [Obvious to you, amazing to others](https://www.youtube.com/watch?v=xcmI5SSQLmE) and [Show Your Work](https://www.amazon.com/Show-Your-Work-Austin-Kleon/dp/076117897X). 
+{: .notice--success}
+ _Voice in my head: Why on earth would someone want to listen to my systems or routine ???! You must be crazy. 
+ I acknowledge but still ignore the voice and continue writing, Why ?? You have these folks to blame - [Dona Sarkar](https://www.youtube.com/watch?v=DEOvAu0knsU) , [Obvious to you, amazing to others](https://www.youtube.com/watch?v=xcmI5SSQLmE) and [Show Your Work](https://www.amazon.com/Show-Your-Work-Austin-Kleon/dp/076117897X)._
  
- {: .notice--success}
+
 
 
 I have always been a very ambitious goal setter all my life, but have been a terrible failure when it comes to execution - it would never last more than a few days. Something changed in 2019, I re-/read these amazing books -
