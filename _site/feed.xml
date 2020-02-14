@@ -62,11 +62,11 @@
             <itunes:summary>summ#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project</itunes:summary>
             <itunes:image href="http://localhost:4000/images/itunes.png" />
             <enclosure url="https://csapodcast.blob.core.windows.net/episodes/ep12PhilCoachman.m4a" length="52429240" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/testpod/</guid>
+            <guid isPermaLink="true">http://localhost:4000/2020/02/01/ep12/</guid>
             <pubDate>Fri, 31 Jan 2020 23:40:00 -0500</pubDate>
             <itunes:duration>21:54</itunes:duration>
             <itunes:explicit>no</itunes:explicit>
-            <description>summ#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project desc-#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project Show Notes Available at http://localhost:4000/testpod/.</description>
+            <description>summ#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project desc-#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project Show Notes Available at http://localhost:4000/2020/02/01/ep12/.</description>
             <itunes:keywords>technology, azure, azuremonk, podcast, datascience, artificial, intelligence</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
