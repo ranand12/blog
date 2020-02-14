@@ -1,13 +1,13 @@
 main:
-  - title: "Posts"
+  - title: "posts"
     url: /posts/
-  - title: "Categories"
+  - title: "categories"
     url: /categories/
-  - title: "Tags"
+  - title: "tags"
     url: /tags/
-  - title: "Home"
+  - title: "home"
     url: https://www.azuremonk.com/
-  - title: "About"
+  - title: "about"
     url: /about/
 
 

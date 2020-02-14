@@ -1,4 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-14T06:43:08-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">blog.azuremonk.com</title><subtitle>this blog is aimed at super simplifying and providing clariy for  azure (microsoft cloud) using the written language.</subtitle><author><name>Anand Kumar R</name></author><entry><title type="html">How goals failed me - and what worked in 2019</title><link href="http://localhost:4000/productivity/how-goals-failed-me/" rel="alternate" type="text/html" title="How goals failed me - and what worked in 2019" /><published>2020-01-04T00:00:00-05:00</published><updated>2020-01-04T16:20:02-05:00</updated><id>http://localhost:4000/productivity/how-goals-failed-me</id><content type="html" xml:base="http://localhost:4000/productivity/how-goals-failed-me/">&lt;p class=&quot;notice--success&quot;&gt;&lt;em&gt;Voice in my head: Why on earth would someone want to listen to my systems or routine ???! You must be crazy. 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-14T07:31:48-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">blog.azuremonk.com</title><subtitle>this blog is aimed at super simplifying and providing clariy for  azure (microsoft cloud) using the written language.</subtitle><author><name>anand kumar r</name></author><entry><title type="html">azure locks with tags</title><link href="http://localhost:4000/azure/azure-locks-with-tags/" rel="alternate" type="text/html" title="azure locks with tags" /><published>2020-02-14T00:00:00-05:00</published><updated>2020-02-12T16:28:02-05:00</updated><id>http://localhost:4000/azure/azure-locks-with-tags</id><content type="html" xml:base="http://localhost:4000/azure/azure-locks-with-tags/">&lt;p&gt;Azure can prevent accidental deletion of resources using Azure Locks.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/blogposts/2020-02-14-azure-locks-with-tags/oldnews.gif&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Well, thats stale news isn’t it? This has been around for a while.&lt;/p&gt;
+
+&lt;p&gt;But imagine you are running a large organization and every division has its own Azure subscription and every team owner has “Contributor” rights. What if the individual subscriptions under the Central IT needed permissions to create their own locks? By default you would not be able to - why ? Because creating lock requires the following permissions - Microsoft.Authorization/* or Microsoft.Authorization/locks/* which is available with the built-in Owner and User Access Administrator role.&lt;/p&gt;
+
+&lt;p&gt;Besides the built-in role here are the two options you can achieve this:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create a custom role with the following permissions with one of the following permissions added:
+    &lt;ol&gt;
+      &lt;li&gt;Microsoft.Authorization/locks/* (OR)&lt;/li&gt;
+      &lt;li&gt;Microsoft.Authorization/*&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You preferrably want to give the least restrictive privelge&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Use tags to create resource locks
+    &lt;ol&gt;
+      &lt;li&gt;Let the individual team tag thier own resource with the “Lock” value to yes or no&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Please note that this only works with “CanNotDelete” lock and not the “ReadOnly” lock. Why? Once you set the ReadOnly lock the users wont be able to toggle the value at the end of it. (its a catch 22)&lt;/p&gt;
+
+&lt;div class=&quot;language-powershell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;New-AzResourceLock&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-LockName&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LockGroup&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-LockLevel&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ReadOnly&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-ResourceGroupName&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$rg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ResourceGroupName&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Force&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;foreach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$rg&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$rgs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$lockId&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Get-AzResourceLock&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-ResourceGroupName&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$rg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ResourceGroupName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;LockId&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Remove-AzResourceLock&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-LockId&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$lockId&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Force&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$to&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;@{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Lock&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ReadOnly&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$to&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;@()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Get-AzResourceGroup&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-ResourceGroupName&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;aksworkshop&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>anand kumar r</name></author><category term="powershell" /><category term="tags" /><category term="locks" /><summary type="html">TMUX simplified for Windows guys</summary></entry><entry><title type="html">how goals failed me - and what worked in 2019</title><link href="http://localhost:4000/productivity/how-goals-failed-me/" rel="alternate" type="text/html" title="how goals failed me - and what worked in 2019" /><published>2020-01-04T00:00:00-05:00</published><updated>2020-01-04T16:20:02-05:00</updated><id>http://localhost:4000/productivity/how-goals-failed-me</id><content type="html" xml:base="http://localhost:4000/productivity/how-goals-failed-me/">&lt;p class=&quot;notice--success&quot;&gt;&lt;em&gt;Voice in my head: Why on earth would someone want to listen to my systems or routine ???! You must be crazy. 
  I acknowledge but still ignore the voice and continue writing, Why ?? You have these folks to blame - &lt;a href=&quot;https://www.youtube.com/watch?v=DEOvAu0knsU&quot;&gt;Dona Sarkar&lt;/a&gt; , &lt;a href=&quot;https://www.youtube.com/watch?v=xcmI5SSQLmE&quot;&gt;Obvious to you, amazing to others&lt;/a&gt; and &lt;a href=&quot;https://www.amazon.com/Show-Your-Work-Austin-Kleon/dp/076117897X&quot;&gt;Show Your Work&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;I have always been a very ambitious goal setter all my life, but have been a terrible failure when it comes to execution - it would never last more than a few days. Something changed in 2019, I re-/read these amazing books -&lt;/p&gt;
@@ -73,4 +125,4 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;www.azuremonk.com&lt;/p&gt;</content><author><name>Anand Kumar R</name></author><category term="atomichabits" /><category term="mindfulness" /><summary type="html">My reflection on what failed and what worked</summary></entry></feed>
+&lt;p&gt;www.azuremonk.com&lt;/p&gt;</content><author><name>anand kumar r</name></author><category term="atomichabits" /><category term="mindfulness" /><summary type="html">my reflection on what failed and what worked</summary></entry></feed>

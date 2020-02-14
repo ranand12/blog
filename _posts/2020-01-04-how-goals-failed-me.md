@@ -1,5 +1,5 @@
 ---
-title: "How goals failed me - and what worked in 2019"
+title: "how goals failed me - and what worked in 2019"
 last_modified_at: 2020-01-04T16:20:02-05:00
 description: "hello"
 categories:
@@ -9,10 +9,10 @@ tags:
   - mindfulness
 toc: true
 toc_sticky: true
-toc_label: "How goals failed me"
+toc_label: "how goals failed me"
 toc_icon: book-open
 layout: single
-excerpt: "My reflection on what failed and what worked"
+excerpt: "my reflection on what failed and what worked"
 header:
   overlay_color: "#333"
 ---
