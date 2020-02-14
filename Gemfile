@@ -13,7 +13,8 @@ source "https://rubygems.org"
 
 # To upgrade, run `bundle update`.
 
-gem "jekyll"
+#gem "jekyll"
+gem "github-pages", group: :jekyll_plugins
 gem "minimal-mistakes-jekyll"
 
 # The following plugins are automatically loaded by the theme-gem:
