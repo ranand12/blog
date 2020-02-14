@@ -20,6 +20,9 @@ podcast_length: 52429240
 chapters:
  - '00:00:00.0 Intro'
  - '00:10:00.0 Test' 
+header:
+  og_image: /assets/blogposts/podcastimages/philimage.jpg
+  overlay_color: "#333"
 ---
 
 {% include podcast-player.html %}
