@@ -19,7 +19,7 @@
 			<itunes:name>Anand Kumar R</itunes:name>
 			<itunes:email>ranand12@gmail.com</itunes:email>
 		</itunes:owner>
-        <itunes:image href="/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+        <itunes:image href="https://azuremonk.com/assets/blogposts/podcasticons/azuremonklogo.jpg" />
 		<itunes:category text="News">
 		<itunes:category text="Tech News"></itunes:category>
         </itunes:category>
