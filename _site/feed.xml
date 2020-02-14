@@ -1,128 +1,91 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-14T08:00:05-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">blog.azuremonk.com</title><subtitle>this blog is aimed at super simplifying and providing clariy for  azure (microsoft cloud) using the written language.</subtitle><author><name>anand kumar r</name></author><entry><title type="html">azure locks with tags</title><link href="http://localhost:4000/azure/azure-locks-with-tags/" rel="alternate" type="text/html" title="azure locks with tags" /><published>2020-02-14T00:00:00-05:00</published><updated>2020-02-12T16:28:02-05:00</updated><id>http://localhost:4000/azure/azure-locks-with-tags</id><content type="html" xml:base="http://localhost:4000/azure/azure-locks-with-tags/">&lt;p&gt;Azure can prevent accidental deletion of resources using Azure Locks.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xml:lang="">
 
-&lt;p&gt;&lt;img src=&quot;/assets/blogposts/2020-02-14-azure-locks-with-tags/oldnews.gif&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
+    <channel>
+		<atom:link href="http://localhost:4000/podcast.rss" rel="self" type="application/rss+xml" />
+		<title>Cloud Solution Architects</title>
+		<link>http://localhost:4000</link>
+		<language></language>
+        <copyright>&#xA9; 2020 blog.azuremonk.com</copyright>
+		<itunes:subtitle>azure explained in plain english</itunes:subtitle>
+        <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+		<itunes:summary>this blog is aimed at super simplifying and providing clariy for  azure (microsoft cloud) using the written language.</itunes:summary>
+        <description>Cloud Solution Architects podcasts brings you the wealth of wisdom from solution architects across the globe working on azure solving critical business problems and changing the world with azure. For more cloud solution architect podcast episodes, animated azure videos,  and simplified how-to content articles please check out www.azuremonk.com.</description>
+		<webMaster>ranand12@gmail.com ({"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]})</webMaster>
+        <itunes:owner>
+			<itunes:name>Anand Kumar R</itunes:name>
+			<itunes:email>ranand12@gmail.com</itunes:email>
+		</itunes:owner>
+        <itunes:image href="/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+		<itunes:category text="News">
+		<itunes:category text="Tech News"></itunes:category>
+        </itunes:category>
+        <itunes:explicit>no</itunes:explicit>
+		
 
-&lt;p&gt;Well, thats stale news isn’t it? This has been around for a while.&lt;/p&gt;
+        <item>
+            <title>azure locks with tags</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>blog.azuremonk.com: azure locks with tags</itunes:subtitle>
+            <itunes:summary></itunes:summary>
+            <itunes:image href="http://localhost:4000/images/itunes.png" />
+            <enclosure url="" length="" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/azure/azure-locks-with-tags/</guid>
+            <pubDate>Fri, 14 Feb 2020 00:00:00 -0500</pubDate>
+            <itunes:duration></itunes:duration>
+            <itunes:explicit></itunes:explicit>
+            <description>  Show Notes Available at http://localhost:4000/azure/azure-locks-with-tags/.</description>
+            <itunes:keywords></itunes:keywords>
+            <itunes:block></itunes:block>
+		</item>
 
-&lt;p&gt;But imagine you are running a large organization and every division has its own Azure subscription and every team owner has “Contributor” rights. What if the individual subscriptions under the Central IT needed permissions to create their own locks? By default you would not be able to - why ? Because creating lock requires the following permissions - Microsoft.Authorization/* or Microsoft.Authorization/locks/* which is available with the built-in Owner and User Access Administrator role.&lt;/p&gt;
+        <item>
+            <title>azure locks with tags copy</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>blog.azuremonk.com: azure locks with tags copy</itunes:subtitle>
+            <itunes:summary></itunes:summary>
+            <itunes:image href="http://localhost:4000/images/itunes.png" />
+            <enclosure url="" length="" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/azure/azure-locks-with-tags-copy/</guid>
+            <pubDate>Fri, 14 Feb 2020 00:00:00 -0500</pubDate>
+            <itunes:duration></itunes:duration>
+            <itunes:explicit></itunes:explicit>
+            <description>  Show Notes Available at http://localhost:4000/azure/azure-locks-with-tags-copy/.</description>
+            <itunes:keywords></itunes:keywords>
+            <itunes:block></itunes:block>
+		</item>
 
-&lt;p&gt;Besides the built-in role here are the two options you can achieve this:&lt;/p&gt;
+        <item>
+            <title>how goals failed me - and what worked in 2019</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>blog.azuremonk.com: how goals failed me - and what worked in 2019</itunes:subtitle>
+            <itunes:summary></itunes:summary>
+            <itunes:image href="http://localhost:4000/images/itunes.png" />
+            <enclosure url="" length="" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/productivity/how-goals-failed-me/</guid>
+            <pubDate>Sat, 04 Jan 2020 00:00:00 -0500</pubDate>
+            <itunes:duration></itunes:duration>
+            <itunes:explicit></itunes:explicit>
+            <description> hello Show Notes Available at http://localhost:4000/productivity/how-goals-failed-me/.</description>
+            <itunes:keywords></itunes:keywords>
+            <itunes:block></itunes:block>
+		</item>
 
-&lt;ol&gt;
-  &lt;li&gt;Create a custom role with the following permissions with one of the following permissions added:
-    &lt;ol&gt;
-      &lt;li&gt;Microsoft.Authorization/locks/* (OR)&lt;/li&gt;
-      &lt;li&gt;Microsoft.Authorization/*&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+        <item>
+            <title>Hiding Behind Technology</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>blog.azuremonk.com: Hiding Behind Technology</itunes:subtitle>
+            <itunes:summary>Episode 4 - We discuss what does digital technology hide?</itunes:summary>
+            <itunes:image href="http://localhost:4000/images/itunes.png" />
+            <enclosure url="http://link-rot.s3.amazonaws.com/Episode-4.mp3" length="33306609" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/testpod/</guid>
+            <pubDate>Tue, 04 Oct 2016 00:40:00 -0400</pubDate>
+            <itunes:duration>34:37</itunes:duration>
+            <itunes:explicit>yes</itunes:explicit>
+            <description>Episode 4 - We discuss what does digital technology hide? Digital technology represents an abstraction from the real world. It technical and programatic nature allow it to hide and conceal what's really happening in our world.  Show Notes Available at http://localhost:4000/testpod/.</description>
+            <itunes:keywords>technology, VR, refugees, cloud, labour, uber, facebook, </itunes:keywords>
+            <itunes:block>no</itunes:block>
+		</item>
 
-&lt;p&gt;You preferrably want to give the least restrictive privelge&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Use tags to create resource locks
-    &lt;ol&gt;
-      &lt;li&gt;Let the individual team tag thier own resource with the “Lock” value to yes or no&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Please note that this only works with “CanNotDelete” lock and not the “ReadOnly” lock. Why? Once you set the ReadOnly lock the users wont be able to toggle the value at the end of it. (its a catch 22)&lt;/p&gt;
-
-&lt;div class=&quot;language-powershell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;New-AzResourceLock&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-LockName&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LockGroup&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-LockLevel&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ReadOnly&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-ResourceGroupName&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$rg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ResourceGroupName&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Force&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-
-&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;foreach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$rg&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$rgs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-
-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$lockId&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Get-AzResourceLock&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-ResourceGroupName&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$rg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ResourceGroupName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;LockId&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Remove-AzResourceLock&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-LockId&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$lockId&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Force&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-
-
-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$to&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;@{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Lock&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ReadOnly&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-
-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$to&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;@()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Get-AzResourceGroup&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-ResourceGroupName&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;aksworkshop&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-
-
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>anand kumar r</name></author><category term="powershell" /><category term="tags" /><category term="locks" /><summary type="html">azure locks using azure tags</summary></entry><entry><title type="html">how goals failed me - and what worked in 2019</title><link href="http://localhost:4000/productivity/how-goals-failed-me/" rel="alternate" type="text/html" title="how goals failed me - and what worked in 2019" /><published>2020-01-04T00:00:00-05:00</published><updated>2020-01-04T16:20:02-05:00</updated><id>http://localhost:4000/productivity/how-goals-failed-me</id><content type="html" xml:base="http://localhost:4000/productivity/how-goals-failed-me/">&lt;p class=&quot;notice--success&quot;&gt;&lt;em&gt;Voice in my head: Why on earth would someone want to listen to my systems or routine ???! You must be crazy. 
- I acknowledge but still ignore the voice and continue writing, Why ?? You have these folks to blame - &lt;a href=&quot;https://www.youtube.com/watch?v=DEOvAu0knsU&quot;&gt;Dona Sarkar&lt;/a&gt; , &lt;a href=&quot;https://www.youtube.com/watch?v=xcmI5SSQLmE&quot;&gt;Obvious to you, amazing to others&lt;/a&gt; and &lt;a href=&quot;https://www.amazon.com/Show-Your-Work-Austin-Kleon/dp/076117897X&quot;&gt;Show Your Work&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I have always been a very ambitious goal setter all my life, but have been a terrible failure when it comes to execution - it would never last more than a few days. Something changed in 2019, I re-/read these amazing books -&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Deep-Work-Focused-Success-Distracted/dp/1455586692&quot;&gt;Deep Work - Cal Newport&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/How-Fail-Almost-Everything-Still-ebook/dp/B00COOFBA4&quot;&gt;How to fail at almost everything and still win big - Scott Adams&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299&quot;&gt;Atomic habits - James Clear&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you haven’t read these books - stop reading this post and go read those books - will be a better use of your time&lt;/p&gt;
-
-&lt;p&gt;Extracting the essence from these three books, I am now a strong believer of incremental tiny boring progress and building a system rather than an ambitious fancy goal. This has helped me have the longest streak to sticking to these routines.&lt;/p&gt;
-
-&lt;h2 id=&quot;mindfulness-meditation&quot;&gt;&lt;strong&gt;&lt;u&gt;Mindfulness Meditation&lt;/u&gt;&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;I’m not going to delve into the benefits of mindfulness, there are a gazillion articles out there. For me this is a &lt;a href=&quot;https://mayooshin.com/keystone-habits/&quot;&gt;keystone&lt;/a&gt; habit - and the most important one&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;what-do-i-do&quot;&gt;What do I do&lt;/h3&gt;
-    &lt;p&gt;I practice this method. In plain English here’s what I do - focus and observe your breath and body sensations - in a nonjudgmental and equanimous way - THAT’S IT - it’s as simple as that - I SWEAR. I try to aim for 20 mins/day but I’m not too ambitious even if I can get done 1 minute - I consider that a win for the day ( &lt;a href=&quot;https://jamesclear.com/goals-systems&quot;&gt;Systems v/s goals&lt;/a&gt;)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;how-has-it-helped-me&quot;&gt;How has it helped me&lt;/h3&gt;
-    &lt;p&gt;Focus, Clarity and creativity - it’s amazing how these foundational skills affect every single aspect of your life&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;screen-time&quot;&gt;&lt;strong&gt;&lt;u&gt;Screen time&lt;/u&gt;&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;Screen addiction is real. If I was bored or when I was in the train with nothing to do - I used to stare at my phone screen. I had to change this, because I have had a taste of how useful boredom can be for creativity in the past - but never managed to stick to the discipline.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;what-did-i-do&quot;&gt;What did I do&lt;/h3&gt;
-
-    &lt;p&gt;I followed Cal Newport’s &lt;a href=&quot;https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy/dp/0525536515&quot;&gt;advice&lt;/a&gt; - uninstalled all the apps which was distracting the most (for me it was - WhatsApp, Facebook) for 30 days.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;how-has-it-helped-me-1&quot;&gt;How has it helped me&lt;/h3&gt;
-
-    &lt;p&gt;It helped me feel &lt;a href=&quot;https://www.wired.com/2017/01/clive-thompson-7/&quot;&gt;“boredom”&lt;/a&gt; again !! I know this sounds crazy - but trust me boredom is super essential. And now I have reinstalled the apps and use a screen time limit of 6mins/day - so it’s more intentional when I use these apps.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;one-new-thing-a-day&quot;&gt;&lt;strong&gt;&lt;u&gt;One new thing a day&lt;/u&gt;&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;I used to mindlessly consume lots of content and not really absorbing it or internalizing it.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;what-did-i-do-1&quot;&gt;What did I do&lt;/h3&gt;
-    &lt;p&gt;Starting late 2019, I have a tiny book where I make 1 or 2 sentence notes of what I learned that day (kept it small and atomic) - it could be from a &lt;a href=&quot;https://azuremonk.com/audio/&quot;&gt;podcast guest&lt;/a&gt;, my customers and colleagues who I work with, an article/book/video I watched, my 1.5 year daughter, my wife, the cashier at Walmart -ANYONE.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;how-has-it-helped-me-2&quot;&gt;How has it helped me&lt;/h3&gt;
-    &lt;p&gt;I feel terrible when I miss a day of note taking, so all day this subconsciously helps put me in a mindset where I make it a point to learn at least one thing. I personally feel having this mindset has helped me learn and absorb so much from the amazing people around me and has provided me with new opportunities.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;what-i-aim-to-add-in-2020&quot;&gt;&lt;strong&gt;&lt;u&gt;What I aim to add in 2020&lt;/u&gt;&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;physical-exercise&quot;&gt;Physical exercise&lt;/h3&gt;
-    &lt;p&gt;I’m aiming for 10 minutes/day of really slow jogging and gradually add on if and when I feel comfortable.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;morning-pages&quot;&gt;Morning pages&lt;/h3&gt;
-    &lt;p&gt;&lt;a href=&quot;https://www.theguardian.com/lifeandstyle/2014/oct/03/morning-pages-change-your-life-oliver-burkeman&quot;&gt;Here&lt;/a&gt; is how to do it -750 free flowing words as soon as you wake up. The few days I have written morning pages in the past - I have had really crazy unique ideas and I had no idea how they came to me, which have totally caught me by surprise. But again this requires a certain discipline and I’m hoping to build this muscle this year.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;www.azuremonk.com&lt;/p&gt;</content><author><name>anand kumar r</name></author><category term="atomichabits" /><category term="mindfulness" /><summary type="html">my reflection on what failed and what worked</summary></entry></feed>
+	</channel>
+</rss>
