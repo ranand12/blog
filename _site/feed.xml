@@ -7,8 +7,8 @@
 		<link>http://localhost:4000</link>
 		<language></language>
         <copyright>&#xA9; 2020 blog.azuremonk.com</copyright>
-		<itunes:subtitle>azure explained in plain english</itunes:subtitle>
-        <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+		<itunes:subtitle>A podcast where we talk to humans working on Cloud Technologies like Azure, about interesting Cloud projects and the human side behind working in this space.</itunes:subtitle>
+        <itunes:author>Anand Kumar R</itunes:author>
 		<itunes:summary>this blog is aimed at super simplifying and providing clariy for  azure (microsoft cloud) using the written language.</itunes:summary>
         <description>Cloud Solution Architects podcasts brings you the wealth of wisdom from solution architects across the globe working on azure solving critical business problems and changing the world with azure. For more cloud solution architect podcast episodes, animated azure videos,  and simplified how-to content articles please check out www.azuremonk.com.</description>
 		<webMaster>ranand12@gmail.com ({"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]})</webMaster>
@@ -56,6 +56,22 @@
 		</item>
 
         <item>
+            <title>#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>blog.azuremonk.com: #12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project</itunes:subtitle>
+            <itunes:summary>summ#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project</itunes:summary>
+            <itunes:image href="http://localhost:4000/images/itunes.png" />
+            <enclosure url="https://csapodcast.blob.core.windows.net/episodes/ep12PhilCoachman.m4a" length="33306609" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/testpod/</guid>
+            <pubDate>Fri, 31 Jan 2020 23:40:00 -0500</pubDate>
+            <itunes:duration>21:54</itunes:duration>
+            <itunes:explicit>no</itunes:explicit>
+            <description>summ#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project desc-#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project Show Notes Available at http://localhost:4000/testpod/.</description>
+            <itunes:keywords>technology, azure, azuremonk, podcast, datascience, artificial, intelligence</itunes:keywords>
+            <itunes:block>no</itunes:block>
+		</item>
+
+        <item>
             <title>how goals failed me - and what worked in 2019</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
             <itunes:subtitle>blog.azuremonk.com: how goals failed me - and what worked in 2019</itunes:subtitle>
@@ -69,22 +85,6 @@
             <description> hello Show Notes Available at http://localhost:4000/productivity/how-goals-failed-me/.</description>
             <itunes:keywords></itunes:keywords>
             <itunes:block></itunes:block>
-		</item>
-
-        <item>
-            <title>Hiding Behind Technology</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>blog.azuremonk.com: Hiding Behind Technology</itunes:subtitle>
-            <itunes:summary>Episode 4 - We discuss what does digital technology hide?</itunes:summary>
-            <itunes:image href="http://localhost:4000/images/itunes.png" />
-            <enclosure url="http://link-rot.s3.amazonaws.com/Episode-4.mp3" length="33306609" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/testpod/</guid>
-            <pubDate>Tue, 04 Oct 2016 00:40:00 -0400</pubDate>
-            <itunes:duration>34:37</itunes:duration>
-            <itunes:explicit>yes</itunes:explicit>
-            <description>Episode 4 - We discuss what does digital technology hide? Digital technology represents an abstraction from the real world. It technical and programatic nature allow it to hide and conceal what's really happening in our world.  Show Notes Available at http://localhost:4000/testpod/.</description>
-            <itunes:keywords>technology, VR, refugees, cloud, labour, uber, facebook, </itunes:keywords>
-            <itunes:block>no</itunes:block>
 		</item>
 
 	</channel>
