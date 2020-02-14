@@ -1,6 +1,9 @@
-[](https://podcasts.apple.com/us/podcast/cloud-solution-architects/id1470506823?mt=2&app=itunes)
-
-
+---
+title: "podcasts"
+permalink: /podcasts/
+layout: posts
+author_profile: true
+---
 
 
 welcome to the "Cloud Solution Architect" podcast, where we talk to Azure architects from across the globe and discuss interesting and creative Azure solutions. (available in your favorite podcast consumption app)
