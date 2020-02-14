@@ -9,6 +9,8 @@ main:
     url: https://www.azuremonk.com/
   - title: "about"
     url: /about/
+  - title: "podcast"
+    url: /podcast/
 
 
 

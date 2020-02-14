@@ -1,6 +1,6 @@
 ---
-title: "podcasts"
-permalink: /podcasts/
+title: "cloud solution architect podcast"
+permalink: /podcast/
 author_profile: true
 ---
 
