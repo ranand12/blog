@@ -1,7 +1,6 @@
 ---
 title: "podcasts"
 permalink: /podcasts/
-layout: tags
 author_profile: true
 ---
 
