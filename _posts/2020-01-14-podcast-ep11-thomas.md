@@ -1,6 +1,16 @@
 ---
 layout: single
 title: "#11 – Thomas Maurer – Azure Hybrid using Stack & Arc"
+tagline: "Cloud Solution Architect podcast"
+sidebar:
+  - title: "Thomas Maurer"
+    image: /assets/blogposts/podcastimages/thomas.png
+    image_alt: "image"
+    text: "Cloud Advocate @ Microsoft"
+header:
+  og_image: /assets/blogposts/podcastimages/thomas.png
+  teaser: /assets/blogposts/podcastimages/thomas.png
+  overlay_color: "#333"
 date: 2020-01-14 15:40:00 +1100
 file: https://csapodcast.blob.core.windows.net/episodes/ep11ThomasMaurer.m4a
 media: 
@@ -23,6 +33,9 @@ chapters:
  - '00:07:09.0 Projects'
  - '00:15:14.0 Advice'
  - '00:20:30.0 Secret to be upto date'
+categories:
+  - podcast
+author_profile: false
 ---
 
 {% include podcast-player.html %}

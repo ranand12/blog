@@ -17,6 +17,10 @@
 <lastmod>2020-01-04T16:20:02-05:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/2020/01/14/ep11/</loc>
+<lastmod>2020-01-13T23:40:00-05:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/2020/02/01/ep12/</loc>
 <lastmod>2020-01-31T23:40:00-05:00</lastmod>
 </url>
@@ -74,6 +78,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/posts/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page2/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/assets/blogposts/icons/01_RGB/03_PDF/Spotify_Icon_RGB_Black.pdf</loc>
