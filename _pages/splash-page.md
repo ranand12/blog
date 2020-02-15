@@ -17,13 +17,13 @@ feature_row:
   - image_path: assets/images/homepage/blog.png
     #image_caption: "azure in plain english blog"
     alt: "placeholder image 1"
-    url: "#test-link"
+    url: "/categories/blog"
     btn_label: "read more"
     btn_class: "btn--primary"
     excerpt: "byte sized cloud concepts explained in plain english"
   - image_path: /assets/images/homepage/podcastimage.png
     alt: "placeholder image 2"
-    url: "#test-link"
+    url: "/categories/podcast"
     btn_label: "listen more"
     btn_class: "btn--primary"
     #title: "Placeholder 2"
@@ -31,7 +31,7 @@ feature_row:
     #title: "Placeholder 3"    
   - image_path: /assets/images/homepage/video.png
     excerpt: "animated cartoons explaining complex cloud concepts with a story"
-    url: "#test-link"
+    url: "/categories/video"
     btn_label: "watch more"
     btn_class: "btn--primary"
 ---
