@@ -31,7 +31,7 @@ chapters:
  - '00:00:00.0 Intro'
  - '00:10:00.0 Test' 
 categories:
-  - podcasts
+  - podcast
 
 ---
 

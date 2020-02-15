@@ -30,11 +30,11 @@
             <itunes:summary></itunes:summary>
             <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
             <enclosure url="" length="" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/azure/azure-locks-with-tags/</guid>
+            <guid isPermaLink="true">http://localhost:4000/blog/azure/azure-locks-with-tags/</guid>
             <pubDate>Fri, 14 Feb 2020 00:00:00 -0500</pubDate>
             <itunes:duration></itunes:duration>
             <itunes:explicit></itunes:explicit>
-            <description>  Show Notes Available at http://localhost:4000/azure/azure-locks-with-tags/.</description>
+            <description>  Show Notes Available at http://localhost:4000/blog/azure/azure-locks-with-tags/.</description>
             <itunes:keywords></itunes:keywords>
             <itunes:block></itunes:block>
 		</item>
@@ -46,11 +46,11 @@
             <itunes:summary></itunes:summary>
             <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
             <enclosure url="" length="" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/azure/azure-locks-with-tags-copy/</guid>
+            <guid isPermaLink="true">http://localhost:4000/blog/azure/azure-locks-with-tags-copy/</guid>
             <pubDate>Fri, 14 Feb 2020 00:00:00 -0500</pubDate>
             <itunes:duration></itunes:duration>
             <itunes:explicit></itunes:explicit>
-            <description>  Show Notes Available at http://localhost:4000/azure/azure-locks-with-tags-copy/.</description>
+            <description>  Show Notes Available at http://localhost:4000/blog/azure/azure-locks-with-tags-copy/.</description>
             <itunes:keywords></itunes:keywords>
             <itunes:block></itunes:block>
 		</item>

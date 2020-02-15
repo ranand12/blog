@@ -2,6 +2,7 @@
 title: "azure locks with tags copy"
 last_modified_at: 2020-02-12T16:28:02-05:00
 categories:
+  - blog
   - azure
 tags:
   - powershell

@@ -1,14 +1,14 @@
 main:
   - title: "blog"
-    url: /posts/
-  - title: "categories"
-    url: /categories/
-  - title: "tags"
-    url: /tags/
+    url: /categories/blog
   - title: "podcast"
-    url: /podcast/
-  - title: "home"
-    url: https://www.azuremonk.com/
+    url: /categories/podcast
+  - title: "video"
+    url: /categories/videos
+  # - title: "podcast"
+  #   url: /podcast/
+  # - title: "home"
+  #   url: https://www.azuremonk.com/
   - title: "about"
     url: /about/
 

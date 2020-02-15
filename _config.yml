@@ -203,9 +203,9 @@ collections:
   docs:
     output: true
     permalink: /:collection/:path/
-  podcasts:
-    output: true
-    permalink: /:collection/:path/
+  # podcasts:
+  #   output: true
+  #   permalink: /:collection/:path/
 
 # Sass/SCSS
 sass:
@@ -309,13 +309,13 @@ defaults:
       sidebar:
         nav: "docs"
   # _portfolio
-  - scope:
-      path: ""
-      type: podcasts
-    values:
-      layout: single
-      author_profile: false
-      share: true
+  # - scope:
+  #     path: ""
+  #     type: podcasts
+  #   values:
+  #     layout: single
+  #     author_profile: false
+  #     share: true
 
  
 

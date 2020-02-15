@@ -1,11 +1,12 @@
 ---
-title: "all blog posts"
+title: "cloud solution architect podcast"
 layout: category
-permalink: /categories/podcasts/
+permalink: /categories/podcast/
 author_profile: true
 entries_layout: grid
 classes: wide
-taxonomy: podcasts
+taxonomy: podcast
 ---
 
 
+welcome to the wisdom of !
