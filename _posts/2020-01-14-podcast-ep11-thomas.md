@@ -8,8 +8,8 @@ sidebar:
     image_alt: "image"
     text: "Cloud Advocate @ Microsoft"
 header:
-  og_image: /assets/blogposts/podcastimages/thomas.png
-  teaser: /assets/blogposts/podcastimages/thomas.png
+  og_image: /assets/blogposts/podcastimages/Thomas.png
+  teaser: /assets/blogposts/podcastimages/Thomas.png
   overlay_color: "#333"
 date: 2020-01-14 15:40:00 +1100
 file: https://csapodcast.azureedge.net/episodes/ep11ThomasMaurer.m4a
