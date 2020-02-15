@@ -5,18 +5,18 @@ header:
   teaser: /assets/blogposts/podcastimages/philimage.jpg
   overlay_color: "#333"
 sidebar:
-  - title: "Title"
+  - title: "Phil Coachman"
     image: /assets/blogposts/podcastimages/philimage.jpg
     image_alt: "image"
-    text: "Some text here."
+    text: "Principal Cloud Solution Architect (Data Scientist) @ Microsoft"
 tagline: "Cloud Solution Architect podcast"
-title: "#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project"
+title: "#12 – Phil Coachman - Principal Cloud Solution Architect(Data Scientist)"
 date: 2020-02-01 15:40:00 +1100
 file: https://csapodcast.blob.core.windows.net/episodes/ep12PhilCoachman.m4a
 media: 
  m4a: https://csapodcast.blob.core.windows.net/episodes/ep12PhilCoachman.m4a
-summary: "summ#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project"
-description: "desc-#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project"
+summary: "#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project"
+description: "If you are in the data science field or aspiring to be in the data science field you are going to love this episode. In this episode we talk with Phil Coachman who works as a Data Scientist/Principal Cloud Solution Architect in Microsoft. We talk about Phil’s journey starting with the Bing, Xbox and Windows 10 team to his current role. We also demystify “who a data scientist” really is and what it take to be one. We talk about a really interesting and cool Train derailment prevention project using AI, Machine Learning, IoT sensors and IOT edge which is currently in production and has been deployed to 4 continents. Phil also gives you 4 ways on how you can keep up and learn everything you need to know about Machine Learning"
 duration: "21:54" 
 length: "52429240"
 explicit: "no" 
@@ -32,6 +32,7 @@ chapters:
  - '00:10:00.0 Test' 
 categories:
   - podcast
+author_profile: false
 
 ---
 
@@ -40,7 +41,7 @@ categories:
 
 If you are in the data science field or aspiring to be in the data science field you are going to love this episode. In this episode we talk with Phil Coachman who works as a Data Scientist/Principal Cloud Solution Architect in Microsoft. We talk about Phil’s journey starting with the Bing, Xbox and Windows 10 team to his current role. We also demystify “who a data scientist” really is and what it take to be one. We talk about a really interesting and cool Train derailment prevention project using AI, Machine Learning, IoT sensors and IOT edge which is currently in production and has been deployed to 4 continents. Phil also gives you 4 ways on how you can keep up and learn everything you need to know about Machine Learning.
 
-[Enjoy listening !](#t=200)
+Enjoy listening !
 
 
 **Phil’s journey on how he got to where he is today (01:52)**

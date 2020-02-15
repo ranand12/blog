@@ -31,7 +31,7 @@ feature_row:
     #title: "Placeholder 3"    
   - image_path: /assets/images/homepage/video.png
     excerpt: "animated cartoons explaining complex cloud concepts with a story"
-    url: "/categories/video"
+    url: "/categories/videos"
     btn_label: "watch more"
     btn_class: "btn--primary"
 ---

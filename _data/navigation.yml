@@ -2,7 +2,7 @@ main:
   - title: "blog"
     url: /categories/blog
   - title: "podcast"
-    url: /categories/podcast
+    url: /podcast
   - title: "video"
     url: /categories/videos
   # - title: "podcast"
