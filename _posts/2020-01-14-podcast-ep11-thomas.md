@@ -4,7 +4,7 @@ title: "#11 – Thomas Maurer – Azure Hybrid using Stack & Arc"
 tagline: "Cloud Solution Architect podcast"
 sidebar:
   - title: "Thomas Maurer"
-    image: /assets/blogposts/podcastimages/thomas.png
+    image: /assets/blogposts/podcastimages/Thomas.png
     image_alt: "image"
     text: "Cloud Advocate @ Microsoft"
 header:
