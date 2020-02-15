@@ -77,7 +77,7 @@
             <itunes:subtitle>azuremonk.com: #12 – Phil Coachman - Principal Cloud Solution Architect(Data Scientist)</itunes:subtitle>
             <itunes:summary>#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project</itunes:summary>
             <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.blob.core.windows.net/episodes/ep12PhilCoachman.m4a" length="52429240" type="audio/mp3"/>
+            <enclosure url="https://csapodcast.azureedge.net/episodes/ep12PhilCoachman.m4a" length="52429240" type="audio/mp3"/>
             <guid isPermaLink="true">http://localhost:4000/2020/02/01/ep12/</guid>
             <pubDate>Fri, 31 Jan 2020 23:40:00 -0500</pubDate>
             <itunes:duration>21:54</itunes:duration>
@@ -93,7 +93,7 @@
             <itunes:subtitle>azuremonk.com: #11 – Thomas Maurer – Azure Hybrid using Stack &amp; Arc</itunes:subtitle>
             <itunes:summary>#11 – Thomas Maurer – Azure Hybrid using Stack &amp; Arc</itunes:summary>
             <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.blob.core.windows.net/episodes/ep11ThomasMaurer.m4a" length="34671634" type="audio/mp3"/>
+            <enclosure url="https://csapodcast.azureedge.net/episodes/ep11ThomasMaurer.m4a" length="34671634" type="audio/mp3"/>
             <guid isPermaLink="true">http://localhost:4000/2020/01/14/ep11/</guid>
             <pubDate>Mon, 13 Jan 2020 23:40:00 -0500</pubDate>
             <itunes:duration>25:41</itunes:duration>

@@ -12,9 +12,9 @@ header:
   teaser: /assets/blogposts/podcastimages/thomas.png
   overlay_color: "#333"
 date: 2020-01-14 15:40:00 +1100
-file: https://csapodcast.blob.core.windows.net/episodes/ep11ThomasMaurer.m4a
+file: https://csapodcast.azureedge.net/episodes/ep11ThomasMaurer.m4a
 media: 
- m4a: https://csapodcast.blob.core.windows.net/episodes/ep11ThomasMaurer.m4a
+ m4a: https://csapodcast.azureedge.net/episodes/ep11ThomasMaurer.m4a
 summary: "#11 – Thomas Maurer – Azure Hybrid using Stack & Arc"
 description: "In this episode we talk with Thomas Maurer who works as a Cloud Advocate in Microsoft. We talk about how Azure Stack helped his customer realize the value of Azure even when there were compliance need for the data not to leave the customer’s datacenters. Tom talks about how he keeps himself up to date with everything that’s happening in the Cloud world and his e-commerce website too."
 duration: "25:41" 
