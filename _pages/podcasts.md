@@ -1,10 +1,11 @@
 ---
 title: "all blog posts"
-permalink: /podcasts/
-layout: collection
-collection: podcasts
+layout: category
+permalink: /categories/podcasts/
 author_profile: true
 entries_layout: grid
 classes: wide
+taxonomy: podcasts
 ---
+
 

@@ -56,6 +56,22 @@
 		</item>
 
         <item>
+            <title>#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>blog.azuremonk.com: #12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project</itunes:subtitle>
+            <itunes:summary>summ#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project</itunes:summary>
+            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+            <enclosure url="https://csapodcast.blob.core.windows.net/episodes/ep12PhilCoachman.m4a" length="52429240" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/2020/02/01/ep12/</guid>
+            <pubDate>Fri, 31 Jan 2020 23:40:00 -0500</pubDate>
+            <itunes:duration>21:54</itunes:duration>
+            <itunes:explicit>no</itunes:explicit>
+            <description>summ#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project desc-#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project Show Notes Available at http://localhost:4000/2020/02/01/ep12/.</description>
+            <itunes:keywords>technology, azure, azuremonk, podcast, datascience, artificial, intelligence</itunes:keywords>
+            <itunes:block>no</itunes:block>
+		</item>
+
+        <item>
             <title>how goals failed me - and what worked in 2019</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
             <itunes:subtitle>blog.azuremonk.com: how goals failed me - and what worked in 2019</itunes:subtitle>
