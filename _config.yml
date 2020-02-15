@@ -25,7 +25,7 @@ search: true
 
 # Site Settings
 locale                   : "en-US"
-title                    : "blog.azuremonk.com"
+title                    : "azuremonk.com"
 #title: "blog.azuremonk.com"
 title_separator          : "-"
 subtitle                 : "azure explained in plain english"
