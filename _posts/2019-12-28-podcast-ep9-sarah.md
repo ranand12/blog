@@ -4,12 +4,12 @@ title: "#9 - Sarah Lean– Cloud Advocate/Glasgow Azure Group founder"
 tagline: "Cloud Solution Architect podcast"
 sidebar:
   - title: "Sarah Lean"
-    image: /assets/blogposts/podcastimages/sarahleah.jpg
+    image: /assets/blogposts/podcastimages/sarahlean.jpg
     image_alt: "image"
     text: "Cloud Advocate @ Microsoft"
 header:
-  og_image: /assets/blogposts/podcastimages/sarahleah.jpg
-  teaser: /assets/blogposts/podcastimages/sarahleah.jpg
+  og_image: /assets/blogposts/podcastimages/sarahlean.jpg
+  teaser: /assets/blogposts/podcastimages/sarahlean.jpg
   overlay_color: "#333"
 date: 2019-12-28 15:40:00 +1100
 file: https://csapodcast.azureedge.net/episodes/ep9SarahLean.m4a

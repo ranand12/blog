@@ -9,7 +9,7 @@ sidebar:
     text: "Cloud Solution Architect @ Microsoft"
 header:
   og_image: /assets/blogposts/podcastimages/Daren.jpeg
-  teaser: /assets/blogposts/podcastimages/darenteaser.jpeg
+  teaser: /assets/blogposts/podcastimages/darenteaser.jpg
   overlay_color: "#333"
 date: 2020-01-09 15:40:00 +1100
 file: https://csapodcast.azureedge.net/episodes/ep10DarenChild.mp4
