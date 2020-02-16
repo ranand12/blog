@@ -16,61 +16,20 @@
 			<itunes:name>Anand Kumar R</itunes:name>
 			<itunes:email>ranand12@gmail.com</itunes:email>
 		</itunes:owner>
-        <itunes:image href="https://blog.azuremonk.com/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+        <itunes:image href="https://azuremonk.com/assets/blogposts/podcasticons/azuremonklogo.jpg" />
 		<itunes:category text="News">
 		<itunes:category text="Tech News"></itunes:category>
         </itunes:category>
         <itunes:explicit>no</itunes:explicit>
 		
 
-        <item>
-            <title>azure locks with tags</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: azure locks with tags</itunes:subtitle>
-            <itunes:summary></itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="" length="" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/blog/azure/azure-locks-with-tags/</guid>
-            <pubDate>Fri, 14 Feb 2020 00:00:00 -0500</pubDate>
-            <itunes:duration></itunes:duration>
-            <itunes:explicit></itunes:explicit>
-            <description>  Show Notes Available at http://localhost:4000/blog/azure/azure-locks-with-tags/.</description>
-            <itunes:keywords></itunes:keywords>
-            <itunes:block></itunes:block>
-		</item>
+    
 
-        <item>
-            <title>azure locks with tags copy</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: azure locks with tags copy</itunes:subtitle>
-            <itunes:summary></itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="" length="" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/blog/azure/azure-locks-with-tags-copy/</guid>
-            <pubDate>Fri, 14 Feb 2020 00:00:00 -0500</pubDate>
-            <itunes:duration></itunes:duration>
-            <itunes:explicit></itunes:explicit>
-            <description>  Show Notes Available at http://localhost:4000/blog/azure/azure-locks-with-tags-copy/.</description>
-            <itunes:keywords></itunes:keywords>
-            <itunes:block></itunes:block>
-		</item>
+    
 
-        <item>
-            <title>linktest</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: linktest</itunes:subtitle>
-            <itunes:summary></itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="" length="" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/videos/productivity/test/</guid>
-            <pubDate>Sun, 02 Feb 2020 00:00:00 -0500</pubDate>
-            <itunes:duration></itunes:duration>
-            <itunes:explicit></itunes:explicit>
-            <description> hello Show Notes Available at http://localhost:4000/videos/productivity/test/.</description>
-            <itunes:keywords></itunes:keywords>
-            <itunes:block></itunes:block>
-		</item>
+    
 
+    
         <item>
             <title>#12 – Phil Coachman - Principal Cloud Solution Architect(Data Scientist)</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
@@ -86,7 +45,9 @@
             <itunes:keywords>technology, azure, azuremonk, podcast, datascience, artificial, intelligence</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
+    
 
+    
         <item>
             <title>#11 – Thomas Maurer – Azure Hybrid using Stack &amp; Arc</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
@@ -102,7 +63,9 @@
             <itunes:keywords>technology, azure, azuremonk, podcast, azure stack, arc</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
+    
 
+    
         <item>
             <title>#10 – Daren Child (aka Bear) – Modern Data Warehousing</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
@@ -118,23 +81,11 @@
             <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
+    
 
-        <item>
-            <title>how goals failed me - and what worked in 2019</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: how goals failed me - and what worked in 2019</itunes:subtitle>
-            <itunes:summary></itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="" length="" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/productivity/how-goals-failed-me/</guid>
-            <pubDate>Sat, 04 Jan 2020 00:00:00 -0500</pubDate>
-            <itunes:duration></itunes:duration>
-            <itunes:explicit></itunes:explicit>
-            <description> hello Show Notes Available at http://localhost:4000/productivity/how-goals-failed-me/.</description>
-            <itunes:keywords></itunes:keywords>
-            <itunes:block></itunes:block>
-		</item>
+    
 
+    
         <item>
             <title>#9 - Sarah Lean– Cloud Advocate/Glasgow Azure Group founder</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
@@ -150,7 +101,9 @@
             <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
+    
 
+    
         <item>
             <title>#8- Mike Pfeiffer– cloudskills.io – shortening the learning curve for others</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
@@ -166,7 +119,9 @@
             <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
+    
 
+    
         <item>
             <title>#7- Kevin Mack – the “welldocumented” nerd</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
@@ -182,7 +137,9 @@
             <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
+    
 
+    
         <item>
             <title>#6 – Abhijeet Jhala – Making a parking system “smart” using Azure</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
@@ -198,7 +155,9 @@
             <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
+    
 
+    
         <item>
             <title>#5 – Joe Sarabia – AWS, GCP and Azure Solution Architect</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
@@ -214,7 +173,9 @@
             <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
+    
 
+    
         <item>
             <title>#4 – Olivier Martin– Data Scientist and Machine Learning Engineer</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
@@ -230,7 +191,9 @@
             <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
+    
 
+    
         <item>
             <title>#3 – Mohamed Faizal – Singapore Airlines KrisPay and Cloud Custodian program</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
@@ -246,7 +209,9 @@
             <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
+    
 
+    
         <item>
             <title>#2 – Julian Soh – smart trash cans using Azure</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
@@ -262,7 +227,9 @@
             <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
+    
 
+    
         <item>
             <title>#1 – Stanislav Novoseletskiy -modernizing and transforming one of the largest transportation systems in the world</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
@@ -278,6 +245,7 @@
             <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
+    
 
 	</channel>
 </rss>

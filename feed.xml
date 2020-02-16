@@ -19,13 +19,14 @@
 			<itunes:name>Anand Kumar R</itunes:name>
 			<itunes:email>ranand12@gmail.com</itunes:email>
 		</itunes:owner>
-        <itunes:image href="https://blog.azuremonk.com/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+        <itunes:image href="https://azuremonk.com/assets/blogposts/podcasticons/azuremonklogo.jpg" />
 		<itunes:category text="News">
 		<itunes:category text="Tech News"></itunes:category>
         </itunes:category>
         <itunes:explicit>no</itunes:explicit>
 		
 {% for post in site.posts %}
+    {% if post.categories contains "podcast" %}
         <item>
             <title>{{ post.title | xml_escape }}</title>
             <itunes:author>{{ site.author }}</itunes:author>
@@ -41,6 +42,7 @@
             <itunes:keywords>{{ post.keywords }}</itunes:keywords>
             <itunes:block>{{ post.block }}</itunes:block>
 		</item>
+    {% endif %}
 {% endfor %}
 	</channel>
 </rss>
