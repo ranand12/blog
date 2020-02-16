@@ -8,7 +8,7 @@
 		<atom:link href="{{ site.url }}/podcast.rss" rel="self" type="application/rss+xml" />
 		<title>Cloud Solution Architects</title>
 		<link>{{ site.url }}{{ site.baseurl }}</link>
-		<language>{{ site.lang }}</language>
+		<language>en-US</language>
         <copyright>&#xA9; {{ site.time | date: "%Y" }} {{ site.title }}</copyright>
 		<itunes:subtitle>A podcast where we talk to humans working on Cloud Technologies like Azure, about interesting Cloud projects and the human side behind working in this space.</itunes:subtitle>
         <itunes:author>Anand Kumar R</itunes:author>
