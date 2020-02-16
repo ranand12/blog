@@ -3,7 +3,7 @@ layout: single
 title: "#2 – Julian Soh – smart trash cans using Azure"
 tagline: "Cloud Solution Architect podcast"
 sidebar:
-  - title: "Mohamed Faizal"
+  - title: "Julian Soh"
     image: /assets/blogposts/podcastimages/julian.jpeg
     image_alt: "image"
     text: "Cloud Solution Architect @ Microsoft"
@@ -11,7 +11,7 @@ header:
   og_image: /assets/blogposts/podcastimages/julian.jpeg
   teaser: /assets/blogposts/podcastimages/julian.jpeg
   overlay_color: "#333"
-date: 2019-10-14 15:40:00 +1100
+date: 2019-07-02 15:40:00 +1100
 file: https://csapodcast.azureedge.net/episodes/ep2JulianSoh.m4a
 media: 
  m4a: https://csapodcast.azureedge.net/episodes/ep2JulianSoh.m4a
@@ -25,7 +25,7 @@ explicit: "no"
 keywords: "technology, azure, azuremonk, podcast, azure"
 block: "no" 
 voices: "Anand Kumar R"
-permalink: /2019/10/14/ep3/
+permalink: /2019/07/02/ep2/
 #podcast_file_size: 50.0 MB 
 podcast_duration: "27:45" 
 podcast_length: 37632664

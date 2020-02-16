@@ -1,32 +1,34 @@
 ---
 layout: single
-title: "#3 – Mohamed Faizal – Singapore Airlines KrisPay and Cloud Custodian program"
+title: "#1 – Stanislav Novoseletskiy -modernizing and transforming one of the largest transportation systems in the world"
 tagline: "Cloud Solution Architect podcast"
 sidebar:
-  - title: "Mohamed Faizal"
-    image: /assets/blogposts/podcastimages/faizal.jpeg
+  - title: "Stanislav Novoseletskiy"
+    image: /assets/blogposts/podcastimages/stan.jpeg
     image_alt: "image"
-    text: "Cloud Solution Architect @ Microsoft"
+    text: "Azure Specialist @ Microsoft"
 header:
-  og_image: /assets/blogposts/podcastimages/faizal.jpeg
-  teaser: /assets/blogposts/podcastimages/faizal.jpeg
+  og_image: /assets/blogposts/podcastimages/stan.jpeg
+  teaser: /assets/blogposts/podcastimages/stan.jpeg
   overlay_color: "#333"
-date: 2019-10-14 15:40:00 +1100
-file: https://csapodcast.azureedge.net/episodes/ep3MohammadFaizal.m4a
+date: 2019-06-27 15:40:00 +1100
+file: https://csapodcast.azureedge.net/episodes/1StanislavNovoseletsky.m4a
 media: 
- m4a: https://csapodcast.azureedge.net/episodes/ep3MohammadFaizal.m4a
-summary: "#3 – Mohamed Faizal – Singapore Airlines KrisPay and Cloud Custodian program"
-description: "In this episode we talk to Mohamed Faizal, who was one of the first 100 MVPs of Azure who is currently working as a Cloud Solution Architect in Singapore. In this episode we talk about interesting projects like KrisPay for Singapore Airlines using blockchain as a service to the Cloud custodian program"
-duration: "35:51" 
-length: "48151956"
+ m4a: https://csapodcast.azureedge.net/episodes/1StanislavNovoseletsky.m4a
+summary: "#1 – Stanislav Novoseletskiy -modernizing and transforming one of the largest transportation systems in the world"
+description: "In this episode we go through an insightful conversation with Stanislav (Stan) who is currently an Azure Solution Specialist working for Microsoft serving the NYC region.
+
+He talks about how he used Azure to transform some of the worlds largest transit systems IT infrastructure and reporting. He also shares very useful advice for budding new Azure architects not just from a technical perspective but also from a business and impact perspective."
+duration: "29:35" 
+length: "38739273"
 explicit: "no" 
 keywords: "technology, azure, azuremonk, podcast, azure"
 block: "no" 
 voices: "Anand Kumar R"
-permalink: /2019/10/14/ep3/
+permalink: /2019/06/27/ep1/
 #podcast_file_size: 50.0 MB 
-podcast_duration: "35:51" 
-podcast_length: 48151956
+podcast_duration: "29:35" 
+podcast_length: 38739273
 # chapters:
 #  - '00:00:00.0 Intro'
 #  - '00:01:44.0 Journey'
