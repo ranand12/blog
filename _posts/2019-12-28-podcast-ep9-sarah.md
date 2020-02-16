@@ -24,15 +24,8 @@ keywords: "technology, azure, azuremonk, podcast, azure"
 block: "no" 
 voices: "Anand Kumar R"
 permalink: /2019/12/28/ep9/
-#podcast_file_size: 50.0 MB 
 podcast_duration: "14:23" 
 podcast_length: 19488581
-# chapters:
-#  - '00:00:00.0 Intro'
-#  - '00:01:44.0 Journey'
-#  - '00:07:09.0 Projects'
-#  - '00:15:14.0 Advice'
-#  - '00:20:30.0 Secret to be upto date'
 categories:
   - podcast
 author_profile: false

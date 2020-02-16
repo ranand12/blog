@@ -9,7 +9,7 @@ sidebar:
     text: "Cloud Solution Architect @ Microsoft"
 header:
   og_image: /assets/blogposts/podcastimages/Daren.jpeg
-  teaser: /assets/blogposts/podcastimages/Daren.jpeg
+  teaser: /assets/blogposts/podcastimages/darenteaser.jpeg
   overlay_color: "#333"
 date: 2020-01-09 15:40:00 +1100
 file: https://csapodcast.azureedge.net/episodes/ep10DarenChild.mp4
@@ -40,7 +40,7 @@ author_profile: false
 
 {% include podcast-player.html %}
 
-<div class="elementor-text-editor elementor-clearfix">
+
 
 In this episode we talk with Daren Child (or as we like to call him Bear- because he is so warm and helpful). Daren talks about his experiences both with education and engineering world. He talks about a framework for “Modern Data Warehouse” which I personally feel is the single most useful thing any data architect should be implementing. Since he has a lot of amazing slides to go along with the framework explanation – this is going to be a video podcast, so please do check out the link below if you are unable to watch the video.
 
@@ -76,4 +76,3 @@ Thank you for listening.
 *   <span style="font-family: Calibri; font-size: 11.0pt;">Anand Kumar R ( aka Chockalingam R) or Azure Monk</span>
 *   [<span style="font-family: Calibri; font-size: 11.0pt;">www.azuremonk.com</span>](http://www.azuremonk.com)
 
-</div>
