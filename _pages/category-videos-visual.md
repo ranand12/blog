@@ -1,5 +1,5 @@
 ---
-title: "byte sized content"
+title: "less than 5 minute videos"
 layout: category
 permalink: /video/
 author_profile: true
