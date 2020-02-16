@@ -1,5 +1,5 @@
 ---
-title: "byte sized content"
+title: "blog"
 layout: category
 permalink: /blog/
 author_profile: true
