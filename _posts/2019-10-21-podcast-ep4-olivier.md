@@ -39,7 +39,8 @@ author_profile: false
 ---
 
 {% include podcast-player.html %}
-This is the fourth episode of the “Cloud Solution Architect” podcast where we talk to Azure architects from across the globe and discuss interesting and creative Azure solutions. For more podcast episodes, animated azure video lessons and simplified how-to Azure articles please visit [www.azuremonk.com](http://www.azuremonk.com)
+
+This is the fourth episode of the "Cloud Solution Architect" podcast where we talk to Azure architects from across the globe and discuss interesting and creative Azure solutions. For more podcast episodes, animated azure video lessons and simplified how-to Azure articles please visit [www.azuremonk.com](http://www.azuremonk.com)
 
 In this episode we go through an interesting and inspiring conversation with Olivier Martin who works as a Machine Learning Expert and Architect in Microsoft
 
