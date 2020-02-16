@@ -1,5 +1,5 @@
 ---
-title: "Blockchain - Explained in less than 5 minutes #LessThan5Min"
+title: "blockchain"
 description: "Blockchain - Explained in less than 5 minutes #LessThan5Min"
 categories:
   - videos

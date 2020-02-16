@@ -1,27 +1,18 @@
 ---
-title: "Azure Network Security Groups Explained in less than 5 minutes"
-last_modified_at: 2020-01-04T16:20:02-05:00
-description: "Azure Network Security Groups Explained in less than 5 minutes"
+title: "serverless concepts"
+description: "Azure Serverless Computing - Explained in less than 5 minutes (with demo)"
 categories:
   - videos
 layout: single
-excerpt: "Azure Network Security Groups Explained in less than 5 minutes"
+excerpt: "Azure Serverless Computing - Explained in less than 5 minutes (with demo)"
 header:
   overlay_color: "#333"
-link: https://www.youtube.com/watch?v=vgnSLuf_zj0
+link: https://www.youtube.com/watch?v=7tP43V3cl5U
 header:
-  og_image: /assets/blogposts/video/nsg.jpg
-  teaser: /assets/blogposts/video/nsg.jpg
+  og_image: /assets/blogposts/video/serverless.jpg
+  teaser: /assets/blogposts/video/serverless.jpg
   overlay_color: "#333"
 ---
 
 
-This is the "ridiculously" simple explanation to Azure Network Security Groups in less than 5 minutes. :)
-
-Link to download NSG Tool - https://aka.ms/nsgtool 
-
-NSG - Azure Powershell - https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-filter-network-traffic
-
-NSG - Azure CLI - https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-filter-network-traffic-cli
-
-NSG - Azure Portal - https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-filter-network-traffic
+This is the ridiculously simple explanation of Azure Serverless Computing in less than 5 minutes( ok 7 minutes :) ) with an end to end zero code demo. This covers the concepts of Azure serverless computing model and the implementation too with an azure logic app and azure cognitive services face api
