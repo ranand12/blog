@@ -7,4 +7,4 @@ classes: wide
 taxonomy: blog
 ---
 
-hello
+
