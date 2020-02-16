@@ -1,10 +1,10 @@
 main:
   - title: "blog"
-    url: /categories/blog
+    url: /blog
   - title: "podcast"
     url: /podcast
   - title: "video"
-    url: /categories/videos
+    url: /video
   # - title: "podcast"
   #   url: /podcast/
   # - title: "home"

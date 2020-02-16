@@ -1,7 +1,7 @@
 ---
 title: "byte sized content"
 layout: category
-permalink: /categories/blog/
+permalink: /blog/
 author_profile: true
 classes: wide
 taxonomy: blog

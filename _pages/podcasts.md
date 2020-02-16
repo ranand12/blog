@@ -1,7 +1,7 @@
 ---
 title: "cloud solution architect podcast"
 layout: category
-permalink: /categories/podcast/
+permalink: /podcast/
 author_profile: true
 entries_layout: grid
 classes: wide
