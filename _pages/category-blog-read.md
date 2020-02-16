@@ -7,4 +7,4 @@ classes: wide
 taxonomy: blog
 ---
 
-blog - byte sized content 
+byte sized content 
