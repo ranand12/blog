@@ -1,38 +1,38 @@
 ---
 layout: single
-title: "#11 – Thomas Maurer – Azure Hybrid using Stack & Arc"
+title: "#10 – Daren Child (aka Bear) – Modern Data Warehousing"
 tagline: "Cloud Solution Architect podcast"
 sidebar:
-  - title: "Thomas Maurer"
-    image: /assets/blogposts/podcastimages/Thomas.png
+  - title: "Daren Child"
+    image: /assets/blogposts/podcastimages/Daren.jpeg
     image_alt: "image"
-    text: "Cloud Advocate @ Microsoft"
+    text: "Cloud Solution Architect @ Microsoft"
 header:
-  og_image: /assets/blogposts/podcastimages/Thomas.png
-  teaser: /assets/blogposts/podcastimages/Thomas.png
+  og_image: /assets/blogposts/podcastimages/Daren.jpeg
+  teaser: /assets/blogposts/podcastimages/Daren.jpeg
   overlay_color: "#333"
-date: 2020-01-14 15:40:00 +1100
-file: https://csapodcast.azureedge.net/episodes/ep11ThomasMaurer.m4a
+date: 2020-01-09 15:40:00 +1100
+file: https://csapodcast.azureedge.net/episodes/ep10DarenChild.mp4
 media: 
- m4a: https://csapodcast.azureedge.net/episodes/ep11ThomasMaurer.m4a
-summary: "#11 – Thomas Maurer – Azure Hybrid using Stack & Arc"
-description: "In this episode we talk with Thomas Maurer who works as a Cloud Advocate in Microsoft. We talk about how Azure Stack helped his customer realize the value of Azure even when there were compliance need for the data not to leave the customer’s datacenters. Tom talks about how he keeps himself up to date with everything that’s happening in the Cloud world and his e-commerce website too."
-duration: "25:41" 
-length: "34671634"
+ m4a: https://csapodcast.azureedge.net/episodes/ep10DarenChild.mp4
+summary: "#10 – Daren Child (aka Bear) – Modern Data Warehousing"
+description: "In this episode we talk with Daren Child (or as we like to call him Bear- because he is so warm and helpful). Daren talks about his experiences both with education and engineering world. He talks about a framework for “Modern Data Warehouse” which I personally feel is the single most useful thing any data architect should be implementing. Since he has a lot of amazing slides to go along with the framework explanation – this is going to be a video podcast, so please do check out the link below if you are unable to watch the video"
+duration: "32:24" 
+length: "66678803"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, azure stack, arc"
+keywords: "technology, azure, azuremonk, podcast, azure"
 block: "no" 
-voices: "Thomas Maurer and Anand Kumar R"
-permalink: /2020/01/14/ep11/
-podcast_file_size: 50.0 MB 
-podcast_duration: "21:54" 
-podcast_length: 52429240
-chapters:
- - '00:00:00.0 Intro'
- - '00:01:44.0 Journey'
- - '00:07:09.0 Projects'
- - '00:15:14.0 Advice'
- - '00:20:30.0 Secret to be upto date'
+voices: "Daren Child and Anand Kumar R"
+permalink: /2020/01/09/ep10/
+#podcast_file_size: 50.0 MB 
+podcast_duration: "32:24" 
+podcast_length: 66678803
+# chapters:
+#  - '00:00:00.0 Intro'
+#  - '00:01:44.0 Journey'
+#  - '00:07:09.0 Projects'
+#  - '00:15:14.0 Advice'
+#  - '00:20:30.0 Secret to be upto date'
 categories:
   - podcast
 author_profile: false
@@ -40,38 +40,40 @@ author_profile: false
 
 {% include podcast-player.html %}
 
-In this episode we talk with Thomas Maurer who works as a Cloud Advocate in Microsoft. We talk about how Azure Stack helped his customer realize the value of Azure even when there were compliance need for the data not to leave the customer’s datacenters. Tom talks about how he keeps himself up to date with everything that’s happening in the Cloud world and his e-commerce website too.
+<div class="elementor-text-editor elementor-clearfix">
 
-**Thomas’s journey on how he got to where he is today (01:44)**
+In this episode we talk with Daren Child (or as we like to call him Bear- because he is so warm and helpful). Daren talks about his experiences both with education and engineering world. He talks about a framework for “Modern Data Warehouse” which I personally feel is the single most useful thing any data architect should be implementing. Since he has a lot of amazing slides to go along with the framework explanation – this is going to be a video podcast, so please do check out the link below if you are unable to watch the video.
 
-*   When he was starting off his career, he bet on Hyper-V v/s Active Directory because it was a niche technology then. He then focused on Hyper-V, System Center suite of products.
-*   Hyper-V was great for a while, but he wanted to focus on the next big thing – which is Azure. He started on Azure from when it was called “Windows Azure”
-*   We also discuss how cloud is constantly evolving based on customer’s feedback – Tom talks about his role as Cloud Advocate and how he bridges the gap between the engineering teams and the customers.
+<span style="font-weight: bold;">Daren’s journey on how he got to where he is today (1:30)</span>
 
-**Interesting projects that Thomas has worked on (07:09)**
+*   <span style="font-family: Calibri; font-size: 11.0pt;">He started off as an Electronics engineer. He worked himself out of a job since he was really good at what he was supposed to do and completed the tasks on time</span>
+*   <span style="font-family: Calibri; font-size: 11.0pt;">He then joined as a Dean and was trying to find opportunities for his students.</span>
+*   <span style="font-family: Calibri; font-size: 11.0pt;">He was part of the first genome mapping project which then later went on to win the Noble Prize</span>
+*   <span style="font-family: Calibri; font-size: 11.0pt;">He was the dean of a technical college – but time boxed it in order not to lose his touch with technology.</span>
+*   <span style="font-family: Calibri; font-size: 11.0pt;">He has also worked with First American and Oracle before he joined Microsoft</span>
 
-*   **Azure stack** – A luxury product company wanted to leverage Azure and the global scale. However they had a requirement that pictures of new products couldn’t leave their datacenter – and this policy was just written in stone. Azure Stack (now called Azure Stack Hub) enabled them to run IaaS and PaaS using ARM templates using the same familiar CI/CD tools.
-*   We also discuss Azure Arc how it enhances our hybrids story by extending Azure’s data services to on premise. With Microsoft – Hybrid was always in mind when we planned for any new features. We also talk about how Azure management plane – ARM APIs, RBAC and Azure Policies extends to on premise – using Azure ARC.
+<span style="font-weight: bold;">Interesting projects that Daren has worked on (06:15)</span>
 
-**Thomas’s advice to anyone who is starting off in the Cloud Solution space (15:14)**
+*   <span style="font-family: Calibri; font-size: 11.0pt;">20-25 years of Enterprise data warehouse that have been grown – people have violated the original design constraints and caused them to go to maintenance nightmares.</span>
+*   <span style="font-family: Calibri; font-size: 11.0pt;">Modern Data Warehouse – using “ELT”</span>
 
-*   [MSLearn](https://docs.microsoft.com/en-us/learn/) is the single go to place for anyone starting off in the Azure space.
-*   You don’t need an Azure subscription, all you would need is a Microsoft account. This not only provides you with the theory and videos but also provides you with a sandbox Azure account where you can use it as a demo lab.
-*   Apart from MSLearn, the Azure certification is a good path to verify your skills.
-*   If you are already an architect [Azure Architect Center](https://docs.microsoft.com/en-us/azure/architecture/), [Cloud Adoption Framework](https://azure.microsoft.com/en-us/cloud-adoption-framework/) and Migration Center are good places to start.
+<span style="font-weight: bold;">Daren’s advice to anyone who is starting off in the Cloud Solution space (26:22)</span>
 
-**Thomas’s advice to keep himself abreast of all the changes happening in the cloud world (20:30)**
+*   <span style="font-family: Calibri; font-size: 11.0pt;">Cloud is the starting point for anyone starting off in the data space, like Data Factory but at the same time have respect for the old like SQL and Oracle implementations.</span>
 
-*   Acceptance – “that you can’t possibly not know everything about everything. Have a T shaped learning methodology”
-*   He spends his morning reading through RSS feeds – on what’s new, what was updated and announcements.
-*   He follows Microsoft’s blogs, connects to the PG using twitter.
-*   Tom likes to build stuff to learn. Once he builds it he explains it using a blog or presentation. This forces him to know a little more about the topic than what is required.
+<span style="font-weight: bold;">Daren’s advice to keep herself abreast of all the changes happening in the cloud world (27:34)</span>
 
-**How to get in touch with Thomas**
+*   <span style="font-family: Calibri; font-size: 11.0pt;">He implements piece by piece and focus on a stream lined model and THEN figure where he can add the additional capabilities along the way</span>
+*   <span style="font-family: Calibri; font-size: 11.0pt;">He</span> <span style="font-weight: bold; font-family: Calibri; font-size: 11.0pt;">DOES NOT</span> <span style="font-family: Calibri; font-size: 11.0pt;">go ahead and grab the latest announcement every day, instead he focuses on the core and add capability to the core.</span>
+*   <span style="font-family: Calibri; font-size: 11.0pt;">Don’t go to AI if you can’t store data correctly</span>
 
-*   Twitter – [https://twitter.com/ThomasMaurer](https://twitter.com/ThomasMaurer)
-*   Blog – [https://www.thomasmaurer.ch/](https://www.thomasmaurer.ch/)
-*   LinkedIn – [https://www.linkedin.com/in/thomasmaurer2/](https://www.linkedin.com/in/thomasmaurer2/)
-*   e-Commerce – all proceeds go to Charity – [https://www.thomasmaurer.ch/](https://www.thomasmaurer.ch/)Shop
+<span style="font-weight: bold;">How to get in touch with Daren</span>
 
-[www.azuremonk.com](www.azuremonk.com)
+*   <span style="font-family: Calibri; font-size: 11.0pt;">LinkedIn –</span> [<span style="font-family: Calibri; font-size: 11.0pt;">https://www.linkedin.com/in/daren-child-028a401/</span>](https://www.linkedin.com/in/daren-child-028a401/)
+
+Thank you for listening.
+
+*   <span style="font-family: Calibri; font-size: 11.0pt;">Anand Kumar R ( aka Chockalingam R) or Azure Monk</span>
+*   [<span style="font-family: Calibri; font-size: 11.0pt;">www.azuremonk.com</span>](http://www.azuremonk.com)
+
+</div>
