@@ -1,5 +1,5 @@
 ---
-title: "Azure Virtual Network Service Endpoints - explained in plain English with a story and demo"
+title: "virtual network service endpoints"
 last_modified_at: 2020-01-04T16:20:02-05:00
 description: "Azure Virtual Network Service Endpoints - explained in plain English with a story and demo"
 categories:
