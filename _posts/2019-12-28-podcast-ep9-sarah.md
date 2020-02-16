@@ -6,7 +6,7 @@ sidebar:
   - title: "Sarah Lean"
     image: /assets/blogposts/podcastimages/sarahleah.jpg
     image_alt: "image"
-    text: "Cloud Solution Architect @ Microsoft"
+    text: "Cloud Advocate @ Microsoft"
 header:
   og_image: /assets/blogposts/podcastimages/sarahleah.jpg
   teaser: /assets/blogposts/podcastimages/sarahleah.jpg
@@ -75,4 +75,3 @@ Enjoy listening !
 *   Twitter – [https://twitter.com/techielass](https://twitter.com/techielass)
 *   Glasgow Azure User Group – [https://twitter.com/GlasgowAzureUG](https://twitter.com/GlasgowAzureUG)
 
-</div>
