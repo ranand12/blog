@@ -38,7 +38,8 @@ podcast_length: 39377838
 categories:
   - podcast
 author_profile: false
-----
+---
+
 {% include podcast-player.html %}
 
 In this episode we talk with Kevin Mack who works as a Cloud Solution Architect with ISVs.
