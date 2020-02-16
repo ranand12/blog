@@ -29,7 +29,7 @@
     {% if post.categories contains "podcast" %}
         <item>
             <title>{{ post.title | xml_escape }}</title>
-            <itunes:author>{{ site.author }}</itunes:author>
+            <itunes:author>"Anand Kumar R"</itunes:author>
             <itunes:subtitle>{{ site.title | xml_escape }}: {{ post.title | xml_escape }}</itunes:subtitle>
             <itunes:summary>{{ post.summary | xml_escape }}</itunes:summary>
             <itunes:image href="{{ site.url }}/assets/blogposts/podcasticons/azuremonklogo.jpg" />
@@ -38,7 +38,7 @@
             <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
             <itunes:duration>{{ post.duration }}</itunes:duration>
             <itunes:explicit>{{ post.explicit }}</itunes:explicit>
-            <description>{{ post.summary | xml_escape }} {{ post.description | xml_escape }} Show Notes Available at {{ site.url }}{{ site.baseurl }}{{ post.url }}.</description>
+            <description>{{ post.summary | xml_escape }} {{ post.description | xml_escape }} Show Notes Available at https://azuremonk.com/{{ post.url }}.</description>
             <itunes:keywords>{{ post.keywords }}</itunes:keywords>
             <itunes:block>{{ post.block }}</itunes:block>
 		</item>
