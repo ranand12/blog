@@ -1,5 +1,5 @@
 ---
-title: "less than 5 minute videos"
+title: "videos"
 layout: category
 permalink: /video/
 author_profile: true
