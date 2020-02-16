@@ -23,7 +23,7 @@ feature_row:
     excerpt: "byte sized cloud concepts explained in plain english"
   - image_path: /assets/images/homepage/podcastimage.png
     alt: "placeholder image 2"
-    url: "/podcast"
+    url: "/podcast/"
     btn_label: "listen more"
     btn_class: "btn--primary"
     #title: "Placeholder 2"
