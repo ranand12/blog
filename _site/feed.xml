@@ -28,8 +28,6 @@
     
 
     
-
-    
         <item>
             <title>#12 – Phil Coachman - Principal Cloud Solution Architect(Data Scientist)</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
@@ -101,6 +99,8 @@
             <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
+    
+
     
 
     
@@ -245,6 +245,14 @@
             <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>
+    
+
+    
+
+    
+
+    
+
     
 
 	</channel>
