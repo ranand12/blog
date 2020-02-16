@@ -16,18 +16,16 @@ file: https://csapodcast.azureedge.net/episodes/ep8MikePfiffer.m4a
 media: 
  m4a: https://csapodcast.azureedge.net/episodes/ep8MikePfiffer.m4a
 summary: "#8- Mike Pfeiffer– cloudskills.io – shortening the learning curve for others"
-description: "In this episode we talk with Mike Pfiffer who works as a Chief Technologist at Cloudskills.io
-
-We talk about Mike’s journey and how he got to where he is today. We also talk about his work in the education space using deep immersive education. We also talk about how fitness plays a critical role in his focus and attention to learn new technologies."
-duration: "28:37" 
+description: "In this episode we talk with Mike Pfiffer who works as a Chief Technologist at Cloudskills.io. We talk about Mike’s journey and how he got to where he is today. We also talk about his work in the education space using deep immersive education. We also talk about how fitness plays a critical role in his focus and attention to learn new technologies."
+duration: "28:36" 
 length: "38221304"
 explicit: "no" 
 keywords: "technology, azure, azuremonk, podcast, azure"
 block: "no" 
 voices: "Anand Kumar R"
 permalink: /2019/11/18/ep8/
-#podcast_file_size: 50.0 MB 
-podcast_duration: "28:37" 
+podcast_file_size: 36.0 MB 
+podcast_duration: "28:36" 
 podcast_length: 38221304
 # chapters:
 #  - '00:00:00.0 Intro'

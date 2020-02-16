@@ -16,9 +16,7 @@ file: https://csapodcast.azureedge.net/episodes/ep7KevinMack.m4a
 media: 
  m4a: https://csapodcast.azureedge.net/episodes/ep7KevinMack.m4a
 summary: "#7- Kevin Mack – the “welldocumented” nerd"
-description: "In this episode we talk with Kevin Mack who works as a Cloud Solution Architect with ISVs.
-
-He talks about how his past life as a professor gave him valuable life and tech skills, like explaining and simplify for the audience & also helped him sharpen his debugging skills. We also talk about how his wife made the greatest contribution to his blog, and also helps him run the alpha/beta test before delivering a session on a complex topic. We also talk about how designing for high availability is critical for the customers that he works with and he goes about designing them."
+description: "In this episode we talk with Kevin Mack who works as a Cloud Solution Architect with ISVs. He talks about how his past life as a professor gave him valuable life and tech skills, like explaining and simplify for the audience & also helped him sharpen his debugging skills. We also talk about how his wife made the greatest contribution to his blog, and also helps him run the alpha/beta test before delivering a session on a complex topic. We also talk about how designing for high availability is critical for the customers that he works with and he goes about designing them."
 duration: "29:21" 
 length: "39377838"
 explicit: "no" 

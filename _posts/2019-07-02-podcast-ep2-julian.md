@@ -16,9 +16,7 @@ file: https://csapodcast.azureedge.net/episodes/ep2JulianSoh.m4a
 media: 
  m4a: https://csapodcast.azureedge.net/episodes/ep2JulianSoh.m4a
 summary: "#2 – Julian Soh – smart trash cans using Azure"
-description: "In this episode we go through an insightful and fun conversation with Julian Soh who works as a Cloud Solution Architect in Microsoft US in the west coast. 
-
-We talk about a wide variety of topics from how smart trash cans are revolutionizing a city and county by leveraging Azure to how biking helps Julian keep up with the latest and greatest on Azure"
+description: "In this episode we go through an insightful and fun conversation with Julian Soh who works as a Cloud Solution Architect in Microsoft US in the west coast. We talk about a wide variety of topics from how smart trash cans are revolutionizing a city and county by leveraging Azure to how biking helps Julian keep up with the latest and greatest on Azure"
 duration: "27:45" 
 length: "37632664"
 explicit: "no" 

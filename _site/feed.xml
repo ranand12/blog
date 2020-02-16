@@ -104,6 +104,22 @@
 		</item>
 
         <item>
+            <title>#10 – Daren Child (aka Bear) – Modern Data Warehousing</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>azuremonk.com: #10 – Daren Child (aka Bear) – Modern Data Warehousing</itunes:subtitle>
+            <itunes:summary>#10 – Daren Child (aka Bear) – Modern Data Warehousing</itunes:summary>
+            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+            <enclosure url="https://csapodcast.azureedge.net/episodes/ep10DarenChild.mp4" length="66678803" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/2020/01/09/ep10/</guid>
+            <pubDate>Wed, 08 Jan 2020 23:40:00 -0500</pubDate>
+            <itunes:duration>32:24</itunes:duration>
+            <itunes:explicit>no</itunes:explicit>
+            <description>#10 – Daren Child (aka Bear) – Modern Data Warehousing In this episode we talk with Daren Child (or as we like to call him Bear- because he is so warm and helpful). Daren talks about his experiences both with education and engineering world. He talks about a framework for “Modern Data Warehouse” which I personally feel is the single most useful thing any data architect should be implementing. Since he has a lot of amazing slides to go along with the framework explanation – this is going to be a video podcast, so please do check out the link below if you are unable to watch the video Show Notes Available at http://localhost:4000/2020/01/09/ep10/.</description>
+            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
+            <itunes:block>no</itunes:block>
+		</item>
+
+        <item>
             <title>how goals failed me - and what worked in 2019</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
             <itunes:subtitle>azuremonk.com: how goals failed me - and what worked in 2019</itunes:subtitle>
@@ -117,6 +133,150 @@
             <description> hello Show Notes Available at http://localhost:4000/productivity/how-goals-failed-me/.</description>
             <itunes:keywords></itunes:keywords>
             <itunes:block></itunes:block>
+		</item>
+
+        <item>
+            <title>#9 - Sarah Lean– Cloud Advocate/Glasgow Azure Group founder</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>azuremonk.com: #9 - Sarah Lean– Cloud Advocate/Glasgow Azure Group founder</itunes:subtitle>
+            <itunes:summary>#9 - Sarah Lean– Cloud Advocate/Glasgow Azure Group founder</itunes:summary>
+            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+            <enclosure url="https://csapodcast.azureedge.net/episodes/ep9SarahLean.m4a" length="19488581" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/2019/12/28/ep9/</guid>
+            <pubDate>Fri, 27 Dec 2019 23:40:00 -0500</pubDate>
+            <itunes:duration>14:23</itunes:duration>
+            <itunes:explicit>no</itunes:explicit>
+            <description>#9 - Sarah Lean– Cloud Advocate/Glasgow Azure Group founder In this episode we talk with Sarah Lean aka TechieLass. She is a STEM ambassador, founder of the Glasgow Azure group, she has been a Cloud Solution Architect and now she works as a Cloud Advocate for Microsoft. In this episode we talk about how Sarah influenced Azure Migrate and its features,  how she bridges the gap between the customers and the product engineering and how she keeps herself up to date with everything happening in the cloud world. Show Notes Available at http://localhost:4000/2019/12/28/ep9/.</description>
+            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
+            <itunes:block>no</itunes:block>
+		</item>
+
+        <item>
+            <title>#8- Mike Pfeiffer– cloudskills.io – shortening the learning curve for others</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>azuremonk.com: #8- Mike Pfeiffer– cloudskills.io – shortening the learning curve for others</itunes:subtitle>
+            <itunes:summary>#8- Mike Pfeiffer– cloudskills.io – shortening the learning curve for others</itunes:summary>
+            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+            <enclosure url="https://csapodcast.azureedge.net/episodes/ep8MikePfiffer.m4a" length="38221304" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/2019/11/18/ep8/</guid>
+            <pubDate>Sun, 17 Nov 2019 23:40:00 -0500</pubDate>
+            <itunes:duration>28:36</itunes:duration>
+            <itunes:explicit>no</itunes:explicit>
+            <description>#8- Mike Pfeiffer– cloudskills.io – shortening the learning curve for others In this episode we talk with Mike Pfiffer who works as a Chief Technologist at Cloudskills.io. We talk about Mike’s journey and how he got to where he is today. We also talk about his work in the education space using deep immersive education. We also talk about how fitness plays a critical role in his focus and attention to learn new technologies. Show Notes Available at http://localhost:4000/2019/11/18/ep8/.</description>
+            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
+            <itunes:block>no</itunes:block>
+		</item>
+
+        <item>
+            <title>#7- Kevin Mack – the “welldocumented” nerd</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>azuremonk.com: #7- Kevin Mack – the “welldocumented” nerd</itunes:subtitle>
+            <itunes:summary>#7- Kevin Mack – the “welldocumented” nerd</itunes:summary>
+            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+            <enclosure url="https://csapodcast.azureedge.net/episodes/ep7KevinMack.m4a" length="39377838" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/2019/11/11/ep7/</guid>
+            <pubDate>Sun, 10 Nov 2019 23:40:00 -0500</pubDate>
+            <itunes:duration>29:21</itunes:duration>
+            <itunes:explicit>no</itunes:explicit>
+            <description>#7- Kevin Mack – the “welldocumented” nerd In this episode we talk with Kevin Mack who works as a Cloud Solution Architect with ISVs. He talks about how his past life as a professor gave him valuable life and tech skills, like explaining and simplify for the audience &amp; also helped him sharpen his debugging skills. We also talk about how his wife made the greatest contribution to his blog, and also helps him run the alpha/beta test before delivering a session on a complex topic. We also talk about how designing for high availability is critical for the customers that he works with and he goes about designing them. Show Notes Available at http://localhost:4000/2019/11/11/ep7/.</description>
+            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
+            <itunes:block>no</itunes:block>
+		</item>
+
+        <item>
+            <title>#6 – Abhijeet Jhala – Making a parking system “smart” using Azure</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>azuremonk.com: #6 – Abhijeet Jhala – Making a parking system “smart” using Azure</itunes:subtitle>
+            <itunes:summary>#6 – Abhijeet Jhala – Making a parking system “smart” using Azure</itunes:summary>
+            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+            <enclosure url="https://csapodcast.azureedge.net/episodes/ep6AbhijeetJhala.m4a" length="26042078" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/2019/11/01/ep6/</guid>
+            <pubDate>Fri, 01 Nov 2019 00:40:00 -0400</pubDate>
+            <itunes:duration>19:15</itunes:duration>
+            <itunes:explicit>no</itunes:explicit>
+            <description>#6 – Abhijeet Jhala – Making a parking system “smart” using Azure Welcome to the Cloud Solution Architect podcast where we talk to Azure architects from across the globe and discuss interesting and creative Azure solutions. For more podcast episodes, animated azure video lessons and simplified how-to Azure articles please visit www.azuremonk.com. In this episode we talk with Abhijeet Jhala (AJ) who works as a Cloud Solution Architect with ISVs. He talks about how he has the “coolest job” since he has to solve a business problem only once but can be reused many number of times. We talk about how he was instrumental in solving a business problem which was – making a parking gate “smart” using Azure and its IOT capabilities. He also talks about how having a breadth of technical experience and a hip pocket skill helps him be a “problem solver Show Notes Available at http://localhost:4000/2019/11/01/ep6/.</description>
+            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
+            <itunes:block>no</itunes:block>
+		</item>
+
+        <item>
+            <title>#5 – Joe Sarabia – AWS, GCP and Azure Solution Architect</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>azuremonk.com: #5 – Joe Sarabia – AWS, GCP and Azure Solution Architect</itunes:subtitle>
+            <itunes:summary>#5 – Joe Sarabia – AWS, GCP and Azure Solution Architect</itunes:summary>
+            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+            <enclosure url="https://csapodcast.azureedge.net/episodes/ep4JoeSarabia.m4a" length="56410110" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/2019/10/29/ep5/</guid>
+            <pubDate>Tue, 29 Oct 2019 00:40:00 -0400</pubDate>
+            <itunes:duration>42:21</itunes:duration>
+            <itunes:explicit>no</itunes:explicit>
+            <description>#5 – Joe Sarabia – AWS, GCP and Azure Solution Architect Welcome to the “Cloud Solution Architect” podcast where we talk to Azure architects from across the globe and discuss interesting and creative Azure solutions. For more podcast episodes, animated azure video lessons and simplified how-to Azure articles please visit www.azuremonk.com. In this episode we talk with Joe Sarabia who works as a Cloud Solution Architect in Microsoft. We talk about Joe’s variety of experiences working on and with all the major private and public cloud providers out there including VMWare, Google, AWS and now Microsoft. We also talk about the book – Phoenix project, how he bought low-cost discounted machines at his local Fry’s store to learn NT migration, how he likes to “build stuff” to keep up with his “continuous learning” methodology and much more valuable advice to anyone in the tech space. We also talk about two of his interesting projects that he has worked on – one focused around people and other around technology. Show Notes Available at http://localhost:4000/2019/10/29/ep5/.</description>
+            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
+            <itunes:block>no</itunes:block>
+		</item>
+
+        <item>
+            <title>#4 – Olivier Martin– Data Scientist and Machine Learning Engineer</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>azuremonk.com: #4 – Olivier Martin– Data Scientist and Machine Learning Engineer</itunes:subtitle>
+            <itunes:summary>#4 – Olivier Martin– Data Scientist and Machine Learning Engineer</itunes:summary>
+            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+            <enclosure url="https://csapodcast.azureedge.net/episodes/ep4OlivierMartin.m4a" length="53154593" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/2019/10/21/ep4/</guid>
+            <pubDate>Mon, 21 Oct 2019 00:40:00 -0400</pubDate>
+            <itunes:duration>40:09</itunes:duration>
+            <itunes:explicit>no</itunes:explicit>
+            <description>#4 – Olivier Martin– Data Scientist and Machine Learning Engineer In this episode we go through an interesting and inspiring conversation with Olivier Martin who works as a Machine Learning Expert and Architect in Microsoft. We talk about a wide variety of topics from how “being curious” and being a #LearnitAll helped him to get to where he is today and helping him every single day. He also talks about an interesting Machine learning project where they  helped increase the efficiency by identifying “false negatives”  Show Notes Available at http://localhost:4000/2019/10/21/ep4/.</description>
+            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
+            <itunes:block>no</itunes:block>
+		</item>
+
+        <item>
+            <title>#3 – Mohamed Faizal – Singapore Airlines KrisPay and Cloud Custodian program</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>azuremonk.com: #3 – Mohamed Faizal – Singapore Airlines KrisPay and Cloud Custodian program</itunes:subtitle>
+            <itunes:summary>#3 – Mohamed Faizal – Singapore Airlines KrisPay and Cloud Custodian program</itunes:summary>
+            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+            <enclosure url="https://csapodcast.azureedge.net/episodes/ep3MohammadFaizal.m4a" length="48151956" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/2019/10/14/ep3/</guid>
+            <pubDate>Mon, 14 Oct 2019 00:40:00 -0400</pubDate>
+            <itunes:duration>35:51</itunes:duration>
+            <itunes:explicit>no</itunes:explicit>
+            <description>#3 – Mohamed Faizal – Singapore Airlines KrisPay and Cloud Custodian program In this episode we talk to Mohamed Faizal, who was one of the first 100 MVPs of Azure who is currently working as a Cloud Solution Architect in Singapore. In this episode we talk about interesting projects like KrisPay for Singapore Airlines using blockchain as a service to the Cloud custodian program Show Notes Available at http://localhost:4000/2019/10/14/ep3/.</description>
+            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
+            <itunes:block>no</itunes:block>
+		</item>
+
+        <item>
+            <title>#2 – Julian Soh – smart trash cans using Azure</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>azuremonk.com: #2 – Julian Soh – smart trash cans using Azure</itunes:subtitle>
+            <itunes:summary>#2 – Julian Soh – smart trash cans using Azure</itunes:summary>
+            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+            <enclosure url="https://csapodcast.azureedge.net/episodes/ep2JulianSoh.m4a" length="37632664" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/2019/07/02/ep2/</guid>
+            <pubDate>Tue, 02 Jul 2019 00:40:00 -0400</pubDate>
+            <itunes:duration>27:45</itunes:duration>
+            <itunes:explicit>no</itunes:explicit>
+            <description>#2 – Julian Soh – smart trash cans using Azure In this episode we go through an insightful and fun conversation with Julian Soh who works as a Cloud Solution Architect in Microsoft US in the west coast. We talk about a wide variety of topics from how smart trash cans are revolutionizing a city and county by leveraging Azure to how biking helps Julian keep up with the latest and greatest on Azure Show Notes Available at http://localhost:4000/2019/07/02/ep2/.</description>
+            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
+            <itunes:block>no</itunes:block>
+		</item>
+
+        <item>
+            <title>#1 – Stanislav Novoseletskiy -modernizing and transforming one of the largest transportation systems in the world</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>azuremonk.com: #1 – Stanislav Novoseletskiy -modernizing and transforming one of the largest transportation systems in the world</itunes:subtitle>
+            <itunes:summary>#1 – Stanislav Novoseletskiy -modernizing and transforming one of the largest transportation systems in the world</itunes:summary>
+            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+            <enclosure url="https://csapodcast.azureedge.net/episodes/1StanislavNovoseletsky.m4a" length="38739273" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/2019/06/27/ep1/</guid>
+            <pubDate>Thu, 27 Jun 2019 00:40:00 -0400</pubDate>
+            <itunes:duration>29:35</itunes:duration>
+            <itunes:explicit>no</itunes:explicit>
+            <description>#1 – Stanislav Novoseletskiy -modernizing and transforming one of the largest transportation systems in the world In this episode we go through an insightful conversation with Stanislav (Stan) who is currently an Azure Solution Specialist working for Microsoft serving the NYC region.He talks about how he used Azure to transform some of the worlds largest transit systems IT infrastructure and reporting. He also shares very useful advice for budding new Azure architects not just from a technical perspective but also from a business and impact perspective. Show Notes Available at http://localhost:4000/2019/06/27/ep1/.</description>
+            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
+            <itunes:block>no</itunes:block>
 		</item>
 
 	</channel>
