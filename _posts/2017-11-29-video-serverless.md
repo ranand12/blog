@@ -1,0 +1,27 @@
+---
+title: "Azure Network Security Groups Explained in less than 5 minutes"
+last_modified_at: 2020-01-04T16:20:02-05:00
+description: "Azure Network Security Groups Explained in less than 5 minutes"
+categories:
+  - videos
+layout: single
+excerpt: "Azure Network Security Groups Explained in less than 5 minutes"
+header:
+  overlay_color: "#333"
+link: https://www.youtube.com/watch?v=vgnSLuf_zj0
+header:
+  og_image: /assets/blogposts/video/nsg.jpg
+  teaser: /assets/blogposts/video/nsg.jpg
+  overlay_color: "#333"
+---
+
+
+This is the "ridiculously" simple explanation to Azure Network Security Groups in less than 5 minutes. :)
+
+Link to download NSG Tool - https://aka.ms/nsgtool 
+
+NSG - Azure Powershell - https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-filter-network-traffic
+
+NSG - Azure CLI - https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-filter-network-traffic-cli
+
+NSG - Azure Portal - https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-filter-network-traffic
