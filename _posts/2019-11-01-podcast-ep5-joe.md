@@ -4,12 +4,12 @@ title: "#5 – Joe Sarabia – AWS, GCP and Azure Solution Architect"
 tagline: "Cloud Solution Architect podcast"
 sidebar:
   - title: "Joe Sarabia"
-    image: /assets/blogposts/podcastimages/joe.jpeg
+    image: /assets/blogposts/podcastimages/Joe.jpeg
     image_alt: "image"
     text: "Cloud Solution Architect @ Microsoft"
 header:
-  og_image: /assets/blogposts/podcastimages/joe.jpeg
-  teaser: /assets/blogposts/podcastimages/joe.jpeg
+  og_image: /assets/blogposts/podcastimages/Joe.jpeg
+  teaser: /assets/blogposts/podcastimages/Joe.jpeg
   overlay_color: "#333"
 date: 2019-10-29 15:40:00 +1100
 file: https://csapodcast.azureedge.net/episodes/ep4JoeSarabia.m4a
