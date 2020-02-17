@@ -16,8 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 email: ranand12@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  this blog is aimed at super simplifying and providing clariy for 
-  azure (microsoft cloud) using the written language.
+ azure in plain english
 twitter_username: ranand12
 github_username: ranand12
 minimal_mistakes_skin: default
