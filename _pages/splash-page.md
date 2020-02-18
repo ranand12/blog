@@ -6,7 +6,7 @@ date: 2016-03-23T11:48:41-04:00
 header:
   overlay_color: "#333"
   overlay_filter: "0.5"  
-  og_image: /assets/blogposts/assets/images/azuremonklogo-1024x1024.jpg
+  og_image: /assets/images/azuremonklogo-1024x1024.jpg
   #actions:
    # - label: "Learn More"
    #   url: "/terms/"
