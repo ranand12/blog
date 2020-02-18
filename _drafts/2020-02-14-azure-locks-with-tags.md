@@ -1,44 +1,24 @@
 ---
-title: "TMUX Simplified in WSL for Visual Studio Code"
+title: "azure locks with tags"
 last_modified_at: 2020-02-12T16:28:02-05:00
 categories:
-  - opensource
+  - blog
+  - azure
 tags:
-  - kubernetes
-  - tmux
-  - visualstudiocode
-toc: true
-toc_sticky: true
-toc_label: "How goals failed me"
-toc_icon: book-open
-layout: single
-excerpt: "TMUX simplified for Windows guys"
+  - powershell
+  - tags
+  - locks
 
+layout: single
+excerpt: "azure locks using azure tags"
 header:
-  image: /assets/blogposts/2020-02-14-azure-locks-with-tags/banner.png
-  caption: "blog.azuremonk.com"
+  og_image: /assets/blogposts/2020-02-14-azure-locks-with-tags/bannertag.png
+  overlay_color: "#333"
+  
 ---
 
 
-Azure can prevent accidental deletion of resources using Azure Locks.
-
-
-
-![alt](/assets/blogposts/2020-02-14-azure-locks-with-tags/oldnews.gif)
-
-
-
-
-
-
-
-
-
-
-
-
-
-Well, thats stale news isn't it? This has been around for a while. 
+Azure can prevent accidental deletion of resources using Azure Locks. Well, thats stale news isn't it? This has been around for a while. 
 
 But imagine you are running a large organization and every division has its own Azure subscription and every team owner has "Contributor" rights. What if the individual subscriptions under the Central IT needed permissions to create their own locks? By default you would not be able to - why ? Because creating lock requires the following permissions - Microsoft.Authorization/* or Microsoft.Authorization/locks/* which is available with the built-in Owner and User Access Administrator role. 
 
