@@ -26,7 +26,7 @@
         <itunes:explicit>no</itunes:explicit>
 		
 {% for post in site.posts %}
-    {% if post.categories contains "podcast" %}
+    {% if post.categories contains "blog" %}
         <item>
             <title>{{ post.title | xml_escape }}</title>
             <itunes:author>{{ site.author }}</itunes:author>
