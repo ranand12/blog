@@ -4,6 +4,7 @@ last_modified_at: 2020-01-04T16:20:02-05:00
 description: "hello"
 categories:
   - productivity  
+  - blog
 tags:
   - atomichabits
   - mindfulness
