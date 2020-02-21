@@ -16,17 +16,9 @@ file: https://csapodcast.azureedge.net/episodes/ep13EddieVillalba.m4a
 media: 
  m4a: https://csapodcast.azureedge.net/episodes/ep13EddieVillalba.m4a
 summary: "#13 – Eddie Villalba - Principal Commercial Software Engineer - Kubernetes for the Windows folks"
-description: "In this episode we talk to Eddie who works as a Principal Commercial Software Engineer @ Microsoft. He has also co-authored the book [Kubernetes Best practices](https://www.amazon.com/Kubernetes-Best-Practices-Blueprints-Applications/dp/1492056472) along with Brendan Burns and is a contributor for CNCF/K8s. This episode is **jam-packed** with super good K8s content and we talk about the following: 
-
-* Eddie's journey
-* Learning path for K8s to someone coming from the Windows world(really good analogies to make it sticky)
-* He breaks down the K8s certification - and what it takes to get certified and who should take which exam 
-* Future of K8s
-* How to be part of the K8s community
-* Interesting Talent Management system project using Kubernetes
-* When **NOT** to use K8s"
+description: "In this episode we talk to Eddie who works as a Principal Commercial Software Engineer @ Microsoft. He has also co-authored the book [Kubernetes Best practices](https://www.amazon.com/Kubernetes-Best-Practices-Blueprints-Applications/dp/1492056472) along with Brendan Burns and is a contributor for CNCF/K8s. This episode is **jam-packed** with super good K8s content and we talk about the following * Eddie's journey * Learning path for K8s to someone coming from the Windows world(really good analogies to make it sticky) * He breaks down the K8s certification - and what it takes to get certified and who should take which exam * Future of K8s * How to be part of the K8s community * Interesting Talent Management system project using Kubernetes * When **NOT** to use K8s"
 duration: "48:56" 
-length: "52429240"
+length: "47185920"
 explicit: "no" 
 keywords: "technology, azure, azuremonk, podcast, kubernetes, windows, k8s, cncf, monk"
 block: "no" 
@@ -34,7 +26,7 @@ voices: "Eddie Villalba and Anand Kumar R"
 permalink: /Eddie
 podcast_file_size: 45.0 MB 
 podcast_duration: "48:56" 
-podcast_length: 52429240
+podcast_length: 47185920
 chapters:
  - '00:01:52.0 Journey'
  - '00:05:42.0 Learning Path -K8S' 
