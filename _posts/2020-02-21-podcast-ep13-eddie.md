@@ -33,8 +33,8 @@ chapters:
  - '00:12:55.0 K8s Certification guidance' 
  - '00:19:02.0 Future of K8s' 
  - '00:24:30.0 K8s Community' 
- - '00:10:00.0 Projects ' 
- - '00:10:00.0 When NOT to use K8s' 
+ - '00:31:04.0 Projects ' 
+ - '00:35:03.0 When NOT to use K8s' 
 
 categories:
   - podcast
