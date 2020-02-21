@@ -36,17 +36,29 @@ You preferrably want to give the least restrictive privelge
 
 Please note that this only works with "CanNotDelete" lock and not the "ReadOnly" lock. Why? Once you set the ReadOnly lock the users wont be able to toggle the value at the end of it. (its a catch 22)
 
-```powershell
+This will set the resource group or resource to a "CanNotDelete" lock and you can schedule this at a certain frequency to poll if there are any changes. You can also use LogicApps + Functions together if you want to get creative with the trigger to run this script. 
 
-New-AzResourceLock -LockName LockGroup -LockLevel ReadOnly -ResourceGroupName $rg.ResourceGroupName -Force
+```powershell
+#get list of resource groups or resources, filter by specific resource group if you want to at this step ##
+
+$resourcegrouplist = Get-AzResourceGroup
+
+foreach($resourcegroup in $resourcegrouplist)
+{
+  if($resourcegroup.Tags)
+
+  New-AzResourceLock -LockName "nameoflock" -LockLevel CanNotDelete -ResourceGroupName $resourcegroup.ResourceGroupName -Force
 
 }
 
-foreach($rg in $rgs)
+```powershell 
+
+This will release the resource 
+foreach($resourcegroup in $resourcegrouplist)
 {
 
-$lockId = (Get-AzResourceLock -ResourceGroupName $rg.ResourceGroupName).LockId
-Remove-AzResourceLock -LockId $lockId -Force
+  $lockId = (Get-AzResourceLock -ResourceGroupName $rg.ResourceGroupName).LockId
+  Remove-AzResourceLock -LockId $lockId -Force
 }
 
 
@@ -55,7 +67,7 @@ $to = @{
 }
 
 $to =@()
-$tags = (Get-AzResourceGroup -ResourceGroupName aksworkshop ).Tags
+$tags = (Get-AzResourceGroup).Tags
 
 
 ````
