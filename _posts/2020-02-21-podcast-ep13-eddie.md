@@ -61,7 +61,7 @@ In this episode we talk to Eddie who works as a Commercial Software Engineer @ M
 * He then moved to the Cloud Native application development black belt team. 
 * In his current role as a Commercial Software engineer he does a code-with customers using the open source methodologies. Majority of the code is out there in the open unless proprietary code is requested by the customer. They create reusable code that is resuable across different stacks and different industries. 
 
-**Learning path for Kubernetes to someone coming from the Windows world**
+**Learning path for Kubernetes to someone coming from the Windows world (05:42)**
 	
 
 * Based on Eddie's experience teaching and conducting workshops across the world one of the biggest roadblocks he has seen is learning the bash shell and the basic Linux commands. (you don’t have to go super deep). 
@@ -74,7 +74,7 @@ In this episode we talk to Eddie who works as a Commercial Software Engineer @ M
    * Looks at containers as a process. He compares calc.exe in the windows world as similar to running a container based off an image. Multiple copies of the calc.exe process is similar to running multiple container instances. When we make a functional change example change calc.exe - it is similar to updating image for the container - and rerun the new version of the new calc.exe. 
 	 * Container is just a PID at the end of the day. Only difference is that we can look at the PID tree. 
 
-**Best practices for taking the Kubernetes certification exam**
+**Best practices for taking the Kubernetes certification exam (12:55)**
 
 There are two certification paths for anyone interested in the Kubernetes certification 
 * [Certified Kubernetes Administrator(CKA)](https://www.cncf.io/certification/cka/) - This one needs very heavy understanding of how the underlying components of Kubernetes work. If you are not an operator and building Kubernetes cluster, this may not be the exam you want to take. In a cloud hosted scenario, most of the the control plane components might be abstracted for you. 
@@ -82,23 +82,23 @@ There are two certification paths for anyone interested in the Kubernetes certif
  *{: .notice--success} Exam tip : Its all about time management. It’s a 3 hour and you will be using every second of the three hours. Know "kubectl" very well. 
 * [Certified Kubernetes Application Developer(CKAD)](https://www.cncf.io/certification/ckad/) - If the etcd and other control plane components are abstracted for you, and you are someone who is using Kubernetes for application development and deployment then this exam might be the one for you.  
 
-**Future of Kubernetes**
+**Future of Kubernetes (19:02)**
 
 * Eventually its going to be like the hypervisor. Eventually the goal of Kubernetes is to be "boring" - it's a master API to get workloads running. The idea of understanding how the backend components work - should be irrelevant. Customization of the API would be the future where end users extend what it was originally created for. 
 * Now that Kubernetes is in the enterprise - understanding the needs and effectively make it useful for large Enterprise customers is in pipeline
   
 
-**Be a part of the Kubernetes community**
+**Be a part of the Kubernetes community (24:30)**
 
 * Be a part of the community and get involved - you don't necessarily have to be a developer - there are plenty of ways you can help out. 
 * How ? 
   * Find a Special Interest Group(SIG) under [Kubernetes.io website](https://kubernetes.io/community/).
 
-**Interesting projects that Eddie has worked on**
+**Interesting projects that Eddie has worked on (31:04)**
 
 * Talent Management system project in a million employee company - Eddie talks about a Data science project which builds real time models using Azure machine learning toolsets. They would then train all of the models them and serve up the model using web services using AKS using a BOT service. Which led to promotion based on data points. And provided a ROI on the talent for the investment that they had made on the talent. 
 
-**When NOT to use Kubernetes** 
+**When NOT to use Kubernetes (35:04)** 
 
 * Even though a lot of progress has been made on the "operators" front - Kubernetes was not made initially for stateful data. Stateful applications as of today still require a lot of work this is constantly being improved on as we speak. But it might be easier to just consume a PaaS service already provided by many of the cloud providers for stateful services
 

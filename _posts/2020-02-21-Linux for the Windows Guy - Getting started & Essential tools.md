@@ -90,7 +90,7 @@ sudo apt-get upgrade
 
 #### What does it do ? 
 
-Once you have the WSL setup, the next thing is to install Windows Terminal. Your productivity will skyrocket once you install this and you thank me later :) You can have multiple sessions of PowerShell, WSL, Good old command prompt, Azure Cloud Shell and much more ( this is super configurable) - all in **ONE SINGLE TERMINAL** !!
+Once you have the WSL setup, the next thing is to install Windows Terminal. Your productivity will skyrocket once you install this and you can thank me later :) You can have multiple sessions of PowerShell, WSL, Good old command prompt, Azure Cloud Shell and much more ( this is super configurable) - all in **ONE SINGLE TERMINAL** !!
 
 
 
