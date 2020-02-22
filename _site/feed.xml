@@ -43,36 +43,17 @@
 
     
         <item>
-            <title>#13 – Eddie Villalba - Principal Commercial Software Engineer (Kubernetes/Cloud Native)</title>
+            <title>#13 – Eddie Villalba - Everything Cloud Native/K8s for beginners &amp; Windows folks</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #13 – Eddie Villalba - Principal Commercial Software Engineer (Kubernetes/Cloud Native)</itunes:subtitle>
-            <itunes:summary>#13 – Eddie Villalba - Principal Commercial Software Engineer - Kubernetes for the Windows folks</itunes:summary>
+            <itunes:subtitle>azuremonk.com: #13 – Eddie Villalba - Everything Cloud Native/K8s for beginners &amp; Windows folks</itunes:subtitle>
+            <itunes:summary>#13 – Eddie Villalba - Everything Cloud Native/K8s for beginners &amp; Windows folks</itunes:summary>
             <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
             <enclosure url="https://csapodcast.azureedge.net/episodes/ep13EddieVillalba.m4a" length="47185920" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/Eddie</guid>
-            <pubDate>Wed, 19 Feb 2020 23:40:00 -0500</pubDate>
+            <guid isPermaLink="true">http://localhost:4000/podcast/Eddie</guid>
+            <pubDate>Thu, 20 Feb 2020 23:40:00 -0500</pubDate>
             <itunes:duration>48:56</itunes:duration>
             <itunes:explicit>no</itunes:explicit>
-            <description>#13 – Eddie Villalba - Principal Commercial Software Engineer - Kubernetes for the Windows folks In this episode we talk to Eddie who works as a Principal Commercial Software Engineer @ Microsoft. He has also co-authored the book [Kubernetes Best practices](https://www.amazon.com/Kubernetes-Best-Practices-Blueprints-Applications/dp/1492056472) along with Brendan Burns and is a contributor for CNCF/K8s. This episode is **jam-packed** with super good K8s content and we talk about the following * Eddie's journey * Learning path for K8s to someone coming from the Windows world(really good analogies to make it sticky) * He breaks down the K8s certification - and what it takes to get certified and who should take which exam * Future of K8s * How to be part of the K8s community * Interesting Talent Management system project using Kubernetes * When **NOT** to use K8s Show Notes Available at http://localhost:4000/Eddie.</description>
-            <itunes:keywords>technology, azure, azuremonk, podcast, kubernetes, windows, k8s, cncf, monk</itunes:keywords>
-            <itunes:block>no</itunes:block>
-		</item>
-    
-
-    
-        <item>
-            <title>#13 – Eddie Villalba - Principal Commercial Software Engineer (Kubernetes/Cloud Native)</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #13 – Eddie Villalba - Principal Commercial Software Engineer (Kubernetes/Cloud Native)</itunes:subtitle>
-            <itunes:summary>#13 – Eddie Villalba - Principal Commercial Software Engineer - Kubernetes for the Windows folks</itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.azureedge.net/episodes/ep13EddieVillalba.m4a" length="52429240" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/Eddie</guid>
-            <pubDate>Wed, 19 Feb 2020 23:40:00 -0500</pubDate>
-            <itunes:duration>48:56</itunes:duration>
-            <itunes:explicit>no</itunes:explicit>
-            <description>#13 – Eddie Villalba - Principal Commercial Software Engineer - Kubernetes for the Windows folks In this episode we talk to Eddie who works as a Principal Commercial Software Engineer @ Microsoft. He has also co-authored the book [Kubernetes Best practices](https://www.amazon.com/Kubernetes-Best-Practices-Blueprints-Applications/dp/1492056472) along with Brendan Burns and is a contributor for CNCF/K8s. This episode is **jam-packed** with super good K8s content and we talk about the following:
-* Eddie's journey * Learning path for K8s to someone coming from the Windows world(really good analogies to make it sticky) * He breaks down the K8s certification - and what it takes to get certified and who should take which exam * Future of K8s * How to be part of the K8s community * Interesting Talent Management system project using Kubernetes * When **NOT** to use K8s Show Notes Available at http://localhost:4000/Eddie.</description>
+            <description>#13 – Eddie Villalba - Everything Cloud Native/K8s for beginners &amp; Windows folks In this episode we talk to Eddie who works as a Commercial Software Engineer @ Microsoft. He has also co-authored the book [Kubernetes Best practices](https://www.amazon.com/Kubernetes-Best-Practices-Blueprints-Applications/dp/1492056472) along with Brendan Burns and is a contributor for CNCF/K8s. This episode is **jam-packed** with super good K8s content and we talk about the following * Eddie's journey * Learning path for K8s to someone coming from the Windows world(really good analogies to make it sticky) * He breaks down the K8s certification - and what it takes to get certified and who should take which exam * Future of K8s * How to be part of the K8s community * Interesting Talent Management system project using Kubernetes * When **NOT** to use K8s Show Notes Available at http://localhost:4000/podcast/Eddie.</description>
             <itunes:keywords>technology, azure, azuremonk, podcast, kubernetes, windows, k8s, cncf, monk</itunes:keywords>
             <itunes:block>no</itunes:block>
 		</item>

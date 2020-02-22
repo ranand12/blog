@@ -8,22 +8,22 @@ sidebar:
   - title: "Eddie Villalba"
     image: /assets/blogposts/podcastimages/eddie.jpg
     image_alt: "image"
-    text: "Principal Commercial Software Engineer @ Microsoft"
+    text: "Commercial Software Engineer @ Microsoft"
 tagline: "Cloud Solution Architect podcast"
-title: "#13 – Eddie Villalba - Principal Commercial Software Engineer (Kubernetes/Cloud Native)"
-date: 2020-02-20 15:40:00 +1100
+title: "#13 – Eddie Villalba - Everything Cloud Native/K8s for beginners & Windows folks"
+date: 2020-02-21 15:40:00 +1100
 file: https://csapodcast.azureedge.net/episodes/ep13EddieVillalba.m4a
 media: 
  m4a: https://csapodcast.azureedge.net/episodes/ep13EddieVillalba.m4a
-summary: "#13 – Eddie Villalba - Principal Commercial Software Engineer - Kubernetes for the Windows folks"
-description: "In this episode we talk to Eddie who works as a Principal Commercial Software Engineer @ Microsoft. He has also co-authored the book [Kubernetes Best practices](https://www.amazon.com/Kubernetes-Best-Practices-Blueprints-Applications/dp/1492056472) along with Brendan Burns and is a contributor for CNCF/K8s. This episode is **jam-packed** with super good K8s content and we talk about the following * Eddie's journey * Learning path for K8s to someone coming from the Windows world(really good analogies to make it sticky) * He breaks down the K8s certification - and what it takes to get certified and who should take which exam * Future of K8s * How to be part of the K8s community * Interesting Talent Management system project using Kubernetes * When **NOT** to use K8s"
+summary: "#13 – Eddie Villalba - Everything Cloud Native/K8s for beginners & Windows folks"
+description: "In this episode we talk to Eddie who works as a Commercial Software Engineer @ Microsoft. He has also co-authored the book [Kubernetes Best practices](https://www.amazon.com/Kubernetes-Best-Practices-Blueprints-Applications/dp/1492056472) along with Brendan Burns and is a contributor for CNCF/K8s. This episode is **jam-packed** with super good K8s content and we talk about the following * Eddie's journey * Learning path for K8s to someone coming from the Windows world(really good analogies to make it sticky) * He breaks down the K8s certification - and what it takes to get certified and who should take which exam * Future of K8s * How to be part of the K8s community * Interesting Talent Management system project using Kubernetes * When **NOT** to use K8s"
 duration: "48:56" 
 length: "47185920"
 explicit: "no" 
 keywords: "technology, azure, azuremonk, podcast, kubernetes, windows, k8s, cncf, monk"
 block: "no" 
 voices: "Eddie Villalba and Anand Kumar R"
-permalink: /Eddie
+permalink: /podcast/Eddie
 podcast_file_size: 45.0 MB 
 podcast_duration: "48:56" 
 podcast_length: 47185920
@@ -44,7 +44,7 @@ author_profile: false
 
 {% include podcast-player.html %}
 
-In this episode we talk to Eddie who works as a Principal Commercial Software Engineer @ Microsoft. He has also co-authored the book [Kubernetes Best practices](https://www.amazon.com/Kubernetes-Best-Practices-Blueprints-Applications/dp/1492056472) along with Brendan Burns and is a contributor for CNCF/K8s. This episode is **jam-packed** with super good K8s content and we talk about the following: 
+In this episode we talk to Eddie who works as a Commercial Software Engineer @ Microsoft. He has also co-authored the book [Kubernetes Best practices](https://www.amazon.com/Kubernetes-Best-Practices-Blueprints-Applications/dp/1492056472) along with Brendan Burns and is a contributor for CNCF/K8s. This episode is **jam-packed** with super good K8s content and we talk about the following: 
 
 * Eddie's journey
 * Learning path for K8s to someone coming from the Windows world(really good analogies to make it sticky)
@@ -111,7 +111,7 @@ There are two certification paths for anyone interested in the Kubernetes certif
 
 **How to get in touch with Eddie**
 
-- Evill_Genius - Slack ( he is on the Kubernetes slack channel)
+- Slack - Evill_Genius ( he is on the official Kubernetes slack channel)
 
 - Twitter - [@evill_Genius](https://twitter.com/evill_genius)
 
