@@ -1,7 +1,7 @@
 ---
 title: "how goals failed me - and what worked in 2019"
 last_modified_at: 2020-01-04T16:20:02-05:00
-description: "hello"
+description: "my reflection on what failed and what worked"
 categories:
   - productivity  
   - blog
@@ -14,6 +14,7 @@ toc_label: "how goals failed me"
 toc_icon: book-open
 layout: single
 excerpt: "my reflection on what failed and what worked"
+permalink: "blog/goals"
 header:
   overlay_color: "#333"
   og_image: /assets/blogposts/goals/systems-vs-goals.jpg
