@@ -1,3 +1,24 @@
+---
+title: "Essential Linux tools for the Windows guy"
+last_modified_at: 2020-02-12T16:28:02-05:00
+categories:
+
+  - blog
+  - azure
+    tags:
+  - powershell
+  - tags
+  - locks
+
+layout: single
+excerpt: "azure locks using azure tags"
+header:
+  og_image: /assets/blogposts/2020-02-14-azure-locks-with-tags/bannertag.png
+  overlay_color: "#333"
+---
+
+
+
 **Windows Subsytem for Linux, Visual Studio Code + Windows Terminal** 
 
 
