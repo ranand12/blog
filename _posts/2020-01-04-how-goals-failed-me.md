@@ -17,6 +17,7 @@ excerpt: "my reflection on what failed and what worked"
 header:
   overlay_color: "#333"
   og_image: /assets/blogposts/goals/systems-vs-goals.jpg
+  teaser: /assets/blogposts/goals/systems-vs-goals.jpg
 ---
 
 
