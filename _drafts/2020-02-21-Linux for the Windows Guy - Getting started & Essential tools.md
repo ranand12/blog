@@ -91,23 +91,27 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 
 - **Step 3 - Upgrade the packages** - Run the following commands to upgrade the packages 
 
-This command ***does not*** automatically install new versions of the software. It updates the ***package lists*** for upgrades -  for packages that might need an upgrade or new packages that might just  fetches the list of update packages ( but does not download them yet)
+
 
 ```bash
 sudo apt-get update
 ```
 
-This command downloads the latest packages based on the previous update list
+This command ***does not*** automatically install new versions of the software. It updates the ***package lists*** index -  for packages that might need an upgrade or new packages that might just  fetches the list of update packages ( but does not download them yet)
 
 ```bash
 sudo apt-get upgrade
 ```
 
+This command downloads the latest packages based on the previous update list
+
+
+
+Please note that this is not WSL2 ( this is the older version WSL1). The newer version is a whole new product you can find more info [here](https://devblogs.microsoft.com/commandline/wsl-2-is-now-available-in-windows-insiders/)
+
 
 
 ### Windows Terminal 
-
-
 
 #### What does it do ? 
 
