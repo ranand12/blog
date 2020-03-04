@@ -12,8 +12,8 @@ tags:
 layout: single
 excerpt: "Essential Linux tools for Windows folks"
 header:
-  og_image: /assets/blogposts/2020-02-21-WSL,Visual%20Studio%20Code,&%20Microsoft%20Terminal/headerimageoverlay.png
-  teaser: /assets/blogposts/2020-02-21-WSL,Visual%20Studio%20Code,&%20Microsoft%20Terminal/headerimageoverlay.png
+  og_image: /assets/blogposts/linuxforwindow/headerimageoverlay.png
+  teaser: /assets/blogposts/linuxforwindow/headerimageoverlay.png
   overlay_color: "#333"
 toc: true
 toc_sticky: true
