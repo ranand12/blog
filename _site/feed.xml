@@ -1,387 +1,318 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xml:lang="">
-
-    <channel>
-		<atom:link href="http://localhost:4000/podcast.rss" rel="self" type="application/rss+xml" />
-		<title>Cloud Solution Architects</title>
+<rss version="2.0"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+>
+	<channel>
+		<title>anand kumar r - Blog</title>
+		<description>Blog</description>
+		<sy:updatePeriod>daily</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
 		<link>http://localhost:4000</link>
-		<language></language>
-        <copyright>&#xA9; 2020 azuremonk.com</copyright>
-		<itunes:subtitle>A podcast where we talk to humans working on Cloud Technologies like Azure, about interesting Cloud projects and the human side behind working in this space.</itunes:subtitle>
-        <itunes:author>Anand Kumar R</itunes:author>
-		<itunes:summary>azure in plain english</itunes:summary>
-        <description>Cloud Solution Architects podcasts brings you the wealth of wisdom from solution architects across the globe working on azure solving critical business problems and changing the world with azure. For more cloud solution architect podcast episodes, animated azure videos,  and simplified how-to content articles please check out www.azuremonk.com.</description>
-		<webMaster>ranand12@gmail.com ({"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]})</webMaster>
-        <itunes:owner>
-			<itunes:name>Anand Kumar R</itunes:name>
-			<itunes:email>ranand12@gmail.com</itunes:email>
-		</itunes:owner>
-        <itunes:image href="https://azuremonk.com/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-		<itunes:category text="News">
-		<itunes:category text="Tech News"></itunes:category>
-        </itunes:category>
-        <itunes:explicit>no</itunes:explicit>
+		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+		<lastBuildDate>Fri, 21 Feb 2020 00:00:00 -0500</lastBuildDate>
 		
+		
+			<item>
+				<title>Getting started with Linux for the Windows folks</title>
+				
+					<description>Essential Linux tools for Windows folks</description>
+				
+                <content>&lt;p&gt;If you are coming from the Windows world and are relatively new to the Linux world, then these essential tools will be of great help to get you started and make your life easier. I will walk you through what each of them does in plain English &amp;amp; how you can set them up in a step-by-step approach. &lt;strong&gt;This is by no means an exhaustive list - this post is purposefully oversimplified, the goal is to get you started with Linux as fast as possible.&lt;/strong&gt;&lt;/p&gt;
 
-    
-        <item>
-            <title>Getting started with Linux for the Windows folks</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: Getting started with Linux for the Windows folks</itunes:subtitle>
-            <itunes:summary></itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="" length="" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/blog/linux-for-windows-folks</guid>
-            <pubDate>Fri, 21 Feb 2020 00:00:00 -0500</pubDate>
-            <itunes:duration></itunes:duration>
-            <itunes:explicit></itunes:explicit>
-            <description>  Show Notes Available at http://localhost:4000/blog/linux-for-windows-folks.</description>
-            <itunes:keywords></itunes:keywords>
-            <itunes:block></itunes:block>
-		</item>
-    
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Windows Subsystem for Linux&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Windows Terminal&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;TMUX&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-    
-        <item>
-            <title>#13 – Eddie Villalba - Everything Cloud Native/K8s for beginners &amp; Windows folks</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #13 – Eddie Villalba - Everything Cloud Native/K8s for beginners &amp; Windows folks</itunes:subtitle>
-            <itunes:summary>#13 – Eddie Villalba - Everything Cloud Native/K8s for beginners &amp; Windows folks</itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.azureedge.net/episodes/ep13EddieVillalba.m4a" length="47185920" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/podcast/Eddie</guid>
-            <pubDate>Thu, 20 Feb 2020 23:40:00 -0500</pubDate>
-            <itunes:duration>48:56</itunes:duration>
-            <itunes:explicit>no</itunes:explicit>
-            <description>#13 – Eddie Villalba - Everything Cloud Native/K8s for beginners &amp; Windows folks In this episode we talk to Eddie who works as a Commercial Software Engineer @ Microsoft. He has also co-authored the book [Kubernetes Best practices](https://www.amazon.com/Kubernetes-Best-Practices-Blueprints-Applications/dp/1492056472) along with Brendan Burns and is a contributor for CNCF/K8s. This episode is **jam-packed** with super good K8s content and we talk about the following * Eddie's journey * Learning path for K8s to someone coming from the Windows world(really good analogies to make it sticky) * He breaks down the K8s certification - and what it takes to get certified and who should take which exam * Future of K8s * How to be part of the K8s community * Interesting Talent Management system project using Kubernetes * When **NOT** to use K8s Show Notes Available at http://localhost:4000/podcast/Eddie.</description>
-            <itunes:keywords>technology, azure, azuremonk, podcast, kubernetes, windows, k8s, cncf, monk</itunes:keywords>
-            <itunes:block>no</itunes:block>
-		</item>
-    
+&lt;h2 id=&quot;windows-subsystem-for-linux-wsl&quot;&gt;Windows Subsystem for Linux (WSL)&lt;/h2&gt;
 
-    
-        <item>
-            <title>#12 – Phil Coachman - Principal Cloud Solution Architect(Data Scientist)</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #12 – Phil Coachman - Principal Cloud Solution Architect(Data Scientist)</itunes:subtitle>
-            <itunes:summary>#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project</itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.azureedge.net/episodes/ep12PhilCoachman.m4a" length="52429240" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/2020/02/01/ep12/</guid>
-            <pubDate>Fri, 31 Jan 2020 23:40:00 -0500</pubDate>
-            <itunes:duration>21:54</itunes:duration>
-            <itunes:explicit>no</itunes:explicit>
-            <description>#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project If you are in the data science field or aspiring to be in the data science field you are going to love this episode. In this episode we talk with Phil Coachman who works as a Data Scientist/Principal Cloud Solution Architect in Microsoft. We talk about Phil’s journey starting with the Bing, Xbox and Windows 10 team to his current role. We also demystify “who a data scientist” really is and what it take to be one. We talk about a really interesting and cool Train derailment prevention project using AI, Machine Learning, IoT sensors and IOT edge which is currently in production and has been deployed to 4 continents. Phil also gives you 4 ways on how you can keep up and learn everything you need to know about Machine Learning Show Notes Available at http://localhost:4000/2020/02/01/ep12/.</description>
-            <itunes:keywords>technology, azure, azuremonk, podcast, datascience, artificial, intelligence</itunes:keywords>
-            <itunes:block>no</itunes:block>
-		</item>
-    
+&lt;h3 id=&quot;what-does-it-do-&quot;&gt;What does it do ?&lt;/h3&gt;
 
-    
-        <item>
-            <title>#11 – Thomas Maurer – Azure Hybrid using Stack &amp; Arc</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #11 – Thomas Maurer – Azure Hybrid using Stack &amp; Arc</itunes:subtitle>
-            <itunes:summary>#11 – Thomas Maurer – Azure Hybrid using Stack &amp; Arc</itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.azureedge.net/episodes/ep11ThomasMaurer.m4a" length="34671634" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/2020/01/14/ep11/</guid>
-            <pubDate>Mon, 13 Jan 2020 23:40:00 -0500</pubDate>
-            <itunes:duration>25:41</itunes:duration>
-            <itunes:explicit>no</itunes:explicit>
-            <description>#11 – Thomas Maurer – Azure Hybrid using Stack &amp; Arc In this episode we talk with Thomas Maurer who works as a Cloud Advocate in Microsoft. We talk about how Azure Stack helped his customer realize the value of Azure even when there were compliance need for the data not to leave the customer’s datacenters. Tom talks about how he keeps himself up to date with everything that’s happening in the Cloud world and his e-commerce website too. Show Notes Available at http://localhost:4000/2020/01/14/ep11/.</description>
-            <itunes:keywords>technology, azure, azuremonk, podcast, azure stack, arc</itunes:keywords>
-            <itunes:block>no</itunes:block>
-		</item>
-    
+&lt;p&gt;The Windows Subsystem for Linux lets you run a Linux environment and most Linux command-line tools, utilities ( like TMUX, VIM, EMACS etc) and applications – directly on Windows without really deploying a VM.&lt;/p&gt;
 
-    
-        <item>
-            <title>#10 – Daren Child (aka Bear) – Modern Data Warehousing</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #10 – Daren Child (aka Bear) – Modern Data Warehousing</itunes:subtitle>
-            <itunes:summary>#10 – Daren Child (aka Bear) – Modern Data Warehousing</itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.azureedge.net/episodes/ep10DarenChild.mp4" length="66678803" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/2020/01/09/ep10/</guid>
-            <pubDate>Wed, 08 Jan 2020 23:40:00 -0500</pubDate>
-            <itunes:duration>32:24</itunes:duration>
-            <itunes:explicit>no</itunes:explicit>
-            <description>#10 – Daren Child (aka Bear) – Modern Data Warehousing In this episode we talk with Daren Child (or as we like to call him Bear- because he is so warm and helpful). Daren talks about his experiences both with education and engineering world. He talks about a framework for “Modern Data Warehouse” which I personally feel is the single most useful thing any data architect should be implementing. Since he has a lot of amazing slides to go along with the framework explanation – this is going to be a video podcast, so please do check out the link below if you are unable to watch the video Show Notes Available at http://localhost:4000/2020/01/09/ep10/.</description>
-            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
-            <itunes:block>no</itunes:block>
-		</item>
-    
+&lt;h3 id=&quot;how-to-set-this-up-&quot;&gt;How to set this up ?&lt;/h3&gt;
 
-    
-        <item>
-            <title>how goals failed me - and what worked in 2019</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: how goals failed me - and what worked in 2019</itunes:subtitle>
-            <itunes:summary></itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="" length="" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/blog/goals</guid>
-            <pubDate>Sat, 04 Jan 2020 00:00:00 -0500</pubDate>
-            <itunes:duration></itunes:duration>
-            <itunes:explicit></itunes:explicit>
-            <description> my reflection on what failed and what worked Show Notes Available at http://localhost:4000/blog/goals.</description>
-            <itunes:keywords></itunes:keywords>
-            <itunes:block></itunes:block>
-		</item>
-    
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Step 1 - Enable Feature&lt;/strong&gt; - You would need to enable the feature from PowerShell. (Run as administrator - &lt;em&gt;will need a restart&lt;/em&gt;)&lt;/li&gt;
+&lt;/ul&gt;
 
-    
-        <item>
-            <title>#9 - Sarah Lean– Cloud Advocate/Glasgow Azure Group founder</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #9 - Sarah Lean– Cloud Advocate/Glasgow Azure Group founder</itunes:subtitle>
-            <itunes:summary>#9 - Sarah Lean– Cloud Advocate/Glasgow Azure Group founder</itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.azureedge.net/episodes/ep9SarahLean.m4a" length="19488581" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/2019/12/28/ep9/</guid>
-            <pubDate>Fri, 27 Dec 2019 23:40:00 -0500</pubDate>
-            <itunes:duration>14:23</itunes:duration>
-            <itunes:explicit>no</itunes:explicit>
-            <description>#9 - Sarah Lean– Cloud Advocate/Glasgow Azure Group founder In this episode we talk with Sarah Lean aka TechieLass. She is a STEM ambassador, founder of the Glasgow Azure group, she has been a Cloud Solution Architect and now she works as a Cloud Advocate for Microsoft. In this episode we talk about how Sarah influenced Azure Migrate and its features,  how she bridges the gap between the customers and the product engineering and how she keeps herself up to date with everything happening in the cloud world. Show Notes Available at http://localhost:4000/2019/12/28/ep9/.</description>
-            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
-            <itunes:block>no</itunes:block>
-		</item>
-    
+&lt;div class=&quot;language-powershell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;Enable-WindowsOptionalFeature&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Online&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-FeatureName&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Microsoft-Windows-Subsystem-Linux&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-    
-        <item>
-            <title>virtual network service endpoints</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: virtual network service endpoints</itunes:subtitle>
-            <itunes:summary></itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="" length="" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/videos/video-serviceendpoints/</guid>
-            <pubDate>Mon, 09 Dec 2019 00:00:00 -0500</pubDate>
-            <itunes:duration></itunes:duration>
-            <itunes:explicit></itunes:explicit>
-            <description> Azure Virtual Network Service Endpoints - explained in plain English with a story and demo Show Notes Available at http://localhost:4000/videos/video-serviceendpoints/.</description>
-            <itunes:keywords></itunes:keywords>
-            <itunes:block></itunes:block>
-		</item>
-    
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Step 2 - Pick Distribution &amp;amp; Complete Install&lt;/strong&gt; - Here is the list of the distributions of Linux that you can install using the Microsoft Store:&lt;/p&gt;
 
-    
-        <item>
-            <title>#8- Mike Pfeiffer– cloudskills.io – shortening the learning curve for others</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #8- Mike Pfeiffer– cloudskills.io – shortening the learning curve for others</itunes:subtitle>
-            <itunes:summary>#8- Mike Pfeiffer– cloudskills.io – shortening the learning curve for others</itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.azureedge.net/episodes/ep8MikePfiffer.m4a" length="38221304" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/2019/11/18/ep8/</guid>
-            <pubDate>Sun, 17 Nov 2019 23:40:00 -0500</pubDate>
-            <itunes:duration>28:36</itunes:duration>
-            <itunes:explicit>no</itunes:explicit>
-            <description>#8- Mike Pfeiffer– cloudskills.io – shortening the learning curve for others In this episode we talk with Mike Pfiffer who works as a Chief Technologist at Cloudskills.io. We talk about Mike’s journey and how he got to where he is today. We also talk about his work in the education space using deep immersive education. We also talk about how fitness plays a critical role in his focus and attention to learn new technologies. Show Notes Available at http://localhost:4000/2019/11/18/ep8/.</description>
-            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
-            <itunes:block>no</itunes:block>
-		</item>
-    
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/store/apps/9pjn388hp8c9&quot;&gt;Ubuntu 16.04 LTS&lt;/a&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/store/apps/9N9TNGVNDL3Q&quot;&gt;Ubuntu 18.04 LTS&lt;/a&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/store/apps/9n1tb6fpvj8c&quot;&gt;OpenSUSE Leap 15&lt;/a&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/store/apps/9njvjts82tjx&quot;&gt;OpenSUSE Leap 42&lt;/a&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/store/apps/9p32mwbh6cns&quot;&gt;SUSE Linux Enterprise Server 12&lt;/a&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/store/apps/9pmw35d7fnlx&quot;&gt;SUSE Linux Enterprise Server 15&lt;/a&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/store/apps/9PKR34TNCV07&quot;&gt;Kali Linux&lt;/a&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/store/apps/9MSVKQC78PK6&quot;&gt;Debian GNU/Linux&lt;/a&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/store/apps/9n6gdm4k2hnc&quot;&gt;Fedora Remix for WSL&lt;/a&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/store/apps/9NV1GV1PXZ6P&quot;&gt;Pengwin&lt;/a&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/store/apps/9N8LP0X93VCP&quot;&gt;Pengwin Enterprise&lt;/a&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/store/apps/9p804crf0395&quot;&gt;Alpine WSL&lt;/a&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
 
-    
-        <item>
-            <title>#7- Kevin Mack – the “welldocumented” nerd</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #7- Kevin Mack – the “welldocumented” nerd</itunes:subtitle>
-            <itunes:summary>#7- Kevin Mack – the “welldocumented” nerd</itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.azureedge.net/episodes/ep7KevinMack.m4a" length="39377838" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/2019/11/11/ep7/</guid>
-            <pubDate>Sun, 10 Nov 2019 23:40:00 -0500</pubDate>
-            <itunes:duration>29:21</itunes:duration>
-            <itunes:explicit>no</itunes:explicit>
-            <description>#7- Kevin Mack – the “welldocumented” nerd In this episode we talk with Kevin Mack who works as a Cloud Solution Architect with ISVs. He talks about how his past life as a professor gave him valuable life and tech skills, like explaining and simplify for the audience &amp; also helped him sharpen his debugging skills. We also talk about how his wife made the greatest contribution to his blog, and also helps him run the alpha/beta test before delivering a session on a complex topic. We also talk about how designing for high availability is critical for the customers that he works with and he goes about designing them. Show Notes Available at http://localhost:4000/2019/11/11/ep7/.</description>
-            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
-            <itunes:block>no</itunes:block>
-		</item>
-    
+    &lt;p&gt;I chose Ubuntu 18.04 LTS for my example. You can complete the installation by providing the user name and password for your instance:&lt;/p&gt;
 
-    
-        <item>
-            <title>#6 – Abhijeet Jhala – Making a parking system “smart” using Azure</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #6 – Abhijeet Jhala – Making a parking system “smart” using Azure</itunes:subtitle>
-            <itunes:summary>#6 – Abhijeet Jhala – Making a parking system “smart” using Azure</itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.azureedge.net/episodes/ep6AbhijeetJhala.m4a" length="26042078" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/2019/11/01/ep6/</guid>
-            <pubDate>Fri, 01 Nov 2019 00:40:00 -0400</pubDate>
-            <itunes:duration>19:15</itunes:duration>
-            <itunes:explicit>no</itunes:explicit>
-            <description>#6 – Abhijeet Jhala – Making a parking system “smart” using Azure Welcome to the Cloud Solution Architect podcast where we talk to Azure architects from across the globe and discuss interesting and creative Azure solutions. For more podcast episodes, animated azure video lessons and simplified how-to Azure articles please visit www.azuremonk.com. In this episode we talk with Abhijeet Jhala (AJ) who works as a Cloud Solution Architect with ISVs. He talks about how he has the “coolest job” since he has to solve a business problem only once but can be reused many number of times. We talk about how he was instrumental in solving a business problem which was – making a parking gate “smart” using Azure and its IOT capabilities. He also talks about how having a breadth of technical experience and a hip pocket skill helps him be a “problem solver Show Notes Available at http://localhost:4000/2019/11/01/ep6/.</description>
-            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
-            <itunes:block>no</itunes:block>
-		</item>
-    
+    &lt;p&gt;&lt;img src=&quot;/assets/blogposts/2020-02-21-WSL,Visual Studio Code,&amp;amp; Microsoft Terminal/installubuntu.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Step 3 - Upgrade the packages&lt;/strong&gt; - Run the following commands to upgrade the packages&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-    
-        <item>
-            <title>#5 – Joe Sarabia – AWS, GCP and Azure Solution Architect</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #5 – Joe Sarabia – AWS, GCP and Azure Solution Architect</itunes:subtitle>
-            <itunes:summary>#5 – Joe Sarabia – AWS, GCP and Azure Solution Architect</itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.azureedge.net/episodes/ep4JoeSarabia.m4a" length="56410110" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/2019/10/29/ep5/</guid>
-            <pubDate>Tue, 29 Oct 2019 00:40:00 -0400</pubDate>
-            <itunes:duration>42:21</itunes:duration>
-            <itunes:explicit>no</itunes:explicit>
-            <description>#5 – Joe Sarabia – AWS, GCP and Azure Solution Architect Welcome to the “Cloud Solution Architect” podcast where we talk to Azure architects from across the globe and discuss interesting and creative Azure solutions. For more podcast episodes, animated azure video lessons and simplified how-to Azure articles please visit www.azuremonk.com. In this episode we talk with Joe Sarabia who works as a Cloud Solution Architect in Microsoft. We talk about Joe’s variety of experiences working on and with all the major private and public cloud providers out there including VMWare, Google, AWS and now Microsoft. We also talk about the book – Phoenix project, how he bought low-cost discounted machines at his local Fry’s store to learn NT migration, how he likes to “build stuff” to keep up with his “continuous learning” methodology and much more valuable advice to anyone in the tech space. We also talk about two of his interesting projects that he has worked on – one focused around people and other around technology. Show Notes Available at http://localhost:4000/2019/10/29/ep5/.</description>
-            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
-            <itunes:block>no</itunes:block>
-		</item>
-    
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-    
-        <item>
-            <title>#4 – Olivier Martin– Data Scientist and Machine Learning Engineer</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #4 – Olivier Martin– Data Scientist and Machine Learning Engineer</itunes:subtitle>
-            <itunes:summary>#4 – Olivier Martin– Data Scientist and Machine Learning Engineer</itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.azureedge.net/episodes/ep4OlivierMartin.m4a" length="53154593" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/2019/10/21/ep4/</guid>
-            <pubDate>Mon, 21 Oct 2019 00:40:00 -0400</pubDate>
-            <itunes:duration>40:09</itunes:duration>
-            <itunes:explicit>no</itunes:explicit>
-            <description>#4 – Olivier Martin– Data Scientist and Machine Learning Engineer In this episode we go through an interesting and inspiring conversation with Olivier Martin who works as a Machine Learning Expert and Architect in Microsoft. We talk about a wide variety of topics from how “being curious” and being a #LearnitAll helped him to get to where he is today and helping him every single day. He also talks about an interesting Machine learning project where they  helped increase the efficiency by identifying “false negatives”  Show Notes Available at http://localhost:4000/2019/10/21/ep4/.</description>
-            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
-            <itunes:block>no</itunes:block>
-		</item>
-    
+&lt;p&gt;This command &lt;strong&gt;&lt;em&gt;does not&lt;/em&gt;&lt;/strong&gt; automatically install new versions of the software. It updates the &lt;strong&gt;&lt;em&gt;package lists&lt;/em&gt;&lt;/strong&gt; index -  for packages that might need an upgrade or new packages that might just  fetches the list of update packages ( but does not download them yet)&lt;/p&gt;
 
-    
-        <item>
-            <title>#3 – Mohamed Faizal – Singapore Airlines KrisPay and Cloud Custodian program</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #3 – Mohamed Faizal – Singapore Airlines KrisPay and Cloud Custodian program</itunes:subtitle>
-            <itunes:summary>#3 – Mohamed Faizal – Singapore Airlines KrisPay and Cloud Custodian program</itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.azureedge.net/episodes/ep3MohammadFaizal.m4a" length="48151956" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/2019/10/14/ep3/</guid>
-            <pubDate>Mon, 14 Oct 2019 00:40:00 -0400</pubDate>
-            <itunes:duration>35:51</itunes:duration>
-            <itunes:explicit>no</itunes:explicit>
-            <description>#3 – Mohamed Faizal – Singapore Airlines KrisPay and Cloud Custodian program In this episode we talk to Mohamed Faizal, who was one of the first 100 MVPs of Azure who is currently working as a Cloud Solution Architect in Singapore. In this episode we talk about interesting projects like KrisPay for Singapore Airlines using blockchain as a service to the Cloud custodian program Show Notes Available at http://localhost:4000/2019/10/14/ep3/.</description>
-            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
-            <itunes:block>no</itunes:block>
-		</item>
-    
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-    
-        <item>
-            <title>#2 – Julian Soh – smart trash cans using Azure</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #2 – Julian Soh – smart trash cans using Azure</itunes:subtitle>
-            <itunes:summary>#2 – Julian Soh – smart trash cans using Azure</itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.azureedge.net/episodes/ep2JulianSoh.m4a" length="37632664" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/2019/07/02/ep2/</guid>
-            <pubDate>Tue, 02 Jul 2019 00:40:00 -0400</pubDate>
-            <itunes:duration>27:45</itunes:duration>
-            <itunes:explicit>no</itunes:explicit>
-            <description>#2 – Julian Soh – smart trash cans using Azure In this episode we go through an insightful and fun conversation with Julian Soh who works as a Cloud Solution Architect in Microsoft US in the west coast. We talk about a wide variety of topics from how smart trash cans are revolutionizing a city and county by leveraging Azure to how biking helps Julian keep up with the latest and greatest on Azure Show Notes Available at http://localhost:4000/2019/07/02/ep2/.</description>
-            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
-            <itunes:block>no</itunes:block>
-		</item>
-    
+&lt;p&gt;This command downloads the latest packages based on the previous update list&lt;/p&gt;
 
-    
-        <item>
-            <title>#1 – Stanislav Novoseletskiy -modernizing and transforming one of the largest transportation systems in the world</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: #1 – Stanislav Novoseletskiy -modernizing and transforming one of the largest transportation systems in the world</itunes:subtitle>
-            <itunes:summary>#1 – Stanislav Novoseletskiy -modernizing and transforming one of the largest transportation systems in the world</itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="https://csapodcast.azureedge.net/episodes/1StanislavNovoseletsky.m4a" length="38739273" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/2019/06/27/ep1/</guid>
-            <pubDate>Thu, 27 Jun 2019 00:40:00 -0400</pubDate>
-            <itunes:duration>29:35</itunes:duration>
-            <itunes:explicit>no</itunes:explicit>
-            <description>#1 – Stanislav Novoseletskiy -modernizing and transforming one of the largest transportation systems in the world In this episode we go through an insightful conversation with Stanislav (Stan) who is currently an Azure Solution Specialist working for Microsoft serving the NYC region.He talks about how he used Azure to transform some of the worlds largest transit systems IT infrastructure and reporting. He also shares very useful advice for budding new Azure architects not just from a technical perspective but also from a business and impact perspective. Show Notes Available at http://localhost:4000/2019/06/27/ep1/.</description>
-            <itunes:keywords>technology, azure, azuremonk, podcast, azure</itunes:keywords>
-            <itunes:block>no</itunes:block>
-		</item>
-    
+&lt;p class=&quot;notice--success&quot;&gt;Please note that this is not WSL2 ( this is the older version WSL1). The newer version is a whole new product you can find more info &lt;a href=&quot;https://devblogs.microsoft.com/commandline/wsl-2-is-now-available-in-windows-insiders/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-    
-        <item>
-            <title>azure front door</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: azure front door</itunes:subtitle>
-            <itunes:summary></itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="" length="" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/videos/video-afd/</guid>
-            <pubDate>Tue, 28 May 2019 00:00:00 -0400</pubDate>
-            <itunes:duration></itunes:duration>
-            <itunes:explicit></itunes:explicit>
-            <description> Azure Front Door explained in plain english Show Notes Available at http://localhost:4000/videos/video-afd/.</description>
-            <itunes:keywords></itunes:keywords>
-            <itunes:block></itunes:block>
-		</item>
-    
+&lt;h2 id=&quot;windows-terminal-preview&quot;&gt;Windows Terminal (preview)&lt;/h2&gt;
 
-    
-        <item>
-            <title>blockchain</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: blockchain</itunes:subtitle>
-            <itunes:summary></itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="" length="" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/videos/video-blockchain/</guid>
-            <pubDate>Wed, 13 Dec 2017 00:00:00 -0500</pubDate>
-            <itunes:duration></itunes:duration>
-            <itunes:explicit></itunes:explicit>
-            <description> Blockchain - Explained in less than 5 minutes #LessThan5Min Show Notes Available at http://localhost:4000/videos/video-blockchain/.</description>
-            <itunes:keywords></itunes:keywords>
-            <itunes:block></itunes:block>
-		</item>
-    
+&lt;h3 id=&quot;what-does-it-do--1&quot;&gt;What does it do ?&lt;/h3&gt;
 
-    
-        <item>
-            <title>serverless concepts</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: serverless concepts</itunes:subtitle>
-            <itunes:summary></itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="" length="" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/videos/video-serverless/</guid>
-            <pubDate>Wed, 29 Nov 2017 00:00:00 -0500</pubDate>
-            <itunes:duration></itunes:duration>
-            <itunes:explicit></itunes:explicit>
-            <description> Azure Serverless Computing - Explained in less than 5 minutes (with demo) Show Notes Available at http://localhost:4000/videos/video-serverless/.</description>
-            <itunes:keywords></itunes:keywords>
-            <itunes:block></itunes:block>
-		</item>
-    
+&lt;p&gt;Once you have the WSL setup, the next thing is to install “Windows Terminal”. Your productivity will skyrocket once you install this and you can thank me later :) You can have multiple sessions of PowerShell, WSL, Good old command prompt, Azure Cloud Shell and much more ( this is super configurable) - all in &lt;strong&gt;ONE SINGLE TERMINAL&lt;/strong&gt; !!&lt;/p&gt;
 
-    
-        <item>
-            <title>network security groups</title>
-            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
-            <itunes:subtitle>azuremonk.com: network security groups</itunes:subtitle>
-            <itunes:summary></itunes:summary>
-            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
-            <enclosure url="" length="" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/videos/video-nsg/</guid>
-            <pubDate>Tue, 07 Mar 2017 00:00:00 -0500</pubDate>
-            <itunes:duration></itunes:duration>
-            <itunes:explicit></itunes:explicit>
-            <description> Azure Network Security Groups Explained in less than 5 minutes Show Notes Available at http://localhost:4000/videos/video-nsg/.</description>
-            <itunes:keywords></itunes:keywords>
-            <itunes:block></itunes:block>
-		</item>
-    
+&lt;p class=&quot;notice--success&quot;&gt;You can also type in “code” inside the bash shell to open up Visual Studio Code with the Remote WSL functionality and start developing in a Linux environment within Windows.&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;/assets/blogposts/2020-02-21-WSL,Visual Studio Code,&amp;amp; Microsoft Terminal/windowsterminal.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-set-this-up--1&quot;&gt;How to set this up ?&lt;/h3&gt;
+
+&lt;p&gt;This is pretty straight forward to setup - you can either download from the &lt;a href=&quot;https://www.microsoft.com/en-us/p/windows-terminal-preview/9n0dx20hk701#activetab=pivot:overviewtab&quot;&gt;Microsoft Store&lt;/a&gt; (or) you can download directly from the &lt;a href=&quot;https://github.com/Microsoft/Terminal&quot;&gt;GitHub repository&lt;/a&gt; What’s more you can also &lt;a href=&quot;https://www.howtogeek.com/426346/how-to-customize-the-new-windows-terminal-app/&quot;&gt;customize the background&lt;/a&gt;, image, transparency and more using the profiles.json under the settings option.&lt;/p&gt;
+
+&lt;h2 id=&quot;tmux&quot;&gt;TMUX&lt;/h2&gt;
+
+&lt;p&gt;TMUX is a terminal multiplexer. When I first heard the definition I wasn’t very thrilled - but once you see what can be done with this, trust me you will love it ! (and once again productivity= skyrocket!)&lt;/p&gt;
+
+&lt;h3 id=&quot;what-does-it-do--2&quot;&gt;What does it do ?&lt;/h3&gt;
+
+&lt;p&gt;TMUX has three important components:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Sessions&lt;/li&gt;
+  &lt;li&gt;Windows&lt;/li&gt;
+  &lt;li&gt;Panes&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I’m not going to talk about Sessions in this post - but in short if you want to save your sessions this is helpful especially if you remote SSH often.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Windows&lt;/strong&gt; - You can think of Windows as separate tabs in your browser. But windows are their own clients which allows flexibility on how you handle windows. You can attach and detach different windows in different sessions without any issues.&lt;/p&gt;
+
+&lt;p&gt;Firstly to get started with TMUX all you need to do is type in tmux from the shell prompt. And TMUX has a default key which is prefixed before any command –&amp;gt; &lt;strong&gt;Ctrl + B&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice--success&quot;&gt;If you dont like the default you can always change this by putting the following in &lt;strong&gt;*~/.tmux.conf*:&lt;/strong&gt; 
+ &lt;strong&gt;set -g prefix Ctrl-X&lt;/strong&gt; if you prefer&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Command&lt;/th&gt;
+      &lt;th&gt;Action&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ctrl + B + c&lt;/td&gt;
+      &lt;td&gt;Creates a new window&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ctrl + B + l&lt;/td&gt;
+      &lt;td&gt;Switches to previous window&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ctrl + B + n&lt;/td&gt;
+      &lt;td&gt;Moves to next window&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ctrl + B + ,&lt;/td&gt;
+      &lt;td&gt;Renames current window&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/blogposts/2020-02-21-WSL,Visual Studio Code,&amp;amp; Microsoft Terminal/tmux.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Not so thrilled yet? I wasn’t too - but stay with me, Panes and the ability to synchronize across panes is the best part of TMUX for me personally&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Panes&lt;/strong&gt;  - Panes let you split the current window both horizontally, vertically and resize if required and switch between different pane contexts easily. Also the best part “synchronize panes” you can type a command once and you will see it synchronized across all the panes together.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Command&lt;/th&gt;
+      &lt;th&gt;Action&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ctrl + B + %&lt;/td&gt;
+      &lt;td&gt;Split current window into two vertical panes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ctrl + B + “&lt;/td&gt;
+      &lt;td&gt;Split the current window into two horizontal panes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ctrl + B + q&lt;/td&gt;
+      &lt;td&gt;Lists all the pane numbers. Follow that up with the pane you want to work in. For example. Ctrl + B + q will list panes 0, 1 and 2. Immediately follow the Ctrl + B + q command with the pane number&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ctrl + B + x&lt;/td&gt;
+      &lt;td&gt;Kills current pane&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/blogposts/2020-02-21-WSL,Visual Studio Code,&amp;amp; Microsoft Terminal/tmux-panes.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And as promised the last command that made me love TMUX :&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ctrl + B + :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you get the prompt type in &lt;strong&gt;setw synchronize-panes&lt;/strong&gt; ( you dont have to type it in full, you can hit the tab to autofill)&lt;/p&gt;
+
+&lt;p&gt;What this does is lets you type the command once and execute it across multiple panes - especially useful when you have SSHed into different machines on different panes and you want to run the same command everywhere.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/blogposts/2020-02-21-WSL,Visual Studio Code,&amp;amp; Microsoft Terminal/pane-sync.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice--success&quot;&gt;This is by no means an exhaustive list of TMUX commands - I have only focused on the essential commands For a complete exhaustive list - &lt;a href=&quot;https://tmuxcheatsheet.com/&quot;&gt;refer this&lt;/a&gt;&lt;/p&gt;
+</content>
+				<pubDate>Fri, 21 Feb 2020 00:00:00 -0500</pubDate>
+				<link>http://localhost:4000/blog/linux-for-windows-folks</link>
+				<guid isPermaLink="true">http://localhost:4000/blog/linux-for-windows-folks</guid>
+			</item>
+		
+			<item>
+				<title>how goals failed me - and what worked in 2019</title>
+				
+					<description>my reflection on what failed and what worked</description>
+				
+                <content>&lt;p class=&quot;notice--success&quot;&gt;&lt;em&gt;Voice in my head: Why on earth would someone want to listen to my systems or routine ???! You must be crazy. 
+ I acknowledge but still ignore the voice and continue writing, Why ?? You have these folks to blame - &lt;a href=&quot;https://www.youtube.com/watch?v=DEOvAu0knsU&quot;&gt;Dona Sarkar&lt;/a&gt; , &lt;a href=&quot;https://www.youtube.com/watch?v=xcmI5SSQLmE&quot;&gt;Obvious to you, amazing to others&lt;/a&gt; and &lt;a href=&quot;https://www.amazon.com/Show-Your-Work-Austin-Kleon/dp/076117897X&quot;&gt;Show Your Work&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I have always been a very ambitious goal setter all my life, but have been a terrible failure when it comes to execution - it would never last more than a few days. Something changed in 2019, I re-/read these amazing books -&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Deep-Work-Focused-Success-Distracted/dp/1455586692&quot;&gt;Deep Work - Cal Newport&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/How-Fail-Almost-Everything-Still-ebook/dp/B00COOFBA4&quot;&gt;How to fail at almost everything and still win big - Scott Adams&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299&quot;&gt;Atomic habits - James Clear&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you haven’t read these books - stop reading this post and go read those books - will be a better use of your time&lt;/p&gt;
+
+&lt;p&gt;Extracting the essence from these three books, I am now a strong believer of incremental tiny boring progress and building a system rather than an ambitious fancy goal. This has helped me have the longest streak to sticking to these routines.&lt;/p&gt;
+
+&lt;h2 id=&quot;mindfulness-meditation&quot;&gt;&lt;strong&gt;&lt;u&gt;Mindfulness Meditation&lt;/u&gt;&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;I’m not going to delve into the benefits of mindfulness, there are a gazillion articles out there. For me this is a &lt;a href=&quot;https://mayooshin.com/keystone-habits/&quot;&gt;keystone&lt;/a&gt; habit - and the most important one&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;what-do-i-do&quot;&gt;What do I do&lt;/h3&gt;
+    &lt;p&gt;I practice this method. In plain English here’s what I do - focus and observe your breath and body sensations - in a nonjudgmental and equanimous way - THAT’S IT - it’s as simple as that - I SWEAR. I try to aim for 20 mins/day but I’m not too ambitious even if I can get done 1 minute - I consider that a win for the day ( &lt;a href=&quot;https://jamesclear.com/goals-systems&quot;&gt;Systems v/s goals&lt;/a&gt;)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;how-has-it-helped-me&quot;&gt;How has it helped me&lt;/h3&gt;
+    &lt;p&gt;Focus, Clarity and creativity - it’s amazing how these foundational skills affect every single aspect of your life&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;screen-time&quot;&gt;&lt;strong&gt;&lt;u&gt;Screen time&lt;/u&gt;&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Screen addiction is real. If I was bored or when I was in the train with nothing to do - I used to stare at my phone screen. I had to change this, because I have had a taste of how useful boredom can be for creativity in the past - but never managed to stick to the discipline.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;what-did-i-do&quot;&gt;What did I do&lt;/h3&gt;
+
+    &lt;p&gt;I followed Cal Newport’s &lt;a href=&quot;https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy/dp/0525536515&quot;&gt;advice&lt;/a&gt; - uninstalled all the apps which was distracting the most (for me it was - WhatsApp, Facebook) for 30 days.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;how-has-it-helped-me-1&quot;&gt;How has it helped me&lt;/h3&gt;
+
+    &lt;p&gt;It helped me feel &lt;a href=&quot;https://www.wired.com/2017/01/clive-thompson-7/&quot;&gt;“boredom”&lt;/a&gt; again !! I know this sounds crazy - but trust me boredom is super essential. And now I have reinstalled the apps and use a screen time limit of 6mins/day - so it’s more intentional when I use these apps.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;one-new-thing-a-day&quot;&gt;&lt;strong&gt;&lt;u&gt;One new thing a day&lt;/u&gt;&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;I used to mindlessly consume lots of content and not really absorbing it or internalizing it.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;what-did-i-do-1&quot;&gt;What did I do&lt;/h3&gt;
+    &lt;p&gt;Starting late 2019, I have a tiny book where I make 1 or 2 sentence notes of what I learned that day (kept it small and atomic) - it could be from a &lt;a href=&quot;https://azuremonk.com/audio/&quot;&gt;podcast guest&lt;/a&gt;, my customers and colleagues who I work with, an article/book/video I watched, my 1.5 year daughter, my wife, the cashier at Walmart -ANYONE.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;how-has-it-helped-me-2&quot;&gt;How has it helped me&lt;/h3&gt;
+    &lt;p&gt;I feel terrible when I miss a day of note taking, so all day this subconsciously helps put me in a mindset where I make it a point to learn at least one thing. I personally feel having this mindset has helped me learn and absorb so much from the amazing people around me and has provided me with new opportunities.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-i-aim-to-add-in-2020&quot;&gt;&lt;strong&gt;&lt;u&gt;What I aim to add in 2020&lt;/u&gt;&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;physical-exercise&quot;&gt;Physical exercise&lt;/h3&gt;
+    &lt;p&gt;I’m aiming for 10 minutes/day of really slow jogging and gradually add on if and when I feel comfortable.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;morning-pages&quot;&gt;Morning pages&lt;/h3&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.theguardian.com/lifeandstyle/2014/oct/03/morning-pages-change-your-life-oliver-burkeman&quot;&gt;Here&lt;/a&gt; is how to do it -750 free flowing words as soon as you wake up. The few days I have written morning pages in the past - I have had really crazy unique ideas and I had no idea how they came to me, which have totally caught me by surprise. But again this requires a certain discipline and I’m hoping to build this muscle this year.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;www.azuremonk.com&lt;/p&gt;
+</content>
+				<pubDate>Sat, 04 Jan 2020 00:00:00 -0500</pubDate>
+				<link>http://localhost:4000/blog/goals</link>
+				<guid isPermaLink="true">http://localhost:4000/blog/goals</guid>
+			</item>
+		
 	</channel>
 </rss>
