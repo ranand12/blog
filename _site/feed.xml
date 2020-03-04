@@ -25,6 +25,24 @@
 
     
         <item>
+            <title>Getting started with Linux for the Windows folks</title>
+            <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
+            <itunes:subtitle>azuremonk.com: Getting started with Linux for the Windows folks</itunes:subtitle>
+            <itunes:summary></itunes:summary>
+            <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
+            <enclosure url="" length="" type="audio/mp3"/>
+            <guid isPermaLink="true">http://localhost:4000/blog/linux-for-windows-folks</guid>
+            <pubDate>Fri, 21 Feb 2020 00:00:00 -0500</pubDate>
+            <itunes:duration></itunes:duration>
+            <itunes:explicit></itunes:explicit>
+            <description>  Show Notes Available at http://localhost:4000/blog/linux-for-windows-folks.</description>
+            <itunes:keywords></itunes:keywords>
+            <itunes:block></itunes:block>
+		</item>
+    
+
+    
+        <item>
             <title>#13 – Eddie Villalba - Everything Cloud Native/K8s for beginners &amp; Windows folks</title>
             <itunes:author>{"name"=>"anand kumar r", "avatar"=>"/assets/images/anandpic.png", "bio"=>"sr cloud solution srchitect @ microsoft", "links"=>[{"label"=>"website", "icon"=>"fas fa-fw fa-link", "url"=>"https://www.azuremonk.com"}, {"label"=>"twitter", "icon"=>"fab fa-fw fa-twitter-square", "url"=>"https://twitter.com/ranand12"}, {"label"=>"github", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/ranand12"}, {"label"=>"linkedin", "icon"=>"fab fa-fw fa-linkedin", "url"=>"https://www.linkedin.com/in/ranand12"}]}</itunes:author>
             <itunes:subtitle>azuremonk.com: #13 – Eddie Villalba - Everything Cloud Native/K8s for beginners &amp; Windows folks</itunes:subtitle>
@@ -103,11 +121,11 @@
             <itunes:summary></itunes:summary>
             <itunes:image href="http://localhost:4000/assets/blogposts/podcasticons/azuremonklogo.jpg" />
             <enclosure url="" length="" type="audio/mp3"/>
-            <guid isPermaLink="true">http://localhost:4000/productivity/blog/how-goals-failed-me/</guid>
+            <guid isPermaLink="true">http://localhost:4000/blog/goals</guid>
             <pubDate>Sat, 04 Jan 2020 00:00:00 -0500</pubDate>
             <itunes:duration></itunes:duration>
             <itunes:explicit></itunes:explicit>
-            <description> hello Show Notes Available at http://localhost:4000/productivity/blog/how-goals-failed-me/.</description>
+            <description> my reflection on what failed and what worked Show Notes Available at http://localhost:4000/blog/goals.</description>
             <itunes:keywords></itunes:keywords>
             <itunes:block></itunes:block>
 		</item>
