@@ -83,7 +83,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 
   I chose Ubuntu 18.04 LTS for my example. You can complete the installation by providing the user name and password for your instance: 
 
-  ![](/assets/blogposts/2020-02-21-WSL,Visual Studio Code,& Microsoft Terminal/installubuntu.gif)
+  ![](/assets/blogposts/linuxforwindow/installubuntu.gif)
 
   
 
@@ -120,7 +120,7 @@ You can also type in "code" inside the bash shell to open up Visual Studio Code 
 
 
 
-![](/assets/blogposts/2020-02-21-WSL,Visual Studio Code,& Microsoft Terminal/windowsterminal.gif)
+![](/assets/blogposts/linuxforwindow/windowsterminal.gif)
 
 
 
@@ -172,7 +172,7 @@ Firstly to get started with TMUX all you need to do is type in tmux from the she
 
 
 
-![](/assets/blogposts/2020-02-21-WSL,Visual Studio Code,& Microsoft Terminal/tmux.gif)
+![](/assets/blogposts/linuxforwindow/tmux.gif)
 
 
 
@@ -191,7 +191,7 @@ Not so thrilled yet? I wasn't too - but stay with me, Panes and the ability to s
 
 
 
-![](/assets/blogposts/2020-02-21-WSL,Visual Studio Code,& Microsoft Terminal/tmux-panes.gif)
+![](/assets/blogposts/linuxforwindow/tmux-panes.gif)
 
 
 
@@ -205,7 +205,7 @@ Once you get the prompt type in **setw synchronize-panes** ( you dont have to ty
 
 What this does is lets you type the command once and execute it across multiple panes - especially useful when you have SSHed into different machines on different panes and you want to run the same command everywhere. 
 
-![](/assets/blogposts/2020-02-21-WSL,Visual Studio Code,& Microsoft Terminal/pane-sync.gif)
+![](/assets/blogposts/linuxforwindow/pane-sync.gif)
 
 
 {: .notice--success}
