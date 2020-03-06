@@ -45,6 +45,8 @@ author_profile: false
 
 {% include podcast-player.html %}
 
+In this episode I talk to Mark Souza, the Corporate Vice President of the Customer Success Unit at Microsoft. Mark has been at Microsoft for over 26 years with different roles across the organization. It was a fun experience talking with Mark on this podcast. Having interacted with Mark in the past I can confidently say he is one of the most down to earth and grounded senior leadership executives I have ever met. In this episode we talk about how Mark starts off his day, his journey in Microsoft, he explains what the customer success in plain English, his advice for people starting off in their career, how he stays grounded, the one quality which he expects every member of his organization has, his favorite book and his favorite pastime outside of work.
+
 **How does Mark start his day ? (01:44)** 
 
 He starts his day off by keeping up to date with everything that is happening with his happening across the world and making sure there are no emergencies, followed by coffee 
