@@ -18,7 +18,7 @@ media:
 summary: "#14 - Mark Souza - Corporate Vice President @ Microsoft (Customer Success Unit)"
 description: "In this episode I talk to Mark Souza the Corporate Vice President of the Customer Success Unit - who is technically my boss's boss's boss's boss :). Mark has been at Microsoft for over 26 years with different roles across the organization. It was a fun expereince talking with Mark on this podcast. Having interacted with Mark in the past I can confidently say he is one of the most down to earth and grounded senior leadership executives I have ever met. In this episode we talk about how Mark starts off his day, his journey in microsoft and explains what the customer success in plain english, his advice for people starting off in their career, how he stays grounded, the one quality which he expects every member of his organzation has, his favorite book and his family."
 duration: "25:13" 
-length: "47185920"
+length: "60347466"
 explicit: "no" 
 keywords: "technology, azure, azuremonk, podcast, azure, corporate vice president, customer success unit"
 block: "no" 
@@ -26,7 +26,7 @@ voices: "Mark Souza and Anand Kumar R"
 permalink: /draft_unpublished/mark/
 podcast_file_size: 57.5 MB 
 podcast_duration: "25:13" 
-podcast_length: 47185920
+podcast_length: 60347466
 chapters:
  - '00:01:44.0 How does he start the day'
  - '00:03:01.0 Journey'
@@ -36,8 +36,7 @@ chapters:
  - '00:13:40.0 Advice for millenials'
  - '00:17:18.0 Skill for everyone'
  - '00:19:26.0 Favorite book'
- - '00:22:03.0 Outside of work'
-  
+ - '00:22:03.0 Outside of work'  
 categories:
 search: false
 author_profile: false
@@ -47,7 +46,7 @@ author_profile: false
 
 **How does Mark start his day ?** 
 
-He starts his day off by keeping up to date with everything that is happening with his happening across the world and making sure there are no emergencies, followed by cofee 
+He starts his day off by keeping up to date with everything that is happening with his happening across the world and making sure there are no emergencies, followed by coffee 
 
 **Mark's journey in Microsoft -** 
 
