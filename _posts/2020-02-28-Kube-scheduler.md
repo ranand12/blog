@@ -229,7 +229,7 @@ spec:
 In the example above: 
 
 - In the example above you see that the redis-cache label (**apptype=redis-cache**) is added to every pod which gets deployed as part of this deployment
-- The **podAntiAffinity** is described such that no two redis-cache pods are deployed inside the same server. This is defined by the by the built-in topology "kubernetes.io/hostname" which means its a single node. This can also be extended to zones or any other legal-key if required. 
+- The **podAntiAffinity** is described such that no two redis-cache pods are deployed inside the same server. This is defined by the built-in topology "kubernetes.io/hostname" which means its a single node. This can also be extended to zones or any other legal-key if required. 
 
 Awesome - once you deploy this - here is what you would get : 
 
