@@ -1,21 +1,20 @@
 ---
-title: "Kubernetes scheduling visually explained in plain English with a story"
-last_modified_at: 2020-02-12T16:28:02-05:00
+title: "Kubernetes scheduler visually explained in plain English with a story"
+last_modified_at: 2020-03-05T16:28:02-05:00
 categories:
-  - azure
-tags:
   - blog
-  - tags
-  - locks
+tags:
+  - plainenglish
+  - kubernetes
 layout: single
-excerpt: "azure locks using azure tags"
+excerpt: "Kubernetes scheduler visually explained in plain English with a story"
 header:
-  og_image: /assets/blogposts/2020-02-14-azure-locks-with-tags/bannertag.png
+  og_image: /assets/blogposts/kube-scheduler/podaffinity.png
+  teaser: /assets/blogposts/kube-scheduler/podaffinity.png
   overlay_color: "#333"
+permalink: /blog/kube-scheduler
   
-
 ---
-
 
 
 In Kubernetes pod is the smallest deployable unit of workload. So the obvious question : 
@@ -32,30 +31,30 @@ In Kubernetes pod is the smallest deployable unit of workload. So the obvious qu
 
 Let's break down how the Kubernetes Scheduler works and the way it chooses a node in plain english with an analogy. 
 
-*Lets say we have a "social-restaurant" where we have several tables and several seats around each table, lots of customers and a waiter for the hotel. (full credits to Carson for sparking this idea in his awesome Kube-Decon talk). "Social-restaurant" meaning different set of customers can sit around the same table, if there are enough seats and all conditions are met.* 
+*Lets say we have a "social-restaurant" where we have several tables and several seats around each table, lots of customers and a waiter for the hotel. "Social-restaurant" meaning different set of customers can sit around the same table, if there are enough seats and all conditions are met.* 
 
+![image-20200307040320255](/assets/blogposts/kube-scheduler/intro.png)
 
+_Table = Node (VM or a Physical Macine)_
 
-**Table = Node (VM or a Physical Machine)**
+_Seats = Resources availability on the VM_
 
-**Seats = Resources availability on the VM** 
+_Waiter = Kube-Scheduler_
 
-**Waiter = Kube-Scheduler** 
+_Customer-Group = Pod_
 
-**Customer-Group = Pod**
+_A single customer inside the group = Container_
 
-**A single customer inside the group = Container**
+## 1. Resource requirements and availability
 
-
-
-
-
-#### 1. Resource requirements and availability 
+![image-20200307040320255](/assets/blogposts/kube-scheduler/resource.png)
 
 *A **Customer-Group** comes into the restaurant and makes a simple request for a table to be seated. The waiter analyses the requirement of the **Customer-Group** and looks at how many **Seats** they would need. He then looks through all the available tables, filters the tables that cannot be "**scheduled**" and assigns (**binds**) them a table which would meet their **Seating** requirement.* 
 
+
 This is the basic kind of scheduling - where the kube scheduler constantly watches the API server to see if there are any pods which are unscheduled. Looks through the resource requirement for each of the container inside the pods. 
 
+{: .notice--success}
 Remember the containers are the ones which have the resource requirement in the spec not the pods themselves. 
 
 In the example below we have a CPU and Memory requirement under the container spec for the pod deployment. Requirements are 500 millicpu and an 128 MiB of memory. 
@@ -77,7 +76,7 @@ spec:
 
 
 
-Now let's take a look at one of the nodes (***restaurant tables***) to ensure they have capacity. The way I would do that is run the following command : 
+Now let's take a look at one of the nodes (***restaurant tables***) to ensure they have capacity. The way we would do that is run the following command : 
 
 ```bash
 kubectl describe nodes <node-name>
@@ -91,9 +90,12 @@ Remember CPU and memory are not the only filter criteria, there are lots more li
 
 
 
-#### 2. Node Selector 
+## 2. Node Selector 
+
+![image-20200307040320255](/assets/blogposts/kube-scheduler/nodeselector.png)
 
 *Another **Customer-Group** come in to the restaurant with a **requirement** to be placed in any table which is "**blue**". The waiter looks through his inventory and finds all the tables which has a **label** of blue and assigns the Customer-Group to the appropriate **table***
+
 
 In this scenario the pod has a nodeSelector (key-value pair) specified which requests the pod to be deployment to any node which matches the key-value pair. 
 
@@ -130,11 +132,15 @@ kubectl get pod -o wide
 
 ![image-20200307053808136](/assets/blogposts/kube-scheduler/image-20200307053808136.png)
 
+
+{: .notice--success}
 Note that if you did not have a node with the appropriate label the deployment would be Pending. 
 
-#### 3. Node affinity and anti-affinity 
+## 3. Node affinity and anti-affinity 
 
 Node affinity and anti-affinity are a lot like node selectors, but it gives you more flexibility by supporting expressive language and soft/hard preference rather than just a hard **requirement**.
+
+![image-20200307040320255](/assets/blogposts/kube-scheduler/nodeaffinity.png)
 
 *Lets say another **Customer-Group** come in to the restaurant . They have a **preference** to be placed in any table which is "**ocean-view**", but its not **required**. The waiter looks through his inventory and finds all the tables which has a **label** of "**ocean**" and assigns the Customer-Group to the appropriate **table***
 
@@ -171,12 +177,13 @@ spec:
 ```
 
 
-
+{: .notice--success}
 The operator in this case can also be other values such as In, NotIn, Exists, DoesNotExist, Gt, Lt. NotIn and DoesNotExist will create the opposite effect of nodeAntiAffinity
 
 
+## 4. Pod affinity and anti-affinity
 
-#### 4. Pod affinity and anti-affinity
+![image-20200307040320255](/assets/blogposts/kube-scheduler/podaffinity.png)
 
 *Another vegan girl-gang **Customer-Group** come in to the restaurant . They have a **requirement** **not** to be placed in any **table** which contain **seats** which are already occupied by meat eaters. They are a little more choosy - they also want to be seated in tables which contains seats which are already occupied by boys. In other words they have a **non-affinity** towards meat-eaters, but have an **affinity** towards boys.*
 
@@ -279,16 +286,15 @@ In the example above:
 
 Once you deploy this - we got what we were aiming for - 3 web-servers and 3 redis-cache servers - one copy of each on one node !
 
-![image-20200307112522256](C:\Users\anandku\blog2\assets\blogposts\kube-scheduler\pod-affinity-2)
+![image-20200307112522256](/assets/blogposts/kube-scheduler/image-20200307112522256.png)
 
 
 
-#### 5. Taint and Tolerations 
+## 5. Taint and Tolerations 
 
-
+![image-20200307040320255](/assets/blogposts/kube-scheduler/tainted.png)
 
 *This time around the restaurant got one of the tables "**tainted**" with a peanut spillage disaster. So they have said no new **Customer-Groups** will be scheduled on this table to avoid allergic reactions. So any new Customer-Groups are placed on every other table except this tainted one.* 
-
 
 
 So far we have been looking at scheduling from a pod perspective. But what if the other way around the node decides not to schedule anymore new pods ? This is where **taints** come in.  Once you **taint** a node you have two options : 
@@ -304,8 +310,6 @@ kubectl taint nodes <nodename> mytaintkey=mytaintvalue:NoSchedule
 
 Once we have this set the node is now tainted with the following key value pair (**mytaintkey=mytaintvalue**). So no new pods can be scheduled. 
 
-
-
 But what if you want to evict the existing pods from the nodes ? 
 
 ```bash
@@ -314,13 +318,10 @@ kubectl taint nodes <nodename> mytaintkey=mytaintvalue:NoExecute
 
 This will evict all pods from the current node and move them to another available node. 
 
+![image-20200307040320255](/assets/blogposts/kube-scheduler/tolerations.png)
 
 
 *But after a while a Customer-Group comes along and says - "Oh that's fine. We have **"toleration"** for peanut allergies. So please proceed and place us in the "**tainted**" table". The Kube scheduler verifies their toleration and places them in the tainted table*
-
-
-
-
 
 Now if the pod has a toleration for the taint key value that the node has specified, then this pod will get exempted from the taint and will be placed on the node if necessary. 
 
@@ -341,6 +342,7 @@ spec:
 ```
 
 
+credits to Carson Anderson for planting this idea-seed from his [awesome Kube-Decon talk](https://www.youtube.com/watch?v=90kZRyPcRZw)
 
-you cant split the group of customers - either all of them sit together in the same table or they don't. Even if one of them has an allergy the group has to oblige. 
+credits to [Kelsey Hightower](https://twitter.com/kelseyhightower) for inspiring us to explain better with amazing analogies. 
 
