@@ -49,7 +49,7 @@ _A single customer inside the group = Container_
 
 ![image-20200307040320255](/assets/blogposts/kube-scheduler/resource.png)
 
-*A **Customer-Group** comes into the restaurant and makes a simple request for a table to be seated. The waiter analyses the requirement of the **Customer-Group** and looks at how many **Seats** they would need. He then looks through all the available tables, filters the tables that cannot be "**scheduled**" and assigns (**binds**) them a table which would meet their **Seating** requirement.* 
+*A **Customer-Group** comes into the restaurant and makes a simple request for a table to be seated. The waiter analyzes the requirement of the **Customer-Group** and looks at how many **Seats** they would need. He then looks through all the available tables, filters the tables that cannot be "**scheduled**" and assigns (**binds**) them a table which would meet their **Seating** requirement.* 
 
 
 This is the basic kind of scheduling - where the kube scheduler constantly watches the API server to see if there are any pods which are unscheduled. Looks through the resource requirement for each of the container inside the pods. 
