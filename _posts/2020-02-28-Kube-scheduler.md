@@ -344,5 +344,7 @@ spec:
 
 credits to Carson Anderson for planting this idea-seed from his [awesome Kube-Decon talk](https://www.youtube.com/watch?v=90kZRyPcRZw)
 
-credits to [Kelsey Hightower](https://twitter.com/kelseyhightower) for inspiring us to explain better with amazing analogies. 
+credits to [Kelsey Hightower](https://twitter.com/kelseyhightower) for inspiring  to explain better with amazing analogies. 
+
+credits to [Julia Evans](https://twitter.com/b0rk) for the inspiration to explain tech with comics
 
