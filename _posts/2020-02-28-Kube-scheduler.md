@@ -281,7 +281,7 @@ spec:
 In the example above: 
 
 - In the example above you see that the web-server label (**apptype=web-server**) is added to every pod which gets deployed as part of this deployment
-- The **podAntiAffinity** is described such that no two **web-server** pods are deployed inside the same server. This is defined by the by the built-in **topologyKey** "kubernetes.io/hostname" which means its a single node. This can also be extended to zones or any other legal-key if required. 
+- The **podAntiAffinity** is described such that no two **web-server** pods are deployed inside the same server. This is defined by the built-in **topologyKey** "kubernetes.io/hostname" which means its a single node. This can also be extended to zones or any other legal-key if required. 
 - The **podAffinity** is described such that the **web-server** pods are deployed as close to the **redis-cache** as possible. 
 
 Once you deploy this - we got what we were aiming for - 3 web-servers and 3 redis-cache servers - one copy of each on one node !
