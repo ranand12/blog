@@ -185,7 +185,7 @@ The operator in this case can also be other values such as In, NotIn, Exists, Do
 
 ![image-20200307040320255](/assets/blogposts/kube-scheduler/podaffinity.png)
 
-*Another vegan girl-gang **Customer-Group** come in to the restaurant . They have a **requirement** **not** to be placed in any **table** which contain **seats** which are already occupied by meat eaters. They are a little more choosy - they also want to be seated in tables which contains seats which are already occupied by boys. In other words they have a **non-affinity** towards meat-eaters, but have an **affinity** towards boys.*
+*Another vegan girl-gang **Customer-Group** come in to the restaurant . They have a **requirement** **not** to be placed in any **table** which contain **seats** which are already occupied by meat eaters. They are a little more choosy - they also want to be seated in tables which contains seats which are already occupied by only girls. In other words they have a **non-affinity** towards meat-eaters, but have an **affinity** towards girls.*
 
 Lets take a real world scenario where you have a set of redis-cache and web-server deployments. Here are the conditions: 
 
