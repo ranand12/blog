@@ -7,7 +7,7 @@ tags:
   - plainenglish
   - kubernetes
 layout: single
-excerpt: "Kubernetes scheduler visually explained in plain English with a story"
+excerpt: "Kube scheduler visually explained in plain English with a story"
 header:
   og_image: /assets/blogposts/kube-scheduler/podaffinity.png
   teaser: /assets/blogposts/kube-scheduler/podaffinity.png
