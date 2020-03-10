@@ -27,9 +27,9 @@ In Kubernetes pod is the smallest deployable unit of workload. So the obvious qu
 
 Let's break down how the Kubernetes Scheduler works and the way it chooses a node in plain english with an analogy. 
 
-*Lets say we have a "social-restaurant" where we have several tables and several seats around each table, lots of customers and a waiter for the hotel. "Social-restaurant" meaning different set of customers can sit around the same table, if there are enough seats and all conditions are met.* 
-
 ![image-20200307040320255](/assets/blogposts/kube-scheduler/intro.png)
+
+*Lets say we have a "social-restaurant" where we have several tables and several seats around each table, lots of customers and a waiter for the hotel. "Social-restaurant" meaning different set of customers can sit around the same table, if there are enough seats and all conditions are met.* 
 
 _Table = Node (VM or a Physical Macine)_
 
