@@ -23,7 +23,7 @@ explicit: "no"
 keywords: "technology, azure, azuremonk, podcast, azure, corporate vice president, customer success unit"
 block: "no" 
 voices: "Mark Souza and Anand Kumar R"
-permalink: /draft_unpublished/mark/
+permalink: /podcast/mark/
 podcast_file_size: 57.5 MB 
 podcast_duration: "25:13" 
 podcast_length: 60347466
@@ -39,7 +39,7 @@ chapters:
  - '00:19:26.0 Favorite book'
  - '00:22:03.0 Outside of work'  
 categories:
-search: false
+  - podcast
 author_profile: false
 ---
 
