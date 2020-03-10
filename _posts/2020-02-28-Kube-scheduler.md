@@ -15,8 +15,6 @@ header:
 permalink: /blog/kube-scheduler
   
 ---
-
-
 In Kubernetes pod is the smallest deployable unit of workload. So the obvious question : 
 
 >  **"Where should the pods be deployed?"**
@@ -26,8 +24,6 @@ In Kubernetes pod is the smallest deployable unit of workload. So the obvious qu
 > **But but.. there are so many Nodes - which one should node should I deploy this pod to ??!**
 >
 > Hello - "Kubernetes Scheduler"
-
-
 
 Let's break down how the Kubernetes Scheduler works and the way it chooses a node in plain english with an analogy. 
 
