@@ -17,7 +17,10 @@ permalink: /blog/warofart
 
 My book notes on "War of Art" - Hard hitting book and reminder to DoTheWork and defeat resistance. 
 
- 
+![](/assets/blogposts/warofart/book.jpg)
+
+[Book link](https://www.amazon.com/dp/0446691437)
+
 
 There’s a secret that real writers know that wannabe writers
 
