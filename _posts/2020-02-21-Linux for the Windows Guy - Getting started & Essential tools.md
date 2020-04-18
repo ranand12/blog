@@ -3,7 +3,6 @@ title: "Getting started with Linux for the Windows folks"
 last_modified_at: 2020-02-12T16:28:02-05:00
 categories:
   - blog
-  
 tags:
   - linux
   - oss
