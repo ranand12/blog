@@ -3,7 +3,6 @@ title: "how goals failed me - and what worked in 2019"
 last_modified_at: 2020-01-04T16:20:02-05:00
 description: "my reflection on what failed and what worked"
 categories:
-  - productivity  
   - blog
 tags:
   - atomichabits
