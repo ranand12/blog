@@ -1,22 +1,21 @@
 ---
-title: "Kubernetes scheduler visually explained in plain English with a story"
+title: "Book Notes - War of Art"
 last_modified_at: 2020-03-05T16:28:02-05:00
 categories:
   - blog
 tags:
-  - plainenglish
-  - kubernetes
+  - booknotes
 layout: single
-excerpt: "Kube scheduler visually explained in plain English with a story"
+excerpt: "Book Notes - War of Art"
 header:
-  og_image: /assets/blogposts/kube-scheduler/podaffinity.png
-  teaser: /assets/blogposts/kube-scheduler/podaffinity.png
+  og_image: /assets/blogposts/warofart/book.jpg
+  teaser: /assets/blogposts/warofart/book.jpg
   overlay_color: "#333"
-permalink: /blog/kube-scheduler
+permalink: /blog/warofart
   
 ---
 
-
+My book notes on "War of Art" - Hard hitting book and reminder to DoTheWork and defeat resistance. 
 
  
 
