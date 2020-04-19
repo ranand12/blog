@@ -22,9 +22,6 @@ My book notes on "War of Art" - Hard hitting book and reminder to DoTheWork and 
 [Book link](https://www.amazon.com/dp/0446691437)
 
 
-There’s a secret that real writers know that wannabe writers
-
- 
 
 There’s a secret that real writers know that wannabe writers don’t, and the secret is this: It’s not the writing part that’s hard. What’s hard is sitting down to write.  What keeps us from sitting down is Resistance.
 
@@ -94,15 +91,11 @@ Procrastination is the most common manifestation of Resistance because it’s th
 
  
 
-Never forget: This very moment, we can change our lives. There never was a moment, and never will be, when we are without the power to alter our destiny. This second, we can turn the tables on Resistance.
-
- 
-
 Never forget: This very moment, we can change our lives. There never was a moment, and never will be, when we are without the power to alter our destiny. This second, we can turn the tables on Resistance.  This second, we can sit down and do our work.
 
  
 
-It goes without saying that this principle applies to drugs, shopping, masturbation, TV, gossip, alcohol, and the consumption of all products containing fat, sugar, salt, or chocolate.
+It goes without saying that this principle applies to drugs, shopping, TV, gossip, alcohol, and the consumption of all products containing fat, sugar, salt, or chocolate.
 
  
 
