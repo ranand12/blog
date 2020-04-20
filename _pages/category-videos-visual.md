@@ -8,4 +8,4 @@ classes: wide
 taxonomy: videos
 ---
 
-less than 5 minutes animated videos explaining complex concepts 
+less than 5 minutes animated videos explaining complex concepts in plain english
