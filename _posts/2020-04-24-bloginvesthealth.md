@@ -33,6 +33,16 @@ What does blogging (or creating any online content), investing, and physical hea
 2. **Creating online content** - Should my domain be a .com .io or .dev  ? What about the logo ? Shouldn't the name be catchy ? What theme should I choose ? I'm not saying these things don't matter, but nothing is more important than the content and what you have to say - [just sit down, defeat the resistance and start creating the content](https://www.azuremonk.com/blog/warofart)
 3. **Physical health** - Should I join this fancy boutique gym?  soul cycle? orange theory fitness? should I have a personal trainer? It is more important to start - Start simple - even if it means going out for a run or just using a pair of dumbbells'
 
+
+**<u>Ignore Setbacks</u>**
+
+![ignore](/assets/blogposts/bloginvest/ignore.gif){: .align-center}
+
+1. **Investing** - You understand this if you are a long term investor - there WILL be a downward spiral, there WILL be a recession and there is absolutely nothing you can do about it - it is just part of investing. Ignore the setback
+2. **Creating online content** - I created my first video in 2012, the first video got ~20k views, was super pumped did my second video and that got 300 views. What did I do ? Any self respecting tech guy would do - yes I QUIT. Don't be like me. 
+3. **Physical health** - You start doing strength training for a weak and suddenly your arms go sore - what do you do ? Quit - because that's easy. Ignore the setback. 
+
+
 **<u>Consistency over intensity</u>** 
 
 ![tenor (1)](/assets/blogposts/bloginvest/consistency.gif){: .align-center}
@@ -61,13 +71,5 @@ What does blogging (or creating any online content), investing, and physical hea
 3. **Physical health** - The weight loss or the muscle gain at the end of 2 years is not the reward. Your physical health, mood elevation on a day-to-day basis is the reward. 
 
    
-**<u>Ignore Setbacks</u>**
-
-![ignore](/assets/blogposts/bloginvest/ignore.gif){: .align-center}
-
-1. **Investing** - You understand this if you are a long term investor - there WILL be a downward spiral, there WILL be a recession and there is absolutely nothing you can do about it - it is just part of investing. Ignore the setback
-2. **Creating online content** - I created my first video in 2012, the first video got ~20k views, was super pumped did my second video and that got 300 views. What did I do ? Any self respecting tech guy would do - yes I QUIT. Don't be like me. 
-3. **Physical health** - You start doing strength training for a weak and suddenly your arms go sore - what do you do ? Quit - because that's easy. Ignore the setback. 
-
 
 I'm writing this more as a reminder to myself to continue to follow these principles. 
