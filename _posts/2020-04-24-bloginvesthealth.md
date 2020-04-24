@@ -39,7 +39,7 @@ What does blogging (or creating any online content), investing, and physical hea
 2. **Creating online content** - Like I said earlier, don't be like me - create one content in 2012 and wait another 8 years to produce the next one. [Be consistent, show up.](https://www.hanselman.com/blog/11EssentialCharacteristicsForBeingAGoodTechnicalAdvocateOrInterviewer.aspx) 
 3. **Physical health** - You don't build good health by doing workouts for 3 hours/day for one month and nothing for the next 11 months. Regular consistent manageable workouts are what lead to good health.
 
-![tenor (1)](/assets/blogposts/bloginvest/consistency.gif)
+![tenor (1)](/assets/blogposts/bloginvest/consistency.gif){: .align-center}
 
 **<u>But I'm not there yet</u>** 
 
@@ -49,7 +49,7 @@ What does blogging (or creating any online content), investing, and physical hea
 
 
 
-![tenor](/assets/blogposts/bloginvest/tenor.gif)
+![tenor](/assets/blogposts/bloginvest/tenor.gif){: .align-center}
 
 **<u>Process is the reward</u>** 
 
@@ -61,7 +61,7 @@ What does blogging (or creating any online content), investing, and physical hea
 
    
 
-![swimming](/assets/blogposts/bloginvest/swimming.gif)
+![swimming](/assets/blogposts/bloginvest/swimming.gif){: .align-center}
 
 **<u>Ignore Setbacks</u>**
 
@@ -69,7 +69,7 @@ What does blogging (or creating any online content), investing, and physical hea
 2. **Creating online content** - I created my first video in 2012, the first video got ~20k views, was super pumped did my second video and that got 300 views. What did I do ? Any self respecting tech guy would do - yes I QUIT. Don't be like me. 
 3. **Physical health** - You start doing strength training for a week and suddenly your arms go sore - what do you do ? Quit - because that's easy. Ignore the setback. 
 
-![ignore](/assets/blogposts/bloginvest/ignore.gif)
+![ignore](/assets/blogposts/bloginvest/ignore.gif){: .align-center}
 
 
 
