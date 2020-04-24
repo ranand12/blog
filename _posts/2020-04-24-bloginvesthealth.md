@@ -40,7 +40,7 @@ What does blogging (or creating any online content), investing, and physical hea
 
 1. **Investing** - You understand this if you are a long term investor - there WILL be a downward spiral, there WILL be a recession and there is absolutely nothing you can do about it - it is just part of investing. Ignore the setback
 2. **Creating online content** - I created my first video in 2012, the first video got ~20k views, was super pumped did my second video and that got 300 views. What did I do ? Any self respecting tech guy would do - yes I QUIT. Don't be like me. 
-3. **Physical health** - You start doing strength training for a weak and suddenly your arms go sore - what do you do ? Quit - because that's easy. Ignore the setback. 
+3. **Physical health** - You start doing strength training for a week and suddenly your arms go sore - what do you do ? Quit - because that's easy. Ignore the setback. 
 
 
 **<u>Consistency over intensity</u>** 
@@ -64,7 +64,7 @@ What does blogging (or creating any online content), investing, and physical hea
 
 ![swimming](/assets/blogposts/bloginvest/swimming.gif){: .align-center}
 
-1. **Investing** -  Of course the wealth that is built is what we aim for - but hey the discipline of saving and investing and the habit building is the reward
+1. **Investing** -  Of course the wealth that is built is what we aim for - but the discipline of saving and investing and the habit building is the reward
 
 2. **Creating online content** - The ability to articulate thoughts, teach and present content to others itself is the reward. That skill is invaluable when you are talking to the customer, designing a solution and working with other teams. 
 
