@@ -7,6 +7,7 @@ categories:
 tags:
   - atomichabits
   - mindfulness
+  - non-tech
 toc: true
 toc_sticky: true
 toc_label: "how goals failed me"
