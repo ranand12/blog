@@ -31,7 +31,7 @@ What does blogging (or creating any online content), investing, and physical hea
 2. **Creating online content** - Should my domain be a .com .io or .dev  ? What about the logo ? Shouldn't the name be catchy ? What theme should I choose ? I'm not saying these things don't matter, but nothing is more important than the content and what you have to say - [just sit down, defeat the resistance and start creating the content](https://www.azuremonk.com/blog/warofart)
 3. **Physical health** - Should I join this fancy boutique gym, soul cycle, orange theory fitness, should I have a personal trainer. Start simple - but it is more important to start even if it means going out for a run or just using a pair of dumbbells'
 
-<img src="C:\Users\anandku\blog2\assets\blogposts\bloginvest\analysis.gif" style="zoom: 33%;" />
+<img src="/assets/blogposts/bloginvest/analysis.gif" style="zoom: 33%;" />
 
 **<u>Consistency over intensity</u>** 
 
@@ -39,7 +39,7 @@ What does blogging (or creating any online content), investing, and physical hea
 2. **Creating online content** - Like I said earlier, don't be like me - create one content in 2012 and wait another 8 years to produce the next one. [Be consistent, show up.](https://www.hanselman.com/blog/11EssentialCharacteristicsForBeingAGoodTechnicalAdvocateOrInterviewer.aspx) 
 3. **Physical health** - You don't build good health by doing workouts for 3 hours/day for one month and nothing for the next 11 months. Regular consistent manageable workouts are what lead to good health.
 
-![tenor (1)](C:\Users\anandku\blog2\assets\blogposts\bloginvest\tenor (1).gif)
+![tenor (1)](/assets/blogposts/bloginvest/consistency.gif)
 
 **<u>But I'm not there yet</u>** 
 
@@ -49,7 +49,7 @@ What does blogging (or creating any online content), investing, and physical hea
 
 
 
-![tenor](C:\Users\anandku\blog2\assets\blogposts\bloginvest\tenor.gif)
+![tenor](/assets/blogposts/bloginvest/tenor.gif)
 
 **<u>Process is the reward</u>** 
 
@@ -61,7 +61,7 @@ What does blogging (or creating any online content), investing, and physical hea
 
    
 
-![swimming](C:\Users\anandku\blog2\assets\blogposts\bloginvest\swimming.gif)
+![swimming](/assets/blogposts/bloginvest/swimming.gif)
 
 **<u>Ignore Setbacks</u>**
 
@@ -69,7 +69,7 @@ What does blogging (or creating any online content), investing, and physical hea
 2. **Creating online content** - I created my first video in 2012, the first video got ~20k views, was super pumped did my second video and that got 300 views. What did I do ? Any self respecting tech guy would do - yes I QUIT. Don't be like me. 
 3. **Physical health** - You start doing strength training for a week and suddenly your arms go sore - what do you do ? Quit - because that's easy. Ignore the setback. 
 
-![ignore](C:\Users\anandku\blog2\assets\blogposts\bloginvest\ignore.gif)
+![ignore](/assets/blogposts/bloginvest/ignore.gif)
 
 
 
