@@ -31,7 +31,7 @@ What does blogging (or creating any online content), investing, and physical hea
 2. **Creating online content** - Should my domain be a .com .io or .dev  ? What about the logo ? Shouldn't the name be catchy ? What theme should I choose ? I'm not saying these things don't matter, but nothing is more important than the content and what you have to say - [just sit down, defeat the resistance and start creating the content](https://www.azuremonk.com/blog/warofart)
 3. **Physical health** - Should I join this fancy boutique gym, soul cycle, orange theory fitness, should I have a personal trainer. Start simple - but it is more important to start even if it means going out for a run or just using a pair of dumbbells'
 
-<img src="/assets/blogposts/bloginvest/analysis.gif" style="zoom: 33%;" />
+![analysis](/assets/blogposts/bloginvest/1analysis.gif){: .align-center}
 
 **<u>Consistency over intensity</u>** 
 
