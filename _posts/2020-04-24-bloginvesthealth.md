@@ -57,7 +57,7 @@ What does blogging (or creating any online content), investing, and physical hea
 
 1. **Investing** - The common excuse we all have is - "I just don't have enough money to start investing" - even starting of with 100 bucks can make a huge difference. Time and the [power of compounding](https://www.youtube.com/watch?v=7zf7zob1Xdc) are your friends here
 2. **Creating online content** - "But I don't have any good things to say yet", "I'm not an expert on anything." Doesn't matter - document your learning process. You don't believe me ? [The community needs you](https://twitter.com/ranand12/status/1252579324978507776)
-3. **Physical health** - "But I'm overweight or too week" - That's precisely the reason to start. Start BECAUSE you are not there yet. 
+3. **Physical health** - "But I'm overweight or too weak" - That's precisely the reason to start. Start BECAUSE you are not there yet. 
 
 
 **<u>Process is the reward</u>** 
