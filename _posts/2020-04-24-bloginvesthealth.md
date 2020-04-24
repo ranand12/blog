@@ -1,5 +1,5 @@
 ---
-title: "Blogging, Investing and physical health - 5 things they ALL have in common"
+title: "Blogging, Investing and health - 5 things they ALL have in common"
 last_modified_at: 2020-04-24T07:26:02-05:00
 categories:
   - blog
@@ -10,7 +10,7 @@ tags:
   - health
 permalink: "blog/bloginvesthealth"
 layout: single
-excerpt: "Blogging, Investing and physical health - 5 things they ALL have in common"
+excerpt: "Blogging, Investing and health - 5 things they ALL have in common"
 header:
   overlay_color: "#333"
   og_image: /assets/blogposts/bloginvest/5things.jpg
