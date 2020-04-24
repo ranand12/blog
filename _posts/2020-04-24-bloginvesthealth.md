@@ -67,7 +67,7 @@ What does blogging (or creating any online content), investing, and physical hea
 
 1. **Investing** - You understand this if you are a long term investor - there WILL be a downward spiral, there WILL be a recession and there is absolutely nothing you can do about it - it is just part of investing. Ignore the setback
 2. **Creating online content** - I created my first video in 2012, the first video got ~20k views, was super pumped did my second video and that got 300 views. What did I do ? Any self respecting tech guy would do - yes I QUIT. Don't be like me. 
-3. **Physical health** - You start doing strength training for a week and suddenly your arms go sore - what do you do ? Quit - because that's easy. Ignore the setback. 
+3. **Physical health** - You start doing strength training for a weak and suddenly your arms go sore - what do you do ? Quit - because that's easy. Ignore the setback. 
 
 
 I'm writing this more as a reminder to myself to continue to follow these principles. 
