@@ -1,5 +1,5 @@
 ---
-title: "Blogging, Investing and health - 5 things they ALL have in common"
+title: "Blogging, Investing and Health - 5 things they ALL have in common"
 last_modified_at: 2020-04-24T07:26:02-05:00
 categories:
   - blog
@@ -10,7 +10,7 @@ tags:
   - health
 permalink: "blog/bloginvesthealth"
 layout: single
-excerpt: "Blogging, Investing and health - 5 things they ALL have in common"
+excerpt: "Blogging, Investing and Health - 5 things they ALL have in common"
 header:
   overlay_color: "#333"
   og_image: /assets/blogposts/bloginvest/5things.jpg
@@ -38,7 +38,7 @@ What does blogging (or creating any online content), investing, and physical hea
 ![tenor (1)](/assets/blogposts/bloginvest/consistency.gif){: .align-center}
 
 1. **Investing**  - You have all heard of "[dollar cost averaging](https://www.investopedia.com/terms/d/dollarcostaveraging.asp)". It is more important to be consistent to build wealth in the long run than trying to time the market. 
-2. **Creating online content** - Like I said earlier, don't be like me - create one content in 2012 and wait another 8 years to produce the next one. [Be consistent, show up.](https://www.hanselman.com/blog/11EssentialCharacteristicsForBeingAGoodTechnicalAdvocateOrInterviewer.aspx) 
+2. **Creating online content** - Like I said earlier, don't be like me ie create the first post in 2012 and wait another 8 years to produce the next one. [Be consistent, show up.](https://www.hanselman.com/blog/11EssentialCharacteristicsForBeingAGoodTechnicalAdvocateOrInterviewer.aspx) 
 3. **Physical health** - You don't build good health by doing workouts for 3 hours/day for one month and nothing for the next 11 months. Regular consistent manageable workouts are what lead to good health.
 
 **<u>But I'm not there yet</u>** 
@@ -46,7 +46,7 @@ What does blogging (or creating any online content), investing, and physical hea
 ![tenor](/assets/blogposts/bloginvest/tenor.gif){: .align-center}
 
 1. **Investing** - The common excuse we all have is - "I just don't have enough money to start investing" - even starting of with 100 bucks can make a huge difference. Time and the [power of compounding](https://www.youtube.com/watch?v=7zf7zob1Xdc) are your friends here
-2. **Creating online content** - But I don't have any good things to say yet, I'm not an expert on anything. Doesn't matter - document your learning process. You don't believe me ? [The community needs you](https://twitter.com/ranand12/status/1252579324978507776)
+2. **Creating online content** - "But I don't have any good things to say yet", "I'm not an expert on anything." Doesn't matter - document your learning process. You don't believe me ? [The community needs you](https://twitter.com/ranand12/status/1252579324978507776)
 3. **Physical health** - "But I'm overweight or too week" - That's precisely the reason to start. Start BECAUSE you are not there yet. 
 
 
@@ -71,5 +71,3 @@ What does blogging (or creating any online content), investing, and physical hea
 
 
 I'm writing this more as a reminder to myself to continue to follow these principles. 
-
-This post originally appeared on www.azuremonk.com/bloginvestheatlh 
