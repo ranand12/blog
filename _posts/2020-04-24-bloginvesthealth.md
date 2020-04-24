@@ -27,7 +27,7 @@ What does blogging (or creating any online content), investing, and physical hea
 
 **<u>Analysis Paralysis</u>** 
 
-1. **Investing** - Mutual Funds, stocks, options, futures, 401k, %$%!!  -so many damn options to choose from. What I have [learned](https://jlcollinsnh.com/) (remember YMMV), is that [keeping it simple is super](https://www.forbes.com/sites/zackfriedman/2017/03/09/9-money-rules-index-card/#6e35a83e2c09) helpful even when it comes to investing.  
+1. **Investing** - Mutual Funds, stocks, options, futures, 401k !!  -so many options to choose from. What I have [learned](https://jlcollinsnh.com/) is that [keeping it simple is super](https://www.forbes.com/sites/zackfriedman/2017/03/09/9-money-rules-index-card/#6e35a83e2c09) helpful even when it comes to investing.  
 2. **Creating online content** - Should my domain be a .com .io or .dev  ? What about the logo ? Shouldn't the name be catchy ? What theme should I choose ? I'm not saying these things don't matter, but nothing is more important than the content and what you have to say - [just sit down, defeat the resistance and start creating the content](https://www.azuremonk.com/blog/warofart)
 3. **Physical health** - Should I join this fancy boutique gym, soul cycle, orange theory fitness, should I have a personal trainer. Start simple - but it is more important to start even if it means going out for a run or just using a pair of dumbbells'
 
