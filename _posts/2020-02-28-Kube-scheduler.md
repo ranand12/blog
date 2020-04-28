@@ -31,7 +31,7 @@ Let's break down how the Kubernetes Scheduler works and the way it chooses a nod
 
 *Lets say we have a "social-restaurant" where we have several tables and several seats around each table, lots of customers and a waiter for the hotel. "Social-restaurant" meaning different set of customers can sit around the same table, if there are enough seats and all conditions are met.* 
 
-_Table = Node (VM or a Physical Macine)_
+_Table = Node (VM or a Physical Machine)_
 
 _Seats = Resources availability on the VM_
 
@@ -339,8 +339,3 @@ spec:
 
 
 credits to Carson Anderson for planting this idea-seed from his [awesome Kube-Decon talk](https://www.youtube.com/watch?v=90kZRyPcRZw)
-
-credits to [Kelsey Hightower](https://twitter.com/kelseyhightower) for inspiring  to explain better with amazing analogies. 
-
-credits to [Julia Evans](https://twitter.com/b0rk) for the inspiration to explain tech with comics
-
