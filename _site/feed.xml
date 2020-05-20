@@ -10,8 +10,38 @@
 		<sy:updateFrequency>1</sy:updateFrequency>
 		<link>http://localhost:4000</link>
 		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-		<lastBuildDate>Fri, 28 Feb 2020 00:00:00 -0500</lastBuildDate>
+		<lastBuildDate>Wed, 20 May 2020 00:00:00 -0400</lastBuildDate>
 		
+		
+			<item>
+				<title>Azure ARM Template WHAT-IF (whatif) Deployment feature - how to</title>
+				
+					<description>Azure ARM Template deployment What-if operation</description>
+				
+                <pubDate>Wed, 20 May 2020 00:00:00 -0400</pubDate>
+				<link>http://localhost:4000/blog/whatif</link>
+				<guid isPermaLink="true">http://localhost:4000/blog/whatif</guid>
+			</item>
+		
+			<item>
+				<title>Blogging, Investing and Health - 5 things they ALL have in common</title>
+				
+					<description>Blogging, Investing and Health - 5 things they ALL have in common</description>
+				
+                <pubDate>Fri, 24 Apr 2020 00:00:00 -0400</pubDate>
+				<link>http://localhost:4000/blog/bloginvesthealth</link>
+				<guid isPermaLink="true">http://localhost:4000/blog/bloginvesthealth</guid>
+			</item>
+		
+			<item>
+				<title>Book Notes - War of Art</title>
+				
+					<description>Book Notes - War of Art</description>
+				
+                <pubDate>Sat, 18 Apr 2020 00:00:00 -0400</pubDate>
+				<link>http://localhost:4000/blog/warofart</link>
+				<guid isPermaLink="true">http://localhost:4000/blog/warofart</guid>
+			</item>
 		
 			<item>
 				<title>Kubernetes scheduler visually explained in plain English with a story</title>
