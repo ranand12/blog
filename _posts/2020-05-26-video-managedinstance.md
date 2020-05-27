@@ -1,10 +1,10 @@
 ---
-title: "azure managed identities - explained in plain English in 5 mins with a step by step demo"
-description: "azure managed identities - explained in plain English in 5 mins with a step by step demo"
+title: "azure managed identities - explained in plain english in 5 mins with a step by step demo"
+description: "azure managed identities - explained in plain english in 5 mins with a step by step demo"
 categories:
   - videos
 layout: single
-excerpt: "azure managed identities - explained in plain English in 5 mins with a step by step demo"
+excerpt: "azure managed identities - explained in plain english in 5 mins with a step by step demo"
 header:
   overlay_color: "#333"
 link: https://www.youtube.com/watch?v=1EoiGnQq14Y
