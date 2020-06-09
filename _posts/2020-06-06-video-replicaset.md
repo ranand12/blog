@@ -1,10 +1,10 @@
 ---
-title: "Replica Sets explained in plain English"
-description: "Replica Sets explained in plain English - #2 of Kubernetes explained in plain English series"
+title: "replica sets explained in plain english"
+description: "replica Sets explained in plain english - #2 of Kubernetes explained in plain english series"
 categories:
   - videos
 layout: single
-excerpt: "Replica Sets explained in plain English - #2 of Kubernetes explained in plain English series"
+excerpt: "replica sets explained in plain english - #2 of kubernetes explained in plain english series"
 header:
   overlay_color: "#333"
 link: https://www.youtube.com/watch?v=UIVtDHaCSZ8
