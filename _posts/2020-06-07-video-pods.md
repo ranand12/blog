@@ -7,7 +7,7 @@ layout: single
 excerpt: "pods explained in plain english - #1 of kubernetes explained in plain english series"
 header:
   overlay_color: "#333"
-link: https://www.youtube.com/watch?v=1EoiGnQq14Y
+link: https://www.youtube.com/watch?v=lBepFNjBW_U
 permalink: "videos/pods"
 header:
   og_image: /assets/blogposts/video/pods.png
