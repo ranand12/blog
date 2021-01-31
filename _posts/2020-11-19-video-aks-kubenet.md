@@ -21,7 +21,7 @@ what AKS is at a high level
 how Kubenet networking model works
 The benefits and limitations of using Kubenet 
 
-In the part 2 of the video we will address Azure CNI networking model. 
+In the [part 2](https://www.youtube.com/watch?v=A-eH_fu-pXg) of the video we will address Azure CNI networking model. 
 
 
 For more animated Azure videos and simplified Azure content and podcasts please check out https://www.azuremonk.com/video #aks #azure #azurein5minutes #aksnetworking #networking #kubernetes #k8s #kubenet #cni #azuremonk #services #pods #overlay 
