@@ -15,7 +15,7 @@ header:
   overlay_color: "#333"
 ---
 
-TThis is the ridiculously simple animated explanation of Azure Kubernetes Services Networking model - Azure CNI in less than 5 minutes. We will cover 
+This is the ridiculously simple animated explanation of Azure Kubernetes Services Networking model - Azure CNI in less than 5 minutes. We will cover 
 
 Azure CNI 
 IP address requirements
