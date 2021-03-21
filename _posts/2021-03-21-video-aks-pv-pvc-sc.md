@@ -21,7 +21,7 @@ Volumes and Volume Mounts
 Different Kinds of Volumes - Azure Files, Azure Disks, EmptyDir, Secrets and ConfigMaps
 Step by step creation of Azure Files and Azure Disks Volumes
 
-In part 2 of the video we will discuss -- https://youtu.be/ggIEe8wPGJM 
+In part 2 of the video we will discuss --
 
 Persistent Volume (PV)
 Persistent Volume Claims (PVC)
