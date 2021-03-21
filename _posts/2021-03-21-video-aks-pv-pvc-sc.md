@@ -15,6 +15,7 @@ header:
   overlay_color: "#333"
 ---
 
+{% include video id="ggIEe8wPGJM" provider="youtube" %}
 
 This is the simplified visual animated explanation of Persistent Volumes, Persistent Volume Claims and Storage Classes in Azure Kubernetes Services (AKS) with the help of a real world example
 
