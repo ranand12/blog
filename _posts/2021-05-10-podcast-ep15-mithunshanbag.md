@@ -16,13 +16,13 @@ file: https://csapodcast.azureedge.net/episodes/ep15MithunShanbag.m4a
 media: 
  m4a: https://csapodcast.azureedge.net/episodes/ep15MithunShanbag.m4a
 summary: "#14 - Mithun Shanbag - CEO/Founder of Skewed Ventures - cloudskew.com"
-description: "If you are in the data science field or aspiring to be in the data science field you are going to love this episode. In this episode we talk with Phil Coachman who works as a Data Scientist/Principal Cloud Solution Architect in Microsoft. We talk about Phil’s journey starting with the Bing, Xbox and Windows 10 team to his current role. We also demystify “who a data scientist” really is and what it take to be one. We talk about a really interesting and cool Train derailment prevention project using AI, Machine Learning, IoT sensors and IOT edge which is currently in production and has been deployed to 4 continents. Phil also gives you 4 ways on how you can keep up and learn everything you need to know about Machine Learning"
-duration: "21:54" 
-length: "52429240"
+description: "In this episode I talk to Mithun Shanbag, who is the CEO and founder of Skewed Ventures which created cloudskew.com, which is an online diagram and flowchart editor specifically designed for cloud architecture design diagrams. I talk with Mithun on his journey in the cloud technology space, his enterperuenial venture, his daily routine, his bootup sequence, his favorite books, the importance of sharpening the saw and more good stuff."
+duration: "40:13" 
+length: "96218855"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, datascience, artificial, intelligence"
+keywords: "technology, azure, azuremonk, podcast, azure, cloudskew, mithun shanbag, ceo, founder, "
 block: "no" 
-voices: "Phil Coachman and Anand Kumar R"
+voices: "Mithun Shanbag and Anand Kumar R"
 permalink: /podcast/mithun/
 podcast_file_size: 50.0 MB 
 podcast_duration: "21:54" 
