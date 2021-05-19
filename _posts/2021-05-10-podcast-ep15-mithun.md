@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "#15a- Mithun Shanbag – CEO Skewed Ventures - CloudSkew.com"
+title: "#15- Mithun Shanbag – CEO Skewed Ventures - CloudSkew.com"
 tagline: "Cloud Solution Architect podcast"
 sidebar:
   - title: "Mithun Shanbag"
@@ -23,7 +23,7 @@ explicit: "no"
 keywords: "technology, azure, azuremonk, podcast, azure, cloudskew, mithun shanbag, ceo, founder, "
 block: "no" 
 voices: "Mithun Shanbag and Anand Kumar R"
-permalink: /podcast/mithun1/
+permalink: /podcast/mithun/
 podcast_file_size: 91.76 MB 
 podcast_duration: "40:13" 
 podcast_length: 96218855
