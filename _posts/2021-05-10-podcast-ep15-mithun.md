@@ -1,12 +1,12 @@
 ---
 layout: single
-title: "#15- Mithun Shanbag – CEO Skewed Ventures (CloudSkew.com)"
+title: "#15- Mithun Shanbag – CEO Skewed Ventures - CloudSkew.com"
 tagline: "Cloud Solution Architect podcast"
 sidebar:
   - title: "Mithun Shanbag"
     image: /assets/blogposts/podcastimages/mithun.jpeg
     image_alt: "image"
-    text: "#15- Mithun Shanbag – CEO Skewed Ventures (CloudSkew.com)"
+    text: "#15- Mithun Shanbag – CEO Skewed Ventures - CloudSkew.com"
 header:
   og_image: /assets/blogposts/podcastimages/mithun.jpg
   teaser: /assets/blogposts/podcastimages/mithun.jpg
@@ -15,7 +15,7 @@ date: 2020-03-05 15:40:00 +1100
 file: https://csapodcast.azureedge.net/episodes/ep15MithunShanbag.m4a
 media: 
  m4a: https://csapodcast.azureedge.net/episodes/ep15MithunShanbag.m4a
-summary: "#14 - Mithun Shanbag - CEO/Founder of Skewed Ventures (cloudskew.com)"
+summary: "#14 - Mithun Shanbag - CEO/Founder of Skewed Ventures - cloudskew.com"
 description: "In this episode I talk to Mithun Shanbag, who is the CEO and founder of Skewed Ventures which created cloudskew.com, which is an online diagram and flowchart editor specifically designed for cloud architecture design diagrams. I talk with Mithun on his journey in the cloud technology space, his enterperuenial venture, his daily routine, his bootup sequence, his favorite books, the importance of sharpening the saw and more good stuff."
 duration: "40:13" 
 length: "96218855"
