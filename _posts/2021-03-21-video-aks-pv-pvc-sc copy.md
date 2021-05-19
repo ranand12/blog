@@ -2,7 +2,7 @@
 title: "asdlkadjlkasjdaks storage - persistent volumes, persistent volume claims and storage classes explained in plain english in less than 5 minutes"
 description: "aks storage - persistent volumes, persistent volume claims and storage classes explained in plain english in less than 5 minutes (azure kubernetes services)"
 categories:
-  - videos
+  - podcast
 layout: single
 excerpt: "pv, pvc and storage classes explained in plain english"
 header:
