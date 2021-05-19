@@ -56,7 +56,7 @@ In this episode I talk to Mithun Shanbag, who is the CEO and founder of Skewed V
 
 **The cloud solution that Mithun is proud of (27:06)**
 
-**Advice for anyone starting off on their won (31:05)**
+**Advice for anyone starting off on their own (31:05)**
 
 
 **Mithun's favorite books**
