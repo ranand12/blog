@@ -24,12 +24,17 @@ keywords: "technology, azure, azuremonk, podcast, azure, cloudskew, mithun shanb
 block: "no" 
 voices: "Mithun Shanbag and Anand Kumar R"
 permalink: /podcast/mithun/
-podcast_file_size: 50.0 MB 
-podcast_duration: "21:54" 
-podcast_length: 52429240
+podcast_file_size: 91.76 MB 
+podcast_duration: "40:13" 
+podcast_length: 96218855
 chapters:
- - '00:00:00.0 Intro'
- - '00:10:00.0 Test' 
+ - '00:02:07.0 Journey in the cloud technology space and the birth of CloudSkew.com'
+ - '00:07:20.0 Journey from 9-5 to an enterprenuer'
+ - '00:14:23.0 Game plan on how he keeps with the rapid changing technology space'
+ - '00:20:52.0 A day in the life of Mithun Shanbag and his daily routine and bootup sequence'
+ - '00:25:22.0 The importance of compounding in your life'
+ - '00:27:06.0 The cloud solution that Mithun is proud of'
+ - '00:31:05.0 Advice for anyone starting off on their won'
 categories:
   - podcast
 author_profile: false
