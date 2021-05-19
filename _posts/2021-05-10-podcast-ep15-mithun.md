@@ -63,7 +63,7 @@ In this episode I talk to Mithun Shanbag, who is the CEO and founder of Skewed V
 
 [Deep Work by Cal Newport](https://www.amazon.com/Deep-Work-Focused-Success-Distracted/dp/1455586692/ref=tmm_hrd_swatch_0?_encoding=UTF8&qid=1621458893&sr=1-1)
 [Never split the difference- Chris Voss](https://www.amazon.com/Never-Split-Difference-Negotiating-Depended/dp/0062407805/ref=asc_df_0062407805/?tag=hyprod-20&linkCode=df0&hvadid=266023323049&hvpos=&hvnetw=g&hvrand=11816865292060431590&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9004029&hvtargid=pla-332673243061&psc=1)
-[How to lose at everything and still win big - Scott Adams](https://www.amazon.com/How-Fail-Almost-Everything-Still-ebook/dp/B00COOFBA4)
+[How To Fail at Almost Everything And Still Win Big - Scott Adams](https://www.amazon.com/How-Fail-Almost-Everything-Still-ebook/dp/B00COOFBA4)
 [Malcolm Gladwell's books](https://www.amazon.com/s?k=Malcolm+Gladwell&i=audible&ref=dp_byline_sr_audible_1)
 
 
