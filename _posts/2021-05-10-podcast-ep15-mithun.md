@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "#15- Mithun Shanbag – CEO Skewed Ventures - CloudSkew.com"
+title: "#15a- Mithun Shanbag – CEO Skewed Ventures - CloudSkew.com"
 tagline: "Cloud Solution Architect podcast"
 sidebar:
   - title: "Mithun Shanbag"
@@ -23,15 +23,15 @@ explicit: "no"
 keywords: "technology, azure, azuremonk, podcast, azure, cloudskew, mithun shanbag, ceo, founder, "
 block: "no" 
 voices: "Mithun Shanbag and Anand Kumar R"
-permalink: /podcast/mithun/
+permalink: /podcast/mithun1/
 podcast_file_size: 91.76 MB 
 podcast_duration: "40:13" 
 podcast_length: 96218855
 chapters:
- - '00:02:07.0 Mithun's journey in the cloud technology space and the birth of CloudSkew.com'
- - '00:07:20.0 Mithun's journey from 9-5 to an enterprenuer'
- - '00:14:23.0 Mithun's game plan on how he keeps with the rapid changing technology space'
- - '00:20:52.0 A day in the life of Mithun Shanbag and his daily routine/bootup sequence'
+ - '00:02:07.0 Journey in the cloud technology space and the birth of CloudSkew.com'
+ - '00:07:20.0 Journey from 9-5 to an enterprenuer'
+ - '00:14:23.0 Game plan on how he keeps with the rapid changing technology space'
+ - '00:20:52.0 A day in the life of Mithun Shanbag and his daily routine and bootup sequence'
  - '00:25:22.0 The importance of compounding in your life'
  - '00:27:06.0 The cloud solution that Mithun is proud of'
  - '00:31:05.0 Advice for anyone starting off on their won'
