@@ -25,7 +25,7 @@ I am mostly going to be disconnected from most forms of social media - to regain
 
 *learnings*
 
-everytime I have wanted to take the cka exam (certified kubernetes administrator) in the past, a ton of things have cropped up and I have end up procrastinating almost always. I have decided to double down on and take this exam by the end of oct 2021. 
+everytime i have wanted to take the cka exam (certified kubernetes administrator) in the past, a ton of things have cropped up and i have end up procrastinating almost always. i have decided to double down on and take this exam by the end of oct 2021. 
 
 
 *community* 
