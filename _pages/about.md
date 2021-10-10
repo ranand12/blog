@@ -10,6 +10,7 @@ the cloud computing space is facing a [“tappers and listeners”](https://hbr.
 
 > _**“you don’t really understand something unless you can explain it to your grandmother”**_
 > 
+
 here is what i'm doing [now](https://www.azuremonk.com/now)
 
 
