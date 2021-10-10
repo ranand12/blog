@@ -14,4 +14,4 @@ here is what i'm doing [now](https://www.azuremonk.com/now)
 
 
 
- -**Anand Kumar** aka **Chockalingam Rajendran** aka **AzureMonk**
+ -**chockalingam rajendran** aka **anand kumar** aka **azuremonk**
