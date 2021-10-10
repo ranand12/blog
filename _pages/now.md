@@ -5,7 +5,7 @@ title: "what i'm doing now"
 
 
 ##  chockalingam rajendran (anand kumar)
-### what I’m doing now (oct 2021)
+### oct 2021
 
 ###### (this is a [now page](https://nownownow.com/about), and if you have your own site, [you should make one](https://nownownow.com/about), too)
 
