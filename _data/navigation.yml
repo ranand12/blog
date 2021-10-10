@@ -11,6 +11,8 @@ main:
   #   url: https://www.azuremonk.com/
   - title: "about"
     url: /about/
+  - title: "now"
+    url: /now/
 
 
 
