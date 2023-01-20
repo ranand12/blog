@@ -24,8 +24,8 @@ search: true
 
 # Site Settings
 locale                   : "en-US"
-title                    : "azuremonk.com"
-#title: "blog.azuremonk.com"
+title                    : "cloud-monk.com"
+#title: "blog.cloud-monk.com"
 title_separator          : "-"
 subtitle                 : "azure in plain english"
 name                     : "anand kumar r"
@@ -34,14 +34,14 @@ url                      : # the base hostname & protocol for your site e.g. "ht
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               :  "ranand12/blog"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "/assets/images/azuremonklogo-44X44.jpg"
+logo                     : "/assets/images/cloud-monklogo-44X44.jpg"
 masthead_title           : " " # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
 comments:
   provider               : "disqus" #, "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
   disqus:
-    shortname            : www-azuremonk-com
+    shortname            : www-cloud-monk-com
 
 
 
@@ -118,7 +118,7 @@ author:
   links:
     - label: "website"
       icon: "fas fa-fw fa-link"
-      url: "https://www.azuremonk.com"
+      url: "https://www.cloud-monk.com"
     - label: "twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/ranand12"
