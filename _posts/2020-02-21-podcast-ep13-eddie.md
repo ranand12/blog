@@ -20,7 +20,7 @@ description: "In this episode we talk to Eddie who works as a Commercial Softwar
 duration: "48:56" 
 length: "47185920"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, kubernetes, windows, k8s, cncf, monk"
+keywords: "technology, azure, cloud-monk, podcast, kubernetes, windows, k8s, cncf, monk"
 block: "no" 
 voices: "Eddie Villalba and Anand Kumar R"
 permalink: /podcast/Eddie

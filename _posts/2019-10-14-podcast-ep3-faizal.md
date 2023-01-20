@@ -20,7 +20,7 @@ description: "In this episode we talk to Mohamed Faizal, who was one of the firs
 duration: "35:51" 
 length: "48151956"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, azure"
+keywords: "technology, azure, cloud-monk, podcast, azure"
 block: "no" 
 voices: "Anand Kumar R"
 permalink: /2019/10/14/ep3/

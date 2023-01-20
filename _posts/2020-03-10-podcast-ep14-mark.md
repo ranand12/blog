@@ -20,7 +20,7 @@ description: "In this episode I talk to Mark Souza the Corporate Vice President 
 duration: "25:13" 
 length: "60347466"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, azure, corporate vice president, customer success unit"
+keywords: "technology, azure, cloud-monk, podcast, azure, corporate vice president, customer success unit"
 block: "no" 
 voices: "Mark Souza and Anand Kumar R"
 permalink: /podcast/mark/

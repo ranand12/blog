@@ -16,11 +16,11 @@ file: https://csapodcast.azureedge.net/episodes/ep4JoeSarabia.m4a
 media: 
  m4a: https://csapodcast.azureedge.net/episodes/ep4JoeSarabia.m4a
 summary: "#5 – Joe Sarabia – AWS, GCP and Azure Solution Architect"
-description: "Welcome to the “Cloud Solution Architect” podcast where we talk to Azure architects from across the globe and discuss interesting and creative Azure solutions. For more podcast episodes, animated azure video lessons and simplified how-to Azure articles please visit www.azuremonk.com. In this episode we talk with Joe Sarabia who works as a Cloud Solution Architect in Microsoft. We talk about Joe’s variety of experiences working on and with all the major private and public cloud providers out there including VMWare, Google, AWS and now Microsoft. We also talk about the book – Phoenix project, how he bought low-cost discounted machines at his local Fry’s store to learn NT migration, how he likes to “build stuff” to keep up with his “continuous learning” methodology and much more valuable advice to anyone in the tech space. We also talk about two of his interesting projects that he has worked on – one focused around people and other around technology."
+description: "Welcome to the “Cloud Solution Architect” podcast where we talk to Azure architects from across the globe and discuss interesting and creative Azure solutions. For more podcast episodes, animated azure video lessons and simplified how-to Azure articles please visit www.cloud-monk.com. In this episode we talk with Joe Sarabia who works as a Cloud Solution Architect in Microsoft. We talk about Joe’s variety of experiences working on and with all the major private and public cloud providers out there including VMWare, Google, AWS and now Microsoft. We also talk about the book – Phoenix project, how he bought low-cost discounted machines at his local Fry’s store to learn NT migration, how he likes to “build stuff” to keep up with his “continuous learning” methodology and much more valuable advice to anyone in the tech space. We also talk about two of his interesting projects that he has worked on – one focused around people and other around technology."
 duration: "42:21" 
 length: "56410110"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, azure"
+keywords: "technology, azure, cloud-monk, podcast, azure"
 block: "no" 
 voices: "Anand Kumar R"
 permalink: /2019/10/29/ep5/
@@ -40,7 +40,7 @@ author_profile: false
 
 {% include podcast-player.html %}
 
-Welcome to the “Cloud Solution Architect” podcast where we talk to Azure architects from across the globe and discuss interesting and creative Azure solutions. For more podcast episodes, animated azure video lessons and simplified how-to Azure articles please visit [www.azuremonk.com](http://www.azuremonk.com)
+Welcome to the “Cloud Solution Architect” podcast where we talk to Azure architects from across the globe and discuss interesting and creative Azure solutions. For more podcast episodes, animated azure video lessons and simplified how-to Azure articles please visit [www.cloud-monk.com](http://www.cloud-monk.com)
 
 In this episode we talk with Joe Sarabia who works as a Cloud Solution Architect in Microsoft
 

@@ -20,7 +20,7 @@ description: "In this episode we talk with Kevin Mack who works as a Cloud Solut
 duration: "29:21" 
 length: "39377838"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, azure"
+keywords: "technology, azure, cloud-monk, podcast, azure"
 block: "no" 
 voices: "Anand Kumar R"
 permalink: /2019/11/11/ep7/

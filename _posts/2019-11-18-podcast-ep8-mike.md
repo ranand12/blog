@@ -20,7 +20,7 @@ description: "In this episode we talk with Mike Pfiffer who works as a Chief Tec
 duration: "28:36" 
 length: "38221304"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, azure"
+keywords: "technology, azure, cloud-monk, podcast, azure"
 block: "no" 
 voices: "Anand Kumar R"
 permalink: /2019/11/18/ep8/

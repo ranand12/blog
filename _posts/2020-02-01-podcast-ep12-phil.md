@@ -20,7 +20,7 @@ description: "If you are in the data science field or aspiring to be in the data
 duration: "21:54" 
 length: "52429240"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, datascience, artificial, intelligence"
+keywords: "technology, azure, cloud-monk, podcast, datascience, artificial, intelligence"
 block: "no" 
 voices: "Phil Coachman and Anand Kumar R"
 permalink: /2020/02/01/ep12/
@@ -82,4 +82,4 @@ Enjoy listening !
 
 *   LinkedIn – [https://www.linkedin.com/in/philcoachman/](https://www.linkedin.com/in/philcoachman/)
 
-[www.azuremonk.com](http://www.azuremonk.com)
+[www.cloud-monk.com](http://www.cloud-monk.com)

@@ -1,12 +1,12 @@
 ---
-title: "azuremonk.com"
+title: "cloud-monk.com"
 layout: splash
 permalink: /
 date: 2016-03-23T11:48:41-04:00
 header:
   overlay_color: "#333"
   overlay_filter: "0.5"  
-  og_image: /assets/blogposts/podcasticons/azuremonklogo.jpg
+  og_image: /assets/blogposts/podcasticons/cloud-monklogo.jpg
   #actions:
    # - label: "Learn More"
    #   url: "/terms/"

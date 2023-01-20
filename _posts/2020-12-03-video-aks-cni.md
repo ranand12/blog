@@ -25,10 +25,10 @@ Advantages of using CNI
 For a super simplified explanation of Azure Kubenet networking model check out part 1 of the video - https://www.youtube.com/watch?v=lwJDyJUVnxs
 
 
-For more animated Azure videos and simplified Azure content and podcasts please check out https://www.azuremonk.com/video​ #aks​ #azure​ #azurein5minutes​ #aksnetworking​ #networking​ #kubernetes​ #k8s​ #kubenet​ #cni​ #azuremonk​ #services​ #pods​ #overlay​ 
+For more animated Azure videos and simplified Azure content and podcasts please check out https://www.cloud-monk.com/video​ #aks​ #azure​ #azurein5minutes​ #aksnetworking​ #networking​ #kubernetes​ #k8s​ #kubenet​ #cni​ #cloud-monk​ #services​ #pods​ #overlay​ 
 
-https://www.azuremonk.com
+https://www.cloud-monk.com
 
 K8s in plain english 
 
-#kubernetes #k8s #deployments #explained #cka #ckad #azuremonk #kubernetesinplainenglish #podsinplainenglish #deploymentsexplained #kipe
+#kubernetes #k8s #deployments #explained #cka #ckad #cloud-monk #kubernetesinplainenglish #podsinplainenglish #deploymentsexplained #kipe

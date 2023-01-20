@@ -14,7 +14,7 @@ description: "In this episode we talk with Thomas Maurer who works as a Cloud Ad
 duration: "25:41" 
 length: "34671634"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, azure stack, arc"
+keywords: "technology, azure, cloud-monk, podcast, azure stack, arc"
 block: "no" 
 voices: "Thomas Maurer and Anand Kumar R"
 permalink: /2020/01/14/ep11/
@@ -65,4 +65,4 @@ In this episode we talk with Thomas Maurer who works as a Cloud Advocate in Micr
 *   LinkedIn – [https://www.linkedin.com/in/thomasmaurer2/](https://www.linkedin.com/in/thomasmaurer2/)
 *   e-Commerce – all proceeds go to Charity – [https://www.thomasmaurer.ch/](https://www.thomasmaurer.ch/)Shop
 
-[www.azuremonk.com](www.azuremonk.com)
+[www.cloud-monk.com](www.cloud-monk.com)

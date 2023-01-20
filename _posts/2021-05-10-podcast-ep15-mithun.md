@@ -20,7 +20,7 @@ description: "In this episode I talk to Mithun Shanbag, who is the CEO and found
 duration: "40:13" 
 length: "96218855"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, azure, cloudskew, mithun shanbag, ceo, founder, "
+keywords: "technology, azure, cloud-monk, podcast, azure, cloudskew, mithun shanbag, ceo, founder, "
 block: "no" 
 voices: "Mithun Shanbag and Anand Kumar R"
 permalink: /podcast/mithun/

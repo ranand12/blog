@@ -20,7 +20,7 @@ description: "In this episode we talk with Sarah Lean aka TechieLass. She is a S
 duration: "14:23" 
 length: "19488581"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, azure"
+keywords: "technology, azure, cloud-monk, podcast, azure"
 block: "no" 
 voices: "Anand Kumar R"
 permalink: /2019/12/28/ep9/

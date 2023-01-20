@@ -28,11 +28,11 @@ Persistent Volume Claims (PVC)
 Storage Classes
 
 
-For more animated Azure videos and simplified Azure content and podcasts please check out https://www.azuremonk.com/video​ #aks​ #azure​ #azurein5minutes​ #aksstorage​ #azuredisks​ #azurefiles​ #k8s​ #aksvolumes​ #volumetypes​ #emptydir​ #secrets​ #configmaps​ #persistentvolumes​ #persistentvolumeclaims​  #pvc​ #persistentvolumes​ #pv​ #storageclasses​
+For more animated Azure videos and simplified Azure content and podcasts please check out https://www.cloud-monk.com/video​ #aks​ #azure​ #azurein5minutes​ #aksstorage​ #azuredisks​ #azurefiles​ #k8s​ #aksvolumes​ #volumetypes​ #emptydir​ #secrets​ #configmaps​ #persistentvolumes​ #persistentvolumeclaims​  #pvc​ #persistentvolumes​ #pv​ #storageclasses​
 
 
 
-https://www.azuremonk.com
+https://www.cloud-monk.com
 
 AKS (azure kubernetes services) in plain english 
 

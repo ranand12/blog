@@ -20,7 +20,7 @@ description: "In this episode we talk with Daren Child (or as we like to call hi
 duration: "32:24" 
 length: "66678803"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, azure"
+keywords: "technology, azure, cloud-monk, podcast, azure"
 block: "no" 
 voices: "Daren Child and Anand Kumar R"
 permalink: /2020/01/09/ep10/
@@ -74,5 +74,5 @@ In this episode we talk with Daren Child (or as we like to call him Bear- becaus
 Thank you for listening.
 
 *   <span style="font-family: Calibri; font-size: 11.0pt;">Anand Kumar R ( aka Chockalingam R) or Azure Monk</span>
-*   [<span style="font-family: Calibri; font-size: 11.0pt;">www.azuremonk.com</span>](http://www.azuremonk.com)
+*   [<span style="font-family: Calibri; font-size: 11.0pt;">www.cloud-monk.com</span>](http://www.cloud-monk.com)
 

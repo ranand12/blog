@@ -22,9 +22,9 @@ This is part 2 of a multi-part series explaining node pools in Azure Kubernetes 
 In this video we will talk about: 
 1. How we can use taints and tolerations to schedule pods in AKS nodes with demo
 2. How we can use NodeSelectors in AKS
-3. Link to Blogpost - https://www.azuremonk.com/blog/kube-scheduler
+3. Link to Blogpost - https://www.cloud-monk.com/blog/kube-scheduler
 
 
 #azure #aks #nodepools #taints #tolerations #nodeselector #kubernetesscheduler #scheduler
 
-For more simplified video tutorials on Azure and Kubernetes - check out www.azuremonk.com
+For more simplified video tutorials on Azure and Kubernetes - check out www.cloud-monk.com

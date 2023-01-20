@@ -20,7 +20,7 @@ description: "In this episode we go through an insightful and fun conversation w
 duration: "27:45" 
 length: "37632664"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, azure"
+keywords: "technology, azure, cloud-monk, podcast, azure"
 block: "no" 
 voices: "Anand Kumar R"
 permalink: /2019/07/02/ep2/
@@ -40,7 +40,7 @@ author_profile: false
 
 {% include podcast-player.html %}
 
-This is the second episode of the “Cloud Solution Architect” podcast where we talk to Azure architects from across the globe and discuss interesting and creative Azure solutions. For more podcast episodes, animated azure video lessons and simplified how-to Azure articles please visit www.azuremonk.com
+This is the second episode of the “Cloud Solution Architect” podcast where we talk to Azure architects from across the globe and discuss interesting and creative Azure solutions. For more podcast episodes, animated azure video lessons and simplified how-to Azure articles please visit www.cloud-monk.com
 
 In this episode we go through an insightful and fun conversation with Julian Soh who works as a Cloud Solution Architect in Microsoft US in the west coast.
 

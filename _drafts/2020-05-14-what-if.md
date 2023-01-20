@@ -26,4 +26,4 @@ All this in 10 minutes. I promise you, you won't be bored and the video will kee
 
 For the service endpoint explanation click here - https://www.youtube.com/watch?v=gxsitRRgylI
 
-#azure #azurenetworking #userdefinedroutes #udr #azuresystemroutes #virtualnetworkrouting #routingpriorities #systemroutes #explainedinplainenglish #lessthan5min #explainedsimply #simplified #azuremonk
+#azure #azurenetworking #userdefinedroutes #udr #azuresystemroutes #virtualnetworkrouting #routingpriorities #systemroutes #explainedinplainenglish #lessthan5min #explainedsimply #simplified #cloud-monk

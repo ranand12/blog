@@ -21,8 +21,8 @@ The link to the step by step practice lab - You do not need a pre-existing Kuber
 
 If you are preparing for the Certified Kubernetes Administrator (CKA) or Certified Kubernetes Developer (CKAD) - this video series will be in alignment with your exam preparation
 
-For more simplified videos check out -- https://www.azuremonk.com/videos 
+For more simplified videos check out -- https://www.cloud-monk.com/videos 
 
 For the Kubernetes in plain English series - check this video playlist out https://www.youtube.com/playlist?list=PLp_fsLj4v7gTA8n2UngXfOc_5puPPmFdK
  
-#kubernetes #pods #explained #cka #ckad #azuremonk #kubernetesinplainenglish #podsinplainenglish #podsexplained
+#kubernetes #pods #explained #cka #ckad #cloud-monk #kubernetesinplainenglish #podsinplainenglish #podsexplained

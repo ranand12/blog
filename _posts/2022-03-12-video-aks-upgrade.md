@@ -114,4 +114,4 @@ az aks show \
 
 #azure #aks #nodepools #kubernetes #upgrade #cordon #drain #explained #plainenglish
 
-For more simplified video tutorials on Azure and Kubernetes - check out www.azuremonk.com
+For more simplified video tutorials on Azure and Kubernetes - check out www.cloud-monk.com

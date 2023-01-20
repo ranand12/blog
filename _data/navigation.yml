@@ -8,7 +8,7 @@ main:
   # - title: "podcast"
   #   url: /podcast/
   # - title: "home"
-  #   url: https://www.azuremonk.com/
+  #   url: https://www.cloud-monk.com/
   - title: "about"
     url: /about/
   - title: "now"

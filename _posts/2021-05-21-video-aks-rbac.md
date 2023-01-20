@@ -25,4 +25,4 @@ This is the super simplified video animated explanation on everything you ever w
 
 #azure #aks #simplified
 
-https://www.azuremonk.com/video #aks #azure #azurein5minutes #activedirectory #ad 
+https://www.cloud-monk.com/video #aks #azure #azurein5minutes #activedirectory #ad 

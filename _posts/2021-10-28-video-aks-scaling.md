@@ -26,7 +26,7 @@ This is the super simplified video animated explanation on everything you ever w
 
 #azure #aks #simplified #hpa #horizontalpodautoscaler #nodeautoscaler #scaling #metricsserver #resourcelimits #resourcerequests
 
-For more simplified video tutorials on Azure and Kubernetes - check out www.azuremonk.com
+For more simplified video tutorials on Azure and Kubernetes - check out www.cloud-monk.com
 
 #azure #aks #simplified
 

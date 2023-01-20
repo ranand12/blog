@@ -1,1 +1,1 @@
-Welcome to the azuremonk blog - where I try to "super" simplify azure and explain it in plain english
+Welcome to the cloud-monk blog - where I try to "super" simplify azure and explain it in plain english

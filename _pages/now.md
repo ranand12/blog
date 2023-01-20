@@ -30,7 +30,7 @@ everytime i have wanted to take the cka exam (certified kubernetes administrator
 
 *community* 
 
-continue to work on aks and azure content for my [azuremonk](https://www.azuremonk.com/video) video channel. will upload the scaling in aks video by oct 2021. aiming to create 1 video every two weeks consistently. *fingers crossed*
+continue to work on aks and azure content for my [cloud-monk](https://www.cloud-monk.com/video) video channel. will upload the scaling in aks video by oct 2021. aiming to create 1 video every two weeks consistently. *fingers crossed*
 
 *application* 
 
@@ -41,4 +41,4 @@ over the past few months have consumed copious amount of content on learning, pr
 aiming to complete a very challenging winter trek in the month of december - preparing for that by alternating the week between - walking, slow jogging, suryanamaskar - for now, while continuing to be consistent with the daily meditation habit
 
 
- -**chockalingam rajendran** aka **anand kumar** aka  **azuremonk**
+ -**chockalingam rajendran** aka **anand kumar** aka  **cloud-monk**

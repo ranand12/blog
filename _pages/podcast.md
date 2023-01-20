@@ -14,26 +14,26 @@ welcome to the "Cloud Solution Architect" podcast, where we talk to Azure archit
 
 **<u>episodes</u>**
 
-[#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project](https://azuremonk.com/2020/02/01/ep12/)
+[#12 – Phil Coachman – Principal Data scientist demystifies “Data Science”, the future of Data Science and a really cool ML project](https://cloud-monk.com/2020/02/01/ep12/)
 
-[#11 – Thomas Maurer – Azure Hybrid using Stack & Arc](https://azuremonk.com/2020/01/14/ep11/)
+[#11 – Thomas Maurer – Azure Hybrid using Stack & Arc](https://cloud-monk.com/2020/01/14/ep11/)
 
-[#10 - Daren Child (aka Bear) – Modern Data Warehousing](http://azuremonk.com/2020/01/09/ep10/)
+[#10 - Daren Child (aka Bear) – Modern Data Warehousing](http://cloud-monk.com/2020/01/09/ep10/)
 
-[#9 - Sarah Lean– Cloud Advocate/Glasgow Azure Group founder](https://azuremonk.com/2019/12/28/ep9/)
+[#9 - Sarah Lean– Cloud Advocate/Glasgow Azure Group founder](https://cloud-monk.com/2019/12/28/ep9/)
 
-[#8 - Mike Pfeiffer– cloudskills.io - shortening the learning curve for others](https://azuremonk.com/2019/11/18/ep8/)
+[#8 - Mike Pfeiffer– cloudskills.io - shortening the learning curve for others](https://cloud-monk.com/2019/11/18/ep8/)
 
-[#7- Kevin Mack – the “welldocumented” nerd](https://azuremonk.com/2019/11/11/ep7/)
+[#7- Kevin Mack – the “welldocumented” nerd](https://cloud-monk.com/2019/11/11/ep7/)
 
-[#6 – Abhijeet Jhala – Making a parking system “smart” using Azure](https://azuremonk.com/2019/11/01/ep6/)
+[#6 – Abhijeet Jhala – Making a parking system “smart” using Azure](https://cloud-monk.com/2019/11/01/ep6/)
 
-[#5 - Joe Sarabia - AWS, GCP and Azure Solution Architect](https://azuremonk.com/2019/10/29/ep5/)
+[#5 - Joe Sarabia - AWS, GCP and Azure Solution Architect](https://cloud-monk.com/2019/10/29/ep5/)
 
-[#4 – Olivier Martin– Data Scientist and Machine Learning Engineer](https://azuremonk.com/2019/10/21/ep4/)
+[#4 – Olivier Martin– Data Scientist and Machine Learning Engineer](https://cloud-monk.com/2019/10/21/ep4/)
 
-[#3 - Mohamed Faizal - Singapore Airlines KrisPay and Cloud Custodian program](http://azuremonk.com/2019/10/14/audio-ep3/)
+[#3 - Mohamed Faizal - Singapore Airlines KrisPay and Cloud Custodian program](http://cloud-monk.com/2019/10/14/audio-ep3/)
 
-[#2 - Julian Soh - smart trash cans using Azure ](https://azuremonk.com/2019/07/02/ep2/)
+[#2 - Julian Soh - smart trash cans using Azure ](https://cloud-monk.com/2019/07/02/ep2/)
 
-[#1 - Stanislav Novoseletskiy - modernizing and transforming one of the largest transportation systems in the world](https://azuremonk.com/2019/06/27/ep1/)
+[#1 - Stanislav Novoseletskiy - modernizing and transforming one of the largest transportation systems in the world](https://cloud-monk.com/2019/06/27/ep1/)

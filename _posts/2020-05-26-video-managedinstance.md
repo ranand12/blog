@@ -17,7 +17,7 @@ header:
 
 This is the ridiculously simple animated explanation of Azure Managed Identities (managed identity) - we will cover System Assigned, User Assigned, the difference and a step by step demo in 5 minutes. 
 
-For more animated Azure videos and simplified Azure content and podcasts please check out https://www.azuremonk.com/video #managedidentities #azure #azurein5minutes #managedidentity #azuresecurity #identity
+For more animated Azure videos and simplified Azure content and podcasts please check out https://www.cloud-monk.com/video #managedidentities #azure #azurein5minutes #managedidentity #azuresecurity #identity
 
 Services that support Azure Managed Identities - https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities 
 

@@ -19,4 +19,4 @@ header:
 This is the ridiculously simple explanation of Azure Virtual Network Service Endpoints and Service Endpoint Policies using a story and a step by step demo in less than 5 minutes ( well a little over 5 minutes :) - but I can assure you wont get bored. Watch out for the next video for Private Link, Private Endpoints explained with a story. 
 Link for the Network Security Group Video - https://www.youtube.com/watch?v=vgnSL... 
 
-For more animated Azure videos and simplified Azure content and podcasts please check out www.azuremonk.com #lessthan5min #azure #azurein5minutes #virtualnetwork #networkinginazure #azuredemystified #virtualnetworkserviceendpoints #serviceendpoints #serviceendpointpolicies #privatelink #privateendpoint
+For more animated Azure videos and simplified Azure content and podcasts please check out www.cloud-monk.com #lessthan5min #azure #azurein5minutes #virtualnetwork #networkinginazure #azuredemystified #virtualnetworkserviceendpoints #serviceendpoints #serviceendpointpolicies #privatelink #privateendpoint

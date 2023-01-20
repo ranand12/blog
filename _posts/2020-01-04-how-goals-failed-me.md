@@ -64,7 +64,7 @@ Screen addiction is real. If I was bored or when I was in the train with nothing
 I used to mindlessly consume lots of content and not really absorbing it or internalizing it.
 
 * ### What did I do
-Starting late 2019, I have a tiny book where I make 1 or 2 sentence notes of what I learned that day (kept it small and atomic) - it could be from a [podcast guest](https://azuremonk.com/audio/), my customers and colleagues who I work with, an article/book/video I watched, my 1.5 year daughter, my wife, the cashier at Walmart -ANYONE.
+Starting late 2019, I have a tiny book where I make 1 or 2 sentence notes of what I learned that day (kept it small and atomic) - it could be from a [podcast guest](https://cloud-monk.com/audio/), my customers and colleagues who I work with, an article/book/video I watched, my 1.5 year daughter, my wife, the cashier at Walmart -ANYONE.
 
 * ### How has it helped me
 I feel terrible when I miss a day of note taking, so all day this subconsciously helps put me in a mindset where I make it a point to learn at least one thing. I personally feel having this mindset has helped me learn and absorb so much from the amazing people around me and has provided me with new opportunities.
@@ -79,4 +79,4 @@ I'm aiming for 10 minutes/day of really slow jogging and gradually add on if and
 
 
 
-www.azuremonk.com
+www.cloud-monk.com

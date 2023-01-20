@@ -27,4 +27,4 @@ In this video we will talk about:
 
 #azure #aks #nodepools #systemnodepools #usernodepools #simplified 
 
-For more simplified video tutorials on Azure and Kubernetes - check out www.azuremonk.com
+For more simplified video tutorials on Azure and Kubernetes - check out www.cloud-monk.com

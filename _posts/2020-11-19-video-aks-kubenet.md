@@ -24,12 +24,12 @@ The benefits and limitations of using Kubenet
 In the [part 2](https://www.youtube.com/watch?v=A-eH_fu-pXg) of the video we will address Azure CNI networking model. 
 
 
-For more animated Azure videos and simplified Azure content and podcasts please check out https://www.azuremonk.com/video #aks #azure #azurein5minutes #aksnetworking #networking #kubernetes #k8s #kubenet #cni #azuremonk #services #pods #overlay 
+For more animated Azure videos and simplified Azure content and podcasts please check out https://www.cloud-monk.com/video #aks #azure #azurein5minutes #aksnetworking #networking #kubernetes #k8s #kubenet #cni #cloud-monk #services #pods #overlay 
 
 For step-by-step instructions on how to configure Kubenet please check out : [Steve's blog](https://blog.stevegriffith.nyc/posts/aks-networking-part1)
 
-https://www.azuremonk.com
+https://www.cloud-monk.com
 
 K8s in plain english 
 
-#kubernetes #k8s #deployments #explained #cka #ckad #azuremonk #kubernetesinplainenglish #podsinplainenglish #deploymentsexplained #kipe
+#kubernetes #k8s #deployments #explained #cka #ckad #cloud-monk #kubernetesinplainenglish #podsinplainenglish #deploymentsexplained #kipe

@@ -20,7 +20,7 @@ description: "In this episode we go through an insightful conversation with Stan
 duration: "29:35" 
 length: "38739273"
 explicit: "no" 
-keywords: "technology, azure, azuremonk, podcast, azure"
+keywords: "technology, azure, cloud-monk, podcast, azure"
 block: "no" 
 voices: "Anand Kumar R"
 permalink: /2019/06/27/ep1/
