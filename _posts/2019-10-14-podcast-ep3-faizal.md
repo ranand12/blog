@@ -12,9 +12,9 @@ header:
   teaser: /assets/blogposts/podcastimages/faizal.jpeg
   overlay_color: "#333"
 date: 2019-10-14 15:40:00 +1100
-file: https://csapodcast.azureedge.net/episodes/ep3MohammadFaizal.m4a
+file: https://csapodcastnewone.blob.core.windows.net/episodes/ep3MohammadFaizal.m4a
 media: 
- m4a: https://csapodcast.azureedge.net/episodes/ep3MohammadFaizal.m4a
+ m4a: https://csapodcastnewone.blob.core.windows.net/episodes/ep3MohammadFaizal.m4a
 summary: "#3 – Mohamed Faizal – Singapore Airlines KrisPay and Cloud Custodian program"
 description: "In this episode we talk to Mohamed Faizal, who was one of the first 100 MVPs of Azure who is currently working as a Cloud Solution Architect in Singapore. In this episode we talk about interesting projects like KrisPay for Singapore Airlines using blockchain as a service to the Cloud custodian program"
 duration: "35:51" 

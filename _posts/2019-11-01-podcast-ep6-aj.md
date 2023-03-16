@@ -12,9 +12,9 @@ header:
   teaser: /assets/blogposts/podcastimages/AJ.jpeg
   overlay_color: "#333"
 date: 2019-11-01 15:40:00 +1100
-file: https://csapodcast.azureedge.net/episodes/ep6AbhijeetJhala.m4a
+file: https://csapodcastnewone.blob.core.windows.net/episodes/ep6AbhijeetJhala.m4a
 media: 
- m4a: https://csapodcast.azureedge.net/episodes/ep6AbhijeetJhala.m4a
+ m4a: https://csapodcastnewone.blob.core.windows.net/episodes/ep6AbhijeetJhala.m4a
 summary: "#6 – Abhijeet Jhala – Making a parking system “smart” using Azure"
 description: "Welcome to the Cloud Solution Architect podcast where we talk to Azure architects from across the globe and discuss interesting and creative Azure solutions. For more podcast episodes, animated azure video lessons and simplified how-to Azure articles please visit www.cloud-monk.com. In this episode we talk with Abhijeet Jhala (AJ) who works as a Cloud Solution Architect with ISVs. He talks about how he has the “coolest job” since he has to solve a business problem only once but can be reused many number of times. We talk about how he was instrumental in solving a business problem which was – making a parking gate “smart” using Azure and its IOT capabilities. He also talks about how having a breadth of technical experience and a hip pocket skill helps him be a “problem solver"
 duration: "19:15" 

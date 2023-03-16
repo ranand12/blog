@@ -12,9 +12,9 @@ header:
   teaser: /assets/blogposts/podcastimages/stan.jpeg
   overlay_color: "#333"
 date: 2019-06-27 15:40:00 +1100
-file: https://csapodcast.azureedge.net/episodes/1StanislavNovoseletsky.m4a
+file: https://csapodcastnewone.blob.core.windows.net/episodes/1StanislavNovoseletsky.m4a
 media: 
- m4a: https://csapodcast.azureedge.net/episodes/1StanislavNovoseletsky.m4a
+ m4a: https://csapodcastnewone.blob.core.windows.net/episodes/1StanislavNovoseletsky.m4a
 summary: "#1 – Stanislav Novoseletskiy -modernizing and transforming one of the largest transportation systems in the world"
 description: "In this episode we go through an insightful conversation with Stanislav (Stan) who is currently an Azure Solution Specialist working for Microsoft serving the NYC region.He talks about how he used Azure to transform some of the worlds largest transit systems IT infrastructure and reporting. He also shares very useful advice for budding new Azure architects not just from a technical perspective but also from a business and impact perspective."
 duration: "29:35" 

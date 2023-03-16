@@ -12,9 +12,9 @@ header:
   teaser: /assets/blogposts/podcastimages/darenteaser.jpg
   overlay_color: "#333"
 date: 2020-01-09 15:40:00 +1100
-file: https://csapodcast.azureedge.net/episodes/ep10DarenChild.mp4
+file: https://csapodcastnewone.blob.core.windows.net/episodes/ep10DarenChild.mp4
 media: 
- m4a: https://csapodcast.azureedge.net/episodes/ep10DarenChild.mp4
+ m4a: https://csapodcastnewone.blob.core.windows.net/episodes/ep10DarenChild.mp4
 summary: "#10 – Daren Child (aka Bear) – Modern Data Warehousing"
 description: "In this episode we talk with Daren Child (or as we like to call him Bear- because he is so warm and helpful). Daren talks about his experiences both with education and engineering world. He talks about a framework for “Modern Data Warehouse” which I personally feel is the single most useful thing any data architect should be implementing. Since he has a lot of amazing slides to go along with the framework explanation – this is going to be a video podcast, so please do check out the link below if you are unable to watch the video"
 duration: "32:24" 
