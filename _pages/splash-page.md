@@ -13,7 +13,7 @@ header:
   #caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
 excerpt: "cloud in plain english."
 intro: 
-  - excerpt: 'this site is aimed at stripping out the fluff/jargon, providing clarity and simplifying the complex around cloud (microsoft cloud)– **really really simplifying**'
+  - excerpt: 'this site is aimed at stripping out the fluff/jargon, providing clarity and simplifying the complex around cloud technologies – **really really simplifying**'
 feature_row:
   - image_path: assets/images/homepage/blog.png
     #image_caption: "cloud in plain english blog"
