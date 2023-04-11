@@ -11,12 +11,12 @@ header:
    # - label: "Learn More"
    #   url: "/terms/"
   #caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
-excerpt: "azure in plain english."
+excerpt: "cloud in plain english."
 intro: 
-  - excerpt: 'this site is aimed at stripping out the fluff/jargon, providing clarity and simplifying the complex around azure (microsoft cloud)– **really really simplifying**'
+  - excerpt: 'this site is aimed at stripping out the fluff/jargon, providing clarity and simplifying the complex around cloud (microsoft cloud)– **really really simplifying**'
 feature_row:
   - image_path: assets/images/homepage/blog.png
-    #image_caption: "azure in plain english blog"
+    #image_caption: "cloud in plain english blog"
     alt: "placeholder image 1"
     url: "/blog"
     btn_label: "read more"
