@@ -12,9 +12,9 @@ sidebar:
 tagline: "Cloud Solution Architect podcast"
 title: "#13 – Eddie Villalba - Everything Cloud Native/K8s for beginners & Windows folks"
 date: 2020-02-21 15:40:00 +1100
-file: https://csapodcastnewone.blob.core.windows.net/episodes/ep13EddieVillalba.m4a
+file: https://csapodcastnew.blob.core.windows.net/episodes/ep13EddieVillalba.m4a
 media: 
- m4a: https://csapodcastnewone.blob.core.windows.net/episodes/ep13EddieVillalba.m4a
+ m4a: https://csapodcastnew.blob.core.windows.net/episodes/ep13EddieVillalba.m4a
 summary: "#13 – Eddie Villalba - Everything Cloud Native/K8s for beginners & Windows folks"
 description: "In this episode we talk to Eddie who works as a Commercial Software Engineer @ Microsoft. He has also co-authored the book [Kubernetes Best practices](https://www.amazon.com/Kubernetes-Best-Practices-Blueprints-Applications/dp/1492056472) along with Brendan Burns and is a contributor for CNCF/K8s. This episode is **jam-packed** with super good K8s content and we talk about the following * Eddie's journey * Learning path for K8s to someone coming from the Windows world(really good analogies to make it sticky) * He breaks down the K8s certification - and what it takes to get certified and who should take which exam * Future of K8s * How to be part of the K8s community * Interesting Talent Management system project using Kubernetes * When **NOT** to use K8s"
 duration: "48:56" 

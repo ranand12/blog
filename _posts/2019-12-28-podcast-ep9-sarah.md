@@ -12,9 +12,9 @@ header:
   teaser: /assets/blogposts/podcastimages/sarahlean.jpg
   overlay_color: "#333"
 date: 2019-12-28 15:40:00 +1100
-file: https://csapodcastnewone.blob.core.windows.net/episodes/ep9SarahLean.m4a
+file: https://csapodcastnew.blob.core.windows.net/episodes/ep9SarahLean.m4a
 media: 
- m4a: https://csapodcastnewone.blob.core.windows.net/episodes/ep9SarahLean.m4a
+ m4a: https://csapodcastnew.blob.core.windows.net/episodes/ep9SarahLean.m4a
 summary: "#9 - Sarah Lean– Cloud Advocate/Glasgow Azure Group founder"
 description: "In this episode we talk with Sarah Lean aka TechieLass. She is a STEM ambassador, founder of the Glasgow Azure group, she has been a Cloud Solution Architect and now she works as a Cloud Advocate for Microsoft. In this episode we talk about how Sarah influenced Azure Migrate and its features,  how she bridges the gap between the customers and the product engineering and how she keeps herself up to date with everything happening in the cloud world."
 duration: "14:23" 

@@ -12,9 +12,9 @@ header:
   teaser: /assets/blogposts/podcastimages/mark.jpeg
   overlay_color: "#333"
 date: 2020-03-05 15:40:00 +1100
-file: https://csapodcastnewone.blob.core.windows.net/episodes/ep14MarkSouza.m4a
+file: https://csapodcastnew.blob.core.windows.net/episodes/ep14MarkSouza.m4a
 media: 
- m4a: https://csapodcastnewone.blob.core.windows.net/episodes/ep14MarkSouza.m4a
+ m4a: https://csapodcastnew.blob.core.windows.net/episodes/ep14MarkSouza.m4a
 summary: "#14 - Mark Souza - Corporate Vice President @ Microsoft (Customer Success Unit)"
 description: "In this episode I talk to Mark Souza the Corporate Vice President of the Customer Success Unit - who is technically my boss's boss's boss's boss :). Mark has been at Microsoft for over 26 years with different roles across the organization. It was a fun expereince talking with Mark on this podcast. Having interacted with Mark in the past I can confidently say he is one of the most down to earth and grounded senior leadership executives I have ever met. In this episode we talk about how Mark starts off his day, his journey in microsoft and explains what the customer success in plain english, his advice for people starting off in their career, how he stays grounded, the one quality which he expects every member of his organzation has, his favorite book and his family."
 duration: "25:13" 

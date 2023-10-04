@@ -12,9 +12,9 @@ header:
   teaser: /assets/blogposts/podcastimages/Olivier.jpg
   overlay_color: "#333"
 date: 2019-10-21 15:40:00 +1100
-file: https://csapodcastnewone.blob.core.windows.net/episodes/ep4OlivierMartin.m4a
+file: https://csapodcastnew.blob.core.windows.net/episodes/ep4OlivierMartin.m4a
 media: 
- m4a: https://csapodcastnewone.blob.core.windows.net/episodes/ep4OlivierMartin.m4a
+ m4a: https://csapodcastnew.blob.core.windows.net/episodes/ep4OlivierMartin.m4a
 summary: "#4 – Olivier Martin– Data Scientist and Machine Learning Engineer"
 description: "In this episode we go through an interesting and inspiring conversation with Olivier Martin who works as a Machine Learning Expert and Architect in Microsoft. We talk about a wide variety of topics from how “being curious” and being a #LearnitAll helped him to get to where he is today and helping him every single day. He also talks about an interesting Machine learning project where they  helped increase the efficiency by identifying “false negatives” "
 duration: "40:09" 
