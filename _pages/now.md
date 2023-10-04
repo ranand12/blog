@@ -33,4 +33,4 @@ continue to work on cloud content for my [cloud-monk](https://www.cloud-monk.com
 
 
 
- -**chockalingam rajendran** aka **anand kumar** aka  **cloud-monk**
+ - **anand kumar** aka  **cloud-monk**
