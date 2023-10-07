@@ -73,6 +73,6 @@ In this episode we talk with Daren Child (or as we like to call him Bear- becaus
 
 Thank you for listening.
 
-*   <span style="font-family: Calibri; font-size: 11.0pt;">Anand Kumar R ( aka Chockalingam R) or Azure Monk</span>
+*   <span style="font-family: Calibri; font-size: 11.0pt;">Anand Kumar or cloud-monk </span>
 *   [<span style="font-family: Calibri; font-size: 11.0pt;">www.cloud-monk.com</span>](http://www.cloud-monk.com)
 

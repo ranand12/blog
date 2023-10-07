@@ -4,7 +4,7 @@ title: "what i'm doing now"
 ---
 
 
-##  chockalingam rajendran (anand kumar)
+##  anand kumar
 ### apr 2023
 
 ###### (this is a [now page](https://nownownow.com/about), and if you have your own site, [you should make one](https://nownownow.com/about), too)

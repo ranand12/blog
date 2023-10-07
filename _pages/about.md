@@ -15,4 +15,4 @@ here is what i'm doing [now](https://www.cloud-monk.com/now)
 
 
 
- -**chockalingam rajendran** aka **anand kumar** aka **cloud-monk**
+ - **anand kumar** aka **cloud-monk**
