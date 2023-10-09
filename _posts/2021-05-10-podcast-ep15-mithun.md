@@ -15,7 +15,7 @@ date: 2021-05-03 15:40:00 +1100
 file: https://csapodcastnew.blob.core.windows.net/episodes/ep15MithunShanbag.m4a
 media: 
  m4a: https://csapodcastnew.blob.core.windows.net/episodes/ep15MithunShanbag.m4a
-summary: "#14 - Mithun Shanbag - CEO/Founder of Skewed Ventures - cloudskew.com"
+summary: "#15 - Mithun Shanbag - CEO/Founder of Skewed Ventures - cloudskew.com"
 description: "In this episode I talk to Mithun Shanbag, who is the CEO and founder of Skewed Ventures which created cloudskew.com, which is an online diagram and flowchart editor specifically designed for cloud architecture design diagrams. I talk with Mithun on his journey in the cloud technology space, his enterperuenial venture, his daily routine, his bootup sequence, his favorite books, the importance of sharpening the saw and more good stuff."
 duration: "40:13" 
 length: "96218855"
