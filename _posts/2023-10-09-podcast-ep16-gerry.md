@@ -60,7 +60,7 @@ In this episode I talk to Gerry Vogler, who works as a Strategic Account Executi
 
 **Advice for anyone starting off on their cloud career journey (24:18)**
 
-**0Life outside of Google (29:30)**
+**Life outside of Google (29:30)**
 
 
 
