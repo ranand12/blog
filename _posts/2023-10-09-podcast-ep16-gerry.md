@@ -11,7 +11,7 @@ header:
   og_image: /assets/blogposts/podcastimages/gerry.jpg
   teaser: /assets/blogposts/podcastimages/gerry.jpg
   overlay_color: "#333"
-date: 2021-05-03 15:40:00 +1100
+date: 2023-10-09 15:40:00 +1100
 file: https://csapodcastnew.blob.core.windows.net/episodes/ep16gerryvogler.m4a
 media: 
  m4a: https://csapodcastnew.blob.core.windows.net/episodes/ep16gerryvogler.m4a
