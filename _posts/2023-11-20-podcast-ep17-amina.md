@@ -80,7 +80,7 @@ In this episode we talk with the Amina Al Sheriff who works as an AI/ML speciali
 
 LinkedIn - [Amina Al Sheriff](https://www.linkedin.com/in/amina-al-sherif/)
 
-Amina's books - her own bookstore - https://aminaalsherif.camp/books-1 or Amazon - https://www.amazon.com/Nadiri-Amina-Al-Sherif/dp/168513324X/
+Amina's books - [her own bookstore](https://aminaalsherif.camp/books-1) or [Amazon](https://www.amazon.com/Nadiri-Amina-Al-Sherif/dp/168513324X/)
 
 
 ### Full Show notes :
