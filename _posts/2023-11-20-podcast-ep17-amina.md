@@ -4,7 +4,7 @@ title: "17- Amina Al Sheriff – AI/ML Specialist @Google / Author/ Spy /Computa
 tagline: "Cloud Solution Architect podcast"
 sidebar:
   - title: "Amina Al Sheriff"
-    image: /assets/blogposts/podcastimages/amina.jpg
+    image: /assets/blogposts/podcastimages/amina.png
     image_alt: "image"
     text: "17- Amina Al Sheriff – AI/ML Specialist @Google / Author/ Spy /Computational Linguist"
 header:
