@@ -28,7 +28,7 @@ podcast_file_size: 48.80 MB
 podcast_duration: "58:31" 
 podcast_length: 96218855
 chapters:
- - '00:02:02.0 Amina's background and her journey'
+ - '00:02:02.0 Aminas background and her journey'
  - '00:07:10.0 Project Maven'
  - '00:12:36.0 AI Ethics'
  - '00:18:00.0 How to keep up with everything changing in the GenAI space'
