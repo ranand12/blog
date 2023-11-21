@@ -1,12 +1,12 @@
 ---
 layout: single
-title: "17- Amina Al Sheriff – AI/ML Specialist @Google / Author/ Spy /Computational Linguist"
+title: "17- Amina Al Sherif – AI/ML Specialist @Google / Author/ Spy /Computational Linguist"
 tagline: "cloud-monk podcast"
 sidebar:
-  - title: "Amina Al Sheriff"
+  - title: "Amina Al Sherif"
     image: /assets/blogposts/podcastimages/amina.png
     image_alt: "image"
-    text: "17- Amina Al Sheriff – AI/ML Specialist @Google / Author/ Spy /Computational Linguist"
+    text: "17- Amina Al Sherif – AI/ML Specialist @Google / Author/ Spy /Computational Linguist"
 header:
   og_image: /assets/blogposts/podcastimages/amina.png
   teaser: /assets/blogposts/podcastimages/amina.png
@@ -15,14 +15,14 @@ date: 2023-11-20 15:40:00 +1100
 file: https://csapodcastnew.blob.core.windows.net/episodes/ep17amina.m4a
 media: 
  m4a: https://csapodcastnew.blob.core.windows.net/episodes/ep17amina.m4a
-summary: "17- Amina Al Sheriff – AI/ML Specialist @Google / Author/ Spy /Computational Linguist"
-description: "In this episode we talk with the Amina Al Sheriff who works as an AI/ML specialist at Google Cloud. In this fascinating conversation we talk about Aminas journey starting off as a computational linguist to working as a spy- yes you heard that right a SPY, to being an AI/ML specialist. We also talk about AI ethics, AI literacy, when to use GenAI, when NOT to use GenAI, how she keeps up with everything happening in the GenAI space, we also talk about her next fiction book, her secret to generating creative ideas, all this and more - you don’t want to miss this jam packed episode with Amina. Sit back grab your favorite drink and enjoy the show"
+summary: "17- Amina Al Sherif – AI/ML Specialist @Google / Author/ Spy /Computational Linguist"
+description: "In this episode we talk with the Amina Al Sherif who works as an AI/ML specialist at Google Cloud. In this fascinating conversation we talk about Aminas journey starting off as a computational linguist to working as a spy- yes you heard that right a SPY, to being an AI/ML specialist. We also talk about AI ethics, AI literacy, when to use GenAI, when NOT to use GenAI, how she keeps up with everything happening in the GenAI space, we also talk about her next fiction book, her secret to generating creative ideas, all this and more - you don’t want to miss this jam packed episode with Amina. Sit back grab your favorite drink and enjoy the show"
 duration: "32:31" 
 length: "96218855"
 explicit: "no" 
 keywords: "technology, cloud-monk, podcast, google, google cloud,author"
 block: "no" 
-voices: "Amina Al Sheriff and Anand Kumar R"
+voices: "Amina Al Sherif and Anand Kumar R"
 permalink: /podcast/amina/
 podcast_file_size: 48.80 MB 
 podcast_duration: "58:31" 
@@ -48,7 +48,7 @@ author_profile: false
 
 {% include podcast-player.html %}
 
-In this episode we talk with the Amina Al Sheriff who works as an AI/ML specialist at Google Cloud. In this fascinating conversation we talk about Aminas journey starting off as a computational linguist to working as a spy- yes you heard that right a SPY, to being an AI/ML specialist. We also talk about AI ethics, AI literacy, when to use GenAI, when NOT to use GenAI, how she keeps up with everything happening in the GenAI space, we also talk about her next fiction book, her secret to generating creative ideas, all this and more - you don’t want to miss this jam packed episode with Amina. Sit back grab your favorite drink and enjoy the show
+In this episode we talk with the Amina Al Sherif who works as an AI/ML specialist at Google Cloud. In this fascinating conversation we talk about Aminas journey starting off as a computational linguist to working as a spy- yes you heard that right a SPY, to being an AI/ML specialist. We also talk about AI ethics, AI literacy, when to use GenAI, when NOT to use GenAI, how she keeps up with everything happening in the GenAI space, we also talk about her next fiction book, her secret to generating creative ideas, all this and more - you don’t want to miss this jam packed episode with Amina. Sit back grab your favorite drink and enjoy the show
 
 
  **Amina's background and her journey (02:02)**
@@ -78,7 +78,7 @@ In this episode we talk with the Amina Al Sheriff who works as an AI/ML speciali
 
 
 
-LinkedIn - [Amina Al Sheriff](https://www.linkedin.com/in/amina-al-sherif/)
+LinkedIn - [Amina Al Sherif](https://www.linkedin.com/in/amina-al-sherif/)
 
 Amina's books - [her own bookstore](https://aminaalsherif.camp/books-1) or [Amazon](https://www.amazon.com/Nadiri-Amina-Al-Sherif/dp/168513324X/)
 
