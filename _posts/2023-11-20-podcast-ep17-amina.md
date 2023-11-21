@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "17- Amina Al Sheriff – AI/ML Specialist @Google / Author/ Spy /Computational Linguist"
-tagline: "Cloud Solution Architect podcast"
+tagline: "cloud-monk podcast"
 sidebar:
   - title: "Amina Al Sheriff"
     image: /assets/blogposts/podcastimages/amina.png
