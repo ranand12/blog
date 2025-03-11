@@ -8,9 +8,12 @@ description: "Google's Unified GenAI SDK: A Hands-on Guide"
 categories:
   - blog
 tags:
-  - azure
-  - iaac
-  - arm
+  - google
+  - genai
+  - gemini
+  - sdk
+  - python
+  - unified
 excerpt: "Google's Unified GenAI SDK: A Hands-on Guide"
 permalink: "blog/genaisdk"
 classes: wide
@@ -25,12 +28,16 @@ header:
 
 ## Introduction
 
-> If you prefer learning visually here is a YouTube Video I created for the same article {% include video id="8vLo1G6jqDA" provider="youtube" %} anand
+> If you prefer learning visually here is a YouTube Video I created for the same article {% include video id="8vLo1G6jqDA" provider="youtube" %} 
 
 
 If you've been working with Google's Generative AI model Gemini, you might have encountered a frustrating challenge: using different client libraries for the Gemini Developer API and the enterprise version on Vertex AI. While these libraries were similar, they weren't interchangeable, meaning that moving from experimentation to production required code rewrites.
 
-Google's new unified GenAI SDK solves this problem by providing a single library that works seamlessly with both Gemini 2 and 1.5, across both developer and enterprise environments. In this guide, we'll explore three key methods for leveraging this SDK:
+Google's new unified GenAI SDK solves this problem by providing a single library that works seamlessly with both Gemini 2 and 1.5, across both developer and enterprise environments. 
+
+![Alt text for the image](assets/blogposts/genai/genaisplit.png)
+
+In this guide, we'll explore three key methods for leveraging this SDK:
 
 1. Generate content
 2. Generate streaming content
