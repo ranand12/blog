@@ -35,7 +35,7 @@ If you've been working with Google's Generative AI model Gemini, you might have 
 
 Google's new unified GenAI SDK solves this problem by providing a single library that works seamlessly with both Gemini 2 and 1.5, across both developer and enterprise environments. 
 
-![Alt text for the image](assets/blogposts/genai/genaisplit.png)
+![Alt text for the image](/assets/blogposts/genai/genaisplit.png)
 
 In this guide, we'll explore three key methods for leveraging this SDK:
 
@@ -43,7 +43,7 @@ In this guide, we'll explore three key methods for leveraging this SDK:
 2. Generate streaming content
 3. Chat client
 
-![Alt text for the image](assets/blogposts/genai/pythonclient.png)
+![Alt text for the image](/assets/blogposts/genai/pythonclient.png)
 
 Let's dive in and see how this unified SDK simplifies working with Google's generative AI capabilities.
 
