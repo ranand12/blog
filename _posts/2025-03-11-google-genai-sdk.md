@@ -23,12 +23,11 @@ header:
   teaser: /assets/blogposts/genai/genai.png
 ---
 
-
 # Google's Unified GenAI SDK: A Hands-on Guide
 
 ## Introduction
 
-> If you prefer learning visually here is a YouTube Video I created for the same article {% include video id="8vLo1G6jqDA" provider="youtube" %} 
+> If you prefer learning visually here is a YouTube Video I created for the same article {% include video id="vH2iMV2Y3dI" provider="youtube" %} 
 
 
 If you've been working with Google's Generative AI model Gemini, you might have encountered a frustrating challenge: using different client libraries for the Gemini Developer API and the enterprise version on Vertex AI. While these libraries were similar, they weren't interchangeable, meaning that moving from experimentation to production required code rewrites.
