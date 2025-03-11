@@ -43,6 +43,8 @@ In this guide, we'll explore three key methods for leveraging this SDK:
 2. Generate streaming content
 3. Chat client
 
+![Alt text for the image](assets/blogposts/genai/pythonclient.png)
+
 Let's dive in and see how this unified SDK simplifies working with Google's generative AI capabilities.
 
 ## Getting Started
