@@ -56,9 +56,8 @@ First, let's install the SDK using pip:
 pip install google-generativeai
 ```
 
-### Setting Up Authentication
 
-#### For Developer API
+### For Developer API
 
 If you're using Google Colab, you can find your API key under the secrets section by clicking on "Import key from AI Studio." If you're not using Colab, you can generate a free API key at [aistudio.google.com](https://aistudio.google.com).
 
@@ -81,7 +80,7 @@ display(Markdown(response.text))
 
 ```
 
-#### For Vertex AI (Enterprise)
+### For Vertex AI (Enterprise)
 
 For the enterprise version on Vertex AI, you would use the same code after authenticating to Google Cloud and provide your GCP project ID:
 
