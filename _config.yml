@@ -12,7 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 email: ranand12@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
@@ -24,12 +24,12 @@ search: true
 
 # Site Settings
 locale                   : "en-US"
-title                    : "cloud-monk.com"
+title                    : "Cloud Monk Blog"
 #title: "blog.cloud-monk.com"
-title_separator          : "-"
-subtitle                 : "cloud in plain english"
-name                     : "anand kumar r"
-#description              : "An amazing website."
+title_separator          : "•"
+subtitle                 : "Principal Product Engineer, Tinkerer, Nerd, Trail Explorer"
+name                     : "Cloud Monk"
+description              : "A blog about cloud engineering, product development, and technical exploration"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               :  "ranand12/blog"
@@ -112,22 +112,32 @@ analytics:
 
 # Site Author
 author:
-  name   : "anand kumar r"
-  avatar : "/assets/images/anandpic.png"
-  bio    : "customer engineer @ google"
+  name   : "Cloud Monk"
+  avatar : "/assets/images/profile.jpg"
+  bio    : "Principal Product Engineer, Tinkerer, Nerd, Trail Explorer"
+  location: "Tech Explorer"
   links:
-    - label: "website"
-      icon: "fas fa-fw fa-link"
-      url: "https://www.cloud-monk.com"
-    - label: "twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/ranand12"
-    - label: "github"
+    - label: "Writing"
+      icon: "fas fa-fw fa-pen"
+      url: "/writing"
+    - label: "About"
+      icon: "fas fa-fw fa-user"
+      url: "/about"
+    - label: "Work Style"
+      icon: "fas fa-fw fa-briefcase"
+      url: "/work-style"
+    - label: "Podcast"
+      icon: "fas fa-fw fa-microphone"
+      url: "/podcast"
+    - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/ranand12"
-    - label: "linkedin"
+      url: "https://github.com/cloudmonk"
+    - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/ranand12"
+      url: "https://linkedin.com/in/cloudmonk"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter"
+      url: "https://twitter.com/cloudmonk"
 
 footer:
   links:

@@ -1,19 +1,50 @@
 ---
-layout: archive
+layout: default
 ---
 
-{{ content }}
+<div class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-title">Hi, I'm {{ site.author.name | split: " " | first }} 👋</h1>
+    <p class="hero-subtitle">{{ site.author.bio }}</p>
+    
+    <div class="hero-tags">
+      <span class="tag">Writing</span>
+      <span class="tag">About</span>
+      <span class="tag">Work Style</span>
+      <span class="tag">Podcast</span>
+    </div>
+  </div>
+</div>
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
-
-{% if paginator %}
-  {% assign posts = paginator.posts %}
-{% else %}
-  {% assign posts = site.posts %}
-{% endif %}
-
-{% for post in posts %}
-  {% include archive-single.html %}
-{% endfor %}
-
-{% include paginator.html %}
+<div class="recent-posts">
+  <h2 class="section-title">Recent</h2>
+  
+  <div class="posts-grid">
+    {% for post in site.posts limit:6 %}
+      <article class="post-card">
+        {% if post.header.teaser %}
+          <div class="post-card-image">
+            <img src="{{ post.header.teaser }}" alt="{{ post.title }}">
+          </div>
+        {% endif %}
+        
+        <div class="post-card-content">
+          <div class="post-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+            {% if post.read_time %}
+              <span class="read-time">{{ post.read_time }} min read</span>
+            {% endif %}
+          </div>
+          
+          <h3 class="post-title">
+            <a href="{{ post.url | relative_url }}" rel="permalink">{{ post.title }}</a>
+          </h3>
+          
+          <p class="post-excerpt">
+            {{ post.excerpt | strip_html | truncatewords: 30 }}
+          </p>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</div>
