@@ -8,7 +8,8 @@ excerpt: "aks patching and node pool upgrade azure kubernetes services (aks) exp
 header:
   overlay_color: "#333"
 link: https://www.youtube.com/watch?v=Afl72C-FEMg
-permalink: "videos/aks-taints"
+permalink: "videos/aks-taints/"
+
 header:
   og_image: /assets/blogposts/video/aks-upgrades.gif
   teaser: /assets/blogposts/video/aks-upgrades.gif

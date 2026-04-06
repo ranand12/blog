@@ -1,9 +1,90 @@
 ---
-layout: archive
+layout: default
 ---
 
-{{ content }}
+{% if page.category_type == "blogs" %}
+  {% assign posts = site.posts | where_exp: "post", "post.categories contains 'blog'" | sort: "date" | reverse %}
+{% elsif page.category_type == "videos" %}
+  {% assign posts = site.posts | where_exp: "post", "post.categories contains 'videos'" | sort: "date" | reverse %}
+{% elsif page.category_type == "people" %}
+  {% assign posts = site.posts | where_exp: "post", "post.file" | sort: "date" | reverse %}
+{% endif %}
 
-<div class="entries-{{ page.entries_layout }}">
-  {% include posts-category.html taxonomy=page.taxonomy type=page.entries_layout %}
+<div class="post-nav">
+  <a href="{{ '/' | relative_url }}" class="back-link">&larr; home</a>
+</div>
+
+<div class="category-page">
+  <h1 class="page-title">{{ page.title }}</h1>
+  {% if page.subtitle %}
+    <p class="page-subtitle">{{ page.subtitle }}</p>
+  {% endif %}
+
+  {% if page.category_type == "blogs" %}
+    <!-- Blogs: year-grouped text list (philschmid style) -->
+    {% assign grouped = posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+    <div class="blog-list">
+      {% for group in grouped %}
+        <div class="blog-year-group">
+          <div class="blog-year-label">{{ group.name }}</div>
+          <div class="blog-year-posts">
+            {% for post in group.items %}
+              <a href="{{ post.url | relative_url }}" class="blog-item">
+                <div class="blog-item-title">{{ post.title }}</div>
+                <div class="blog-item-meta">
+                  {{ post.date | date: "%B %Y" }}
+                  {% if post.tags.size > 0 %}
+                    <span class="blog-item-sep">&mdash;</span>
+                    <span class="blog-item-tags">{{ post.tags | join: ", " }}</span>
+                  {% endif %}
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  {% elsif page.category_type == "videos" %}
+    <!-- Videos: thumbnail grid -->
+    <div class="thumb-grid">
+      {% for post in posts %}
+        <a href="{{ post.link | default: post.url }}" class="thumb-card" {% if post.link %}target="_blank" rel="noopener"{% endif %}>
+          {% if post.header.teaser %}
+            <div class="thumb-image">
+              <img src="{{ post.header.teaser | relative_url }}" alt="{{ post.title }}" loading="lazy">
+            </div>
+          {% endif %}
+          <div class="thumb-body">
+            <div class="thumb-title">{{ post.title }}</div>
+            <div class="thumb-date">{{ post.date | date: "%Y" }}</div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+
+  {% elsif page.category_type == "people" %}
+    <!-- People: thumbnail grid with guest info -->
+    <div class="thumb-grid">
+      {% for post in posts %}
+        <a href="{{ post.url | relative_url }}" class="thumb-card">
+          {% if post.header.teaser %}
+            <div class="thumb-image">
+              <img src="{{ post.header.teaser | relative_url }}" alt="{{ post.title }}" loading="lazy">
+            </div>
+          {% endif %}
+          <div class="thumb-body">
+            {% if post.sidebar[0].title %}
+              <div class="thumb-title">{{ post.sidebar[0].title }}</div>
+              {% if post.sidebar[0].text %}
+                <div class="thumb-role">{{ post.sidebar[0].text }}</div>
+              {% endif %}
+            {% else %}
+              <div class="thumb-title">{{ post.title }}</div>
+            {% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
 </div>

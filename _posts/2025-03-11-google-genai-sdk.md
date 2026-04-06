@@ -15,7 +15,8 @@ tags:
   - python
   - unified
 excerpt: "Google's Unified GenAI SDK: A Hands-on Guide"
-permalink: "blog/genaisdk"
+permalink: "blog/genaisdk/"
+
 classes: wide
 header:
   overlay_color: "#333"

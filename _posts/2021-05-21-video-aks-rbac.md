@@ -8,7 +8,8 @@ excerpt: "aks integration with azure ad explained in plain english - azure rbac,
 header:
   overlay_color: "#333"
 link: https://youtu.be/ABbJWP6TToc
-permalink: "videos/aks-rbac"
+permalink: "videos/aks-rbac/"
+
 header:
   og_image: /assets/blogposts/video/rbac.gif
   teaser: /assets/blogposts/video/rbac.gif

@@ -17,7 +17,8 @@ header:
 toc: true
 toc_sticky: true
 toc_label: "Linux for the Windows folks"
-permalink: "blog/linux-for-windows-folks"
+permalink: "blog/linux-for-windows-folks/"
+
 ---
 
 

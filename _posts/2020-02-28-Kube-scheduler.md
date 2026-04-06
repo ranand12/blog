@@ -12,8 +12,8 @@ header:
   og_image: /assets/blogposts/kube-scheduler/podaffinity.png
   teaser: /assets/blogposts/kube-scheduler/podaffinity.png
   overlay_color: "#333"
-permalink: /blog/kube-scheduler
-  
+permalink: /blog/kube-scheduler/
+
 ---
 In Kubernetes pod is the smallest deployable unit of workload. So the obvious question : 
 

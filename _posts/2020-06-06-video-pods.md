@@ -8,7 +8,8 @@ excerpt: "pods explained in plain english - #1 of kubernetes explained in plain 
 header:
   overlay_color: "#333"
 link: https://www.youtube.com/watch?v=lBepFNjBW_U
-permalink: "videos/pods"
+permalink: "videos/pods/"
+
 header:
   og_image: /assets/blogposts/video/pods.png
   teaser: /assets/blogposts/video/pods.png

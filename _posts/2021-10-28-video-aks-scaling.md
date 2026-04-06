@@ -8,7 +8,8 @@ excerpt: "scaling an aks (azure kubernetes services) cluster explained in plain 
 header:
   overlay_color: "#333"
 link: https://www.youtube.com/watch?v=HGUQW8fCBz8 
-permalink: "videos/aks-scaling"
+permalink: "videos/aks-scaling/"
+
 header:
   og_image: /assets/blogposts/video/scaling.gif
   teaser: /assets/blogposts/video/scaling.gif

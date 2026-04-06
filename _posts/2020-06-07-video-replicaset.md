@@ -8,7 +8,8 @@ excerpt: "replica sets explained in plain english - #2 of kubernetes explained i
 header:
   overlay_color: "#333"
 link: https://www.youtube.com/watch?v=UIVtDHaCSZ8
-permalink: "videos/rs"
+permalink: "videos/rs/"
+
 header:
   og_image: /assets/blogposts/video/rs.png
   teaser: /assets/blogposts/video/rs.png

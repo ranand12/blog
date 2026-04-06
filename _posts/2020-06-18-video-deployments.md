@@ -8,7 +8,8 @@ excerpt: "deployments sets explained in plain english - #3 of kubernetes explain
 header:
   overlay_color: "#333"
 link: https://www.youtube.com/watch?v=auggWZKoB3A
-permalink: "videos/rs"
+permalink: "videos/rs/"
+
 header:
   og_image: /assets/blogposts/video/deploy.png
   teaser: /assets/blogposts/video/deploy.png

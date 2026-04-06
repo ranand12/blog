@@ -8,7 +8,8 @@ excerpt: "azure kubernetes services (aks) node pools explained in plain english"
 header:
   overlay_color: "#333"
 link: https://www.youtube.com/watch?v=45UxnRj11_g 
-permalink: "videos/aks-nodepools"
+permalink: "videos/aks-nodepools/"
+
 header:
   og_image: /assets/blogposts/video/nodepool-p1.png
   teaser: /assets/blogposts/video/nodepool-p1.png

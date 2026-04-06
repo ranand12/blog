@@ -8,7 +8,8 @@ excerpt: "pv, pvc and storage classes explained in plain english"
 header:
   overlay_color: "#333"
 link: https://youtu.be/ggIEe8wPGJM 
-permalink: "videos/aks-pv"
+permalink: "videos/aks-pv/"
+
 header:
   og_image: /assets/blogposts/video/sc.gif
   teaser: /assets/blogposts/video/sc.gif
