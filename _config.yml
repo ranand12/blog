@@ -53,9 +53,3 @@ defaults:
       type: pages
     values:
       layout: default
-
-# HTML Compression
-compress_html:
-  clippings: all
-  ignore:
-    envs: development
