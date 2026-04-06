@@ -1,0 +1,62 @@
+# Site Settings
+title: "cloud-monk"
+description: "cloud in plain english"
+url: "https://www.cloud-monk.com"
+baseurl: ""
+repository: "ranand12/blog"
+
+# Author
+author:
+  name: "anand kumar r"
+  bio: "customer engineer @ google"
+  email: "ranand12@gmail.com"
+  twitter: "ranand12"
+  github: "ranand12"
+  linkedin: "ranand12"
+
+# Build
+markdown: kramdown
+permalink: /:categories/:title/
+paginate: false
+
+# Reading Files
+include:
+  - _pages
+exclude:
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - package.json
+  - package-lock.json
+  - README.md
+  - docs
+
+keep_files:
+  - .git
+
+encoding: "utf-8"
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: default
+
+# HTML Compression
+compress_html:
+  clippings: all
+  ignore:
+    envs: development

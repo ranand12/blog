@@ -1,0 +1,6 @@
+# Add your tools here. Each tool has: name, role, description, url (optional).
+# Example:
+# - name: "My CLI Tool"
+#   role: "Creator"
+#   description: "A command-line utility for automating cloud tasks."
+#   url: "https://github.com/ranand12/my-tool"
