@@ -418,8 +418,10 @@ main {
 
 .tool-links {
   display: flex;
-  gap: 16px;
+  gap: 24px;
   margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-light);
 }
 
 .tool-link {

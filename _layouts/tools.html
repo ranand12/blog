@@ -27,7 +27,13 @@ layout: default
             {% if tool.link %}
               <a href="{{ tool.link }}" target="_blank" rel="noopener" class="tool-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                demo
+                live demo
+              </a>
+            {% endif %}
+            {% if tool.video %}
+              <a href="{{ tool.video }}" target="_blank" rel="noopener" class="tool-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                video
               </a>
             {% endif %}
             {% if tool.source %}
