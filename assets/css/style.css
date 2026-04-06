@@ -254,7 +254,7 @@ main {
   margin-bottom: 32px;
 }
 
-/* --- Blog List (philschmid style) --- */
+/* --- Blog List --- */
 .blog-list {
   margin-top: 32px;
 }
@@ -373,7 +373,7 @@ main {
   margin-top: 2px;
 }
 
-/* --- Tools Grid (philschmid/projects style) --- */
+/* --- Tools Grid --- */
 .tools-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

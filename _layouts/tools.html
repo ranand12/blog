@@ -12,10 +12,10 @@ layout: default
     <p class="page-subtitle">{{ page.subtitle }}</p>
   {% endif %}
 
-  {% if site.data.tools.size > 0 %}
+  {% if site.tools.size > 0 %}
     <div class="tools-grid">
-      {% for tool in site.data.tools %}
-        <{% if tool.url %}a href="{{ tool.url }}" target="_blank" rel="noopener"{% else %}div{% endif %} class="tool-card">
+      {% for tool in site.tools %}
+        <{% if tool.link %}a href="{{ tool.link }}" target="_blank" rel="noopener"{% else %}div{% endif %} class="tool-card">
           <div class="tool-name">{{ tool.name }}</div>
           {% if tool.role %}
             <div class="tool-role">{{ tool.role }}</div>
@@ -23,7 +23,7 @@ layout: default
           {% if tool.description %}
             <div class="tool-desc">{{ tool.description }}</div>
           {% endif %}
-        </{% if tool.url %}a{% else %}div{% endif %}>
+        </{% if tool.link %}a{% else %}div{% endif %}>
       {% endfor %}
     </div>
   {% else %}

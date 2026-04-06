@@ -21,7 +21,7 @@ layout: default
   {% endif %}
 
   {% if page.category_type == "blogs" %}
-    <!-- Blogs: year-grouped text list (philschmid style) -->
+    <!-- Blogs: year-grouped text list -->
     {% assign grouped = posts | group_by_exp: "post", "post.date | date: '%Y'" %}
     <div class="blog-list">
       {% for group in grouped %}

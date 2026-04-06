@@ -8,7 +8,10 @@ layout: default
   <div class="home-grid">
     <a href="{{ '/tools/' | relative_url }}" class="home-card">
       <div class="home-card-title">Tools</div>
-      <div class="home-card-count">coming soon</div>
+      <div class="home-card-count">
+        {% assign tool_count = site.tools | size %}
+        {% if tool_count > 0 %}{{ tool_count }} tools{% else %}coming soon{% endif %}
+      </div>
     </a>
     <a href="{{ '/videos/' | relative_url }}" class="home-card">
       <div class="home-card-title">Videos</div>

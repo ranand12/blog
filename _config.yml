@@ -36,6 +36,11 @@ keep_files:
 
 encoding: "utf-8"
 
+# Collections
+collections:
+  tools:
+    output: false
+
 # Plugins
 plugins:
   - jekyll-sitemap

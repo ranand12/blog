@@ -193,7 +193,7 @@ Same thumbnail grid as Videos — 2 columns.
 - Each card links to the podcast post page (with audio player if applicable)
 - Sorted by episode number, newest first
 
-### Blogs Page (`/blogs/`) — philschmid.de inspired
+### Blogs Page (`/blogs/`)
 
 Two-column text layout — year label on left, posts on right.
 
@@ -231,7 +231,7 @@ Two-column text layout — year label on left, posts on right.
 - Each post links to full content on-site
 - Tags shown in muted text after em-dash
 
-### Tools Page (`/tools/`) — philschmid.de/projects inspired
+### Tools Page (`/tools/`)
 
 Card grid — 2 columns on desktop, 1 on mobile.
 
