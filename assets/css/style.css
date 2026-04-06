@@ -387,7 +387,8 @@ main {
   padding: 20px;
   text-decoration: none;
   transition: border-color 0.2s;
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
 .tool-card:hover {
@@ -412,6 +413,27 @@ main {
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.tool-links {
+  display: flex;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.tool-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.tool-link:hover {
+  color: var(--text);
+  opacity: 1;
 }
 
 .tools-empty {

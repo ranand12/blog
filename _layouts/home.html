@@ -7,28 +7,28 @@ layout: default
 
   <div class="home-grid">
     <a href="{{ '/tools/' | relative_url }}" class="home-card">
-      <div class="home-card-title">Tools</div>
+      <div class="home-card-title">tools</div>
       <div class="home-card-count">
         {% assign tool_count = site.tools | size %}
         {% if tool_count > 0 %}{{ tool_count }} tools{% else %}coming soon{% endif %}
       </div>
     </a>
     <a href="{{ '/videos/' | relative_url }}" class="home-card">
-      <div class="home-card-title">Videos</div>
+      <div class="home-card-title">videos</div>
       <div class="home-card-count">
         {% assign video_count = site.posts | where_exp: "post", "post.categories contains 'videos'" | size %}
         {{ video_count }} videos
       </div>
     </a>
     <a href="{{ '/blogs/' | relative_url }}" class="home-card">
-      <div class="home-card-title">Blogs</div>
+      <div class="home-card-title">blogs</div>
       <div class="home-card-count">
         {% assign blog_count = site.posts | where_exp: "post", "post.categories contains 'blog'" | size %}
         {{ blog_count }} posts
       </div>
     </a>
     <a href="{{ '/people/' | relative_url }}" class="home-card">
-      <div class="home-card-title">People</div>
+      <div class="home-card-title">people</div>
       <div class="home-card-count">
         {% assign people_count = site.posts | where_exp: "post", "post.file" | size %}
         {{ people_count }} conversations
