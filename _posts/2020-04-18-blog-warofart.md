@@ -11,8 +11,8 @@ header:
   og_image: /assets/blogposts/warofart/book.jpg
   teaser: /assets/blogposts/warofart/book.jpg
   overlay_color: "#333"
-permalink: /blog/warofart
-  
+permalink: /blog/warofart/
+
 ---
 
 My book notes on "War of Art" - Hard hitting book and reminder to DoTheWork and defeat resistance. 
@@ -22,6 +22,8 @@ My book notes on "War of Art" - Hard hitting book and reminder to DoTheWork and 
 [Book link](https://www.amazon.com/dp/0446691437)
 
 
+
+## What Is Resistance
 
 There’s a secret that real writers know that wannabe writers don’t, and the secret is this: It’s not the writing part that’s hard. What’s hard is sitting down to write.  What keeps us from sitting down is Resistance.
 
@@ -75,6 +77,8 @@ We’re wrong if we think we’re the only ones struggling with Resistance. Ever
 
 Henry Fonda was still throwing up before each stage performance, even when he was seventy-five. In other words, fear doesn’t go away.
 
+## How Resistance Works
+
 RESISTANCE PLAYS FOR KEEPS  Resistance’s goal is not to wound or disable. Resistance aims to kill. Its target is the epicenter of our being: our genius, our soul, the unique and priceless gift we were put on earth to give and that no one else has but us.
 
  
@@ -119,6 +123,8 @@ And if we’re the supported partner, shouldn’t we step out from the glow of o
 
  
 
+## What Resistance Feels Like
+
 What does Resistance feel like?  First, unhappiness. We feel like hell. A low-grade misery pervades everything. We’re bored, we’re restless. We can’t get no satisfaction. There’s guilt but we can’t put our finger on the source. We want to go back to bed; we want to get up and party. We feel unloved and unlovable. We’re disgusted. We hate our lives. We hate ourselves.
 
  
@@ -142,6 +148,8 @@ Remember our rule of thumb: The more scared we are of a work or calling, the mor
 So if you’re paralyzed with fear, it’s a good sign. It shows you what you have to do.
 
  
+
+## Turning Pro
 
 The professional concentrates on the work and allows rewards to come or not come, whatever they like.
 
@@ -287,6 +295,8 @@ The ancient Spartans schooled themselves to regard the enemy, any enemy, as name
 
  
 
+## The Muse and the Higher Realm
+
 The next few chapters are going to be about those invisible psychic forces that support and sustain us in our journey toward ourselves. I plan on using terms like muses and angels.  Does that make you uncomfortable?  If it does, you have my permission to think of angels in the abstract. Consider these forces as being impersonal as gravity. Maybe they are. It’s not hard to believe, is it, that a force exists in every grain and seed to make it grow? Or that in every kitten or colt is an instinct that impels it to run and play and learn.
 
  
@@ -370,6 +380,8 @@ This is why artists are modest. They know they’re not doing the work; they’r
 Of course, this is nonsense.We’re all creative.We all have the same psyche. The same everyday miracles are happening in all our heads day by day, minute by minute.
 
  
+
+## Territory vs Hierarchy
 
 Faced with our imminent extinction, Tom Laughlin believes, all assumptions are called into question. What does our life mean? Have we lived it right? Are there vital acts we’ve left unperformed, crucial words unspoken? Is it too late?
 

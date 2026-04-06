@@ -8,7 +8,8 @@ tags:
   - blog
   - non-tech
   - health
-permalink: "blog/bloginvesthealth"
+permalink: "blog/bloginvesthealth/"
+
 layout: single
 excerpt: "Blogging, Investing and Health - 5 things they ALL have in common"
 header:
@@ -25,7 +26,7 @@ What does blogging (or creating any online content), investing, and physical hea
 
 
 
-**<u>Analysis Paralysis</u>** 
+## Analysis Paralysis 
 
 ![analysis](/assets/blogposts/bloginvest/1analysis.gif){: .align-center}
 
@@ -34,7 +35,7 @@ What does blogging (or creating any online content), investing, and physical hea
 3. **Physical health** - Should I join this fancy boutique gym?  soul cycle? orange theory fitness? should I have a personal trainer? It is more important to start - Start simple - even if it means going out for a run or just using a pair of dumbbells'
 
 
-**<u>Ignore Setbacks</u>**
+## Ignore Setbacks
 
 ![ignore](/assets/blogposts/bloginvest/ignore.gif){: .align-center}
 
@@ -43,7 +44,7 @@ What does blogging (or creating any online content), investing, and physical hea
 3. **Physical health** - You start doing strength training for a week and suddenly your arms go sore - what do you do ? Quit - because that's easy. Ignore the setback. 
 
 
-**<u>Consistency over intensity</u>** 
+## Consistency Over Intensity 
 
 ![tenor (1)](/assets/blogposts/bloginvest/consistency.gif){: .align-center}
 
@@ -51,7 +52,7 @@ What does blogging (or creating any online content), investing, and physical hea
 2. **Creating online content** - Like I said earlier, don't be like me ie create the first post in 2012 and wait another 8 years to produce the next one. [Be consistent, show up.](https://www.hanselman.com/blog/11EssentialCharacteristicsForBeingAGoodTechnicalAdvocateOrInterviewer.aspx) 
 3. **Physical health** - You don't build good health by doing workouts for 3 hours/day for one month and nothing for the next 11 months. Regular consistent manageable workouts are what lead to good health.
 
-**<u>But I'm not there yet</u>** 
+## But I'm Not There Yet 
 
 ![tenor](/assets/blogposts/bloginvest/tenor.gif){: .align-center}
 
@@ -60,7 +61,7 @@ What does blogging (or creating any online content), investing, and physical hea
 3. **Physical health** - "But I'm overweight or too weak" - That's precisely the reason to start. Start BECAUSE you are not there yet. 
 
 
-**<u>Process is the reward</u>** 
+## Process Is the Reward 
 
 ![swimming](/assets/blogposts/bloginvest/swimming.gif){: .align-center}
 

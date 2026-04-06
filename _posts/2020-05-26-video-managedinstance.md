@@ -8,7 +8,8 @@ excerpt: "azure managed identities - explained in plain english in 5 mins with a
 header:
   overlay_color: "#333"
 link: https://www.youtube.com/watch?v=1EoiGnQq14Y
-permalink: "videos/managedinstance"
+permalink: "videos/managedinstance/"
+
 header:
   og_image: /assets/blogposts/video/managedinstance.png
   teaser: /assets/blogposts/video/managedinstance.png

@@ -8,7 +8,8 @@ excerpt: "aks (azure kubernetes service) networking model- cni explained in plai
 header:
   overlay_color: "#333"
 link: https://www.youtube.com/watch?v=A-eH_fu-pXg
-permalink: "videos/cni"
+permalink: "videos/cni/"
+
 header:
   og_image: /assets/blogposts/video/cni.png
   teaser: /assets/blogposts/video/cni.png

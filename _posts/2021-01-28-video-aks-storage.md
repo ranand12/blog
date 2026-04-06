@@ -8,7 +8,8 @@ excerpt: "aks storage - volumes explained in plain english in less than 5 minute
 header:
   overlay_color: "#333"
 link: https://www.youtube.com/watch?v=o7UTiRTfk-M
-permalink: "videos/aks-volumes"
+permalink: "videos/aks-volumes/"
+
 header:
   og_image: /assets/blogposts/video/volumes.png
   teaser: /assets/blogposts/video/volumes.png

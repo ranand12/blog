@@ -8,7 +8,8 @@ excerpt: "aks (azure kubernetes service) networking model- kubenet explained in 
 header:
   overlay_color: "#333"
 link: https://www.youtube.com/watch?v=lwJDyJUVnxs
-permalink: "videos/kubenet"
+permalink: "videos/kubenet/"
+
 header:
   og_image: /assets/blogposts/video/kubenet.png
   teaser: /assets/blogposts/video/kubenet.png

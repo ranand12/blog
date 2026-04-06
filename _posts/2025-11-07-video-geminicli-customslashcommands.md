@@ -9,7 +9,8 @@ excerpt: "A step-by-step guide to creating your own slash commands to automate j
 header:
   overlay_color: "#333"
 link: https://youtu.be/oGfCcVCpGGg
-permalink: "videos/gemini-cli-slash-commands"
+permalink: "videos/gemini-cli-slash-commands/"
+
 header:
   og_image: https://img.youtube.com/vi/oGfCcVCpGGg/maxresdefault.jpg
   teaser: https://img.youtube.com/vi/oGfCcVCpGGg/maxresdefault.jpg

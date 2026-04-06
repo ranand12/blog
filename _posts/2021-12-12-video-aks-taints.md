@@ -8,7 +8,8 @@ excerpt: "taints, tolerations, nodeselector in aks (azure kubernetes services) e
 header:
   overlay_color: "#333"
 link: https://www.youtube.com/watch?v=aGT3UtZoiA0
-permalink: "videos/aks-taints"
+permalink: "videos/aks-taints/"
+
 header:
   og_image: /assets/blogposts/video/taints.png
   teaser: /assets/blogposts/video/taints.png
