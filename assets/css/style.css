@@ -630,7 +630,7 @@ main {
 
 .post-content img {
   border-radius: 6px;
-  margin: 16px 0;
+  margin: 16px auto;
 }
 
 .post-content a {
