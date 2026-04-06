@@ -69,7 +69,7 @@ layout: default
       {% for post in posts %}
         <a href="{{ post.url | relative_url }}" class="thumb-card">
           {% if post.header.teaser %}
-            <div class="thumb-image">
+            <div class="thumb-image thumb-image-people">
               <img src="{{ post.header.teaser | relative_url }}" alt="{{ post.title }}" loading="lazy">
             </div>
           {% endif %}

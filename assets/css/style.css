@@ -350,6 +350,14 @@ main {
   object-fit: cover;
 }
 
+.thumb-image-people {
+  aspect-ratio: 1/1;
+}
+
+.thumb-image-people img {
+  object-position: top;
+}
+
 .thumb-body {
   padding: 12px 14px;
 }
