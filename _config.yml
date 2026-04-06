@@ -17,7 +17,6 @@ author:
 # Build
 markdown: kramdown
 permalink: /:categories/:title/
-paginate: false
 
 # Reading Files
 include:
