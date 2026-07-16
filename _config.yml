@@ -45,9 +45,19 @@ collections:
 plugins:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-seo-tag
+
+# Social sharing
+twitter:
+  username: ranand12
+  card: summary_large_image
 
 # Defaults
 defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/img/og-default.png
   - scope:
       path: ""
       type: posts
