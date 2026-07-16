@@ -204,6 +204,13 @@
 
     sidebar.appendChild(sidebarHeader);
 
+    // Back to cloud-monk.com link
+    var backLink = document.createElement('a');
+    backLink.className = 'gt-sidebar-back';
+    backLink.href = 'https://www.cloud-monk.com';
+    backLink.textContent = '← cloud-monk.com';
+    sidebar.appendChild(backLink);
+
     // Sidebar content
     var content = document.createElement('div');
     content.className = 'gt-sidebar-content';

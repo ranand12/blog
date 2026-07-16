@@ -1,4 +1,4 @@
-/* Shared sidebar navigation - Gemini Tools */
+/* Shared sidebar navigation - Gemini Explorer */
 
 /* Body offset for fixed topbar */
 body {
@@ -193,6 +193,21 @@ body {
 
 .gt-sidebar-close:hover {
     border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-soft);
+}
+
+.gt-sidebar-back {
+    display: block;
+    padding: 10px 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s, background 0.2s;
+}
+
+.gt-sidebar-back:hover {
     color: var(--accent);
     background: var(--accent-soft);
 }
