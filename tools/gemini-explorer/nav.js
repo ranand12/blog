@@ -204,13 +204,6 @@
 
     sidebar.appendChild(sidebarHeader);
 
-    // Back to cloud-monk.com link
-    var backLink = document.createElement('a');
-    backLink.className = 'gt-sidebar-back';
-    backLink.href = 'https://www.cloud-monk.com';
-    backLink.textContent = '← cloud-monk.com';
-    sidebar.appendChild(backLink);
-
     // Sidebar content
     var content = document.createElement('div');
     content.className = 'gt-sidebar-content';
@@ -282,8 +275,15 @@
         });
     });
 
-    // Append search then content (search appears between header and links)
+    // Back to cloud-monk.com link
+    var backLink = document.createElement('a');
+    backLink.className = 'gt-sidebar-back';
+    backLink.href = 'https://www.cloud-monk.com';
+    backLink.textContent = '← cloud-monk.com';
+
+    // Append search, back link, then content
     sidebar.appendChild(sidebarSearch);
+    sidebar.appendChild(backLink);
     sidebar.appendChild(content);
 
     // --- Build Command Palette (Ctrl+K) ---
