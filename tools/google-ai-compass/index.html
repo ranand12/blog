@@ -22,7 +22,7 @@
     --grid: #e1e0d9; --baseline: #c3c2b7;
     --border: rgba(11,11,11,0.10);
     --good: #0ca30c; --warning: #fab219;
-    --p-notebooklm: #2a78d6; --p-aistudio: #008300; --p-agmanager: #e87ba4;
+    --p-gnotebook: #2a78d6; --p-aistudio: #008300; --p-agmanager: #e87ba4;
     --p-agcli: #eda100; --p-agide: #1baf7a; --p-genterprise: #eb6834; --p-gworkspace: #4a3aa7;
   }
   @media (prefers-color-scheme: dark) {
@@ -32,7 +32,7 @@
       --ink-1: #ffffff; --ink-2: #c3c2b7; --ink-3: #898781;
       --grid: #2c2c2a; --baseline: #383835;
       --border: rgba(255,255,255,0.10);
-      --p-notebooklm: #3987e5; --p-aistudio: #008300; --p-agmanager: #d55181;
+      --p-gnotebook: #3987e5; --p-aistudio: #008300; --p-agmanager: #d55181;
       --p-agcli: #c98500; --p-agide: #199e70; --p-genterprise: #d95926; --p-gworkspace: #9085e9;
     }
   }
@@ -42,7 +42,7 @@
     --ink-1: #ffffff; --ink-2: #c3c2b7; --ink-3: #898781;
     --grid: #2c2c2a; --baseline: #383835;
     --border: rgba(255,255,255,0.10);
-    --p-notebooklm: #3987e5; --p-aistudio: #008300; --p-agmanager: #d55181;
+    --p-gnotebook: #3987e5; --p-aistudio: #008300; --p-agmanager: #d55181;
     --p-agcli: #c98500; --p-agide: #199e70; --p-genterprise: #d95926; --p-gworkspace: #9085e9;
   }
   * { box-sizing: border-box; margin: 0; }
@@ -170,7 +170,7 @@
     <h1>Google AI Compass</h1>
     <button id="themeBtn">◐ Theme</button>
   </header>
-  <p class="sub">Find the right Google AI tool for the job. <em style="font-size:11px;">Last refreshed: July 15, 2026</em></p>
+  <p class="sub">Find the right Google AI tool for the job. <em style="font-size:11px;">Last refreshed: July 16, 2026</em></p>
 
   <nav id="tabs">
     <button data-view="helper" class="active">Decision Helper</button>
@@ -217,16 +217,18 @@
 
 <script>
 const PRODUCTS = [
-  { id:"notebooklm", name:"NotebookLM", varName:"--p-notebooklm", tag:"Research assistant",
-    one:"Source-grounded research: answers only from the sources you upload, with citations.",
+  { id:"notebooklm", name:"Gemini Notebook", varName:"--p-gnotebook", tag:"Research assistant (formerly NotebookLM)",
+    one:"Source-grounded research: answers only from the sources you upload, with citations. Renamed from NotebookLM in July 2026.",
     feats:[
       ["Grounded Q&A","Answers strictly from your uploaded sources, with citations; refuses if the answer isn't there."],
-      ["Studio outputs","Audio & Video Overviews (podcasts), reports, quizzes, flashcards, mind maps, slide decks."],
-      ["Deep Research","Finds and adds web sources itself (tiered quotas)."]],
+      ["Studio outputs","Audio & Video Overviews (incl. Cinematic), reports, quizzes, flashcards, mind maps, slide decks (PPTX export), infographics."],
+      ["Code Execution","Each notebook runs in a secure container — generate code for interactive data analysis directly in the tool."],
+      ["Deep Research","Finds and adds web sources itself (tiered quotas)."],
+      ["Cross-app syncing","Notebooks accessible inside the Gemini app and soon in AI Mode in Search."]],
     price:"Free tier → Google AI Plus/Pro/Ultra for higher limits; Enterprise via GCP",
     privacy:"Not used to train models (consumer & enterprise)",
     users:"Researchers, students, analysts, knowledge workers",
-    caveat:"500K-word / 200MB per-source cap applies on every plan." },
+    caveat:"500K-word / 200MB per-source cap applies on every plan. Powered by Gemini 3.5 + Antigravity." },
   { id:"aistudio", name:"AI Studio", varName:"--p-aistudio", tag:"Developer playground",
     one:"Free browser playground + API-key hub for the Gemini API, with prompt-to-app Build mode.",
     feats:[
@@ -292,7 +294,7 @@ const PRODUCTS = [
 /* ---- capability matrix: 0 no, 1 partial, 2 yes, 3 core ---- */
 /* Matrix columns: the three Antigravity surfaces are merged into one column for readability; per-surface differences are stated in the cell notes. */
 const MATRIX_COLS = [
-  { id:"notebooklm", name:"NotebookLM", varName:"--p-notebooklm" },
+  { id:"notebooklm", name:"Gemini Notebook", varName:"--p-gnotebook" },
   { id:"aistudio", name:"AI Studio", varName:"--p-aistudio" },
   { id:"antigravity", name:"Antigravity (Manager · IDE · CLI)", varName:"--p-agmanager" },
   { id:"genterprise", name:"Gemini Enterprise app (GCP)", varName:"--p-genterprise" },
@@ -304,7 +306,7 @@ const CAPS = [
   ["Deep Research (agentic web research)",
     {notebooklm:[2,"Tiered quotas (10/mo free → 200/day Ultra)"], aistudio:[0,""], antigravity:[0,""], genterprise:[2,"Included in the end-user app"], gworkspace:[2,"In the Gemini app; can also search your Workspace data"]}],
   ["Writes / edits code",
-    {notebooklm:[1,"Executes code internally for analysis (June 2026), not a coding tool"], aistudio:[2,"Build mode generates full apps"], antigravity:[3,"Core purpose — delegate tasks (Agent Manager), code interactively (IDE), or work in the terminal (CLI)"], genterprise:[0,"Not in the app — pro-code lives in the separate Agent Platform"], gworkspace:[1,"Canvas light prototyping"]}],
+    {notebooklm:[1,"Code Execution in secure containers for data analysis (July 2026), not a coding tool"], aistudio:[2,"Build mode generates full apps"], antigravity:[3,"Core purpose — delegate tasks (Agent Manager), code interactively (IDE), or work in the terminal (CLI)"], genterprise:[0,"Not in the app — pro-code lives in the separate Agent Platform"], gworkspace:[1,"Canvas light prototyping"]}],
   ["Multiple parallel / async agents",
     {notebooklm:[0,""], aistudio:[0,""], antigravity:[3,"Agent Manager is mission control (groups, subagents, schedules); IDE and CLI run background subagents"], genterprise:[1,"Scheduled/trigger-based no-code agents"], gworkspace:[0,""]}],
   ["Build custom AI agents",
@@ -314,7 +316,7 @@ const CAPS = [
   ["Gemini API access / keys",
     {notebooklm:[0,""], aistudio:[3,"Self-serve keys, playground, code export"], antigravity:[0,"Consumes models; no API-key auth on any tier"], genterprise:[0,"Not in the app — API/SDK access is the separate Agent Platform (Vertex AI lineage)"], gworkspace:[0,""]}],
   ["Audio / Video Overviews (podcasts)",
-    {notebooklm:[3,"Signature feature; Cinematic on paid tiers"], aistudio:[0,""], antigravity:[0,""], genterprise:[2,"Via NotebookLM Enterprise"], gworkspace:[2,"Via bundled enhanced NotebookLM"]}],
+    {notebooklm:[3,"Signature feature; Cinematic Video Overviews on paid tiers"], aistudio:[0,""], antigravity:[0,""], genterprise:[2,"Via Gemini Notebook Enterprise"], gworkspace:[2,"Via bundled enhanced Gemini Notebook"]}],
   ["Media generation (image / video / music)",
     {notebooklm:[1,"Images inside generated outputs"], aistudio:[2,"Veo 3.1, Lyria 3, Nano Banana — paid API tier"], antigravity:[0,""], genterprise:[2,"Image + video generation in the app"], gworkspace:[2,"Slides/Vids image generation"]}],
   ["Data NOT used for training",
@@ -361,7 +363,7 @@ const QUESTIONS = [
     ["Whatever I wire up myself",{aistudio:3,agmanager:2,agcli:2,agide:2,genterprise:1}]]},
 ];
 const WHY = {
-  notebooklm:"Strictly source-grounded answers with citations, plus podcast/video/quiz outputs no other product has.",
+  notebooklm:"Strictly source-grounded answers with citations, plus podcast/video/quiz outputs no other product has. Formerly NotebookLM.",
   aistudio:"Fastest zero-setup way to try Gemini and prototype — for confidential work, link billing for enterprise data-protection (DPA) terms.",
   agmanager:"Built to supervise multiple async coding agents with reviewable plans, walkthroughs, and browser-verified testing.",
   agcli:"The terminal/SSH surface of Antigravity — the official Gemini CLI successor with background subagents and skills.",
@@ -375,9 +377,9 @@ const SCENARIOS = [
   ["\u201CSummarize these 40 PDFs and make a briefing podcast\u201D","notebooklm","Upload the PDFs as sources, ask grounded questions, generate an Audio Overview. No other product does source-cited synthesis + podcast output."],
   ["\u201CHackathon demo of an AI feature by Friday\u201D","aistudio","Build mode: prompt-to-app with a full-stack runtime, deploy to Cloud Run. Free, zero setup."],
   ["\u201CFix this bug while I keep building the feature\u201D","agmanager","Spawn an agent on the bug in a worktree via the Agent Manager while you stay in the IDE; review its Walkthrough artifact when done."],
-  ["\u201CEmployees keep pasting contracts into a public chatbot\u201D","gworkspace","Roll out the bundled, governed Gemini app + NotebookLM; step up to Gemini Enterprise if they also need M365/Salesforce search."],
+  ["\u201CEmployees keep pasting contracts into a public chatbot\u201D","gworkspace","Roll out the bundled, governed Gemini app + Gemini Notebook; step up to Gemini Enterprise if they also need M365/Salesforce search."],
   ["\u201CHR agent answering onboarding questions from SharePoint\u201D","genterprise","SharePoint connector + no-code Agent Designer; permission-aware answers with IT governance."],
-  ["\u201CCompetitive analysis report by tomorrow\u201D","gworkspace","Gemini app Deep Research for the cited report; move findings into NotebookLM if it becomes an ongoing research base."],
+  ["\u201CCompetitive analysis report by tomorrow\u201D","gworkspace","Gemini app Deep Research for the cited report; move findings into Gemini Notebook if it becomes an ongoing research base."],
   ["\u201CWire my coding agent to Jira, Postgres, and internal APIs via MCP\u201D","agide","Antigravity: add servers once in ~/.gemini/config/mcp_config.json (or the IDE's MCP Store) and all three surfaces — IDE, Agent Manager, CLI — see them. Local stdio and remote HTTP both work. Caveat: OAuth re-auth per surface (practitioner-reported)."],
 ];
 
@@ -391,8 +393,8 @@ const chip = (p,small) => `<span class="chip"${small?' style="font-size:12px"':'
 const TIER_INFO = {
   notebooklm: {
     free:{ok:true, cond:"Fully usable free with a personal Google account: 100 notebooks, 50 sources each, 50 chats/day, 3 Audio/Video Overviews/day, Deep Research 10/month. 500K-word/200MB per-source cap. Data not used for training."},
-    gcp:{ok:true, cond:"NotebookLM Enterprise / via Gemini Enterprise plans (admin-assigned): \u201C5X or more\u201D artifact limits, Advanced Sharing, VPC-SC + IAM; data stays in your GCP project with data-region compliance.",
-      caveat:"The 500K-word / 200MB per-source cap is a NotebookLM product limit, not a GCP quota — it applies on all tiers, and no official page says Enterprise raises it (Enterprise's \u201C5X\u201D applies to artifact limits)."}},
+    gcp:{ok:true, cond:"Gemini Notebook Enterprise / via Gemini Enterprise plans (admin-assigned): \u201C5X or more\u201D artifact limits, Advanced Sharing, VPC-SC + IAM; data stays in your GCP project with data-region compliance.",
+      caveat:"The 500K-word / 200MB per-source cap is a Gemini Notebook product limit, not a GCP quota — it applies on all tiers, and no official page says Enterprise raises it (Enterprise's \u201C5X\u201D applies to artifact limits)."}},
   aistudio: {
     free:{ok:true, cond:"Studio itself is free; free API key needs no billing. Note: prompts/outputs may be used to improve products, incl. human review (EEA/CH/UK excepted) — best for non-sensitive work. No Veo/Lyria/image-gen/Batch/caching/Computer Use; free-tier rate caps."},
     gcp:{ok:true, cond:"Two steps up: (1) link a Cloud Billing account to the key's project — data terms flip to no-training/DPA, unlocks media gen + Batch + caching, spend-tier limits; (2) full Vertex / Agent Platform — IAM/service accounts (no API keys), regions, VPC-SC/CMEK, Provisioned Throughput.",
