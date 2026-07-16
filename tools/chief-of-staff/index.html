@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtual AI Chief of Staff on Google Antigravity</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto+Mono&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<style>
+:root{
+  --blue:#4285F4;--red:#EA4335;--yellow:#FBBC04;--green:#34A853;
+  --dark-blue:#185ABC;--text:#202124;--secondary:#5F6368;--border:#DADCE0;
+  --surface:#F8F9FA;--blue-light:#D2E3FC;--blue-600:#1967D2;
+  --font:'Google Sans',Arial,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);color:var(--text);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:-0.15em}
+.band{display:flex;height:6px}
+.band div{flex:1}
+.band .b1{background:var(--blue)}.band .b2{background:var(--red)}
+.band .b3{background:var(--yellow)}.band .b4{background:var(--green)}
+.wrap{max-width:980px;margin:0 auto;padding:0 32px}
+header{padding:56px 0 40px;border-bottom:1px solid var(--border)}
+.logo{font-size:15px;font-weight:500;margin-bottom:28px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-600);margin-bottom:12px}
+h1{font-size:2.4rem;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+h1 strong{color:var(--blue)}
+.sub{color:var(--secondary);font-size:1.05rem;margin-top:14px;max-width:720px}
+.meta{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.chip{font-size:.78rem;font-weight:500;padding:5px 14px;border-radius:100px;background:var(--surface);border:1px solid var(--border);color:var(--secondary)}
+.chip.blue{background:var(--blue-light);border-color:transparent;color:var(--blue-600)}
+section{padding:48px 0;border-bottom:1px solid var(--border)}
+section:last-of-type{border-bottom:none}
+h2{font-size:1.5rem;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.numchip{width:32px;height:32px;border-radius:50%;color:#fff;font-size:.85rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+p{color:var(--text);max-width:820px}
+.muted{color:var(--secondary)}
+table{width:100%;border-collapse:collapse;margin-top:8px;font-size:.92rem}
+th{background:var(--blue);color:#fff;text-align:left;padding:12px 16px;font-weight:500}
+td{padding:12px 16px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:nth-child(even) td{background:var(--surface)}
+code{font-family:'Roboto Mono',monospace;font-size:.85em;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1px 6px}
+th code{background:rgba(255,255,255,.15);border:none;color:#fff}
+.ok{color:var(--green);font-weight:500;white-space:nowrap}
+.ok .material-symbols-outlined{font-size:18px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;border-top:3px solid var(--blue)}
+.card.red{border-top-color:var(--red)}.card.yellow{border-top-color:var(--yellow)}
+.card.green{border-top-color:var(--green)}.card.dblue{border-top-color:var(--dark-blue)}
+.card.purple{border-top-color:#8E24AA}
+.card h3{font-size:1rem;font-weight:700;margin:10px 0 6px}
+.card p{font-size:.88rem;color:var(--secondary)}
+.badge{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff}
+.badge .material-symbols-outlined{font-size:22px}
+.bg-blue{background:var(--blue)}.bg-red{background:var(--red)}
+.bg-yellow{background:var(--yellow);color:var(--text)}.bg-green{background:var(--green)}
+.bg-dblue{background:var(--dark-blue)}.bg-purple{background:#8E24AA}
+.callout{display:flex;gap:14px;background:var(--surface);border-left:4px solid var(--yellow);border-radius:0 10px 10px 0;padding:18px 20px;margin-top:24px}
+.callout .material-symbols-outlined{color:var(--yellow);flex-shrink:0}
+.callout p{font-size:.9rem;color:var(--secondary)}
+.arch{margin-top:24px;border:1px solid var(--border);border-radius:12px;padding:20px;background:#fff}
+.arch img{width:100%;height:auto;display:block;border-radius:6px}
+.figcap{font-size:.8rem;color:var(--secondary);margin-top:12px;text-align:center}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.phase{border:1px solid var(--border);border-radius:12px;padding:22px;position:relative}
+.phase .ph-label{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.phase .ph-weeks{font-size:1.35rem;font-weight:700;margin:6px 0 12px}
+.phase ul{padding-left:18px;font-size:.86rem;color:var(--secondary)}
+.phase li{margin-bottom:6px}
+.phase.p1{border-top:4px solid var(--blue)}.phase.p1 .ph-label{color:var(--blue-600)}
+.phase.p2{border-top:4px solid var(--red)}.phase.p2 .ph-label{color:var(--red)}
+.phase.p3{border-top:4px solid var(--green)}.phase.p3 .ph-label{color:var(--green)}
+.refs{list-style:none;margin-top:8px}
+.refs li{padding:10px 0;border-bottom:1px solid var(--border);font-size:.92rem;display:flex;align-items:center;gap:10px}
+.refs li:last-child{border-bottom:none}
+.refs a{color:var(--blue-600);text-decoration:none;font-weight:500}
+.refs a:hover{text-decoration:underline}
+.refs .material-symbols-outlined{font-size:18px;color:var(--secondary)}
+footer{padding:36px 0 28px;color:var(--secondary);font-size:.82rem}
+@media(max-width:760px){.cards,.timeline{grid-template-columns:1fr}h1{font-size:1.8rem}.wrap{padding:0 20px}}
+</style>
+</head>
+<body>
+
+<div class="band"><div class="b1"></div><div class="b2"></div><div class="b3"></div><div class="b4"></div></div>
+
+<header>
+  <div class="wrap">
+    <div class="logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+    <div class="eyebrow">Technical Overview</div>
+    <h1>Virtual AI <strong>Chief of Staff</strong><br>on Google Antigravity</h1>
+    <p class="sub">One conversation in — every affected Google Doc updated, in the right section and format, with review before anything is written.</p>
+    <div class="meta">
+      <span class="chip">Google Antigravity</span>
+      <span class="chip">Google Workspace CLI (gws)</span>
+      <span class="chip">Google Docs API</span>
+      <span class="chip">Customer GCP project</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2><span class="numchip bg-blue">01</span>Problem Statement</h2>
+    <p>A single conversation — a meeting, a voice memo, a braindump — often contains information that belongs in several different Google Docs: project notes, 1:1 docs, decision logs, task trackers. Distributing that information is currently a manual step.</p>
+    <p class="muted" style="margin-top:12px">The goal: an agent that takes one conversation as input, determines which docs are affected, and updates each one in the appropriate section and format — with the user reviewing changes before they are written. Assumes a Google Workspace organization with a GCP project; all OAuth clients, API enablement, and agent inference run under that project.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="numchip bg-red">02</span>Feasibility Summary <span class="chip" style="margin-left:4px">verified</span></h2>
+    <p>The primary tool layer is the <strong>Google Workspace CLI (<code>gws</code>)</strong> — Google's first-party CLI covering the full Workspace API surface, including Docs editing.</p>
+    <table>
+      <tr><th>Capability needed</th><th>Status</th><th>How</th></tr>
+      <tr><td>Agent orchestration, subagents, scheduled tasks, skills</td><td class="ok"><span class="material-symbols-outlined">check_circle</span> Available</td><td>Antigravity desktop app / CLI (<code>agy</code>)</td></tr>
+      <tr><td>Read transcripts / files from Drive</td><td class="ok"><span class="material-symbols-outlined">check_circle</span> Available</td><td><code>gws drive files …</code> (read, search, download)</td></tr>
+      <tr><td>Calendar / Gmail context</td><td class="ok"><span class="material-symbols-outlined">check_circle</span> Available</td><td><code>gws calendar …</code>, <code>gws gmail …</code></td></tr>
+      <tr><td><strong>Edit Google Docs in place</strong></td><td class="ok"><span class="material-symbols-outlined">check_circle</span> Available</td><td><code>gws docs documents batch-update</code> → Docs API <code>batchUpdate</code> (GA): positional inserts, named ranges, styling</td></tr>
+    </table>
+    <p class="muted" style="margin-top:18px;font-size:.92rem"><code>gws</code> authenticates via OAuth against the customer's own GCP project (<code>gws auth setup</code> / <code>gws auth login</code>), returns structured JSON, and supports <code>--dry-run</code> to preview requests — a natural review-before-write primitive. Workspace admin controls and user permissions apply as usual.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="numchip bg-yellow" style="color:var(--text)">03</span>Architecture</h2>
+    <div class="arch">
+      <img src="image.png" alt="Architecture: conversation input flows through the Antigravity agent (ingest, extract, route via doc registry, subagent fan-out) to the per-doc write path via the gws CLI, gated by user review before edits commit to Google Docs">
+      <div class="figcap">Conversation → extract → route (doc registry) → subagent per doc → gws write path with --dry-run → user review → commit.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="numchip bg-green">04</span>Design Notes</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="badge bg-blue"><span class="material-symbols-outlined">hub</span></div>
+        <h3>Doc registry</h3>
+        <p>A lightweight index mapping each doc to its purpose, section layout, and formatting conventions. Routing consults it to place every extracted item. Docs API <em>named ranges</em> make section targeting deterministic, not heuristic. This is the core of the system.</p>
+      </div>
+      <div class="card red">
+        <div class="badge bg-red"><span class="material-symbols-outlined">edit_document</span></div>
+        <h3>Docs-edit skill over gws</h3>
+        <p>The edit pattern encoded once: read structure → locate named range → build the <code>batchUpdate</code> insert → <code>--dry-run</code> for review → execute on approval. House rules enforced: append dated entries only, never delete.</p>
+      </div>
+      <div class="card yellow">
+        <div class="badge bg-yellow"><span class="material-symbols-outlined">rule</span></div>
+        <h3>Formatting skills</h3>
+        <p>Conventions encoded as Antigravity skills — action items become checkboxes with owner and date, decisions get dated entries — so behavior is consistent across runs.</p>
+      </div>
+      <div class="card green">
+        <div class="badge bg-green"><span class="material-symbols-outlined">account_tree</span></div>
+        <h3>Subagent fan-out</h3>
+        <p>A conversation typically touches 3–6 docs. Each target doc gets its own updater subagent running in parallel; results are reviewed together.</p>
+      </div>
+      <div class="card dblue">
+        <div class="badge bg-dblue"><span class="material-symbols-outlined">fact_check</span></div>
+        <h3>Review before write</h3>
+        <p>The walkthrough artifact presents all proposed edits across docs as one change-set, built from the <code>--dry-run</code> previews. Nothing is written until approved; routing corrections feed back into the registry.</p>
+      </div>
+      <div class="card purple">
+        <div class="badge bg-purple"><span class="material-symbols-outlined">schedule</span></div>
+        <h3>Optional automation</h3>
+        <p>An Antigravity scheduled task can sweep new Meet transcripts in Drive on a cadence and process them without manual input, once edit quality is established.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="numchip bg-dblue">05</span>Suggested Timelines</h2>
+    <div class="timeline">
+      <div class="phase p1">
+        <div class="ph-label">Phase 1 · Prototype</div>
+        <div class="ph-weeks">Week 1</div>
+        <ul>
+          <li>Antigravity CLI + <code>gws</code> auth in the GCP project</li>
+          <li>One conversation pasted manually</li>
+          <li>2–3 target docs with named ranges</li>
+          <li>Docs-edit skill with <code>--dry-run</code> review-before-write</li>
+          <li>Validates routing accuracy and in-place edit quality</li>
+        </ul>
+      </div>
+      <div class="phase p2">
+        <div class="ph-label">Phase 2 · Pilot</div>
+        <div class="ph-weeks">Weeks 2–3</div>
+        <ul>
+          <li>Doc registry</li>
+          <li>Formatting skills</li>
+          <li>Subagent fan-out</li>
+          <li>Automatic Meet transcript ingestion from Drive</li>
+          <li>Daily use with review gate on</li>
+        </ul>
+      </div>
+      <div class="phase p3">
+        <div class="ph-label">Phase 3 · Hardened</div>
+        <div class="ph-weeks">Weeks 4–6</div>
+        <ul>
+          <li>Scheduled tasks; edit audit trail (revision history + agent logs)</li>
+          <li>Workspace admin review of OAuth scopes; pin <code>gws</code> version</li>
+          <li>Optional: narrow write surface via purpose-built tool (custom MCP / Cloud Run wrapping <code>batchUpdate</code>)</li>
+          <li>Optional: repackage via the Antigravity SDK</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="numchip bg-purple">06</span>References</h2>
+    <ul class="refs">
+      <li><span class="material-symbols-outlined">terminal</span><a href="https://github.com/googleworkspace/cli">Google Workspace CLI (gws) — googleworkspace/cli</a></li>
+      <li><span class="material-symbols-outlined">article</span><a href="https://www.infoq.com/news/2026/06/google-workspace-cli/">InfoQ: Google Workspace CLI overview</a></li>
+      <li><span class="material-symbols-outlined">api</span><a href="https://developers.google.com/workspace/docs/api/reference/rest/v1/documents/batchUpdate">Google Docs API — batchUpdate</a></li>
+      <li><span class="material-symbols-outlined">rocket_launch</span><a href="https://antigravity.google/docs/home">Google Antigravity documentation</a></li>
+      <li><span class="material-symbols-outlined">settings</span><a href="https://developers.google.com/workspace/guides/configure-mcp-servers">Google Workspace MCP servers (alternative tool layer)</a></li>
+      <li><span class="material-symbols-outlined">menu_book</span><a href="https://medium.com/google-cloud/configuring-mcp-servers-and-skills-for-antigravity-cli-and-ide-a938c7eebb78">Configuring MCP servers and skills for Antigravity</a></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Technical overview · Google Antigravity + Google Workspace CLI · July 2026</div>
+</footer>
+
+<div class="band"><div class="b1"></div><div class="b2"></div><div class="b3"></div><div class="b4"></div></div>
+
+</body>
+</html>
