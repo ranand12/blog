@@ -565,23 +565,48 @@
             var filtered = models.filter(filter);
             filtered.sort(function(a, b) { return (a.displayName || a.name).localeCompare(b.displayName || b.name); });
 
-            var listId = 'model-list-' + (input.id || Math.random().toString(36).substr(2, 6));
-            var datalist = document.getElementById(listId);
-            if (!datalist) {
-                datalist = document.createElement('datalist');
-                datalist.id = listId;
-                input.parentNode.appendChild(datalist);
-                input.setAttribute('list', listId);
-            }
-            datalist.textContent = '';
+            var defaultVal = input.value;
+            var selectId = input.id;
 
-            filtered.forEach(function(m) {
-                var opt = document.createElement('option');
-                var val = m.name.replace(/^models\//, '');
-                opt.value = val;
-                if (m.displayName && m.displayName !== val) opt.label = m.displayName;
-                datalist.appendChild(opt);
-            });
+            var existing = input.parentNode.querySelector('select[data-model-type]');
+            if (existing) {
+                existing.textContent = '';
+                addOptions(existing, filtered, defaultVal);
+                return;
+            }
+
+            var select = document.createElement('select');
+            select.id = selectId;
+            select.setAttribute('data-model-type', type);
+            select.style.cssText = input.style.cssText;
+            select.className = input.className;
+
+            addOptions(select, filtered, defaultVal);
+
+            input.parentNode.replaceChild(select, input);
+        });
+    }
+
+    function addOptions(select, models, defaultVal) {
+        var hasDefault = false;
+        models.forEach(function(m) {
+            var val = m.name.replace(/^models\//, '');
+            if (val === defaultVal) hasDefault = true;
+        });
+        if (!hasDefault && defaultVal) {
+            var def = document.createElement('option');
+            def.value = defaultVal;
+            def.textContent = defaultVal;
+            def.selected = true;
+            select.appendChild(def);
+        }
+        models.forEach(function(m) {
+            var opt = document.createElement('option');
+            var val = m.name.replace(/^models\//, '');
+            opt.value = val;
+            opt.textContent = m.displayName || val;
+            if (val === defaultVal) opt.selected = true;
+            select.appendChild(opt);
         });
     }
 

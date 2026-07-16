@@ -214,6 +214,27 @@ body {
     background: var(--accent-soft);
 }
 
+/* Model selector dropdown */
+select[data-model-type] {
+    width: 100%;
+    background: var(--bg-input, #fff);
+    border: 1px solid var(--border, #ddd);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text, #1a1a1a);
+    outline: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    appearance: auto;
+}
+
+select[data-model-type]:focus {
+    border-color: var(--accent, #6C63FF);
+    box-shadow: 0 0 0 3px rgba(108,99,255,0.12);
+}
+
 /* Sidebar content */
 .gt-sidebar-content {
     flex: 1;
