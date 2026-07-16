@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://generativelanguage.googleapis.com;">
+    <title>Gemini Model Explorer</title>
+    <!--
+    Copyright 2026 Google LLC.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-elevated: #f5f6f8;
+            --bg-card: #ffffff;
+            --bg-input: #f5f6f8;
+            --border: #e2e4e9;
+            --border-focus: #4f46e5;
+            --text: #111318;
+            --text-secondary: #4b5060;
+            --text-muted: #8b90a0;
+            --accent: #4f46e5;
+            --accent-hover: #4338ca;
+            --accent-soft: #eef2ff;
+            --green: #059669;
+            --green-soft: #ecfdf5;
+            --red: #dc2626;
+            --red-soft: #fef2f2;
+            --amber: #d97706;
+            --amber-soft: #fffbeb;
+            --purple: #7c3aed;
+            --purple-soft: #f5f3ff;
+            --blue: #2563eb;
+            --blue-soft: #eff6ff;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0e1117;
+            --bg-elevated: #161b26;
+            --bg-card: #1c2132;
+            --bg-input: #161b26;
+            --border: #2a3045;
+            --border-focus: #818cf8;
+            --text: #eceef4;
+            --text-secondary: #9399ae;
+            --text-muted: #5c6280;
+            --accent: #818cf8;
+            --accent-hover: #a5b4fc;
+            --accent-soft: #1e1b4b40;
+            --green: #34d399;
+            --green-soft: #05966920;
+            --red: #f87171;
+            --red-soft: #dc262620;
+            --amber: #fbbf24;
+            --amber-soft: #d9770620;
+            --purple: #a78bfa;
+            --purple-soft: #7c3aed20;
+            --blue: #60a5fa;
+            --blue-soft: #2563eb20;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 32px 24px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* Nav */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .nav-brand {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.03em;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background: var(--bg-elevated);
+            color: var(--text);
+        }
+
+        .theme-toggle {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            padding: 0;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-soft);
+            transform: none;
+            box-shadow: none;
+        }
+
+        .theme-toggle svg { width: 18px; height: 18px; }
+        .icon-sun, [data-theme="dark"] .icon-moon { display: none; }
+        [data-theme="dark"] .icon-sun { display: block; }
+
+        /* Header */
+        .header {
+            margin-bottom: 28px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .header-left { flex: 1; min-width: 240px; }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .header-controls .field { min-width: 240px; }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--text);
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        input:focus {
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+
+        input::placeholder { color: var(--text-muted); }
+
+        button {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        button:hover { background: var(--accent-hover); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .privacy-notice {
+            margin-top: 14px;
+            padding: 10px 12px;
+            background: var(--green-soft);
+            border-radius: 8px;
+            font-size: 12px;
+            color: var(--green);
+            line-height: 1.5;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .privacy-notice svg {
+            flex-shrink: 0;
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Toolbar */
+        .toolbar {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            position: sticky;
+            top: 12px;
+            z-index: 10;
+            box-shadow: var(--shadow-sm);
+            display: none;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .toolbar.visible { display: block; }
+
+        .toolbar input { margin-bottom: 12px; }
+
+        .stats {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .stat-chip {
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+            border: 1px solid var(--border);
+        }
+
+        .stat-chip:hover {
+            border-color: var(--text-muted);
+        }
+
+        .stat-chip.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .model-count {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            display: none;
+        }
+
+        /* Error */
+        .error {
+            background: var(--red-soft);
+            border: 1px solid var(--red);
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: var(--red);
+            font-size: 13px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .error.visible { display: block; }
+
+        /* Model grid */
+        .model-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .model-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 22px;
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .model-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--text-muted);
+        }
+
+        .model-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .model-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .model-id {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .model-version {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-soft);
+            border-radius: 4px;
+            padding: 2px 8px;
+            white-space: nowrap;
+        }
+
+        .model-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .model-stats {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .model-stat {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 10px 14px;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .model-stat-value {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--blue);
+        }
+
+        .model-stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .model-pricing {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .model-pricing-stat {
+            background: var(--amber-soft);
+            border-radius: 8px;
+            padding: 10px 14px;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .model-pricing-stat .model-stat-value {
+            color: var(--amber);
+            font-size: 15px;
+        }
+
+        .pricing-note {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        .pricing-note a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .pricing-note a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .live-api-section {
+            margin-top: 8px;
+            padding: 12px 14px;
+            background: var(--purple-soft);
+            border-radius: 8px;
+        }
+
+        .live-api-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--purple);
+            margin-bottom: 8px;
+        }
+
+        .live-api-grid {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .live-api-stat { flex: 1; min-width: 75px; }
+        .live-api-stat .model-stat-value { font-size: 13px; color: var(--purple); }
+        .live-api-stat .model-stat-label { font-size: 10px; }
+
+        .model-tags {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .tag {
+            font-size: 11px;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 6px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+        }
+
+        .tag.thinking { background: var(--red-soft); color: var(--red); }
+        .tag.generate { background: var(--green-soft); color: var(--green); }
+        .tag.embed { background: var(--amber-soft); color: var(--amber); }
+
+        .empty, .loading {
+            text-align: center;
+            padding: 64px 20px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (max-width: 700px) {
+            h1 { font-size: 26px; }
+            .header-content { flex-direction: column; align-items: flex-start; }
+            .header-controls { width: 100%; flex-direction: column; }
+            .header-controls .field { min-width: unset; width: 100%; }
+            button { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <nav class="nav">
+            <span class="nav-brand">Gemini Tools</span>
+            <div class="nav-right">
+                <a href="tokens.html" class="nav-link">Tokens</a>
+                <a href="describe.html" class="nav-link">Describer</a>
+                <a href="embed.html" class="nav-link">Embeddings</a>
+                <a href="extract.html" class="nav-link">Extractor</a>
+                <a href="prompt.html" class="nav-link">Playground</a>
+                <a href="search.html" class="nav-link">Search</a>
+                <a href="detect.html" class="nav-link">Detector</a>
+                <a href="pdf.html" class="nav-link">PDF</a>
+                <a href="video.html" class="nav-link">Video</a>
+                <a href="story.html" class="nav-link">Story</a>
+                <a href="animate.html" class="nav-link">Animate</a>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+            </div>
+        </nav>
+
+        <div class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>Model Explorer</h1>
+                    <p class="subtitle">Browse all available Gemini models, capabilities, and pricing.</p>
+                </div>
+                <div class="header-controls">
+                    <div class="field">
+                        <label for="api-key-input">API Key</label>
+                        <input type="password" id="api-key-input" placeholder="Your Gemini key" autocomplete="off" data-lpignore="true" data-1p-ignore>
+                    </div>
+                    <button id="load-btn" onclick="loadModels()">Load Models</button>
+                </div>
+            </div>
+
+            <div class="privacy-notice">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Your API key is saved in your browser's session storage &mdash; shared across all Gemini Tools pages, but automatically cleared when you close the tab. It is only sent directly to the Google Gemini API.</span>
+            </div>
+        </div>
+
+        <div class="toolbar" id="toolbar">
+            <input type="text" id="search" placeholder="Search models..." oninput="applyFilters()">
+            <div class="stats" id="stats"></div>
+        </div>
+
+        <div class="model-count" id="model-count"></div>
+        <div class="error" id="error"></div>
+
+        <div class="model-grid" id="model-grid">
+            <div class="empty">Enter your API key and click "Load Models" to get started.</div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+
+        function getPreferredTheme() {
+            const stored = localStorage.getItem('theme');
+            if (stored) return stored;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            applyTheme(current === 'dark' ? 'light' : 'dark');
+        }
+
+        applyTheme(getPreferredTheme());
+
+        let PRICING_DATA = {};
+        let PRICING_DATE = '';
+        let PRICING_KEYS = [];
+
+        async function loadPricing() {
+            try {
+                const resp = await fetch('./pricing.json');
+                if (!resp.ok) throw new Error('Failed to load pricing.json');
+                const data = await resp.json();
+                PRICING_DATA = data.models || {};
+                PRICING_DATE = data.date || '';
+                PRICING_KEYS = Object.keys(PRICING_DATA).sort((a, b) => b.length - a.length);
+            } catch (err) {
+                console.warn('Could not load pricing.json:', err.message);
+            }
+        }
+
+        function getPricing(modelId) {
+            if (PRICING_DATA[modelId]) return PRICING_DATA[modelId];
+            for (const key of PRICING_KEYS) {
+                if (modelId.startsWith(key)) return PRICING_DATA[key];
+            }
+            return null;
+        }
+
+        loadPricing();
+
+        let allModels = [];
+        let activeFilter = 'all';
+
+        async function loadModels() {
+            const apiKey = document.getElementById('api-key-input').value.trim();
+            const error = document.getElementById('error');
+            const grid = document.getElementById('model-grid');
+            const btn = document.getElementById('load-btn');
+
+            error.classList.remove('visible');
+
+            if (!apiKey) {
+                error.textContent = 'Please enter your Gemini API key.';
+                error.classList.add('visible');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Loading\u2026';
+            grid.textContent = '';
+            const loadingEl = document.createElement('div');
+            loadingEl.className = 'loading';
+            loadingEl.textContent = 'Fetching models';
+            grid.appendChild(loadingEl);
+
+            try {
+                allModels = [];
+                let pageToken = '';
+
+                do {
+                    let url = `${API_BASE}/models?key=${encodeURIComponent(apiKey)}&pageSize=1000`;
+                    if (pageToken) url += `&pageToken=${encodeURIComponent(pageToken)}`;
+
+                    const resp = await fetch(url);
+                    const data = await resp.json();
+                    if (data.error) throw new Error(data.error.message || 'API error');
+                    allModels = allModels.concat(data.models || []);
+                    pageToken = data.nextPageToken || '';
+                } while (pageToken);
+
+                allModels.sort((a, b) => (a.displayName || a.name).localeCompare(b.displayName || b.name));
+
+                document.getElementById('toolbar').classList.add('visible');
+                activeFilter = 'all';
+                buildChips();
+                applyFilters();
+            } catch (err) {
+                grid.textContent = '';
+                error.textContent = err.message;
+                error.classList.add('visible');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Load Models';
+            }
+        }
+
+        function getCounts(models) {
+            return {
+                all: models.length,
+                generative: models.filter(m => m.supportedGenerationMethods?.includes('generateContent')).length,
+                embedding: models.filter(m => m.supportedGenerationMethods?.includes('embedContent')).length,
+                thinking: models.filter(m => m.thinking).length,
+                priced: models.filter(m => getPricing(m.name?.replace('models/', '') || '')).length,
+            };
+        }
+
+        function buildChips() {
+            const counts = getCounts(allModels);
+            const statsDiv = document.getElementById('stats');
+            statsDiv.textContent = '';
+            [
+                { key: 'all',        label: `All ${counts.all}` },
+                { key: 'generative', label: `Generative ${counts.generative}` },
+                { key: 'embedding',  label: `Embedding ${counts.embedding}` },
+                { key: 'thinking',   label: `Thinking ${counts.thinking}` },
+                { key: 'priced',     label: `Priced ${counts.priced}` },
+            ].forEach(c => {
+                const chip = document.createElement('div');
+                chip.className = 'stat-chip' + (activeFilter === c.key ? ' active' : '');
+                chip.textContent = c.label;
+                chip.addEventListener('click', () => toggleFilter(c.key));
+                statsDiv.appendChild(chip);
+            });
+        }
+
+        function toggleFilter(key) {
+            activeFilter = activeFilter === key ? 'all' : key;
+            buildChips();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const query = document.getElementById('search').value.toLowerCase();
+            let filtered = allModels;
+
+            if (activeFilter === 'generative') filtered = filtered.filter(m => m.supportedGenerationMethods?.includes('generateContent'));
+            else if (activeFilter === 'embedding') filtered = filtered.filter(m => m.supportedGenerationMethods?.includes('embedContent'));
+            else if (activeFilter === 'thinking') filtered = filtered.filter(m => m.thinking);
+            else if (activeFilter === 'priced') filtered = filtered.filter(m => getPricing(m.name?.replace('models/', '') || ''));
+
+            if (query) {
+                filtered = filtered.filter(m => {
+                    const name = (m.displayName || '').toLowerCase();
+                    const id = (m.name || '').toLowerCase();
+                    const desc = (m.description || '').toLowerCase();
+                    return name.includes(query) || id.includes(query) || desc.includes(query);
+                });
+            }
+
+            const countEl = document.getElementById('model-count');
+            countEl.style.display = 'block';
+            countEl.textContent = `Showing ${filtered.length} of ${allModels.length} models`;
+            renderModels(filtered);
+        }
+
+        function formatNumber(n) {
+            if (n == null) return '\u2014';
+            if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+            if (n >= 1000) return (n / 1000).toFixed(0) + 'K';
+            return n.toLocaleString();
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function renderModels(models) {
+            const grid = document.getElementById('model-grid');
+            grid.textContent = '';
+
+            if (models.length === 0) {
+                const empty = document.createElement('div');
+                empty.className = 'empty';
+                empty.textContent = 'No models found.';
+                grid.appendChild(empty);
+                return;
+            }
+
+            models.forEach(m => {
+                const modelId = m.name?.replace('models/', '') || '';
+                const methods = m.supportedGenerationMethods || [];
+
+                const card = document.createElement('div');
+                card.className = 'model-card';
+
+                let cardHTML = `
+                    <div class="model-card-header">
+                        <div>
+                            <div class="model-name">${escapeHtml(m.displayName || modelId)}</div>
+                            <div class="model-id">${escapeHtml(modelId)}</div>
+                        </div>
+                        ${m.version ? `<span class="model-version">v${escapeHtml(m.version)}</span>` : ''}
+                    </div>
+                    ${m.description ? `<div class="model-description">${escapeHtml(m.description)}</div>` : ''}
+                    <div class="model-stats">
+                        <div class="model-stat">
+                            <div class="model-stat-value">${formatNumber(m.inputTokenLimit)}</div>
+                            <div class="model-stat-label">Input tokens</div>
+                        </div>
+                        <div class="model-stat">
+                            <div class="model-stat-value">${formatNumber(m.outputTokenLimit)}</div>
+                            <div class="model-stat-label">Output tokens</div>
+                        </div>
+                    </div>
+                    ${renderPricing(modelId)}`;
+
+                const tags = [];
+                if (m.thinking) tags.push({ cls: 'thinking', text: 'Thinking' });
+                if (methods.includes('generateContent')) tags.push({ cls: 'generate', text: 'generateContent' });
+                if (methods.includes('embedContent')) tags.push({ cls: 'embed', text: 'embedContent' });
+                methods.filter(x => x !== 'generateContent' && x !== 'embedContent')
+                    .forEach(x => tags.push({ cls: '', text: x }));
+
+                if (tags.length) {
+                    cardHTML += '<div class="model-tags">';
+                    tags.forEach(t => { cardHTML += `<span class="tag ${t.cls}">${escapeHtml(t.text)}</span>`; });
+                    cardHTML += '</div>';
+                }
+
+                card.innerHTML = cardHTML;
+                grid.appendChild(card);
+            });
+        }
+
+        function renderPricing(modelId) {
+            const p = getPricing(modelId);
+            if (!p) {
+                return '<div class="pricing-note">Pricing unavailable &mdash; <a href="https://cloud.google.com/vertex-ai/generative-ai/pricing" target="_blank">check pricing page</a></div>';
+            }
+            let html = `
+                <div class="model-pricing">
+                    <div class="model-pricing-stat">
+                        <div class="model-stat-value">$${escapeHtml(String(p.input))}</div>
+                        <div class="model-stat-label">Input / 1M</div>
+                    </div>
+                    <div class="model-pricing-stat">
+                        <div class="model-stat-value">$${escapeHtml(String(p.output))}</div>
+                        <div class="model-stat-label">Output / 1M</div>
+                    </div>
+                    ${p.inputAudio != null ? `<div class="model-pricing-stat"><div class="model-stat-value">$${escapeHtml(String(p.inputAudio))}</div><div class="model-stat-label">Audio in / 1M</div></div>` : ''}
+                    ${p.cached != null ? `<div class="model-pricing-stat"><div class="model-stat-value">$${escapeHtml(String(p.cached))}</div><div class="model-stat-label">Cached / 1M</div></div>` : ''}
+                    ${p.imageOutput != null ? `<div class="model-pricing-stat"><div class="model-stat-value">$${escapeHtml(String(p.imageOutput))}</div><div class="model-stat-label">Img out / 1M</div></div>` : ''}
+                </div>`;
+
+            if (p.note) html += `<div class="pricing-note" style="color: var(--red);">${escapeHtml(p.note)}</div>`;
+
+            if (p.live) {
+                html += `
+                <div class="live-api-section">
+                    <div class="live-api-label">Live API / 1M tokens</div>
+                    <div class="live-api-grid">
+                        <div class="live-api-stat"><div class="model-stat-value">$${escapeHtml(String(p.live.inputText))}</div><div class="model-stat-label">Text in</div></div>
+                        <div class="live-api-stat"><div class="model-stat-value">$${escapeHtml(String(p.live.inputAudio))}</div><div class="model-stat-label">Audio in</div></div>
+                        <div class="live-api-stat"><div class="model-stat-value">$${escapeHtml(String(p.live.inputVideo))}</div><div class="model-stat-label">Video in</div></div>
+                        <div class="live-api-stat"><div class="model-stat-value">$${escapeHtml(String(p.live.outputText))}</div><div class="model-stat-label">Text out</div></div>
+                        <div class="live-api-stat"><div class="model-stat-value">$${escapeHtml(String(p.live.outputAudio))}</div><div class="model-stat-label">Audio out</div></div>
+                    </div>
+                </div>`;
+            }
+
+            html += `<div class="pricing-note">As of ${escapeHtml(PRICING_DATE || 'unknown date')} &mdash; <a href="https://cloud.google.com/vertex-ai/generative-ai/pricing" target="_blank">verify pricing</a></div>`;
+            return html;
+        }
+
+    </script>
+    <script src="nav.js"></script>
+</body>
+</html>

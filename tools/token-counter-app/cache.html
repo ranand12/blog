@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://generativelanguage.googleapis.com;">
+    <title>Context Caching - Gemini Tools</title>
+    <!--
+    Copyright 2026 Google LLC
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #ffffff; --bg-elevated: #f5f6f8; --bg-card: #ffffff; --bg-input: #f5f6f8;
+            --border: #e2e4e9; --border-focus: #4f46e5; --text: #111318; --text-secondary: #4b5060; --text-muted: #8b90a0;
+            --accent: #4f46e5; --accent-hover: #4338ca; --accent-soft: #eef2ff;
+            --green: #059669; --green-soft: #ecfdf5; --red: #dc2626; --red-soft: #fef2f2;
+            --amber: #d97706; --amber-soft: #fffbeb; --purple: #7c3aed; --purple-soft: #f5f3ff;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.08); --radius: 12px;
+        }
+        [data-theme="dark"] {
+            --bg: #0e1117; --bg-elevated: #161b26; --bg-card: #1c2132; --bg-input: #161b26;
+            --border: #2a3045; --border-focus: #818cf8; --text: #eceef4; --text-secondary: #9399ae; --text-muted: #5c6280;
+            --accent: #818cf8; --accent-hover: #a5b4fc; --accent-soft: #1e1b4b40;
+            --green: #34d399; --green-soft: #05966920; --red: #f87171; --red-soft: #dc262620;
+            --amber: #fbbf24; --amber-soft: #d9770620; --purple: #a78bfa; --purple-soft: #7c3aed20;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2); --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg); color: var(--text);
+            line-height: 1.6; padding: 24px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .container { max-width: 780px; margin: 0 auto; }
+
+        .header { margin-bottom: 32px; }
+        h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+        .subtitle { color: var(--text-secondary); font-size: 15px; line-height: 1.6; }
+
+        .explainer {
+            background: var(--accent-soft); border: 1px solid var(--accent);
+            border-radius: var(--radius); padding: 16px; margin-bottom: 24px;
+            font-size: 13px; color: var(--text-secondary); line-height: 1.7;
+        }
+        .explainer strong { color: var(--text); }
+
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm);
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 16px; font-weight: 700; margin-bottom: 16px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .card-title .badge {
+            font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+            padding: 3px 8px; border-radius: 4px; background: var(--accent-soft); color: var(--accent);
+        }
+
+        .field { margin-bottom: 16px; }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .field-row-3 { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+
+        label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px; }
+
+        input, textarea, select {
+            width: 100%; padding: 10px 14px; background: var(--bg-input);
+            border: 1px solid var(--border); border-radius: 8px; color: var(--text);
+            font-family: inherit; font-size: 14px; transition: border 0.2s;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none; border-color: var(--border-focus); background: var(--bg-card);
+        }
+        textarea { resize: vertical; line-height: 1.5; }
+        select { cursor: pointer; }
+
+        button.primary {
+            width: 100%; padding: 12px 24px; background: var(--accent); color: white;
+            border: none; border-radius: 8px; font-weight: 600; font-size: 15px;
+            cursor: pointer; transition: background 0.2s; font-family: inherit;
+        }
+        button.primary:hover { background: var(--accent-hover); }
+        button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        button.secondary {
+            padding: 8px 16px; background: var(--bg-elevated); color: var(--text);
+            border: 1px solid var(--border); border-radius: 6px; font-weight: 500;
+            font-size: 13px; cursor: pointer; transition: all 0.2s; font-family: inherit;
+        }
+        button.secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+        button.danger {
+            padding: 6px 12px; background: var(--red-soft); color: var(--red);
+            border: 1px solid transparent; border-radius: 6px; font-weight: 500;
+            font-size: 12px; cursor: pointer; transition: all 0.2s; font-family: inherit;
+        }
+        button.danger:hover { border-color: var(--red); }
+
+        .presets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .preset {
+            padding: 8px 12px; background: var(--bg-elevated); border: 1px solid var(--border);
+            border-radius: 6px; font-size: 12px; color: var(--text); cursor: pointer;
+            transition: all 0.2s; font-family: inherit; font-weight: 500; text-align: center;
+        }
+        .preset:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+
+        .error {
+            margin-top: 12px; padding: 12px 16px; background: var(--red-soft);
+            border: 1px solid var(--red); border-radius: 8px; color: var(--red);
+            font-size: 14px; display: none;
+        }
+
+        .success {
+            margin-top: 12px; padding: 12px 16px; background: var(--green-soft);
+            border: 1px solid var(--green); border-radius: 8px; color: var(--green);
+            font-size: 14px; display: none;
+        }
+
+        .cache-list { display: flex; flex-direction: column; gap: 10px; }
+        .cache-item {
+            background: var(--bg-elevated); border: 1px solid var(--border);
+            border-radius: 8px; padding: 14px; transition: border-color 0.2s;
+        }
+        .cache-item:hover { border-color: var(--accent); }
+        .cache-item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+        .cache-item-name {
+            font-weight: 600; font-size: 14px;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0;
+        }
+        .cache-item-actions { display: flex; gap: 6px; flex-shrink: 0; }
+        .cache-item-meta {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 6px 16px; font-size: 12px; color: var(--text-muted);
+        }
+        .cache-meta-item { display: flex; align-items: baseline; gap: 4px; overflow: hidden; }
+        .cache-meta-item span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .cache-meta-item strong { color: var(--text-secondary); font-weight: 600; flex-shrink: 0; }
+
+        .empty-state {
+            text-align: center; padding: 32px; color: var(--text-muted); font-size: 14px;
+        }
+
+        .response-section {
+            background: var(--green-soft); border: 1px solid var(--green);
+            border-radius: var(--radius); padding: 16px; margin-top: 16px;
+        }
+        .response-section h3 { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+        .response-text { color: var(--text); line-height: 1.7; font-size: 14px; }
+
+        .usage-bar {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px; margin-top: 16px;
+        }
+        .usage-stat {
+            background: var(--bg-elevated); border: 1px solid var(--border);
+            border-radius: 8px; padding: 12px; text-align: center;
+        }
+        .usage-stat .label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+        .usage-stat .value { font-size: 20px; font-weight: 700; color: var(--accent); }
+        .usage-stat .value.green { color: var(--green); }
+        .usage-stat .value.amber { color: var(--amber); }
+
+        .step-indicator {
+            display: flex; gap: 0; margin-bottom: 24px;
+        }
+        .step {
+            flex: 1; text-align: center; padding: 10px 8px;
+            font-size: 12px; font-weight: 600; color: var(--text-muted);
+            border-bottom: 3px solid var(--border); transition: all 0.3s;
+            cursor: pointer;
+        }
+        .step.active { color: var(--accent); border-bottom-color: var(--accent); }
+        .step.done { color: var(--green); border-bottom-color: var(--green); }
+        .step-num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 22px; height: 22px; border-radius: 50%; font-size: 11px;
+            background: var(--bg-elevated); border: 1px solid var(--border);
+            margin-right: 6px; transition: all 0.3s;
+        }
+        .step.active .step-num { background: var(--accent); color: white; border-color: var(--accent); }
+        .step.done .step-num { background: var(--green); color: white; border-color: var(--green); }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .footer { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+        .privacy-notice { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+        .privacy-notice a { color: var(--accent); text-decoration: none; }
+        .privacy-notice a:hover { text-decoration: underline; }
+
+        @media (max-width: 640px) {
+            body { padding: 16px; }
+            h1 { font-size: 24px; }
+            .field-row, .field-row-3 { grid-template-columns: 1fr; }
+            .presets { grid-template-columns: 1fr 1fr; }
+            .card { padding: 18px; }
+            .step { font-size: 11px; padding: 8px 4px; }
+            .step-num { width: 18px; height: 18px; font-size: 10px; margin-right: 4px; }
+        }
+    </style>
+    <script>
+        (function() {
+            var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav" id="mainNav"></nav>
+
+        <div class="header">
+            <h1>Context Caching</h1>
+            <p class="subtitle">Cache large content once, then query it repeatedly without re-sending tokens. Save cost and latency on repetitive tasks.</p>
+        </div>
+
+        <div class="explainer">
+            <strong>How it works:</strong> Context caching lets you upload a large body of text (a book, codebase, transcript, etc.)
+            to the Gemini API once as a "cached content" object. You then reference that cache by name in subsequent requests &mdash;
+            the model reads from the cache instead of re-processing the same tokens every time. This means <strong>faster responses</strong>
+            and <strong>lower costs</strong> for repeated queries against the same content.
+            The cache has a TTL (time to live) &mdash; it auto-expires after that duration.
+        </div>
+
+        <!-- API Key Row -->
+        <div class="card">
+            <div class="field-row-3">
+                <div class="field" style="margin:0">
+                    <label for="apiKey">API Key</label>
+                    <input type="password" id="apiKey" placeholder="Enter your Gemini API key">
+                </div>
+                <div class="field" style="margin:0">
+                    <label for="model">Model</label>
+                    <select id="model">
+                        <option value="models/gemini-2.5-flash">gemini-2.5-flash</option>
+                        <option value="models/gemini-2.5-pro">gemini-2.5-pro</option>
+                        <option value="models/gemini-2.0-flash">gemini-2.0-flash</option>
+                    </select>
+                </div>
+                <div class="field" style="margin:0">
+                    <label for="ttl">Cache TTL</label>
+                    <select id="ttl">
+                        <option value="120s">2 minutes</option>
+                        <option value="300s" selected>5 minutes</option>
+                        <option value="600s">10 minutes</option>
+                        <option value="1800s">30 minutes</option>
+                        <option value="3600s">1 hour</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+            <div class="step active" onclick="showTab(0)">
+                <span class="step-num">1</span>Create Cache
+            </div>
+            <div class="step" onclick="showTab(1)">
+                <span class="step-num">2</span>Manage Caches
+            </div>
+            <div class="step" onclick="showTab(2)">
+                <span class="step-num">3</span>Query Cache
+            </div>
+        </div>
+
+        <!-- Tab 1: Create Cache -->
+        <div class="tab-content active" id="tab-create">
+            <div class="card">
+                <div class="card-title">Create a Cache <span class="badge">Step 1</span></div>
+
+                <div class="field">
+                    <label>Content Presets</label>
+                    <div class="presets">
+                        <button class="preset" onclick="loadPreset('constitution')">US Constitution</button>
+                        <button class="preset" onclick="loadPreset('shakespeare')">Shakespeare</button>
+                        <button class="preset" onclick="loadPreset('code')">Python Codebase</button>
+                        <button class="preset" onclick="loadPreset('science')">Science Paper</button>
+                        <button class="preset" onclick="loadPreset('legal')">Legal Contract</button>
+                        <button class="preset" onclick="loadPreset('story')">Long Story</button>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="sysInstruction">System Instruction (for the cache)</label>
+                    <textarea id="sysInstruction" rows="2" placeholder="e.g., You are an expert analyst. Answer questions based on the provided content.">You are an expert analyst. Answer questions based only on the provided content. Be precise and cite relevant sections.</textarea>
+                </div>
+
+                <div class="field">
+                    <label for="cacheContent">Content to Cache <span style="font-weight:400;color:var(--text-muted)">(min ~1,024 tokens)</span></label>
+                    <textarea id="cacheContent" rows="12" placeholder="Paste a long document, codebase, transcript, or any large text here..."></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="displayName">Display Name (optional)</label>
+                    <input type="text" id="displayName" placeholder="e.g., my-project-docs">
+                </div>
+
+                <button class="primary" id="createBtn" onclick="createCache()">Create Cache</button>
+                <div class="error" id="createError"></div>
+                <div class="success" id="createSuccess"></div>
+            </div>
+        </div>
+
+        <!-- Tab 2: Manage Caches -->
+        <div class="tab-content" id="tab-manage">
+            <div class="card">
+                <div class="card-title">
+                    Active Caches <span class="badge">Step 2</span>
+                    <button class="secondary" onclick="listCaches()" style="margin-left:auto">Refresh</button>
+                </div>
+                <div id="cacheListContainer">
+                    <div class="empty-state">Click "Refresh" to load your caches, or create one first.</div>
+                </div>
+                <div class="error" id="manageError"></div>
+            </div>
+        </div>
+
+        <!-- Tab 3: Query Cache -->
+        <div class="tab-content" id="tab-query">
+            <div class="card">
+                <div class="card-title">Query a Cache <span class="badge">Step 3</span></div>
+
+                <div class="field">
+                    <label for="cacheSelect">Select Cache</label>
+                    <select id="cacheSelect">
+                        <option value="">-- Load caches first --</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="queryText">Your Question</label>
+                    <textarea id="queryText" rows="3" placeholder="Ask a question about the cached content...">Summarize the key points of the cached document.</textarea>
+                </div>
+
+                <button class="primary" id="queryBtn" onclick="queryCache()">Send Query</button>
+                <div style="text-align:center;margin-top:6px;font-size:12px;color:var(--text-muted)">Press Ctrl+Enter to submit</div>
+
+                <div id="queryResult" style="display:none">
+                    <div class="usage-bar" id="usageBar"></div>
+                    <div class="response-section">
+                        <h3>Response</h3>
+                        <div class="response-text" id="responseText"></div>
+                    </div>
+                </div>
+                <div class="error" id="queryError"></div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p class="privacy-notice">
+                Your API key is saved in your browser's session storage &mdash; shared across all Gemini Tools pages, but automatically cleared when you close the tab.
+                It is only sent directly to the Google Gemini API. Cached content is stored server-side by Google and auto-expires after the TTL you set.
+                Learn more about <a href="https://ai.google.dev/gemini-api/docs/caching" target="_blank">context caching</a>.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        const API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+        let knownCaches = [];
+
+        // --- Tab Navigation ---
+        function showTab(index) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const steps = document.querySelectorAll('.step');
+            tabs.forEach((t, i) => {
+                t.classList.toggle('active', i === index);
+                steps[i].classList.toggle('active', i === index);
+            });
+            if (index === 1 || index === 2) listCaches();
+        }
+
+        // --- Presets ---
+        const presets = {
+            constitution: {
+                name: 'US Constitution',
+                sysInstruction: 'You are a constitutional law expert. Answer questions about the US Constitution based on the provided text. Cite specific articles and amendments.',
+                content: getConstitutionText()
+            },
+            shakespeare: {
+                name: 'Shakespeare Collection',
+                sysInstruction: 'You are a Shakespeare scholar. Analyze the provided sonnets and plays, discussing themes, literary devices, and historical context.',
+                content: getShakespeareText()
+            },
+            code: {
+                name: 'Python Codebase',
+                sysInstruction: 'You are a senior Python developer reviewing this codebase. Answer questions about the code, suggest improvements, find bugs, and explain design patterns used.',
+                content: getCodeText()
+            },
+            science: {
+                name: 'Science Paper',
+                sysInstruction: 'You are a research scientist. Answer questions about this scientific paper, explain methodology, discuss findings, and evaluate the conclusions.',
+                content: getScienceText()
+            },
+            legal: {
+                name: 'Legal Contract',
+                sysInstruction: 'You are a corporate attorney. Analyze this software license agreement, identify key terms, potential risks, and notable clauses. Explain legal concepts in plain language.',
+                content: getLegalText()
+            },
+            story: {
+                name: 'Long Story',
+                sysInstruction: 'You are a literary analyst. Answer questions about this story, analyze characters, themes, narrative structure, symbolism, and writing style.',
+                content: getStoryText()
+            }
+        };
+
+        function loadPreset(key) {
+            const p = presets[key];
+            document.getElementById('cacheContent').value = p.content;
+            document.getElementById('sysInstruction').value = p.sysInstruction;
+            document.getElementById('displayName').value = p.name.toLowerCase().replace(/\s+/g, '-');
+        }
+
+        // --- Preset content functions ---
+        function getConstitutionText() {
+            return `We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.
+
+Article I - The Legislative Branch
+Section 1. All legislative Powers herein granted shall be vested in a Congress of the United States, which shall consist of a Senate and House of Representatives.
+Section 2. The House of Representatives shall be composed of Members chosen every second Year by the People of the several States, and the Electors in each State shall have the Qualifications requisite for Electors of the most numerous Branch of the State Legislature. No Person shall be a Representative who shall not have attained to the Age of twenty five Years, and been seven Years a Citizen of the United States, and who shall not, when elected, be an Inhabitant of that State in which he shall be chosen. Representatives and direct Taxes shall be apportioned among the several States which may be included within this Union, according to their respective Numbers.
+Section 3. The Senate of the United States shall be composed of two Senators from each State, chosen by the Legislature thereof, for six Years; and each Senator shall have one Vote. No Person shall be a Senator who shall not have attained to the Age of thirty Years, and been nine Years a Citizen of the United States, and who shall not, when elected, be an Inhabitant of that State for which he shall be chosen. The Vice President of the United States shall be President of the Senate, but shall have no Vote, unless they be equally divided.
+Section 7. All Bills for raising Revenue shall originate in the House of Representatives; but the Senate may propose or concur with Amendments as on other Bills. Every Bill which shall have passed the House of Representatives and the Senate, shall, before it become a Law, be presented to the President of the United States; If he approve he shall sign it, but if not he shall return it, with his Objections to that House in which it shall have originated.
+Section 8. The Congress shall have Power To lay and collect Taxes, Duties, Imposts and Excises, to pay the Debts and provide for the common Defence and general Welfare of the United States; To borrow Money on the credit of the United States; To regulate Commerce with foreign Nations, and among the several States; To establish a uniform Rule of Naturalization; To coin Money; To establish Post Offices; To promote the Progress of Science and useful Arts; To constitute Tribunals inferior to the supreme Court; To declare War; To raise and support Armies; To provide and maintain a Navy; To make all Laws which shall be necessary and proper for carrying into Execution the foregoing Powers.
+
+Article II - The Executive Branch
+Section 1. The executive Power shall be vested in a President of the United States of America. He shall hold his Office during the Term of four Years, and, together with the Vice President, chosen for the same Term, be elected. No Person except a natural born Citizen shall be eligible to the Office of President; neither shall any Person be eligible to that Office who shall not have attained to the Age of thirty five Years, and been fourteen Years a Resident within the United States. Before he enter on the Execution of his Office, he shall take the following Oath or Affirmation: "I do solemnly swear that I will faithfully execute the Office of President of the United States, and will to the best of my Ability, preserve, protect and defend the Constitution of the United States."
+Section 2. The President shall be Commander in Chief of the Army and Navy of the United States. He shall have Power, by and with the Advice and Consent of the Senate, to make Treaties, provided two thirds of the Senators present concur; and he shall nominate, and by and with the Advice and Consent of the Senate, shall appoint Ambassadors, other public Ministers and Consuls, Judges of the supreme Court.
+Section 3. He shall from time to time give to the Congress Information of the State of the Union, and recommend to their Consideration such Measures as he shall judge necessary and expedient.
+Section 4. The President, Vice President and all civil Officers of the United States, shall be removed from Office on Impeachment for, and Conviction of, Treason, Bribery, or other high Crimes and Misdemeanors.
+
+Article III - The Judicial Branch
+Section 1. The judicial Power of the United States, shall be vested in one supreme Court, and in such inferior Courts as the Congress may from time to time ordain and establish. The Judges, both of the supreme and inferior Courts, shall hold their Offices during good Behaviour, and shall, at stated Times, receive for their Services, a Compensation, which shall not be diminished during their Continuance in Office.
+Section 2. The judicial Power shall extend to all Cases, in Law and Equity, arising under this Constitution, the Laws of the United States, and Treaties made; to all Cases affecting Ambassadors; to Controversies between two or more States; between a State and Citizens of another State; between Citizens of different States.
+
+Amendment I. Congress shall make no law respecting an establishment of religion, or prohibiting the free exercise thereof; or abridging the freedom of speech, or of the press; or the right of the people peaceably to assemble, and to petition the Government for a redress of grievances.
+Amendment II. A well regulated Militia, being necessary to the security of a free State, the right of the people to keep and bear Arms, shall not be infringed.
+Amendment IV. The right of the people to be secure in their persons, houses, papers, and effects, against unreasonable searches and seizures, shall not be violated, and no Warrants shall issue, but upon probable cause.
+Amendment V. No person shall be held to answer for a capital, or otherwise infamous crime, unless on a presentment or indictment of a Grand Jury; nor shall any person be subject for the same offence to be twice put in jeopardy of life or limb; nor shall be compelled in any criminal case to be a witness against himself, nor be deprived of life, liberty, or property, without due process of law.
+Amendment X. The powers not delegated to the United States by the Constitution, nor prohibited by it to the States, are reserved to the States respectively, or to the people.
+Amendment XIII. Neither slavery nor involuntary servitude, except as a punishment for crime whereof the party shall have been duly convicted, shall exist within the United States.
+Amendment XIV. All persons born or naturalized in the United States, and subject the jurisdiction thereof, are citizens of the United States and of the State wherein they reside. No State shall make or enforce any law which shall abridge the privileges or immunities of citizens of the United States; nor shall any State deprive any person of life, liberty, or property, without due process of law; nor deny to any person within its jurisdiction the equal protection of the laws.
+Amendment XIX. The right of citizens of the United States to vote shall not be denied or abridged by the United States or by any State on account of sex.`;
+        }
+
+        function getShakespeareText() {
+            return `THE COMPLETE SONNETS OF WILLIAM SHAKESPEARE (Selected)
+
+Sonnet 18
+Shall I compare thee to a summer's day?
+Thou art more lovely and more temperate:
+Rough winds do shake the darling buds of May,
+And summer's lease hath all too short a date:
+Sometime too hot the eye of heaven shines,
+And often is his gold complexion dimm'd;
+And every fair from fair sometime declines,
+By chance, or nature's changing course untrimm'd;
+But thy eternal summer shall not fade,
+Nor lose possession of that fair thou ow'st;
+Nor shall death brag thou wander'st in his shade,
+When in eternal lines to time thou grow'st:
+So long as men can breathe, or eyes can see,
+So long lives this, and this gives life to thee.
+
+Sonnet 29
+When, in disgrace with fortune and men's eyes,
+I all alone beweep my outcast state,
+And trouble deaf heaven with my bootless cries,
+And look upon myself, and curse my fate,
+Wishing me like to one more rich in hope,
+Featured like him, like him with friends possessed,
+Desiring this man's art and that man's scope,
+With what I most enjoy contented least;
+Yet in these thoughts myself almost despising,
+Haply I think on thee, and then my state,
+Like to the lark at break of day arising
+From sullen earth, sings hymns at heaven's gate;
+For thy sweet love remembered such wealth brings
+That then I scorn to change my state with kings.
+
+Sonnet 116
+Let me not to the marriage of true minds
+Admit impediments. Love is not love
+Which alters when it alteration finds,
+Or bends with the remover to remove:
+O no! it is an ever-fixed mark
+That looks on tempests and is never shaken;
+It is the star to every wandering bark,
+Whose worth's unknown, although his height be taken.
+Love's not Time's fool, though rosy lips and cheeks
+Within his bending sickle's compass come:
+Love alters not with his brief hours and weeks,
+But bears it out even to the edge of doom.
+If this be error and upon me proved,
+I never writ, nor no man ever loved.
+
+Sonnet 130
+My mistress' eyes are nothing like the sun;
+Coral is far more red than her lips' red;
+If snow be white, why then her breasts are dun;
+If hairs be wires, black wires grow on her head.
+I have seen roses damask'd, red and white,
+But no such roses see I in her cheeks;
+And in some perfumes is there more delight
+Than in the breath that from my mistress reeks.
+I love to hear her speak, yet well I know
+That music hath a far more pleasing sound;
+I grant I never saw a goddess go;
+My mistress, when she walks, treads on the ground:
+And yet, by heaven, I think my love as rare
+As any she belied with false compare.
+
+HAMLET, PRINCE OF DENMARK - Act III, Scene I (Excerpt)
+HAMLET: To be, or not to be, that is the question:
+Whether 'tis nobler in the mind to suffer
+The slings and arrows of outrageous fortune,
+Or to take arms against a sea of troubles,
+And by opposing end them? To die: to sleep;
+No more; and by a sleep to say we end
+The heart-ache and the thousand natural shocks
+That flesh is heir to, 'tis a consummation
+Devoutly to be wish'd. To die, to sleep;
+To sleep: perchance to dream: ay, there's the rub;
+For in that sleep of death what dreams may come
+When we have shuffled off this mortal coil,
+Must give us pause: there's the respect
+That makes calamity of so long life.
+
+THE MERCHANT OF VENICE - Act IV, Scene I (Excerpt)
+PORTIA: The quality of mercy is not strain'd,
+It droppeth as the gentle rain from heaven
+Upon the place beneath: it is twice blest;
+It blesseth him that gives and him that takes:
+'Tis mightiest in the mightiest: it becomes
+The throned monarch better than his crown.
+
+MACBETH - Act V, Scene V (Excerpt)
+MACBETH: Tomorrow, and tomorrow, and tomorrow,
+Creeps in this petty pace from day to day,
+To the last syllable of recorded time;
+And all our yesterdays have lighted fools
+The way to dusty death. Out, out, brief candle!
+Life's but a walking shadow, a poor player,
+That struts and frets his hour upon the stage,
+And then is heard no more. It is a tale
+Told by an idiot, full of sound and fury,
+Signifying nothing.
+
+A MIDSUMMER NIGHT'S DREAM - Act V, Scene I (Excerpt)
+THESEUS: The lunatic, the lover and the poet
+Are of imagination all compact:
+One sees more devils than vast hell can hold,
+That is, the madman: the lover, all as frantic,
+Sees Helen's beauty in a brow of Egypt:
+The poet's eye, in fine frenzy rolling,
+Doth glance from heaven to earth, from earth to heaven;
+And as imagination bodies forth
+The forms of things unknown, the poet's pen
+Turns them to shapes and gives to airy nothing
+A local habitation and a name.`;
+        }
+
+        function getCodeText() {
+            return `# ============================================
+# E-Commerce Order Processing System
+# ============================================
+
+from dataclasses import dataclass, field
+from datetime import datetime, timedelta
+from enum import Enum
+from typing import Optional
+import uuid
+import json
+import hashlib
+import logging
+
+logger = logging.getLogger(__name__)
+
+class OrderStatus(Enum):
+    PENDING = "pending"
+    CONFIRMED = "confirmed"
+    PROCESSING = "processing"
+    SHIPPED = "shipped"
+    DELIVERED = "delivered"
+    CANCELLED = "cancelled"
+    REFUNDED = "refunded"
+
+class PaymentMethod(Enum):
+    CREDIT_CARD = "credit_card"
+    DEBIT_CARD = "debit_card"
+    PAYPAL = "paypal"
+    BANK_TRANSFER = "bank_transfer"
+    CRYPTO = "crypto"
+
+@dataclass
+class Address:
+    street: str
+    city: str
+    state: str
+    zip_code: str
+    country: str = "US"
+
+    def format(self) -> str:
+        return f"{self.street}, {self.city}, {self.state} {self.zip_code}, {self.country}"
+
+    def validate(self) -> bool:
+        if not all([self.street, self.city, self.state, self.zip_code]):
+            return False
+        if self.country == "US" and len(self.zip_code) not in (5, 10):
+            return False
+        return True
+
+@dataclass
+class Product:
+    id: str
+    name: str
+    price: float
+    weight_kg: float
+    category: str
+    stock: int = 0
+    discount_percent: float = 0.0
+
+    @property
+    def discounted_price(self) -> float:
+        return self.price * (1 - self.discount_percent / 100)
+
+    def is_available(self, quantity: int = 1) -> bool:
+        return self.stock >= quantity
+
+    def reserve(self, quantity: int) -> bool:
+        if self.is_available(quantity):
+            self.stock -= quantity
+            return True
+        return False
+
+    def release(self, quantity: int) -> None:
+        self.stock += quantity
+
+@dataclass
+class OrderItem:
+    product: Product
+    quantity: int
+    unit_price: float = 0.0
+
+    def __post_init__(self):
+        if self.unit_price == 0.0:
+            self.unit_price = self.product.discounted_price
+
+    @property
+    def subtotal(self) -> float:
+        return self.unit_price * self.quantity
+
+    @property
+    def weight(self) -> float:
+        return self.product.weight_kg * self.quantity
+
+@dataclass
+class Order:
+    id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    customer_id: str = ""
+    items: list = field(default_factory=list)
+    status: OrderStatus = OrderStatus.PENDING
+    shipping_address: Optional[Address] = None
+    billing_address: Optional[Address] = None
+    payment_method: Optional[PaymentMethod] = None
+    created_at: datetime = field(default_factory=datetime.now)
+    updated_at: datetime = field(default_factory=datetime.now)
+    notes: str = ""
+    tracking_number: Optional[str] = None
+
+    @property
+    def subtotal(self) -> float:
+        return sum(item.subtotal for item in self.items)
+
+    @property
+    def tax(self) -> float:
+        return self.subtotal * 0.08
+
+    @property
+    def shipping_cost(self) -> float:
+        total_weight = sum(item.weight for item in self.items)
+        if total_weight <= 1: return 5.99
+        elif total_weight <= 5: return 9.99
+        elif total_weight <= 20: return 14.99
+        else: return 24.99
+
+    @property
+    def total(self) -> float:
+        return self.subtotal + self.tax + self.shipping_cost
+
+    def add_item(self, product, quantity):
+        if not product.is_available(quantity):
+            return False
+        for item in self.items:
+            if item.product.id == product.id:
+                if product.is_available(item.quantity + quantity):
+                    item.quantity += quantity
+                    self.updated_at = datetime.now()
+                    return True
+                return False
+        self.items.append(OrderItem(product=product, quantity=quantity))
+        self.updated_at = datetime.now()
+        return True
+
+    def can_transition_to(self, new_status):
+        valid = {
+            OrderStatus.PENDING: [OrderStatus.CONFIRMED, OrderStatus.CANCELLED],
+            OrderStatus.CONFIRMED: [OrderStatus.PROCESSING, OrderStatus.CANCELLED],
+            OrderStatus.PROCESSING: [OrderStatus.SHIPPED, OrderStatus.CANCELLED],
+            OrderStatus.SHIPPED: [OrderStatus.DELIVERED],
+            OrderStatus.DELIVERED: [OrderStatus.REFUNDED],
+            OrderStatus.CANCELLED: [],
+            OrderStatus.REFUNDED: [],
+        }
+        return new_status in valid.get(self.status, [])
+
+class InventoryService:
+    def __init__(self):
+        self.products = {}
+        self.reservations = {}
+
+    def add_product(self, product):
+        self.products[product.id] = product
+
+    def reserve_for_order(self, order):
+        reserved = []
+        for item in order.items:
+            if item.product.reserve(item.quantity):
+                reserved.append((item.product.id, item.quantity))
+            else:
+                for pid, qty in reserved:
+                    self.products[pid].release(qty)
+                return False
+        self.reservations[order.id] = reserved
+        return True
+
+class PaymentService:
+    def __init__(self):
+        self.transactions = {}
+
+    def process_payment(self, order):
+        if not order.payment_method:
+            return False, "No payment method"
+        txn_id = f"TXN-{uuid.uuid4().hex[:12].upper()}"
+        self.transactions[txn_id] = {
+            "order_id": order.id,
+            "amount": order.total,
+            "method": order.payment_method.value,
+            "status": "completed"
+        }
+        return True, txn_id
+
+class ShippingService:
+    CARRIERS = {
+        "standard": {"name": "Standard", "days": (5, 7)},
+        "express": {"name": "Express", "days": (2, 3)},
+        "overnight": {"name": "Overnight", "days": (1, 1)},
+    }
+
+    def ship_order(self, order, carrier="standard"):
+        tracking = f"TRACK-{uuid.uuid4().hex[:10].upper()}"
+        info = self.CARRIERS.get(carrier, self.CARRIERS["standard"])
+        now = datetime.now()
+        return {
+            "tracking_number": tracking,
+            "carrier": info["name"],
+            "est_min": (now + timedelta(days=info["days"][0])).isoformat(),
+            "est_max": (now + timedelta(days=info["days"][1])).isoformat(),
+        }
+
+class OrderProcessor:
+    def __init__(self):
+        self.inventory = InventoryService()
+        self.payment = PaymentService()
+        self.shipping = ShippingService()
+        self.orders = {}
+
+    def process_order(self, order_id):
+        order = self.orders.get(order_id)
+        if not order: return {"success": False, "error": "Not found"}
+        if not self.inventory.reserve_for_order(order):
+            return {"success": False, "error": "Insufficient stock"}
+        success, txn_id = self.payment.process_payment(order)
+        if not success:
+            self.inventory.release_for_order(order.id)
+            return {"success": False, "error": f"Payment failed: {txn_id}"}
+        shipment = self.shipping.ship_order(order)
+        order.tracking_number = shipment["tracking_number"]
+        return {"success": True, "order_id": order.id, "shipment": shipment}`;
+        }
+
+        function getScienceText() {
+            return `ABSTRACT
+
+The Role of Quantum Entanglement in Biological Systems: A Comprehensive Review
+
+Authors: Dr. Sarah Chen, Dr. Michael Roberts, Dr. Yuki Tanaka
+Department of Quantum Biology, Stanford University
+Published: Nature Reviews Physics, 2025
+
+Abstract: This review examines the growing body of evidence suggesting that quantum mechanical effects, particularly quantum entanglement and coherence, play functional roles in biological systems. We survey findings across photosynthesis, avian navigation, enzyme catalysis, and olfaction, evaluating the theoretical frameworks and experimental evidence for each proposed quantum biological phenomenon.
+
+1. INTRODUCTION
+
+The intersection of quantum mechanics and biology represents one of the most exciting frontiers in modern science. While classical physics has long been considered sufficient to explain biological processes, recent experimental advances have revealed quantum effects operating at biologically relevant temperatures and timescales.
+
+The central question addressed in this review is whether quantum effects are merely incidental byproducts of molecular-scale processes or whether natural selection has exploited quantum mechanics to enhance biological function.
+
+2. QUANTUM COHERENCE IN PHOTOSYNTHESIS
+
+2.1 Background
+Photosynthesis converts solar energy into chemical energy with remarkable efficiency, often exceeding 95% in the initial energy transfer steps. The Fenna-Matthews-Olson (FMO) complex in green sulfur bacteria has become a model system for studying quantum effects.
+
+2.2 Experimental Evidence
+Fleming et al. (2007) used two-dimensional electronic spectroscopy to observe long-lived quantum coherence in the FMO complex at 77K. Subsequent studies extended these observations to physiological temperatures (277K), with coherence lifetimes of approximately 300 femtoseconds.
+
+The key finding was that energy transfer between chromophores does not follow a classical "hopping" mechanism but instead exhibits wavelike quantum coherent dynamics, allowing the system to simultaneously sample multiple energy transfer pathways.
+
+2.3 Theoretical Models
+The HEOM (Hierarchical Equations of Motion) approach has been successful in modeling these systems. Counterintuitively, moderate environmental noise can actually enhance energy transfer efficiency, known as "noise-assisted transport" (ENAQT).
+
+3. QUANTUM MAGNETORECEPTION
+
+3.1 The Radical Pair Mechanism
+European robins and other migratory birds navigate using Earth's magnetic field. The radical pair mechanism suggests that cryptochrome proteins in the retina generate pairs of radicals whose spin states are sensitive to magnetic field orientation.
+
+3.2 Key Results
+Mouritsen et al. demonstrated that disrupting cryptochrome function impairs magnetic navigation. Hore and Mouritsen (2016) showed radical pairs in cryptochrome maintain spin coherence for microseconds, far longer than expected in warm biological environments.
+
+4. QUANTUM TUNNELING IN ENZYME CATALYSIS
+
+4.1 Hydrogen Tunneling
+Enzymes accelerate reactions by factors of 10^6 to 10^17. Evidence suggests quantum tunneling of hydrogen atoms contributes to certain enzyme-catalyzed reactions.
+
+4.2 Evidence
+Klinman et al. demonstrated anomalous kinetic isotope effects (KIEs) exceeding the semiclassical maximum, providing strong evidence for quantum tunneling. Temperature-independent KIEs in soybean lipoxygenase suggest hydrogen transfer dominated by quantum tunneling.
+
+5. QUANTUM EFFECTS IN OLFACTION
+
+5.1 The Vibration Theory
+Turin (1996) proposed olfactory receptors detect molecular vibrations through inelastic electron tunneling spectroscopy, rather than relying solely on molecular shape.
+
+6. CONCLUSIONS
+
+The evidence varies across systems: strong for photosynthesis and enzyme catalysis, compelling for magnetoreception, and inconclusive for olfaction. Biological systems appear to operate at the boundary between quantum and classical regimes.
+
+REFERENCES
+[1] Fleming, G.R. et al. Nature 446, 782-786 (2007)
+[2] Hore, P.J. & Mouritsen, H. Annu. Rev. Biophys. 45, 299-344 (2016)
+[3] Klinman, J.P. & Kohen, A. Annu. Rev. Biochem. 82, 471-496 (2013)
+[4] Turin, L. Chemical Senses 21, 773-791 (1996)`;
+        }
+
+        function getLegalText() {
+            return `SOFTWARE LICENSE AGREEMENT
+
+This Software License Agreement ("Agreement") is entered into as of January 15, 2026, by and between:
+
+LICENSOR: TechVision Corp., a Delaware corporation, 1200 Innovation Drive, Suite 500, San Jose, CA 95134
+LICENSEE: Global Solutions Inc., a California corporation, 800 Market Street, Suite 300, San Francisco, CA 94102
+
+1. DEFINITIONS
+
+1.1 "Authorized Users" means Licensee's employees, contractors, and agents authorized to access the Software, not exceeding the number in the Order Form.
+1.2 "Confidential Information" means all non-public information disclosed by either party that is designated as confidential.
+1.3 "Documentation" means user guides, online help, release notes, and training materials provided by Licensor.
+1.4 "Software" means the VisionAI Platform proprietary software.
+
+2. GRANT OF LICENSE
+
+2.1 License Grant. Subject to this Agreement and payment of fees, Licensor grants Licensee a non-exclusive, non-transferable, non-sublicensable license to:
+(a) install and use the Software on Licensee's servers or approved cloud infrastructure;
+(b) permit Authorized Users to access and use the Software;
+(c) make one (1) backup copy for disaster recovery.
+
+2.2 Restrictions. Licensee shall not:
+(a) sublicense, sell, resell, transfer, or distribute the Software;
+(b) modify, adapt, or create derivative works;
+(c) reverse engineer, disassemble, or decompile the Software;
+(d) remove proprietary notices;
+(e) use the Software for third-party processing services;
+(f) build a competitive product;
+(g) exceed authorized user limits.
+
+3. FEES AND PAYMENT
+
+3.1 License Fees per the Order Form, payable in USD.
+3.2 Payment Terms: 30 days from invoice. Late payments: 1.5% per month interest.
+3.3 Taxes: All fees exclusive of taxes; Licensee responsible for all taxes except Licensor income taxes.
+3.4 Fee Increases: Up to 5% annually with 60 days notice.
+
+4. INTELLECTUAL PROPERTY
+
+4.1 Ownership: Licensor retains all rights to Software and Documentation.
+4.2 Feedback: Licensee assigns all rights in any Feedback to Licensor.
+4.3 Licensee Data: Licensee retains all rights to data processed through the Software.
+
+5. WARRANTY AND DISCLAIMER
+
+5.1 Limited Warranty: 90-day warranty that Software performs per Documentation. Remedy: repair or replacement.
+5.2 DISCLAIMER: SOFTWARE PROVIDED "AS IS." NO OTHER WARRANTIES EXPRESS OR IMPLIED.
+
+6. LIMITATION OF LIABILITY
+
+6.1 NO INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES.
+6.2 LIABILITY CAP: Total fees paid in prior 12 months, except for Section 2.2 or Section 7 breaches.
+
+7. CONFIDENTIALITY
+
+7.1 Each party maintains strict confidence of the other's Confidential Information.
+7.2 Exceptions: publicly available, already known, independently developed, or received from third party.
+
+8. TERM AND TERMINATION
+
+8.1 Initial Term: 3 years, auto-renewing for 1-year periods unless 90 days notice of non-renewal.
+8.2 Termination for Cause: 30 days written notice for material breach with cure period.
+8.3 Effect: Cease use, destroy copies, certify destruction. Sections 4-9 survive.
+
+9. GENERAL PROVISIONS
+
+9.1 Governing Law: Delaware law.
+9.2 Dispute Resolution: Binding arbitration via JAMS in San Francisco.
+9.3 Force Majeure: Neither party liable for causes beyond reasonable control.
+9.4 Entire Agreement: This Agreement and Order Forms constitute the entire agreement.`;
+        }
+
+        function getStoryText() {
+            return `THE LAST LIGHTHOUSE KEEPER
+
+Chapter 1: The Appointment
+
+The letter arrived on a Tuesday, carried by a mail boat that fought its way through three-meter swells to reach the harbor at Dunmore Head. Margaret Calloway read it twice, her weathered hands trembling not from the cold Atlantic wind but from the weight of what it contained.
+
+"Dear Ms. Calloway," it began, in the precise typeface of the Irish Lighthouse Authority. "Following the automation of the remaining lighthouse stations along the western coast, we regret to inform you that your position as Principal Keeper at Skellig Light will be terminated effective March 31, 2024. You are the last serving lighthouse keeper in the Republic of Ireland."
+
+She folded the letter and placed it in the pocket of her oilskin jacket, then climbed the one hundred and seventeen steps to the lantern room, as she had done every evening for twenty-three years. The Fresnel lens, a masterwork of French engineering from 1868, caught the dying light and scattered it into rainbows across the curved glass walls. In four months, an automated LED array would replace it.
+
+Three generations. Eighty-two years. The longest unbroken family tenure in Irish lighthouse history, all ending with a form letter.
+
+Chapter 2: The Storm
+
+The first sign of trouble came at 14:22 on March 15th, sixteen days before her final day. The barometric pressure dropped from 1013 to 997 millibars in less than three hours. She had seen this before only twice in her career.
+
+She radioed the Coast Guard station at Valentia. "This is Skellig Light, broadcasting weather observation. Pressure falling rapidly. I'm reading 997 and dropping. Wind shifting northwest, currently thirty-five knots and building. I recommend a Storm Force warning for the southwestern approaches."
+
+"Copy, Skellig Light. Met Eireann has issued a Status Orange warning. They're calling it Storm Brigid. Expected to intensify to Status Red by midnight. Do you require evacuation?"
+
+Margaret looked out at the sea. Fifteen-meter swells were already building. The helicopter from Shannon wouldn't be able to reach her in these conditions.
+
+"Negative, Valentia. I'll ride it out. The light stays on."
+
+She spent the next four hours preparing: secured external shutters, checked the emergency generator, filled water containers, tested the fog signal, carried extra fuel to the lantern room, and prepared the manual rotation mechanism. The automated system that was set to replace her could do none of these things.
+
+Chapter 3: The Longest Night
+
+Storm Brigid struck at 19:47 with a violence that Margaret felt in her bones. The wind gauge registered 140 kilometers per hour before the anemometer was torn from its mounting.
+
+At 21:30, the main power failed. The generator kicked in but the light went dark for eleven seconds. Margaret climbed to the lantern room and initiated the manual backup, opening the clockwork mechanism's brake so the massive lens began to turn on its mercury float bearing.
+
+At midnight, a distress call came on Channel 16. "Mayday, Mayday. This is the fishing vessel Cuan na Mara, approximately eight miles southwest of Skellig Rock. We are taking on water. Five souls on board."
+
+The Coast Guard couldn't help. The Valentia lifeboat was deployed elsewhere. The Shannon helicopter was grounded. The Portmagee RNLI couldn't launch.
+
+Margaret made a decision. She increased the light to maximum intensity and began transmitting: "Cuan na Mara, this is Skellig Light. I have you on radar at bearing 225, range 7.3 miles. Steer northeast toward the light. There is sheltered water in the lee of the Great Skellig. I will guide you in."
+
+For three hours, she talked the fishing boat through the storm, past the submerged rocks at the Bull, through the narrow channel between the Skellig islands, and into Blind Man's Cove.
+
+At 03:14, the skipper radioed: "Skellig Light, we are in the cove. All five aboard safe. God bless you, keeper."
+
+Margaret rewound the clockwork mechanism, made an entry in the logbook, and allowed herself to cry.
+
+Chapter 4: The Last Entry
+
+On March 31, 2024, Margaret Calloway made her final entry in the Skellig Light logbook:
+
+"31 March 2024. 18:00. Wind SW 15 knots. Sea state moderate. Visibility good. Barometric pressure 1018mb steady. Light operational on automatic system as of 12:00 today. Manual systems decommissioned.
+
+This is the final manual entry in the Skellig Light log. Three generations of Calloways have kept this light for 82 years. The sea does not care who tends the flame, only that it burns. But someone should remember that it was people who climbed these steps, who polished the lens, who stayed awake through the storms. Someone should remember that the light was not just a navigational aid but a promise: you are not alone out there.
+
+The light will continue. The keeper will not.
+
+M. Calloway, Principal Keeper, Skellig Light. Last entry."
+
+She descended the one hundred and seventeen steps for the final time. The mail boat was waiting. As it pulled away, Margaret watched the lighthouse grow smaller against the darkening sky. She did not look away until it was lost in the distance, just another point of light among the stars.
+
+But it was still burning.
+
+- END -`;
+        }
+
+        // --- API Helpers ---
+        function getApiKey() {
+            return document.getElementById('apiKey').value.trim();
+        }
+
+        function getModel() {
+            return document.getElementById('model').value;
+        }
+
+        function showError(id, msg) {
+            const el = document.getElementById(id);
+            el.textContent = msg;
+            el.style.display = 'block';
+        }
+
+        function hideError(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function showSuccess(id, msg) {
+            const el = document.getElementById(id);
+            el.textContent = msg;
+            el.style.display = 'block';
+            setTimeout(() => { el.style.display = 'none'; }, 5000);
+        }
+
+        // --- DOM helper to build a usage stat element ---
+        function createUsageStat(label, value, colorClass) {
+            const stat = document.createElement('div');
+            stat.className = 'usage-stat';
+            const labelEl = document.createElement('div');
+            labelEl.className = 'label';
+            labelEl.textContent = label;
+            const valueEl = document.createElement('div');
+            valueEl.className = 'value' + (colorClass ? ' ' + colorClass : '');
+            valueEl.textContent = value;
+            stat.appendChild(labelEl);
+            stat.appendChild(valueEl);
+            return stat;
+        }
+
+        // --- DOM helper to build a cache meta span ---
+        function createMetaItem(labelText, valueText, color) {
+            const div = document.createElement('div');
+            div.className = 'cache-meta-item';
+            if (color) div.style.color = color;
+            const strong = document.createElement('strong');
+            strong.textContent = labelText;
+            div.appendChild(strong);
+            const val = document.createElement('span');
+            val.textContent = valueText;
+            div.appendChild(val);
+            return div;
+        }
+
+        // --- Create Cache ---
+        async function createCache() {
+            const apiKey = getApiKey();
+            const model = getModel();
+            const content = document.getElementById('cacheContent').value.trim();
+            const sysInstruction = document.getElementById('sysInstruction').value.trim();
+            const displayName = document.getElementById('displayName').value.trim();
+            const ttl = document.getElementById('ttl').value;
+            const btn = document.getElementById('createBtn');
+
+            hideError('createError');
+
+            if (!apiKey) { showError('createError', 'Please enter your API key.'); return; }
+            if (!content) { showError('createError', 'Please enter content to cache.'); return; }
+
+            btn.disabled = true;
+            btn.textContent = 'Creating cache...';
+
+            try {
+                const body = {
+                    model: model,
+                    contents: [{
+                        parts: [{ text: content }],
+                        role: "user"
+                    }],
+                    ttl: ttl
+                };
+
+                if (sysInstruction) {
+                    body.systemInstruction = {
+                        parts: [{ text: sysInstruction }]
+                    };
+                }
+
+                if (displayName) {
+                    body.displayName = displayName;
+                }
+
+                const res = await fetch(`${API_BASE}/cachedContents?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+
+                if (!res.ok) {
+                    const err = await res.json();
+                    throw new Error(err.error?.message || `HTTP ${res.status}`);
+                }
+
+                const data = await res.json();
+                const tokenCount = data.usageMetadata?.totalTokenCount || '?';
+                showSuccess('createSuccess', 'Cache created: ' + data.name + ' (' + tokenCount + ' tokens cached)');
+
+                setTimeout(() => { showTab(1); }, 1500);
+
+            } catch (e) {
+                showError('createError', e.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Create Cache';
+            }
+        }
+
+        // --- List Caches ---
+        async function listCaches() {
+            const apiKey = getApiKey();
+            if (!apiKey) { showError('manageError', 'Please enter your API key.'); return; }
+
+            hideError('manageError');
+            const container = document.getElementById('cacheListContainer');
+            container.textContent = '';
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'empty-state';
+            loadingDiv.textContent = 'Loading caches...';
+            container.appendChild(loadingDiv);
+
+            try {
+                const res = await fetch(`${API_BASE}/cachedContents?key=${apiKey}`);
+                if (!res.ok) {
+                    const err = await res.json();
+                    throw new Error(err.error?.message || `HTTP ${res.status}`);
+                }
+
+                const data = await res.json();
+                knownCaches = data.cachedContents || [];
+
+                updateCacheSelect();
+
+                container.textContent = '';
+
+                if (knownCaches.length === 0) {
+                    const emptyDiv = document.createElement('div');
+                    emptyDiv.className = 'empty-state';
+                    emptyDiv.textContent = 'No caches found. Create one in Step 1.';
+                    container.appendChild(emptyDiv);
+                    return;
+                }
+
+                const list = document.createElement('div');
+                list.className = 'cache-list';
+
+                knownCaches.forEach(cache => {
+                    const item = document.createElement('div');
+                    item.className = 'cache-item';
+
+                    // Header row
+                    const header = document.createElement('div');
+                    header.className = 'cache-item-header';
+
+                    const nameEl = document.createElement('div');
+                    nameEl.className = 'cache-item-name';
+                    nameEl.textContent = cache.displayName || cache.name;
+                    header.appendChild(nameEl);
+
+                    const actions = document.createElement('div');
+                    actions.className = 'cache-item-actions';
+
+                    const extendBtn = document.createElement('button');
+                    extendBtn.className = 'secondary';
+                    extendBtn.textContent = 'Extend TTL';
+                    extendBtn.addEventListener('click', () => updateCacheTTL(cache.name));
+                    actions.appendChild(extendBtn);
+
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'danger';
+                    deleteBtn.textContent = 'Delete';
+                    deleteBtn.addEventListener('click', () => deleteCache(cache.name));
+                    actions.appendChild(deleteBtn);
+
+                    header.appendChild(actions);
+                    item.appendChild(header);
+
+                    // Meta row
+                    const meta = document.createElement('div');
+                    meta.className = 'cache-item-meta';
+
+                    meta.appendChild(createMetaItem('Name:', cache.name));
+                    meta.appendChild(createMetaItem('Model:', cache.model || '?'));
+                    meta.appendChild(createMetaItem('Tokens:', String(cache.usageMetadata?.totalTokenCount || '?')));
+
+                    const expireTime = cache.expireTime ? new Date(cache.expireTime) : null;
+                    const isExpired = expireTime && expireTime < new Date();
+                    const timeLeft = expireTime ? getTimeLeft(expireTime) : 'Unknown';
+                    const expiryColor = isExpired ? 'var(--red)' : 'var(--green)';
+                    meta.appendChild(createMetaItem('Expires:', isExpired ? 'Expired' : timeLeft, expiryColor));
+
+                    item.appendChild(meta);
+                    list.appendChild(item);
+                });
+
+                container.appendChild(list);
+
+            } catch (e) {
+                showError('manageError', e.message);
+                container.textContent = '';
+                const failDiv = document.createElement('div');
+                failDiv.className = 'empty-state';
+                failDiv.textContent = 'Failed to load caches.';
+                container.appendChild(failDiv);
+            }
+        }
+
+        function getTimeLeft(expireTime) {
+            const diff = expireTime - new Date();
+            if (diff <= 0) return 'Expired';
+            const mins = Math.floor(diff / 60000);
+            const secs = Math.floor((diff % 60000) / 1000);
+            if (mins > 60) return Math.floor(mins / 60) + 'h ' + (mins % 60) + 'm';
+            return mins + 'm ' + secs + 's';
+        }
+
+        function updateCacheSelect() {
+            const select = document.getElementById('cacheSelect');
+            select.textContent = '';
+            if (knownCaches.length === 0) {
+                const opt = document.createElement('option');
+                opt.value = '';
+                opt.textContent = '-- No caches available --';
+                select.appendChild(opt);
+                return;
+            }
+            knownCaches.forEach(cache => {
+                const opt = document.createElement('option');
+                opt.value = cache.name;
+                opt.textContent = cache.displayName ? cache.displayName + ' (' + cache.name + ')' : cache.name;
+                select.appendChild(opt);
+            });
+        }
+
+        // --- Update Cache TTL ---
+        async function updateCacheTTL(cacheName) {
+            const apiKey = getApiKey();
+            if (!apiKey) return;
+
+            try {
+                const res = await fetch(`${API_BASE}/${cacheName}?key=${apiKey}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ttl: '600s' })
+                });
+
+                if (!res.ok) {
+                    const err = await res.json();
+                    throw new Error(err.error?.message || `HTTP ${res.status}`);
+                }
+
+                listCaches();
+            } catch (e) {
+                showError('manageError', 'Failed to update: ' + e.message);
+            }
+        }
+
+        // --- Delete Cache ---
+        async function deleteCache(cacheName) {
+            const apiKey = getApiKey();
+            if (!apiKey) return;
+
+            if (!confirm('Delete cache ' + cacheName + '?')) return;
+
+            try {
+                const res = await fetch(`${API_BASE}/${cacheName}?key=${apiKey}`, {
+                    method: 'DELETE'
+                });
+
+                if (!res.ok) {
+                    const err = await res.json();
+                    throw new Error(err.error?.message || `HTTP ${res.status}`);
+                }
+
+                listCaches();
+            } catch (e) {
+                showError('manageError', 'Failed to delete: ' + e.message);
+            }
+        }
+
+        // --- Query Cache ---
+        async function queryCache() {
+            const apiKey = getApiKey();
+            const cacheName = document.getElementById('cacheSelect').value;
+            const queryText = document.getElementById('queryText').value.trim();
+            const btn = document.getElementById('queryBtn');
+            const resultDiv = document.getElementById('queryResult');
+
+            hideError('queryError');
+            resultDiv.style.display = 'none';
+
+            if (!apiKey) { showError('queryError', 'Please enter your API key.'); return; }
+            if (!cacheName) { showError('queryError', 'Please select a cache.'); return; }
+            if (!queryText) { showError('queryError', 'Please enter a question.'); return; }
+
+            const cache = knownCaches.find(c => c.name === cacheName);
+            const model = cache?.model || getModel();
+
+            btn.disabled = true;
+            btn.textContent = 'Querying...';
+
+            try {
+                const res = await fetch(`${API_BASE}/${model}:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{ text: queryText }],
+                            role: "user"
+                        }],
+                        cachedContent: cacheName
+                    })
+                });
+
+                if (!res.ok) {
+                    const err = await res.json();
+                    throw new Error(err.error?.message || `HTTP ${res.status}`);
+                }
+
+                const data = await res.json();
+
+                const responseTextStr = data.candidates?.[0]?.content?.parts
+                    ?.map(p => p.text).filter(Boolean).join('\n') || 'No response generated.';
+
+                const responseEl = document.getElementById('responseText');
+                if (typeof renderMarkdown === 'function') {
+                    renderMarkdown(responseTextStr, responseEl);
+                } else {
+                    responseEl.textContent = responseTextStr;
+                }
+
+                // Build usage stats with DOM methods
+                const usage = data.usageMetadata || {};
+                const usageBar = document.getElementById('usageBar');
+                usageBar.textContent = '';
+                usageBar.appendChild(createUsageStat('Prompt Tokens', usage.promptTokenCount || 0, ''));
+                usageBar.appendChild(createUsageStat('Cached Tokens', usage.cachedContentTokenCount || 0, 'green'));
+                usageBar.appendChild(createUsageStat('Response Tokens', usage.candidatesTokenCount || 0, ''));
+                usageBar.appendChild(createUsageStat('Total Tokens', usage.totalTokenCount || 0, 'amber'));
+
+                resultDiv.style.display = 'block';
+
+            } catch (e) {
+                showError('queryError', e.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Send Query';
+            }
+        }
+
+        // Ctrl+Enter shortcut
+        document.getElementById('queryText').addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                queryCache();
+            }
+        });
+
+        // Theme
+        function initTheme() {
+            const t = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', t);
+        }
+        initTheme();
+    </script>
+    <script src="markdown.js"></script>
+    <script src="nav.js"></script>
+</body>
+</html>

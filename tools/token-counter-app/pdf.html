@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://generativelanguage.googleapis.com;">
+    <title>Gemini PDF Analyzer</title>
+    <!--
+    Copyright 2026 Google LLC.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #ffffff; --bg-elevated: #f5f6f8; --bg-card: #ffffff; --bg-input: #f5f6f8;
+            --border: #e2e4e9; --border-focus: #4f46e5; --text: #111318; --text-secondary: #4b5060; --text-muted: #8b90a0;
+            --accent: #4f46e5; --accent-hover: #4338ca; --accent-soft: #eef2ff;
+            --green: #059669; --green-soft: #ecfdf5; --red: #dc2626; --red-soft: #fef2f2;
+            --amber: #d97706; --amber-soft: #fffbeb;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.08); --radius: 12px;
+        }
+        [data-theme="dark"] {
+            --bg: #0e1117; --bg-elevated: #161b26; --bg-card: #1c2132; --bg-input: #161b26;
+            --border: #2a3045; --border-focus: #818cf8; --text: #eceef4; --text-secondary: #9399ae; --text-muted: #5c6280;
+            --accent: #818cf8; --accent-hover: #a5b4fc; --accent-soft: #1e1b4b40;
+            --green: #34d399; --green-soft: #05966920; --red: #f87171; --red-soft: #dc262620;
+            --amber: #fbbf24; --amber-soft: #d9770620;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2); --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 24px; transition: background 0.3s, color 0.3s; }
+        .container { max-width: 700px; width: 100%; }
+        .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
+        .nav-brand { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.03em; }
+        .nav-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .nav-link { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 6px 14px; border-radius: 8px; transition: all 0.2s; }
+        .nav-link:hover { background: var(--bg-elevated); color: var(--text); }
+        .theme-toggle { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-elevated); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; padding: 0; }
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+        .theme-toggle svg { width: 18px; height: 18px; }
+        .icon-sun, [data-theme="dark"] .icon-moon { display: none; }
+        [data-theme="dark"] .icon-sun { display: block; }
+        .header { margin-bottom: 32px; }
+        h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px; }
+        .subtitle { font-size: 15px; color: var(--text-secondary); line-height: 1.5; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); transition: background 0.3s, border-color 0.3s; }
+        .field { margin-bottom: 18px; }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+        label { display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
+        input[type="password"], input[type="text"] { width: 100%; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-family: inherit; font-size: 14px; color: var(--text); outline: none; transition: all 0.2s; }
+        input:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
+        input::placeholder { color: var(--text-muted); }
+        .drop-zone { border: 2px dashed var(--border); border-radius: var(--radius); padding: 40px 20px; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--bg-input); }
+        .drop-zone:hover, .drop-zone.dragover { border-color: var(--accent); background: var(--accent-soft); }
+        .drop-zone-text { font-size: 14px; color: var(--text-secondary); }
+        .drop-zone-hint { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+        .drop-zone.has-file { border-style: solid; border-color: var(--green); background: var(--green-soft); }
+        .file-info { font-size: 14px; color: var(--green); font-weight: 600; }
+        .file-size { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+        .question-box { display: flex; gap: 10px; }
+        .question-box input { flex: 1; }
+        .sample-queries { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+        .sample-q { padding: 5px 12px; font-size: 12px; font-weight: 500; border-radius: 6px; cursor: pointer; background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border); transition: all 0.2s; font-family: inherit; }
+        .sample-q:hover { border-color: var(--accent); color: var(--accent); }
+        button.primary { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 10px 24px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        button.primary:hover { background: var(--accent-hover); }
+        button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .result { margin-top: 24px; display: none; }
+        .result.visible { display: block; }
+        .result-inner { background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+        .result-label { font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 12px; }
+        .result-text { font-size: 14px; color: var(--text); line-height: 1.7; }
+        .error { margin-top: 14px; padding: 10px 14px; background: var(--red-soft); border: 1px solid var(--red); border-radius: 8px; font-size: 13px; color: var(--red); display: none; }
+        .error.visible { display: block; }
+        .footer { margin-top: 24px; }
+        .privacy-notice { margin-top: 16px; padding: 12px 14px; background: var(--green-soft); border-radius: 8px; font-size: 12px; color: var(--green); line-height: 1.5; display: flex; gap: 8px; align-items: flex-start; }
+        .privacy-notice svg { flex-shrink: 0; width: 14px; height: 14px; margin-top: 2px; }
+        @media (max-width: 520px) { h1 { font-size: 28px; } .card { padding: 20px; } .field-row { grid-template-columns: 1fr; } .question-box { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <span class="nav-brand">Gemini Tools</span>
+            <div class="nav-right">
+                <a href="tokens.html" class="nav-link">Tokens</a>
+                <a href="models.html" class="nav-link">Models</a>
+                <a href="describe.html" class="nav-link">Describer</a>
+                <a href="embed.html" class="nav-link">Embeddings</a>
+                <a href="extract.html" class="nav-link">Extractor</a>
+                <a href="prompt.html" class="nav-link">Playground</a>
+                <a href="search.html" class="nav-link">Search</a>
+                <a href="detect.html" class="nav-link">Detector</a>
+                <a href="video.html" class="nav-link">Video</a>
+                <a href="story.html" class="nav-link">Story</a>
+                <a href="animate.html" class="nav-link">Animate</a>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+            </div>
+        </nav>
+
+        <div class="header">
+            <h1>PDF Analyzer</h1>
+            <p class="subtitle">Upload a PDF and ask questions about its content. Gemini reads the full document and answers based on what it contains.</p>
+        </div>
+
+        <div class="card">
+            <div class="field-row">
+                <div class="field">
+                    <label for="api-key-input">API Key</label>
+                    <input type="password" id="api-key-input" placeholder="Your Gemini key" autocomplete="off" data-lpignore="true" data-1p-ignore>
+                </div>
+                <div class="field">
+                    <label for="model-input">Model</label>
+                    <input type="text" id="model-input" value="gemini-2.5-flash" placeholder="e.g. gemini-2.5-flash">
+                </div>
+            </div>
+
+            <div class="field">
+                <label>PDF Document</label>
+                <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+                    <div class="drop-zone-text">Drop a PDF here or click to upload</div>
+                    <div class="drop-zone-hint">PDF files up to 20MB supported</div>
+                </div>
+                <input type="file" id="file-input" accept="application/pdf" style="display:none">
+            </div>
+
+            <div class="field">
+                <label for="question-input">Question about the PDF</label>
+                <div class="question-box">
+                    <input type="text" id="question-input" value="Summarize this document in 3-5 bullet points." placeholder="Ask a question about the uploaded PDF...">
+                    <button class="primary" id="ask-btn" onclick="askPdf()">Ask</button>
+                </div>
+                <div class="sample-queries">
+                    <button class="sample-q" onclick="setQ('Summarize this document in 3-5 bullet points.')">Summarize</button>
+                    <button class="sample-q" onclick="setQ('What are the key findings or conclusions?')">Key findings</button>
+                    <button class="sample-q" onclick="setQ('Extract all dates, numbers, and monetary amounts mentioned.')">Extract data</button>
+                    <button class="sample-q" onclick="setQ('List all people, organizations, or places mentioned.')">Named entities</button>
+                    <button class="sample-q" onclick="setQ('What questions does this document leave unanswered?')">Gaps</button>
+                </div>
+            </div>
+
+            <div class="result" id="result">
+                <div class="result-inner">
+                    <div class="result-label">Answer</div>
+                    <div class="result-text" id="result-text"></div>
+                </div>
+            </div>
+
+            <div class="error" id="error"></div>
+        </div>
+
+        <div class="footer">
+            <div class="privacy-notice">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Your API key is saved in your browser's session storage &mdash; shared across all Gemini Tools pages, but automatically cleared when you close the tab. It is only sent directly to the Google Gemini API.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+        let pdfData = null;
+
+        function getPreferredTheme() { const s = localStorage.getItem('theme'); if (s) return s; return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        function applyTheme(t) { document.documentElement.setAttribute('data-theme', t); localStorage.setItem('theme', t); }
+        function toggleTheme() { applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); }
+        applyTheme(getPreferredTheme());
+
+        function setQ(q) { document.getElementById('question-input').value = q; }
+
+        function formatSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / 1048576).toFixed(1) + ' MB';
+        }
+
+        function handleFile(file) {
+            if (!file || file.type !== 'application/pdf') return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                pdfData = e.target.result.split(',')[1];
+                const zone = document.getElementById('drop-zone');
+                zone.classList.add('has-file');
+                zone.textContent = '';
+                var info = document.createElement('div');
+                info.className = 'file-info';
+                info.textContent = file.name;
+                zone.appendChild(info);
+                var size = document.createElement('div');
+                size.className = 'file-size';
+                size.textContent = formatSize(file.size);
+                zone.appendChild(size);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        document.getElementById('file-input').addEventListener('change', function(e) { handleFile(e.target.files[0]); });
+
+        var dropZone = document.getElementById('drop-zone');
+        dropZone.addEventListener('dragover', function(e) { e.preventDefault(); dropZone.classList.add('dragover'); });
+        dropZone.addEventListener('dragleave', function() { dropZone.classList.remove('dragover'); });
+        dropZone.addEventListener('drop', function(e) { e.preventDefault(); dropZone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+
+        async function askPdf() {
+            var apiKey = document.getElementById('api-key-input').value.trim();
+            var model = document.getElementById('model-input').value.trim();
+            var question = document.getElementById('question-input').value.trim();
+            var btn = document.getElementById('ask-btn');
+            var result = document.getElementById('result');
+            var error = document.getElementById('error');
+
+            error.classList.remove('visible');
+            result.classList.remove('visible');
+
+            if (!apiKey) { error.textContent = 'Please enter your Gemini API key.'; error.classList.add('visible'); return; }
+            if (!pdfData) { error.textContent = 'Please upload a PDF file.'; error.classList.add('visible'); return; }
+            if (!question) { error.textContent = 'Please enter a question.'; error.classList.add('visible'); return; }
+
+            btn.disabled = true;
+            btn.textContent = 'Analyzing\u2026';
+
+            try {
+                var url = API_BASE + '/models/' + encodeURIComponent(model) + ':generateContent?key=' + encodeURIComponent(apiKey);
+                var resp = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [
+                                { text: question },
+                                { inline_data: { mime_type: 'application/pdf', data: pdfData } }
+                            ]
+                        }]
+                    })
+                });
+
+                var data = await resp.json();
+                if (data.error) throw new Error(data.error.message || 'API error');
+
+                var text = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No answer returned.';
+                renderMarkdown(text, document.getElementById('result-text'));
+                result.classList.add('visible');
+            } catch (err) {
+                error.textContent = err.message;
+                error.classList.add('visible');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Ask';
+            }
+        }
+
+        document.getElementById('question-input').addEventListener('keydown', function(e) { if (e.key === 'Enter') askPdf(); });
+    </script>
+    <script src="markdown.js"></script>
+    <script src="nav.js"></script>
+</body>
+</html>

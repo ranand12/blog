@@ -1,0 +1,95 @@
+{
+  "source": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
+  "fetched": "2026-03-09T18:18:26Z",
+  "date": "March 2026",
+  "models": {
+    "gemini-2.0-flash": {
+      "input": 0.15,
+      "inputAudio": 1.0,
+      "output": 0.6,
+      "tuning": 3.0,
+      "live": {
+        "inputText": 0.5,
+        "inputAudio": 3.0,
+        "inputVideo": 3.0,
+        "outputText": 2.0,
+        "outputAudio": 12.0
+      }
+    },
+    "gemini-2.0-flash-image": {
+      "input": 0.15,
+      "inputAudio": 1.0,
+      "inputVideo": 3.0,
+      "output": 0.6,
+      "imageOutput": 30.0
+    },
+    "gemini-2.0-flash-lite": {
+      "input": 0.075,
+      "inputAudio": 0.075,
+      "output": 0.3,
+      "tuning": 1.0
+    },
+    "gemini-2.5-computer-use": {
+      "input": 1.25,
+      "output": 10.0
+    },
+    "gemini-2.5-flash": {
+      "input": 0.3,
+      "cached": 0.03,
+      "inputAudio": 1.0,
+      "cachedAudio": 0.1,
+      "output": 2.5,
+      "imageOutput": 30.0,
+      "live": {
+        "inputText": 0.5,
+        "inputAudio": 3.0,
+        "inputVideo": 3.0,
+        "outputText": 2.0,
+        "outputAudio": 12.0
+      }
+    },
+    "gemini-2.5-flash-lite": {
+      "input": 0.1,
+      "cached": 0.01,
+      "inputAudio": 0.3,
+      "cachedAudio": 0.03,
+      "output": 0.4
+    },
+    "gemini-2.5-pro": {
+      "input": 1.25,
+      "cached": 0.125,
+      "output": 10.0
+    },
+    "gemini-3-flash": {
+      "input": 0.5,
+      "cached": 0.05,
+      "inputAudio": 1.0,
+      "cachedAudio": 0.1,
+      "output": 3.0
+    },
+    "gemini-3-pro": {
+      "input": 2.0,
+      "cached": 0.2,
+      "output": 12.0,
+      "imageOutput": 120.0
+    },
+    "gemini-3.1-flash-image": {
+      "input": 0.5,
+      "output": 3.0,
+      "imageOutput": 60.0
+    },
+    "gemini-3.1-flash-lite": {
+      "input": 0.25,
+      "cached": 0.025,
+      "inputAudio": 0.5,
+      "cachedAudio": 0.05,
+      "output": 1.5
+    },
+    "gemini-3.1-pro": {
+      "input": 2.0,
+      "cached": 0.2,
+      "output": 12.0,
+      "imageOutput": 120.0
+    }
+  }
+}

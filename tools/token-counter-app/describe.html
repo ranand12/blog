@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://generativelanguage.googleapis.com; img-src 'self' data: blob:;">
+    <title>Gemini Image Describer</title>
+    <!--
+    Copyright 2026 Google LLC.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-elevated: #f5f6f8;
+            --bg-card: #ffffff;
+            --bg-input: #f5f6f8;
+            --border: #e2e4e9;
+            --border-focus: #4f46e5;
+            --text: #111318;
+            --text-secondary: #4b5060;
+            --text-muted: #8b90a0;
+            --accent: #4f46e5;
+            --accent-hover: #4338ca;
+            --accent-soft: #eef2ff;
+            --green: #059669;
+            --green-soft: #ecfdf5;
+            --red: #dc2626;
+            --red-soft: #fef2f2;
+            --amber: #d97706;
+            --amber-soft: #fffbeb;
+            --purple: #7c3aed;
+            --purple-soft: #f5f3ff;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0e1117;
+            --bg-elevated: #161b26;
+            --bg-card: #1c2132;
+            --bg-input: #161b26;
+            --border: #2a3045;
+            --border-focus: #818cf8;
+            --text: #eceef4;
+            --text-secondary: #9399ae;
+            --text-muted: #5c6280;
+            --accent: #818cf8;
+            --accent-hover: #a5b4fc;
+            --accent-soft: #1e1b4b40;
+            --green: #34d399;
+            --green-soft: #05966920;
+            --red: #f87171;
+            --red-soft: #dc262620;
+            --amber: #fbbf24;
+            --amber-soft: #d9770620;
+            --purple: #a78bfa;
+            --purple-soft: #7c3aed20;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .container { max-width: 700px; width: 100%; }
+
+        .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
+        .nav-brand { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.03em; }
+        .nav-right { display: flex; align-items: center; gap: 8px; }
+        .nav-link { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 6px 14px; border-radius: 8px; transition: all 0.2s; }
+        .nav-link:hover { background: var(--bg-elevated); color: var(--text); }
+
+        .theme-toggle { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-elevated); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; padding: 0; }
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+        .theme-toggle svg { width: 18px; height: 18px; }
+        .icon-sun, [data-theme="dark"] .icon-moon { display: none; }
+        [data-theme="dark"] .icon-sun { display: block; }
+
+        .header { margin-bottom: 32px; }
+        h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px; }
+        .subtitle { font-size: 15px; color: var(--text-secondary); line-height: 1.5; }
+
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); transition: background 0.3s, border-color 0.3s; }
+        .field { margin-bottom: 18px; }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+        label { display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
+
+        input[type="password"], input[type="text"] {
+            width: 100%; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px;
+            padding: 10px 14px; font-family: inherit; font-size: 14px; color: var(--text); outline: none; transition: all 0.2s;
+        }
+        input:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
+        input::placeholder { color: var(--text-muted); }
+
+        .drop-zone {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--bg-input);
+        }
+        .drop-zone:hover, .drop-zone.dragover { border-color: var(--accent); background: var(--accent-soft); }
+        .drop-zone-text { font-size: 14px; color: var(--text-secondary); }
+        .drop-zone-hint { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+        .drop-zone.has-image { padding: 16px; }
+
+        .image-preview { max-width: 400px; max-height: 400px; border-radius: 8px; margin: 0 auto; display: block; }
+
+        .sample-btn {
+            background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border);
+            border-radius: 8px; padding: 8px 16px; font-family: inherit; font-size: 13px; font-weight: 500;
+            cursor: pointer; transition: all 0.2s; margin-top: 10px;
+        }
+        .sample-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+        .actions { display: flex; align-items: center; gap: 14px; margin-top: 18px; }
+        button.primary { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 10px 24px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        button.primary:hover { background: var(--accent-hover); }
+        button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .shortcut-hint { font-size: 12px; color: var(--text-muted); }
+        .shortcut-hint kbd { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 2px 5px; font-family: inherit; font-size: 11px; }
+
+        .result { margin-top: 24px; display: none; }
+        .result.visible { display: block; }
+        .result-inner { background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+        .result-label { font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 12px; }
+        .result-text { font-size: 14px; color: var(--text); line-height: 1.7; }
+        .result-text p { margin-bottom: 10px; }
+
+        .error { margin-top: 14px; padding: 10px 14px; background: var(--red-soft); border: 1px solid var(--red); border-radius: 8px; font-size: 13px; color: var(--red); display: none; }
+        .error.visible { display: block; }
+
+        .footer { margin-top: 24px; }
+        .privacy-notice { margin-top: 16px; padding: 12px 14px; background: var(--green-soft); border-radius: 8px; font-size: 12px; color: var(--green); line-height: 1.5; display: flex; gap: 8px; align-items: flex-start; }
+        .privacy-notice svg { flex-shrink: 0; width: 14px; height: 14px; margin-top: 2px; }
+
+        @media (max-width: 520px) {
+            h1 { font-size: 28px; }
+            .card { padding: 20px; }
+            .field-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <span class="nav-brand">Gemini Tools</span>
+            <div class="nav-right">
+                <a href="tokens.html" class="nav-link">Tokens</a>
+                <a href="models.html" class="nav-link">Models</a>
+                <a href="embed.html" class="nav-link">Embeddings</a>
+                <a href="extract.html" class="nav-link">Extractor</a>
+                <a href="prompt.html" class="nav-link">Playground</a>
+                <a href="search.html" class="nav-link">Search</a>
+                <a href="detect.html" class="nav-link">Detector</a>
+                <a href="pdf.html" class="nav-link">PDF</a>
+                <a href="video.html" class="nav-link">Video</a>
+                <a href="story.html" class="nav-link">Story</a>
+                <a href="animate.html" class="nav-link">Animate</a>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+            </div>
+        </nav>
+
+        <div class="header">
+            <h1>Image Describer</h1>
+            <p class="subtitle">Upload an image and get a detailed description using Gemini's multimodal capabilities. No cost beyond the API call.</p>
+        </div>
+
+        <div class="card">
+            <div class="field-row">
+                <div class="field">
+                    <label for="api-key-input">API Key</label>
+                    <input type="password" id="api-key-input" placeholder="Your Gemini key" autocomplete="off" data-lpignore="true" data-1p-ignore>
+                </div>
+                <div class="field">
+                    <label for="model-input">Model</label>
+                    <input type="text" id="model-input" value="gemini-2.5-flash" placeholder="e.g. gemini-2.5-flash">
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Image</label>
+                <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+                    <div class="drop-zone-text">Drop an image here or click to upload</div>
+                    <div class="drop-zone-hint">JPG, PNG, WebP, GIF supported</div>
+                </div>
+                <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp,image/gif" style="display:none">
+                <div style="text-align:center">
+                    <button class="sample-btn" onclick="loadSample()">Use Sample Image</button>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="primary" id="describe-btn" onclick="describeImage()">Describe Image</button>
+                <span class="shortcut-hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd></span>
+            </div>
+
+            <div class="result" id="result">
+                <div class="result-inner">
+                    <div class="result-label">Description</div>
+                    <div class="result-text" id="result-text"></div>
+                </div>
+            </div>
+
+            <div class="error" id="error"></div>
+        </div>
+
+        <div class="footer">
+            <div class="privacy-notice">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Your API key is saved in your browser's session storage &mdash; shared across all Gemini Tools pages, but automatically cleared when you close the tab. It is only sent directly to the Google Gemini API.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+        let currentImageData = null;
+        let currentMimeType = null;
+
+        function getPreferredTheme() {
+            const stored = localStorage.getItem('theme');
+            if (stored) return stored;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        function applyTheme(theme) { document.documentElement.setAttribute('data-theme', theme); localStorage.setItem('theme', theme); }
+        function toggleTheme() { const c = document.documentElement.getAttribute('data-theme'); applyTheme(c === 'dark' ? 'light' : 'dark'); }
+        applyTheme(getPreferredTheme());
+
+        const SAMPLE_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+            <rect width="600" height="400" fill="#87CEEB"/>
+            <circle cx="500" cy="80" r="50" fill="#FFD700"/>
+            <rect x="0" y="280" width="600" height="120" fill="#228B22"/>
+            <polygon points="150,280 100,180 200,180" fill="#006400"/>
+            <polygon points="180,280 120,150 240,150" fill="#008000"/>
+            <polygon points="450,280 400,160 500,160" fill="#006400"/>
+            <polygon points="480,280 420,130 540,130" fill="#008000"/>
+            <rect x="250" y="220" width="100" height="80" fill="#8B4513"/>
+            <polygon points="240,220 300,160 360,220" fill="#DC143C"/>
+            <rect x="275" y="250" width="25" height="50" fill="#654321"/>
+            <rect x="315" y="235" width="20" height="20" fill="#ADD8E6"/>
+            <circle cx="80" cy="60" r="30" fill="white"/>
+            <circle cx="100" cy="50" r="35" fill="white"/>
+            <circle cx="120" cy="60" r="28" fill="white"/>
+            <rect x="50" y="310" width="40" height="15" rx="3" fill="#FF6347"/>
+            <rect x="55" y="325" width="30" height="5" rx="2" fill="#FF4500"/>
+            <circle cx="55" cy="310" r="6" fill="#FF69B4"/>
+            <circle cx="75" cy="305" r="5" fill="#FFD700"/>
+            <circle cx="85" cy="312" r="4" fill="#FF69B4"/>
+        </svg>`;
+
+        function loadSample() {
+            const blob = new Blob([SAMPLE_SVG], { type: 'image/svg+xml' });
+            const canvas = document.createElement('canvas');
+            canvas.width = 600;
+            canvas.height = 400;
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            img.onload = () => {
+                ctx.drawImage(img, 0, 0);
+                const dataUrl = canvas.toDataURL('image/png');
+                currentImageData = dataUrl.split(',')[1];
+                currentMimeType = 'image/png';
+                showPreview(dataUrl);
+                URL.revokeObjectURL(img.src);
+            };
+            img.src = URL.createObjectURL(blob);
+        }
+
+        function showPreview(src) {
+            const zone = document.getElementById('drop-zone');
+            zone.classList.add('has-image');
+            zone.innerHTML = `<img src="${src}" class="image-preview" alt="Preview">`;
+        }
+
+        function handleFile(file) {
+            if (!file || !file.type.startsWith('image/')) return;
+            currentMimeType = file.type;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const dataUrl = e.target.result;
+                currentImageData = dataUrl.split(',')[1];
+                showPreview(dataUrl);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        document.getElementById('file-input').addEventListener('change', (e) => handleFile(e.target.files[0]));
+
+        const dropZone = document.getElementById('drop-zone');
+        dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            handleFile(e.dataTransfer.files[0]);
+        });
+
+        async function describeImage() {
+            const apiKey = document.getElementById('api-key-input').value.trim();
+            const model = document.getElementById('model-input').value.trim();
+            const btn = document.getElementById('describe-btn');
+            const result = document.getElementById('result');
+            const error = document.getElementById('error');
+
+            error.classList.remove('visible');
+            result.classList.remove('visible');
+
+            if (!apiKey) { error.textContent = 'Please enter your Gemini API key.'; error.classList.add('visible'); return; }
+            if (!model) { error.textContent = 'Please enter a model name.'; error.classList.add('visible'); return; }
+            if (!currentImageData) { error.textContent = 'Please upload an image or use the sample.'; error.classList.add('visible'); return; }
+
+            btn.disabled = true;
+            btn.textContent = 'Describing\u2026';
+
+            try {
+                const url = `${API_BASE}/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+                const resp = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [
+                                { text: 'Describe this image in detail. What do you see? Include colors, objects, composition, and any text visible.' },
+                                { inline_data: { mime_type: currentMimeType, data: currentImageData } }
+                            ]
+                        }]
+                    })
+                });
+
+                const data = await resp.json();
+                if (data.error) throw new Error(data.error.message || 'API error');
+
+                const text = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No description returned.';
+                renderMarkdown(text, document.getElementById('result-text'));
+                result.classList.add('visible');
+            } catch (err) {
+                error.textContent = err.message;
+                error.classList.add('visible');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Describe Image';
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) describeImage();
+        });
+
+    </script>
+    <script src="markdown.js"></script>
+    <script src="nav.js"></script>
+</body>
+</html>

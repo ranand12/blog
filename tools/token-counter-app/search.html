@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://generativelanguage.googleapis.com;">
+    <title>Gemini Grounded Search</title>
+    <!--
+    Copyright 2026 Google LLC.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #ffffff; --bg-elevated: #f5f6f8; --bg-card: #ffffff; --bg-input: #f5f6f8;
+            --border: #e2e4e9; --border-focus: #4f46e5; --text: #111318; --text-secondary: #4b5060; --text-muted: #8b90a0;
+            --accent: #4f46e5; --accent-hover: #4338ca; --accent-soft: #eef2ff;
+            --green: #059669; --green-soft: #ecfdf5; --red: #dc2626; --red-soft: #fef2f2;
+            --amber: #d97706; --amber-soft: #fffbeb; --blue: #2563eb; --blue-soft: #eff6ff;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.08); --radius: 12px;
+        }
+        [data-theme="dark"] {
+            --bg: #0e1117; --bg-elevated: #161b26; --bg-card: #1c2132; --bg-input: #161b26;
+            --border: #2a3045; --border-focus: #818cf8; --text: #eceef4; --text-secondary: #9399ae; --text-muted: #5c6280;
+            --accent: #818cf8; --accent-hover: #a5b4fc; --accent-soft: #1e1b4b40;
+            --green: #34d399; --green-soft: #05966920; --red: #f87171; --red-soft: #dc262620;
+            --amber: #fbbf24; --amber-soft: #d9770620; --blue: #60a5fa; --blue-soft: #2563eb20;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2); --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 24px; transition: background 0.3s, color 0.3s; }
+        .container { max-width: 700px; width: 100%; }
+        .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
+        .nav-brand { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.03em; }
+        .nav-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .nav-link { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 6px 14px; border-radius: 8px; transition: all 0.2s; }
+        .nav-link:hover { background: var(--bg-elevated); color: var(--text); }
+        .theme-toggle { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-elevated); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; padding: 0; }
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+        .theme-toggle svg { width: 18px; height: 18px; }
+        .icon-sun, [data-theme="dark"] .icon-moon { display: none; }
+        [data-theme="dark"] .icon-sun { display: block; }
+        .header { margin-bottom: 32px; }
+        h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px; }
+        .subtitle { font-size: 15px; color: var(--text-secondary); line-height: 1.5; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); transition: background 0.3s, border-color 0.3s; }
+        .field { margin-bottom: 18px; }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+        label { display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
+        input[type="password"], input[type="text"] { width: 100%; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-family: inherit; font-size: 14px; color: var(--text); outline: none; transition: all 0.2s; }
+        input:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
+        input::placeholder { color: var(--text-muted); }
+        .search-box { display: flex; gap: 10px; }
+        .search-box input { flex: 1; }
+        button.primary { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 10px 24px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        button.primary:hover { background: var(--accent-hover); }
+        button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .sample-queries { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+        .sample-q { padding: 5px 12px; font-size: 12px; font-weight: 500; border-radius: 6px; cursor: pointer; background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border); transition: all 0.2s; font-family: inherit; }
+        .sample-q:hover { border-color: var(--accent); color: var(--accent); }
+        .result { margin-top: 24px; display: none; }
+        .result.visible { display: block; }
+        .result-inner { background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+        .result-label { font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 12px; }
+        .result-text { font-size: 14px; color: var(--text); line-height: 1.7; }
+        .sources { margin-top: 16px; }
+        .sources-label { font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
+        .source-item { display: flex; gap: 10px; align-items: flex-start; padding: 10px 14px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 6px; transition: border-color 0.2s; }
+        .source-item:hover { border-color: var(--blue); }
+        .source-index { font-size: 11px; font-weight: 700; color: #fff; background: var(--blue); border-radius: 4px; padding: 2px 6px; flex-shrink: 0; margin-top: 2px; }
+        .source-title { font-size: 13px; font-weight: 600; color: var(--text); }
+        .source-uri { font-size: 11px; color: var(--blue); text-decoration: none; word-break: break-all; }
+        .source-uri:hover { text-decoration: underline; }
+        .error { margin-top: 14px; padding: 10px 14px; background: var(--red-soft); border: 1px solid var(--red); border-radius: 8px; font-size: 13px; color: var(--red); display: none; }
+        .error.visible { display: block; }
+        .footer { margin-top: 24px; }
+        .privacy-notice { margin-top: 16px; padding: 12px 14px; background: var(--green-soft); border-radius: 8px; font-size: 12px; color: var(--green); line-height: 1.5; display: flex; gap: 8px; align-items: flex-start; }
+        .privacy-notice svg { flex-shrink: 0; width: 14px; height: 14px; margin-top: 2px; }
+        @media (max-width: 520px) { h1 { font-size: 28px; } .card { padding: 20px; } .field-row { grid-template-columns: 1fr; } .search-box { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <span class="nav-brand">Gemini Tools</span>
+            <div class="nav-right">
+                <a href="tokens.html" class="nav-link">Tokens</a>
+                <a href="models.html" class="nav-link">Models</a>
+                <a href="describe.html" class="nav-link">Describer</a>
+                <a href="embed.html" class="nav-link">Embeddings</a>
+                <a href="extract.html" class="nav-link">Extractor</a>
+                <a href="prompt.html" class="nav-link">Playground</a>
+                <a href="detect.html" class="nav-link">Detector</a>
+                <a href="pdf.html" class="nav-link">PDF</a>
+                <a href="video.html" class="nav-link">Video</a>
+                <a href="story.html" class="nav-link">Story</a>
+                <a href="animate.html" class="nav-link">Animate</a>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+            </div>
+        </nav>
+
+        <div class="header">
+            <h1>Grounded Search</h1>
+            <p class="subtitle">Ask questions and get answers grounded with real-time Google Search results. See sources and citations inline.</p>
+        </div>
+
+        <div class="card">
+            <div class="field-row">
+                <div class="field">
+                    <label for="api-key-input">API Key</label>
+                    <input type="password" id="api-key-input" placeholder="Your Gemini key" autocomplete="off" data-lpignore="true" data-1p-ignore>
+                </div>
+                <div class="field">
+                    <label for="model-input">Model</label>
+                    <input type="text" id="model-input" value="gemini-2.5-flash" placeholder="e.g. gemini-2.5-flash">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="query-input">Question</label>
+                <div class="search-box">
+                    <input type="text" id="query-input" value="What are the latest developments in quantum computing in 2024?" placeholder="Ask anything that needs current information...">
+                    <button class="primary" id="search-btn" onclick="groundedSearch()">Search</button>
+                </div>
+                <div class="sample-queries">
+                    <button class="sample-q" onclick="setQuery('What are the latest developments in quantum computing in 2024?')">Quantum computing</button>
+                    <button class="sample-q" onclick="setQuery('What is the current price of Bitcoin and recent market trends?')">Bitcoin price</button>
+                    <button class="sample-q" onclick="setQuery('Who won the most recent Nobel Prize in Physics and why?')">Nobel Prize</button>
+                    <button class="sample-q" onclick="setQuery('What are the top AI research papers published this month?')">AI research</button>
+                </div>
+            </div>
+
+            <div class="result" id="result">
+                <div class="result-inner">
+                    <div class="result-label">Answer (Grounded with Google Search)</div>
+                    <div class="result-text" id="result-text"></div>
+                </div>
+                <div class="sources" id="sources"></div>
+            </div>
+
+            <div class="error" id="error"></div>
+        </div>
+
+        <div class="footer">
+            <div class="privacy-notice">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Your API key is saved in your browser's session storage &mdash; shared across all Gemini Tools pages, but automatically cleared when you close the tab. It is only sent directly to the Google Gemini API.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+
+        function getPreferredTheme() { const s = localStorage.getItem('theme'); if (s) return s; return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        function applyTheme(t) { document.documentElement.setAttribute('data-theme', t); localStorage.setItem('theme', t); }
+        function toggleTheme() { applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); }
+        applyTheme(getPreferredTheme());
+
+        function setQuery(q) { document.getElementById('query-input').value = q; }
+
+        function renderSources(grounding) {
+            const sourcesDiv = document.getElementById('sources');
+            sourcesDiv.textContent = '';
+
+            if (!grounding?.groundingChunks?.length) {
+                if (grounding?.searchEntryPoint) {
+                    const note = document.createElement('div');
+                    note.className = 'sources-label';
+                    note.textContent = 'Search grounding was used but no individual sources were returned.';
+                    sourcesDiv.appendChild(note);
+                }
+                return;
+            }
+
+            const label = document.createElement('div');
+            label.className = 'sources-label';
+            label.textContent = 'Sources';
+            sourcesDiv.appendChild(label);
+
+            grounding.groundingChunks.forEach(function(chunk, i) {
+                const web = chunk.web;
+                if (!web) return;
+
+                const item = document.createElement('div');
+                item.className = 'source-item';
+
+                const idx = document.createElement('span');
+                idx.className = 'source-index';
+                idx.textContent = String(i + 1);
+                item.appendChild(idx);
+
+                const info = document.createElement('div');
+                const title = document.createElement('div');
+                title.className = 'source-title';
+                title.textContent = web.title || 'Source';
+                info.appendChild(title);
+
+                const link = document.createElement('a');
+                link.className = 'source-uri';
+                link.href = web.uri;
+                link.target = '_blank';
+                link.rel = 'noopener';
+                link.textContent = web.uri;
+                info.appendChild(link);
+
+                item.appendChild(info);
+                sourcesDiv.appendChild(item);
+            });
+        }
+
+        async function groundedSearch() {
+            const apiKey = document.getElementById('api-key-input').value.trim();
+            const model = document.getElementById('model-input').value.trim();
+            const query = document.getElementById('query-input').value.trim();
+            const btn = document.getElementById('search-btn');
+            const result = document.getElementById('result');
+            const error = document.getElementById('error');
+
+            error.classList.remove('visible');
+            result.classList.remove('visible');
+
+            if (!apiKey) { error.textContent = 'Please enter your Gemini API key.'; error.classList.add('visible'); return; }
+            if (!query) { error.textContent = 'Please enter a question.'; error.classList.add('visible'); return; }
+
+            btn.disabled = true;
+            btn.textContent = 'Searching\u2026';
+
+            try {
+                const url = API_BASE + '/models/' + encodeURIComponent(model) + ':generateContent?key=' + encodeURIComponent(apiKey);
+                const resp = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: query }] }],
+                        tools: [{ google_search: {} }]
+                    })
+                });
+
+                const data = await resp.json();
+                if (data.error) throw new Error(data.error.message || 'API error');
+
+                const text = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No answer returned.';
+                renderMarkdown(text, document.getElementById('result-text'));
+
+                const grounding = data.candidates?.[0]?.groundingMetadata;
+                renderSources(grounding);
+
+                result.classList.add('visible');
+            } catch (err) {
+                error.textContent = err.message;
+                error.classList.add('visible');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Search';
+            }
+        }
+
+        document.getElementById('query-input').addEventListener('keydown', function(e) { if (e.key === 'Enter') groundedSearch(); });
+    </script>
+    <script src="markdown.js"></script>
+    <script src="nav.js"></script>
+</body>
+</html>

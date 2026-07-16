@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://generativelanguage.googleapis.com; img-src 'self' data: blob:;">
+    <title>Gemini Storybook Illustrator</title>
+    <!--
+    Copyright 2026 Google LLC.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #ffffff; --bg-elevated: #f5f6f8; --bg-card: #ffffff; --bg-input: #f5f6f8;
+            --border: #e2e4e9; --border-focus: #4f46e5;
+            --text: #111318; --text-secondary: #4b5060; --text-muted: #8b90a0;
+            --accent: #4f46e5; --accent-hover: #4338ca; --accent-soft: #eef2ff;
+            --green: #059669; --green-soft: #ecfdf5;
+            --red: #dc2626; --red-soft: #fef2f2;
+            --amber: #d97706; --amber-soft: #fffbeb;
+            --purple: #7c3aed; --purple-soft: #f5f3ff;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+        [data-theme="dark"] {
+            --bg: #0e1117; --bg-elevated: #161b26; --bg-card: #1c2132; --bg-input: #161b26;
+            --border: #2a3045; --border-focus: #818cf8;
+            --text: #eceef4; --text-secondary: #9399ae; --text-muted: #5c6280;
+            --accent: #818cf8; --accent-hover: #a5b4fc; --accent-soft: #1e1b4b40;
+            --green: #34d399; --green-soft: #05966920;
+            --red: #f87171; --red-soft: #dc262620;
+            --amber: #fbbf24; --amber-soft: #d9770620;
+            --purple: #a78bfa; --purple-soft: #7c3aed20;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2); --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg); color: var(--text); min-height: 100vh;
+            display: flex; justify-content: center; padding: 24px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .container { max-width: 900px; width: 100%; }
+        .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
+        .nav-brand { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.03em; }
+        .nav-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .nav-link { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 6px 14px; border-radius: 8px; transition: all 0.2s; }
+        .nav-link:hover { background: var(--bg-elevated); color: var(--text); }
+        .theme-toggle { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-elevated); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; padding: 0; }
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+        .theme-toggle svg { width: 18px; height: 18px; }
+        .icon-sun, [data-theme="dark"] .icon-moon { display: none; }
+        [data-theme="dark"] .icon-sun { display: block; }
+        .header { margin-bottom: 32px; }
+        h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px; }
+        .subtitle { font-size: 15px; color: var(--text-secondary); line-height: 1.5; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); transition: background 0.3s, border-color 0.3s; }
+        .field { margin-bottom: 18px; }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+        label { display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
+        input[type="password"], input[type="text"], textarea {
+            width: 100%; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px;
+            padding: 10px 14px; font-family: inherit; font-size: 14px; color: var(--text); outline: none; transition: all 0.2s;
+        }
+        textarea { resize: vertical; min-height: 80px; }
+        input:focus, textarea:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
+        input::placeholder, textarea::placeholder { color: var(--text-muted); }
+
+        .presets { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        .preset {
+            background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border);
+            border-radius: 8px; padding: 6px 14px; font-family: inherit; font-size: 12px; font-weight: 500;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .preset:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+        .preset.active { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+        .actions { display: flex; align-items: center; gap: 14px; margin-top: 18px; }
+        button.primary { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 10px 24px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        button.primary:hover { background: var(--accent-hover); }
+        button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .shortcut-hint { font-size: 12px; color: var(--text-muted); }
+        .shortcut-hint kbd { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 2px 5px; font-family: inherit; font-size: 11px; }
+
+        .storyboard { margin-top: 24px; display: none; }
+        .storyboard.visible { display: block; }
+        .storyboard-label { font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 16px; }
+        .pages { display: grid; gap: 24px; }
+        .page-card {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+            overflow: hidden; box-shadow: var(--shadow-md); transition: all 0.3s;
+        }
+        .page-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+        .page-image-container { position: relative; background: var(--bg-elevated); min-height: 300px; display: flex; align-items: center; justify-content: center; }
+        .page-image { width: 100%; display: block; }
+        .page-number {
+            position: absolute; top: 12px; left: 12px; background: var(--accent); color: #fff;
+            width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 600;
+        }
+        .page-text {
+            padding: 20px 24px; font-size: 16px; line-height: 1.7; color: var(--text);
+            font-style: italic; border-top: 1px solid var(--border);
+        }
+        .page-loading { color: var(--text-muted); font-size: 14px; }
+        .spinner { display: inline-block; width: 20px; height: 20px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin-right: 8px; vertical-align: middle; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .download-all {
+            background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border);
+            border-radius: 8px; padding: 8px 16px; font-family: inherit; font-size: 13px; font-weight: 500;
+            cursor: pointer; transition: all 0.2s; margin-top: 16px;
+        }
+        .download-all:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+        .error { margin-top: 14px; padding: 10px 14px; background: var(--red-soft); border: 1px solid var(--red); border-radius: 8px; font-size: 13px; color: var(--red); display: none; }
+        .error.visible { display: block; }
+
+        .footer { margin-top: 24px; }
+        .privacy-notice { margin-top: 16px; padding: 12px 14px; background: var(--green-soft); border-radius: 8px; font-size: 12px; color: var(--green); line-height: 1.5; display: flex; gap: 8px; align-items: flex-start; }
+        .privacy-notice svg { flex-shrink: 0; width: 14px; height: 14px; margin-top: 2px; }
+
+        @media (max-width: 520px) {
+            h1 { font-size: 28px; }
+            .card { padding: 20px; }
+            .field-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <span class="nav-brand">Gemini Tools</span>
+            <div class="nav-right">
+                <a href="tokens.html" class="nav-link">Tokens</a>
+                <a href="models.html" class="nav-link">Models</a>
+                <a href="describe.html" class="nav-link">Describer</a>
+                <a href="embed.html" class="nav-link">Embeddings</a>
+                <a href="extract.html" class="nav-link">Extractor</a>
+                <a href="prompt.html" class="nav-link">Playground</a>
+                <a href="search.html" class="nav-link">Search</a>
+                <a href="detect.html" class="nav-link">Detector</a>
+                <a href="pdf.html" class="nav-link">PDF</a>
+                <a href="video.html" class="nav-link">Video</a>
+                <a href="animate.html" class="nav-link">Animate</a>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+            </div>
+        </nav>
+
+        <div class="header">
+            <h1>Storybook Illustrator</h1>
+            <p class="subtitle">Enter a story idea and Gemini will write a short illustrated storybook with generated images for each page. Uses Gemini's native image generation.</p>
+        </div>
+
+        <div class="card">
+            <div class="field-row">
+                <div class="field">
+                    <label for="api-key-input">API Key</label>
+                    <input type="password" id="api-key-input" placeholder="Your Gemini key" autocomplete="off" data-lpignore="true" data-1p-ignore>
+                </div>
+                <div class="field">
+                    <label for="model-input">Text Model</label>
+                    <input type="text" id="model-input" value="gemini-2.5-flash" placeholder="e.g. gemini-2.5-flash">
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="field">
+                    <label for="image-model-input">Image Model</label>
+                    <input type="text" id="image-model-input" value="gemini-3.1-flash-image-preview" placeholder="e.g. gemini-3.1-flash-image-preview">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="story-input">Story Idea</label>
+                <div class="presets">
+                    <button class="preset" onclick="setStory('A brave little robot learns to paint and discovers that art can make everyone smile. Set in a colorful futuristic city.')">Robot Artist</button>
+                    <button class="preset" onclick="setStory('A shy cloud who is afraid of thunder makes friends with a rainbow and learns to be brave during storms.')">Shy Cloud</button>
+                    <button class="preset" onclick="setStory('A tiny seed travels the world on the wind before finding the perfect spot to grow into a magnificent tree.')">Traveling Seed</button>
+                    <button class="preset" onclick="setStory('An old lighthouse keeper discovers that the light attracts magical sea creatures who tell stories of the deep ocean.')">Lighthouse Tales</button>
+                </div>
+                <textarea id="story-input" rows="4" placeholder="Describe your story idea...">A brave little robot learns to paint and discovers that art can make everyone smile. Set in a colorful futuristic city.</textarea>
+            </div>
+
+            <div class="field-row">
+                <div class="field">
+                    <label for="pages-input">Number of Pages</label>
+                    <input type="text" id="pages-input" value="4" placeholder="3-6">
+                </div>
+                <div class="field">
+                    <label for="style-input">Art Style</label>
+                    <input type="text" id="style-input" value="watercolor children's book illustration" placeholder="e.g. watercolor, pixel art">
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="primary" id="generate-btn" onclick="generateStory()">Generate Storybook</button>
+                <span class="shortcut-hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd></span>
+            </div>
+
+            <div class="error" id="error"></div>
+        </div>
+
+        <div class="storyboard" id="storyboard">
+            <div class="storyboard-label">Your Storybook</div>
+            <div class="pages" id="pages"></div>
+        </div>
+
+        <div class="footer">
+            <div class="privacy-notice">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Your API key is saved in your browser's session storage &mdash; shared across all Gemini Tools pages, but automatically cleared when you close the tab. It is only sent directly to the Google Gemini API.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+
+        function getPreferredTheme() {
+            var stored = localStorage.getItem('theme');
+            if (stored) return stored;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        function applyTheme(theme) { document.documentElement.setAttribute('data-theme', theme); localStorage.setItem('theme', theme); }
+        function toggleTheme() { var c = document.documentElement.getAttribute('data-theme'); applyTheme(c === 'dark' ? 'light' : 'dark'); }
+        applyTheme(getPreferredTheme());
+
+        function setStory(s) { document.getElementById('story-input').value = s; }
+
+        async function generateStory() {
+            var apiKey = document.getElementById('api-key-input').value.trim();
+            var model = document.getElementById('model-input').value.trim();
+            var imageModel = document.getElementById('image-model-input').value.trim() || model;
+            var storyIdea = document.getElementById('story-input').value.trim();
+            var numPages = parseInt(document.getElementById('pages-input').value.trim()) || 4;
+            var artStyle = document.getElementById('style-input').value.trim() || 'watercolor children\'s book illustration';
+            var btn = document.getElementById('generate-btn');
+            var error = document.getElementById('error');
+            var storyboard = document.getElementById('storyboard');
+            var pagesContainer = document.getElementById('pages');
+
+            error.classList.remove('visible');
+            storyboard.classList.remove('visible');
+
+            if (!apiKey) { error.textContent = 'Please enter your Gemini API key.'; error.classList.add('visible'); return; }
+            if (!model) { error.textContent = 'Please enter a model name.'; error.classList.add('visible'); return; }
+            if (!storyIdea) { error.textContent = 'Please enter a story idea.'; error.classList.add('visible'); return; }
+            if (numPages < 2 || numPages > 8) { error.textContent = 'Number of pages should be between 2 and 8.'; error.classList.add('visible'); return; }
+
+            btn.disabled = true;
+            btn.textContent = 'Writing story\u2026';
+
+            // Clear previous pages
+            while (pagesContainer.firstChild) pagesContainer.removeChild(pagesContainer.firstChild);
+
+            try {
+                // Step 1: Generate story text with page breakdowns
+                var storyPrompt = 'Write a short children\'s storybook with exactly ' + numPages + ' pages based on this idea: "' + storyIdea + '"\n\n' +
+                    'For each page, provide:\n1. The narrative text (2-3 sentences, simple and engaging for children)\n2. A detailed image description for illustration\n\n' +
+                    'Return ONLY valid JSON in this format:\n' +
+                    '{"pages": [{"text": "narrative text", "image_prompt": "detailed visual description for the illustration"}]}';
+
+                var storyUrl = API_BASE + '/models/' + encodeURIComponent(model) + ':generateContent?key=' + encodeURIComponent(apiKey);
+                var storyResp = await fetch(storyUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: storyPrompt }] }],
+                        generationConfig: {
+                            responseMimeType: 'application/json',
+                            responseSchema: {
+                                type: 'OBJECT',
+                                properties: {
+                                    pages: {
+                                        type: 'ARRAY',
+                                        items: {
+                                            type: 'OBJECT',
+                                            properties: {
+                                                text: { type: 'STRING' },
+                                                image_prompt: { type: 'STRING' }
+                                            },
+                                            required: ['text', 'image_prompt']
+                                        }
+                                    }
+                                },
+                                required: ['pages']
+                            }
+                        }
+                    })
+                });
+
+                var storyData = await storyResp.json();
+                if (storyData.error) throw new Error(storyData.error.message || 'Story generation failed');
+
+                var storyText = (storyData.candidates && storyData.candidates[0] && storyData.candidates[0].content && storyData.candidates[0].content.parts && storyData.candidates[0].content.parts[0] && storyData.candidates[0].content.parts[0].text) || '';
+                var story = JSON.parse(storyText);
+                var pages = story.pages;
+
+                if (!pages || pages.length === 0) throw new Error('No pages generated');
+
+                // Show storyboard with loading placeholders
+                storyboard.classList.add('visible');
+
+                pages.forEach(function(page, idx) {
+                    var card = document.createElement('div');
+                    card.className = 'page-card';
+
+                    var imgContainer = document.createElement('div');
+                    imgContainer.className = 'page-image-container';
+                    imgContainer.id = 'img-container-' + idx;
+
+                    var pageNum = document.createElement('div');
+                    pageNum.className = 'page-number';
+                    pageNum.textContent = (idx + 1).toString();
+                    imgContainer.appendChild(pageNum);
+
+                    var loading = document.createElement('div');
+                    loading.className = 'page-loading';
+                    loading.id = 'loading-' + idx;
+                    var spinEl = document.createElement('span');
+                    spinEl.className = 'spinner';
+                    loading.appendChild(spinEl);
+                    loading.appendChild(document.createTextNode('Generating illustration ' + (idx + 1) + '/' + pages.length + '\u2026'));
+                    imgContainer.appendChild(loading);
+
+                    var textDiv = document.createElement('div');
+                    textDiv.className = 'page-text';
+                    textDiv.textContent = page.text;
+
+                    card.appendChild(imgContainer);
+                    card.appendChild(textDiv);
+                    pagesContainer.appendChild(card);
+                });
+
+                // Step 2: Generate illustrations for each page
+                // Use reference image from first page to maintain character consistency
+                btn.textContent = 'Generating illustrations\u2026';
+                var referenceImageData = null; // stores first image for consistency
+
+                for (var i = 0; i < pages.length; i++) {
+                    var page = pages[i];
+                    var illustrationPrompt = 'Generate a ' + artStyle + ' illustration for a children\'s storybook page. ' +
+                        'The scene: ' + page.image_prompt + '. ' +
+                        'Style: colorful, warm, child-friendly, no text in the image.';
+
+                    // For pages after the first, add consistency instruction and reference image
+                    if (i > 0 && referenceImageData) {
+                        illustrationPrompt = 'Using the attached reference image as a style and character guide, ' +
+                            'generate a new ' + artStyle + ' illustration for the next page of the same storybook. ' +
+                            'Keep the same characters, art style, color palette, and proportions consistent with the reference. ' +
+                            'The scene: ' + page.image_prompt + '. ' +
+                            'Style: colorful, warm, child-friendly, no text in the image.';
+                    }
+
+                    try {
+                        var imgUrl = API_BASE + '/models/' + encodeURIComponent(imageModel) + ':generateContent?key=' + encodeURIComponent(apiKey);
+
+                        // Build request parts: text prompt + optional reference image
+                        var requestParts = [{ text: illustrationPrompt }];
+                        if (i > 0 && referenceImageData) {
+                            requestParts.push({
+                                inlineData: {
+                                    mimeType: referenceImageData.mimeType,
+                                    data: referenceImageData.data
+                                }
+                            });
+                        }
+
+                        var imgResp = await fetch(imgUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                contents: [{ parts: requestParts }],
+                                generationConfig: {
+                                    responseModalities: ['TEXT', 'IMAGE']
+                                }
+                            })
+                        });
+
+                        var imgData = await imgResp.json();
+                        if (imgData.error) throw new Error(imgData.error.message);
+
+                        var imagePart = null;
+                        if (imgData.candidates && imgData.candidates[0] && imgData.candidates[0].content && imgData.candidates[0].content.parts) {
+                            imgData.candidates[0].content.parts.forEach(function(part) {
+                                var data = part.inlineData || part.inline_data;
+                                if (data && (data.mimeType || data.mime_type || '').startsWith('image/')) {
+                                    imagePart = data;
+                                }
+                            });
+                        }
+
+                        var container = document.getElementById('img-container-' + i);
+                        var loadingEl = document.getElementById('loading-' + i);
+                        if (loadingEl) loadingEl.remove();
+
+                        if (imagePart) {
+                            // Store first image as reference for character consistency
+                            if (i === 0) {
+                                referenceImageData = {
+                                    mimeType: imagePart.mimeType || imagePart.mime_type,
+                                    data: imagePart.data
+                                };
+                            }
+
+                            var img = document.createElement('img');
+                            img.className = 'page-image';
+                            img.alt = 'Illustration for page ' + (i + 1);
+                            img.src = 'data:' + (imagePart.mimeType || imagePart.mime_type) + ';base64,' + imagePart.data;
+                            container.appendChild(img);
+                        } else {
+                            var fallback = document.createElement('div');
+                            fallback.className = 'page-loading';
+                            fallback.textContent = 'Image not available. The image model "' + imageModel + '" may not support image generation. Try gemini-3.1-flash-image-preview.';
+                            container.appendChild(fallback);
+                        }
+                    } catch (imgErr) {
+                        var container2 = document.getElementById('img-container-' + i);
+                        var loadingEl2 = document.getElementById('loading-' + i);
+                        if (loadingEl2) loadingEl2.remove();
+                        var errDiv = document.createElement('div');
+                        errDiv.className = 'page-loading';
+                        errDiv.textContent = 'Illustration failed: ' + imgErr.message;
+                        container2.appendChild(errDiv);
+                    }
+                }
+
+            } catch (err) {
+                error.textContent = err.message;
+                error.classList.add('visible');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Generate Storybook';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) generateStory();
+        });
+
+    </script>
+    <script src="nav.js"></script>
+</body>
+</html>

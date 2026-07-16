@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://generativelanguage.googleapis.com; img-src 'self' data: blob:; media-src blob: data:;">
+    <title>Gemini AI Video Generator (Veo)</title>
+    <!--
+    Copyright 2026 Google LLC.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #ffffff; --bg-elevated: #f5f6f8; --bg-card: #ffffff; --bg-input: #f5f6f8;
+            --border: #e2e4e9; --border-focus: #4f46e5;
+            --text: #111318; --text-secondary: #4b5060; --text-muted: #8b90a0;
+            --accent: #4f46e5; --accent-hover: #4338ca; --accent-soft: #eef2ff;
+            --green: #059669; --green-soft: #ecfdf5;
+            --red: #dc2626; --red-soft: #fef2f2;
+            --amber: #d97706; --amber-soft: #fffbeb;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+        [data-theme="dark"] {
+            --bg: #0e1117; --bg-elevated: #161b26; --bg-card: #1c2132; --bg-input: #161b26;
+            --border: #2a3045; --border-focus: #818cf8;
+            --text: #eceef4; --text-secondary: #9399ae; --text-muted: #5c6280;
+            --accent: #818cf8; --accent-hover: #a5b4fc; --accent-soft: #1e1b4b40;
+            --green: #34d399; --green-soft: #05966920;
+            --red: #f87171; --red-soft: #dc262620;
+            --amber: #fbbf24; --amber-soft: #d9770620;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2); --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg); color: var(--text); min-height: 100vh;
+            display: flex; justify-content: center; padding: 24px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .container { max-width: 800px; width: 100%; }
+        .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
+        .nav-brand { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.03em; }
+        .nav-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .nav-link { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 6px 14px; border-radius: 8px; transition: all 0.2s; }
+        .nav-link:hover { background: var(--bg-elevated); color: var(--text); }
+        .theme-toggle { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-elevated); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; padding: 0; }
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+        .theme-toggle svg { width: 18px; height: 18px; }
+        .icon-sun, [data-theme="dark"] .icon-moon { display: none; }
+        [data-theme="dark"] .icon-sun { display: block; }
+        .header { margin-bottom: 32px; }
+        h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px; }
+        .subtitle { font-size: 15px; color: var(--text-secondary); line-height: 1.5; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); transition: background 0.3s, border-color 0.3s; }
+        .field { margin-bottom: 18px; }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+        label { display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
+        input[type="password"], input[type="text"], select, textarea {
+            width: 100%; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px;
+            padding: 10px 14px; font-family: inherit; font-size: 14px; color: var(--text); outline: none; transition: all 0.2s;
+        }
+        select { cursor: pointer; }
+        textarea { resize: vertical; min-height: 80px; }
+        input:focus, textarea:focus, select:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
+        input::placeholder, textarea::placeholder { color: var(--text-muted); }
+
+        .presets { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        .preset {
+            background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border);
+            border-radius: 8px; padding: 6px 14px; font-family: inherit; font-size: 12px; font-weight: 500;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .preset:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+        .actions { display: flex; align-items: center; gap: 14px; margin-top: 18px; }
+        button.primary { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 10px 24px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        button.primary:hover { background: var(--accent-hover); }
+        button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .shortcut-hint { font-size: 12px; color: var(--text-muted); }
+        .shortcut-hint kbd { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 2px 5px; font-family: inherit; font-size: 11px; }
+
+        .progress-section { margin-top: 24px; display: none; }
+        .progress-section.visible { display: block; }
+        .progress-label { font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+        .progress-steps { display: flex; flex-direction: column; gap: 6px; }
+        .progress-step { font-size: 13px; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; }
+        .progress-step.done { color: var(--green); }
+        .progress-step.active { color: var(--accent); font-weight: 500; }
+        .step-icon { width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; }
+        .spinner-sm { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .video-result { margin-top: 24px; display: none; }
+        .video-result.visible { display: block; }
+        .video-result-inner { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); }
+        .video-result-label { font-size: 13px; font-weight: 600; color: var(--accent); padding: 16px 20px 0; }
+        .video-player { width: 100%; display: block; }
+        .video-actions { padding: 16px 20px; display: flex; gap: 10px; border-top: 1px solid var(--border); }
+        .video-action-btn {
+            background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border);
+            border-radius: 8px; padding: 8px 16px; font-family: inherit; font-size: 13px; font-weight: 500;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .video-action-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+        .enhanced-prompt { margin-top: 12px; padding: 10px 14px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; font-size: 13px; color: var(--text-secondary); line-height: 1.5; display: none; }
+        .enhanced-prompt.visible { display: block; }
+        .enhanced-prompt-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+
+        .error { margin-top: 14px; padding: 10px 14px; background: var(--red-soft); border: 1px solid var(--red); border-radius: 8px; font-size: 13px; color: var(--red); display: none; }
+        .error.visible { display: block; }
+
+        .footer { margin-top: 24px; }
+        .privacy-notice { margin-top: 16px; padding: 12px 14px; background: var(--green-soft); border-radius: 8px; font-size: 12px; color: var(--green); line-height: 1.5; display: flex; gap: 8px; align-items: flex-start; }
+        .privacy-notice svg { flex-shrink: 0; width: 14px; height: 14px; margin-top: 2px; }
+
+        @media (max-width: 520px) {
+            h1 { font-size: 28px; }
+            .card { padding: 20px; }
+            .field-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <span class="nav-brand">Gemini Tools</span>
+            <div class="nav-right">
+                <a href="tokens.html" class="nav-link">Tokens</a>
+                <a href="models.html" class="nav-link">Models</a>
+                <a href="describe.html" class="nav-link">Describer</a>
+                <a href="embed.html" class="nav-link">Embeddings</a>
+                <a href="extract.html" class="nav-link">Extractor</a>
+                <a href="prompt.html" class="nav-link">Playground</a>
+                <a href="search.html" class="nav-link">Search</a>
+                <a href="detect.html" class="nav-link">Detector</a>
+                <a href="pdf.html" class="nav-link">PDF</a>
+                <a href="video.html" class="nav-link">Video</a>
+                <a href="story.html" class="nav-link">Story</a>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+            </div>
+        </nav>
+
+        <div class="header">
+            <h1>AI Video Generator</h1>
+            <p class="subtitle">Generate AI videos using Veo. Optionally enhance your prompt with Gemini before sending it to Veo for high-fidelity 8-second video generation with audio.</p>
+        </div>
+
+        <div class="card">
+            <div class="field-row">
+                <div class="field">
+                    <label for="api-key-input">API Key</label>
+                    <input type="password" id="api-key-input" placeholder="Your Gemini key" autocomplete="off" data-lpignore="true" data-1p-ignore>
+                </div>
+                <div class="field">
+                    <label for="video-model-input">Video Model</label>
+                    <input type="text" id="video-model-input" value="veo-3.1-generate-preview" placeholder="e.g. veo-3.1-generate-preview">
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="field">
+                    <label for="text-model-input">Text Model (for prompt enhancement)</label>
+                    <input type="text" id="text-model-input" value="gemini-2.5-flash" placeholder="e.g. gemini-2.5-flash">
+                </div>
+                <div class="field">
+                    <label for="aspect-ratio-input">Aspect Ratio</label>
+                    <select id="aspect-ratio-input">
+                        <option value="16:9" selected>Landscape (16:9)</option>
+                        <option value="9:16">Portrait (9:16)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="prompt-input">Video Prompt</label>
+                <div class="presets">
+                    <button class="preset" onclick="setPrompt('A lost kitten wanders through rainy city streets at night, neon signs reflecting in puddles, then finds a warm doorstep where a kind hand reaches out.')">Lost Kitten</button>
+                    <button class="preset" onclick="setPrompt('A time-lapse of a cherry blossom tree through all four seasons: spring petals falling, summer green canopy, autumn golden leaves, winter snow on bare branches.')">Four Seasons</button>
+                    <button class="preset" onclick="setPrompt('An astronaut floating in space discovers a tiny glowing planet made of candy, reaches out to touch it, and colorful sparkles burst outward.')">Candy Planet</button>
+                    <button class="preset" onclick="setPrompt('A cinematic drone shot sweeping over misty mountains at sunrise, golden light breaking through clouds, revealing a hidden lake below.')">Mountain Dawn</button>
+                </div>
+                <textarea id="prompt-input" rows="3" placeholder="Describe your video scene in detail...">A cinematic drone shot sweeping over misty mountains at sunrise, golden light breaking through clouds, revealing a hidden lake below.</textarea>
+            </div>
+
+            <div class="field">
+                <label>
+                    <input type="checkbox" id="enhance-prompt" checked style="width: auto; margin-right: 6px;">
+                    Enhance prompt with Gemini before generating video
+                </label>
+            </div>
+
+            <div class="enhanced-prompt" id="enhanced-prompt-display">
+                <div class="enhanced-prompt-label">Enhanced Prompt</div>
+                <div id="enhanced-prompt-text"></div>
+            </div>
+
+            <div class="actions">
+                <button class="primary" id="generate-btn" onclick="generateVideo()">Generate Video</button>
+                <span class="shortcut-hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd></span>
+            </div>
+
+            <div class="error" id="error"></div>
+        </div>
+
+        <div class="progress-section" id="progress-section">
+            <div class="progress-label">Progress</div>
+            <div class="progress-steps" id="progress-steps"></div>
+        </div>
+
+        <div class="video-result" id="video-result">
+            <div class="video-result-inner">
+                <div class="video-result-label">Your Generated Video</div>
+                <video class="video-player" id="video-player" controls></video>
+                <div class="video-actions">
+                    <button class="video-action-btn" id="download-btn" onclick="downloadVideo()">Download Video</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="privacy-notice">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Your API key is saved in your browser's session storage &mdash; shared across all Gemini Tools pages, but automatically cleared when you close the tab. It is only sent directly to the Google Gemini API.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+        var videoBlob = null;
+
+        function getPreferredTheme() {
+            var stored = localStorage.getItem('theme');
+            if (stored) return stored;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        function applyTheme(theme) { document.documentElement.setAttribute('data-theme', theme); localStorage.setItem('theme', theme); }
+        function toggleTheme() { var c = document.documentElement.getAttribute('data-theme'); applyTheme(c === 'dark' ? 'light' : 'dark'); }
+        applyTheme(getPreferredTheme());
+
+        function setPrompt(p) { document.getElementById('prompt-input').value = p; }
+
+        function updateProgress(steps) {
+            var container = document.getElementById('progress-steps');
+            while (container.firstChild) container.removeChild(container.firstChild);
+            steps.forEach(function(step) {
+                var div = document.createElement('div');
+                div.className = 'progress-step' + (step.done ? ' done' : '') + (step.active ? ' active' : '');
+                var icon = document.createElement('span');
+                icon.className = 'step-icon';
+                if (step.active) {
+                    var spinner = document.createElement('span');
+                    spinner.className = 'spinner-sm';
+                    icon.appendChild(spinner);
+                } else if (step.done) {
+                    icon.textContent = '\u2713';
+                } else {
+                    icon.textContent = '\u25CB';
+                }
+                div.appendChild(icon);
+                div.appendChild(document.createTextNode(step.label));
+                container.appendChild(div);
+            });
+        }
+
+        async function enhancePrompt(apiKey, textModel, userPrompt) {
+            var enhanceReq = 'You are a cinematic video prompt expert. Enhance the following video description into a detailed, vivid prompt for AI video generation. ' +
+                'Include: camera movements, lighting, mood, specific visual details, and sound/dialogue descriptions. ' +
+                'Keep it to 2-3 sentences. Return ONLY the enhanced prompt text, nothing else.\n\n' +
+                'User prompt: ' + userPrompt;
+
+            var url = API_BASE + '/models/' + encodeURIComponent(textModel) + ':generateContent?key=' + encodeURIComponent(apiKey);
+            var resp = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: enhanceReq }] }]
+                })
+            });
+
+            var data = await resp.json();
+            if (data.error) throw new Error('Prompt enhancement failed: ' + (data.error.message || JSON.stringify(data.error)));
+
+            var text = (data.candidates && data.candidates[0] && data.candidates[0].content &&
+                data.candidates[0].content.parts && data.candidates[0].content.parts[0] &&
+                data.candidates[0].content.parts[0].text) || '';
+            return text.trim();
+        }
+
+        async function generateVideo() {
+            var apiKey = document.getElementById('api-key-input').value.trim();
+            var videoModel = document.getElementById('video-model-input').value.trim();
+            var textModel = document.getElementById('text-model-input').value.trim();
+            var userPrompt = document.getElementById('prompt-input').value.trim();
+            var aspectRatio = document.getElementById('aspect-ratio-input').value;
+            var shouldEnhance = document.getElementById('enhance-prompt').checked;
+            var btn = document.getElementById('generate-btn');
+            var error = document.getElementById('error');
+            var progressSection = document.getElementById('progress-section');
+            var videoResult = document.getElementById('video-result');
+            var enhancedDisplay = document.getElementById('enhanced-prompt-display');
+
+            error.classList.remove('visible');
+            videoResult.classList.remove('visible');
+            enhancedDisplay.classList.remove('visible');
+
+            if (!apiKey) { error.textContent = 'Please enter your Gemini API key.'; error.classList.add('visible'); return; }
+            if (!videoModel) { error.textContent = 'Please enter a video model name.'; error.classList.add('visible'); return; }
+            if (!userPrompt) { error.textContent = 'Please enter a video prompt.'; error.classList.add('visible'); return; }
+
+            btn.disabled = true;
+            btn.textContent = 'Generating\u2026';
+            progressSection.classList.add('visible');
+
+            var steps = [];
+            if (shouldEnhance) {
+                steps = [
+                    { label: 'Enhancing prompt with Gemini\u2026', active: true, done: false },
+                    { label: 'Generating video with Veo\u2026', active: false, done: false },
+                    { label: 'Downloading video\u2026', active: false, done: false }
+                ];
+            } else {
+                steps = [
+                    { label: 'Generating video with Veo\u2026', active: true, done: false },
+                    { label: 'Downloading video\u2026', active: false, done: false }
+                ];
+            }
+            updateProgress(steps);
+
+            try {
+                var videoPrompt = userPrompt;
+
+                // Step 1: Optionally enhance the prompt
+                if (shouldEnhance && textModel) {
+                    videoPrompt = await enhancePrompt(apiKey, textModel, userPrompt);
+                    document.getElementById('enhanced-prompt-text').textContent = videoPrompt;
+                    enhancedDisplay.classList.add('visible');
+                    steps[0] = { label: 'Prompt enhanced', active: false, done: true };
+                    steps[1] = { label: 'Generating video with Veo\u2026', active: true, done: false };
+                    updateProgress(steps);
+                }
+
+                var veoStepIdx = shouldEnhance ? 1 : 0;
+                var downloadStepIdx = shouldEnhance ? 2 : 1;
+
+                // Step 2: Submit video generation request to Veo
+                var veoUrl = API_BASE + '/models/' + encodeURIComponent(videoModel) + ':predictLongRunning?key=' + encodeURIComponent(apiKey);
+                var veoBody = {
+                    instances: [{ prompt: videoPrompt }]
+                };
+                if (aspectRatio !== '16:9') {
+                    veoBody.parameters = { aspectRatio: aspectRatio };
+                }
+
+                var veoResp = await fetch(veoUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(veoBody)
+                });
+
+                var veoData = await veoResp.json();
+                if (veoData.error) throw new Error('Veo API error: ' + (veoData.error.message || JSON.stringify(veoData.error)));
+                if (!veoData.name) throw new Error('No operation name returned from Veo. Response: ' + JSON.stringify(veoData).substring(0, 200));
+
+                var operationName = veoData.name;
+
+                // Poll until video is ready
+                var pollCount = 0;
+                var maxPolls = 120; // 10 minutes max (5s intervals)
+                var isDone = false;
+                var videoUri = null;
+
+                while (!isDone && pollCount < maxPolls) {
+                    await new Promise(function(r) { setTimeout(r, 5000); });
+                    pollCount++;
+
+                    steps[veoStepIdx] = { label: 'Generating video with Veo\u2026 (' + (pollCount * 5) + 's elapsed)', active: true, done: false };
+                    updateProgress(steps);
+
+                    var pollUrl = API_BASE + '/' + operationName + '?key=' + encodeURIComponent(apiKey);
+                    var pollResp = await fetch(pollUrl);
+                    var pollData = await pollResp.json();
+
+                    if (pollData.error) throw new Error('Polling error: ' + (pollData.error.message || JSON.stringify(pollData.error)));
+
+                    if (pollData.done) {
+                        isDone = true;
+                        // Extract video URI from response
+                        var genResponse = pollData.response;
+                        if (genResponse && genResponse.generateVideoResponse && genResponse.generateVideoResponse.generatedSamples &&
+                            genResponse.generateVideoResponse.generatedSamples.length > 0) {
+                            videoUri = genResponse.generateVideoResponse.generatedSamples[0].video.uri;
+                        } else {
+                            throw new Error('Video generation completed but no video found in response: ' + JSON.stringify(pollData).substring(0, 300));
+                        }
+                    }
+                }
+
+                if (!isDone) throw new Error('Video generation timed out after ' + (maxPolls * 5) + ' seconds. The operation may still be running.');
+
+                steps[veoStepIdx] = { label: 'Video generated', active: false, done: true };
+                steps[downloadStepIdx] = { label: 'Downloading video\u2026', active: true, done: false };
+                updateProgress(steps);
+
+                // Step 3: Download the video
+                var downloadUrl = videoUri + '&key=' + encodeURIComponent(apiKey);
+                var videoResp = await fetch(downloadUrl);
+                if (!videoResp.ok) throw new Error('Failed to download video: ' + videoResp.status + ' ' + videoResp.statusText);
+
+                videoBlob = await videoResp.blob();
+
+                steps[downloadStepIdx] = { label: 'Video downloaded (' + (videoBlob.size / 1024 / 1024).toFixed(1) + ' MB)', active: false, done: true };
+                updateProgress(steps);
+
+                // Show result
+                var player = document.getElementById('video-player');
+                player.src = URL.createObjectURL(videoBlob);
+                videoResult.classList.add('visible');
+
+            } catch (err) {
+                error.textContent = err.message;
+                error.classList.add('visible');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Generate Video';
+            }
+        }
+
+        function downloadVideo() {
+            if (!videoBlob) return;
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(videoBlob);
+            a.download = 'veo-video.mp4';
+            a.click();
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) generateVideo();
+        });
+
+    </script>
+    <script src="nav.js"></script>
+</body>
+</html>

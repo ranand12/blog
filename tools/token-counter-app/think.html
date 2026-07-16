@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://generativelanguage.googleapis.com;">
+    <title>Gemini Thinking Mode</title>
+    <!--
+    Copyright 2026 Google LLC
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #ffffff; --bg-elevated: #f5f6f8; --bg-card: #ffffff; --bg-input: #f5f6f8;
+            --border: #e2e4e9; --border-focus: #4f46e5; --text: #111318; --text-secondary: #4b5060; --text-muted: #8b90a0;
+            --accent: #4f46e5; --accent-hover: #4338ca; --accent-soft: #eef2ff;
+            --green: #059669; --green-soft: #ecfdf5; --red: #dc2626; --red-soft: #fef2f2;
+            --amber: #d97706; --amber-soft: #fffbeb;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.08); --radius: 12px;
+        }
+        [data-theme="dark"] {
+            --bg: #0e1117; --bg-elevated: #161b26; --bg-card: #1c2132; --bg-input: #161b26;
+            --border: #2a3045; --border-focus: #818cf8; --text: #eceef4; --text-secondary: #9399ae; --text-muted: #5c6280;
+            --accent: #818cf8; --accent-hover: #a5b4fc; --accent-soft: #1e1b4b40;
+            --green: #34d399; --green-soft: #05966920; --red: #f87171; --red-soft: #dc262620;
+            --amber: #fbbf24; --amber-soft: #d9770620;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2); --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 24px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 32px;
+            padding: 8px;
+            background: var(--bg-elevated);
+            border-radius: var(--radius);
+            flex-wrap: wrap;
+        }
+
+        .header {
+            margin-bottom: 32px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 14px;
+            transition: border 0.2s, background 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--border-focus);
+            background: var(--bg-card);
+        }
+
+        textarea {
+            resize: vertical;
+            line-height: 1.5;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        input[type="range"] {
+            flex: 1;
+            padding: 0;
+            height: 6px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        .slider-value {
+            font-weight: 600;
+            color: var(--accent);
+            min-width: 80px;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        button.primary {
+            width: 100%;
+            padding: 12px 24px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: inherit;
+        }
+
+        button.primary:hover {
+            background: var(--accent-hover);
+        }
+
+        button.primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .presets {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .preset {
+            padding: 8px 12px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 13px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .preset:hover {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .error {
+            margin-top: 16px;
+            padding: 12px 16px;
+            background: var(--red-soft);
+            border: 1px solid var(--red);
+            border-radius: 8px;
+            color: var(--red);
+            font-size: 14px;
+            display: none;
+        }
+
+        .thought-section {
+            background: var(--amber-soft);
+            border: 1px solid var(--amber);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .thought-section summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 12px;
+            list-style-position: outside;
+        }
+
+        .thought-text {
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-top: 12px;
+        }
+
+        .answer-section {
+            background: var(--green-soft);
+            border: 1px solid var(--green);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .answer-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .answer-text {
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .token-info {
+            font-size: 12px;
+            color: var(--text-muted);
+            padding: 12px;
+            background: var(--bg-elevated);
+            border-radius: 8px;
+        }
+
+        #result {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .footer {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .privacy-notice {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .privacy-notice a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .privacy-notice a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 16px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .field-row {
+                grid-template-columns: 1fr;
+            }
+
+            .presets {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav" id="mainNav"></nav>
+
+        <div class="header">
+            <h1>Thinking Mode</h1>
+            <p class="subtitle">Watch the model reason step by step. Adjust the thinking budget to control how deeply it thinks before answering.</p>
+        </div>
+
+        <div class="card">
+            <div class="field-row">
+                <div class="field">
+                    <label for="apiKey">API Key</label>
+                    <input type="password" id="apiKey" placeholder="Enter your Gemini API key">
+                </div>
+                <div class="field">
+                    <label for="model">Model</label>
+                    <input type="text" id="model" value="gemini-2.5-flash" readonly>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="budget">Thinking Budget</label>
+                <div class="slider-container">
+                    <input type="range" id="budget" min="0" max="24576" step="1024" value="8192">
+                    <span class="slider-value" id="budgetValue">8192</span>
+                </div>
+                <div class="slider-labels">
+                    <span>Off (0)</span>
+                    <span>Quick (1024)</span>
+                    <span>Medium (8192)</span>
+                    <span>Deep (24576)</span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Presets</label>
+                <div class="presets">
+                    <button class="preset" onclick="setPreset('Math Puzzle')">Math Puzzle</button>
+                    <button class="preset" onclick="setPreset('Logic Riddle')">Logic Riddle</button>
+                    <button class="preset" onclick="setPreset('Code Debug')">Code Debug</button>
+                    <button class="preset" onclick="setPreset('Science')">Science</button>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="text">Your Question</label>
+                <textarea id="text" rows="4" placeholder="Enter your question...">How many r's are in the word 'strawberry'? Explain your reasoning step by step.</textarea>
+            </div>
+
+            <button class="primary" id="thinkBtn" onclick="runThinking()">Think</button>
+            <div style="text-align: center; margin-top: 8px; font-size: 13px; color: var(--text-muted);">Press Ctrl+Enter to submit</div>
+
+            <div id="result">
+                <div class="thought-section">
+                    <details open>
+                        <summary>Thought Process</summary>
+                        <div class="thought-text" id="thoughtText"></div>
+                    </details>
+                </div>
+                <div class="answer-section">
+                    <h3>Answer</h3>
+                    <div class="answer-text" id="answerText"></div>
+                </div>
+                <div class="token-info" id="tokenInfo"></div>
+            </div>
+
+            <div class="error" id="error"></div>
+        </div>
+
+        <footer class="footer">
+            <p class="privacy-notice">
+                Your API key is saved in your browser's session storage &mdash; shared across all Gemini Tools pages, but automatically cleared when you close the tab. It is only sent directly to the Google Gemini API.
+                Learn more about <a href="https://ai.google.dev/gemini-api/docs/api-key" target="_blank">API key safety</a>.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        const API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+
+        // Theme management
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Slider update
+        const budgetSlider = document.getElementById('budget');
+        const budgetValue = document.getElementById('budgetValue');
+
+        budgetSlider.addEventListener('input', (e) => {
+            budgetValue.textContent = e.target.value;
+        });
+
+        // Presets
+        const presets = {
+            'Math Puzzle': 'What is 27 * 43 + 891 / 3? Show your work step by step.',
+            'Logic Riddle': 'A farmer needs to cross a river with a fox, a chicken, and a bag of grain. The boat can only carry the farmer and one item. The fox will eat the chicken if left alone, and the chicken will eat the grain. How does the farmer get everything across?',
+            'Code Debug': 'Find the bug in this code and explain: function fibonacci(n) { if (n <= 0) return 0; return fibonacci(n-1) + fibonacci(n-2); }',
+            'Science': 'Explain why the sky is blue using Rayleigh scattering. Include the mathematical relationship.'
+        };
+
+        function setPreset(name) {
+            document.getElementById('text').value = presets[name];
+        }
+
+        // Main thinking function
+        async function runThinking() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const model = document.getElementById('model').value.trim();
+            const budget = parseInt(document.getElementById('budget').value);
+            const text = document.getElementById('text').value.trim();
+            const thinkBtn = document.getElementById('thinkBtn');
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+
+            errorDiv.style.display = 'none';
+            resultDiv.style.display = 'none';
+
+            if (!apiKey) {
+                errorDiv.textContent = 'Please enter your API key.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            if (!text) {
+                errorDiv.textContent = 'Please enter a question.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            thinkBtn.disabled = true;
+            thinkBtn.textContent = 'Thinking...';
+
+            try {
+                const url = `${API_BASE}/models/${model}:generateContent?key=${apiKey}`;
+
+                const requestBody = {
+                    contents: [{
+                        parts: [{
+                            text: text
+                        }]
+                    }],
+                    generationConfig: {
+                        thinkingConfig: {
+                            includeThoughts: true,
+                            thinkingBudget: budget
+                        }
+                    }
+                };
+
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error?.message || `HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (!data.candidates || !data.candidates[0]) {
+                    throw new Error('No response generated');
+                }
+
+                // Parse thought and answer parts
+                let thoughtText = '';
+                let answerText = '';
+
+                const parts = data.candidates[0].content.parts;
+                for (const part of parts) {
+                    if (part.thought === true && part.text) {
+                        thoughtText += part.text;
+                    } else if (part.text) {
+                        answerText += part.text;
+                    }
+                }
+
+                // Display results
+                renderMarkdown(thoughtText || 'No thoughts captured (budget might be 0 or model did not use thinking tokens).', document.getElementById('thoughtText'));
+                renderMarkdown(answerText || 'No answer generated.', document.getElementById('answerText'));
+
+                // Token info
+                const usage = data.usageMetadata;
+                let tokenInfoText = '';
+                if (usage) {
+                    tokenInfoText = `Total Tokens: ${usage.totalTokenCount || 0}`;
+                    if (usage.promptTokenCount) {
+                        tokenInfoText += ` | Prompt: ${usage.promptTokenCount}`;
+                    }
+                    if (usage.candidatesTokenCount) {
+                        tokenInfoText += ` | Response: ${usage.candidatesTokenCount}`;
+                    }
+                    if (usage.thoughtsTokenCount !== undefined) {
+                        tokenInfoText += ` | Thoughts: ${usage.thoughtsTokenCount}`;
+                    }
+                }
+                document.getElementById('tokenInfo').textContent = tokenInfoText || 'Token information not available.';
+
+                resultDiv.style.display = 'block';
+
+            } catch (error) {
+                errorDiv.textContent = error.message;
+                errorDiv.style.display = 'block';
+            } finally {
+                thinkBtn.disabled = false;
+                thinkBtn.textContent = 'Think';
+            }
+        }
+
+        // Ctrl+Enter shortcut
+        document.getElementById('text').addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                runThinking();
+            }
+        });
+
+
+        // Initialize theme on load
+        initTheme();
+    </script>
+    <script src="markdown.js"></script>
+    <script src="nav.js"></script>
+</body>
+</html>

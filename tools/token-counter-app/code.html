@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://generativelanguage.googleapis.com;">
+    <title>Gemini Code Runner</title>
+    <!--
+    Copyright 2026 Google LLC.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #ffffff; --bg-elevated: #f5f6f8; --bg-card: #ffffff; --bg-input: #f5f6f8;
+            --border: #e2e4e9; --border-focus: #4f46e5; --text: #111318; --text-secondary: #4b5060; --text-muted: #8b90a0;
+            --accent: #4f46e5; --accent-hover: #4338ca; --accent-soft: #eef2ff;
+            --green: #059669; --green-soft: #ecfdf5; --red: #dc2626; --red-soft: #fef2f2;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.08); --radius: 12px;
+        }
+        [data-theme="dark"] {
+            --bg: #0e1117; --bg-elevated: #161b26; --bg-card: #1c2132; --bg-input: #161b26;
+            --border: #2a3045; --border-focus: #818cf8; --text: #eceef4; --text-secondary: #9399ae; --text-muted: #5c6280;
+            --accent: #818cf8; --accent-hover: #a5b4fc; --accent-soft: #1e1b4b40;
+            --green: #34d399; --green-soft: #05966920; --red: #f87171; --red-soft: #dc262620;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2); --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 24px; transition: background 0.3s, color 0.3s; }
+        .container { max-width: 800px; width: 100%; }
+        .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
+        .nav-brand { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.03em; }
+        .nav-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .nav-link { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 6px 14px; border-radius: 8px; transition: all 0.2s; }
+        .nav-link:hover { background: var(--bg-elevated); color: var(--text); }
+        .theme-toggle { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-elevated); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; padding: 0; }
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+        .theme-toggle svg { width: 18px; height: 18px; }
+        .icon-sun, [data-theme="dark"] .icon-moon { display: none; }
+        [data-theme="dark"] .icon-sun { display: block; }
+        .header { margin-bottom: 32px; }
+        h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px; }
+        .subtitle { font-size: 15px; color: var(--text-secondary); line-height: 1.5; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); transition: background 0.3s, border-color 0.3s; }
+        .field { margin-bottom: 18px; }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+        label { display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
+        input[type="password"], input[type="text"], select { width: 100%; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-family: inherit; font-size: 14px; color: var(--text); outline: none; transition: all 0.2s; }
+        input:focus, select:focus, textarea:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
+        input::placeholder, textarea::placeholder { color: var(--text-muted); }
+        select { cursor: pointer; }
+        textarea { width: 100%; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; font-family: inherit; font-size: 14px; color: var(--text); outline: none; transition: all 0.2s; resize: vertical; line-height: 1.5; }
+        .actions { display: flex; align-items: center; gap: 14px; margin-top: 18px; }
+        button.primary { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 10px 24px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        button.primary:hover { background: var(--accent-hover); }
+        button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .shortcut-hint { font-size: 12px; color: var(--text-muted); }
+        .shortcut-hint kbd { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 2px 5px; font-family: inherit; font-size: 11px; }
+        .result { margin-top: 24px; display: none; }
+        .result.visible { display: block; }
+        .result-section { margin-bottom: 16px; }
+        .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; color: var(--text-secondary); }
+        .result-text { font-size: 14px; color: var(--text); line-height: 1.6; margin-bottom: 16px; }
+        .code-block { background: #1e1e2e; color: #cdd6f4; border-radius: 8px; padding: 16px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.6; white-space: pre-wrap; }
+        .output-block { background: var(--green-soft); border: 1px solid var(--green); border-radius: 8px; padding: 16px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.6; white-space: pre-wrap; color: var(--green); }
+        .error { margin-top: 14px; padding: 10px 14px; background: var(--red-soft); border: 1px solid var(--red); border-radius: 8px; font-size: 13px; color: var(--red); display: none; }
+        .error.visible { display: block; }
+        .footer { margin-top: 24px; }
+        .privacy-notice { margin-top: 16px; padding: 12px 14px; background: var(--green-soft); border-radius: 8px; font-size: 12px; color: var(--green); line-height: 1.5; display: flex; gap: 8px; align-items: flex-start; }
+        .privacy-notice svg { flex-shrink: 0; width: 14px; height: 14px; margin-top: 2px; }
+        @media (max-width: 520px) { h1 { font-size: 28px; } .card { padding: 20px; } .field-row { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <span class="nav-brand">Gemini Tools</span>
+            <div class="nav-right">
+                <a href="tokens.html" class="nav-link">Tokens</a>
+                <a href="models.html" class="nav-link">Models</a>
+                <a href="describe.html" class="nav-link">Describer</a>
+                <a href="embed.html" class="nav-link">Embeddings</a>
+                <a href="extract.html" class="nav-link">Extractor</a>
+                <a href="prompt.html" class="nav-link">Playground</a>
+                <a href="search.html" class="nav-link">Search</a>
+                <a href="pdf.html" class="nav-link">PDF</a>
+                <a href="video.html" class="nav-link">Video</a>
+                <a href="story.html" class="nav-link">Story</a>
+                <a href="animate.html" class="nav-link">Animate</a>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+            </div>
+        </nav>
+
+        <div class="header">
+            <h1>Code Runner</h1>
+            <p class="subtitle">Let Gemini generate and execute Python code to solve problems. See the code, run it, and get results instantly.</p>
+        </div>
+
+        <div class="card">
+            <div class="field-row">
+                <div class="field">
+                    <label for="api-key-input">API Key</label>
+                    <input type="password" id="api-key-input" placeholder="Your Gemini key" autocomplete="off" data-lpignore="true" data-1p-ignore>
+                </div>
+                <div class="field">
+                    <label for="model-input">Model</label>
+                    <input type="text" id="model-input" value="gemini-2.5-flash" placeholder="e.g. gemini-2.5-flash">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="preset-select">Presets</label>
+                <select id="preset-select" onchange="setPreset(this.value)">
+                    <option value="">Choose a preset...</option>
+                    <option value="fibonacci">Fibonacci</option>
+                    <option value="primes">Prime Sieve</option>
+                    <option value="data">Data Analysis</option>
+                    <option value="math">Math Proof</option>
+                    <option value="palindrome">String Manipulation</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="input-text">Problem Description</label>
+                <textarea id="input-text" rows="4" placeholder="Describe what you want the code to do...">Calculate the first 20 Fibonacci numbers and display them in a formatted table.</textarea>
+            </div>
+
+            <div class="actions">
+                <button class="primary" id="run-btn" onclick="runCode()">Run Code</button>
+                <span class="shortcut-hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd></span>
+            </div>
+
+            <div class="result" id="result">
+                <div class="result-section" id="explanation-section" style="display: none;">
+                    <div class="section-label">Explanation</div>
+                    <div class="result-text" id="explanation-text"></div>
+                </div>
+
+                <div class="result-section" id="code-section" style="display: none;">
+                    <div class="section-label">Generated Code</div>
+                    <pre class="code-block" id="code-block"></pre>
+                </div>
+
+                <div class="result-section" id="output-section" style="display: none;">
+                    <div class="section-label">Execution Output</div>
+                    <pre class="output-block" id="output-block"></pre>
+                </div>
+            </div>
+
+            <div class="error" id="error"></div>
+        </div>
+
+        <div class="footer">
+            <div class="privacy-notice">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Your API key is saved in your browser's session storage &mdash; shared across all Gemini Tools pages, but automatically cleared when you close the tab. It is only sent directly to the Google Gemini API.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+
+        var PRESETS = {
+            fibonacci: "Calculate the first 20 Fibonacci numbers and display them in a formatted table.",
+            primes: "Find all prime numbers under 1000 using the Sieve of Eratosthenes and show how many there are.",
+            data: "Generate sample monthly sales data for 12 months and calculate the mean, median, and standard deviation.",
+            math: "Numerically verify that the sum of 1/n^2 from n=1 to infinity converges to pi^2/6. Show the progression.",
+            palindrome: "Write code to check if 'racecar' is a palindrome, then generate 5 random palindromes."
+        };
+
+        function getPreferredTheme() {
+            var s = localStorage.getItem('theme');
+            if (s) return s;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function applyTheme(t) {
+            document.documentElement.setAttribute('data-theme', t);
+            localStorage.setItem('theme', t);
+        }
+
+        function toggleTheme() {
+            applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        }
+
+        applyTheme(getPreferredTheme());
+
+        function setPreset(value) {
+            if (value && PRESETS[value]) {
+                document.getElementById('input-text').value = PRESETS[value];
+            }
+        }
+
+        async function runCode() {
+            var apiKey = document.getElementById('api-key-input').value.trim();
+            var model = document.getElementById('model-input').value.trim();
+            var inputText = document.getElementById('input-text').value.trim();
+
+            var errorEl = document.getElementById('error');
+            var resultEl = document.getElementById('result');
+            var runBtn = document.getElementById('run-btn');
+
+            errorEl.classList.remove('visible');
+            errorEl.textContent = '';
+            resultEl.classList.remove('visible');
+
+            // Hide all sections
+            document.getElementById('explanation-section').style.display = 'none';
+            document.getElementById('code-section').style.display = 'none';
+            document.getElementById('output-section').style.display = 'none';
+
+            if (!apiKey) {
+                errorEl.textContent = 'Please enter your API key.';
+                errorEl.classList.add('visible');
+                return;
+            }
+
+            if (!inputText) {
+                errorEl.textContent = 'Please enter a problem description.';
+                errorEl.classList.add('visible');
+                return;
+            }
+
+            runBtn.disabled = true;
+            runBtn.textContent = 'Running...';
+
+            try {
+                var url = API_BASE + '/models/' + model + ':generateContent?key=' + apiKey;
+                var response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{ text: inputText }]
+                        }],
+                        tools: [{
+                            code_execution: {}
+                        }]
+                    })
+                });
+
+                if (!response.ok) {
+                    var errorData = await response.json();
+                    throw new Error(errorData.error?.message || 'API request failed with status ' + response.status);
+                }
+
+                var data = await response.json();
+
+                if (!data.candidates || !data.candidates[0] || !data.candidates[0].content || !data.candidates[0].content.parts) {
+                    throw new Error('Invalid response structure from API');
+                }
+
+                var parts = data.candidates[0].content.parts;
+                var hasContent = false;
+
+                // Process all parts
+                for (var i = 0; i < parts.length; i++) {
+                    var part = parts[i];
+
+                    // Handle explanation text
+                    if (part.text) {
+                        renderMarkdown(part.text, document.getElementById('explanation-text'));
+                        document.getElementById('explanation-section').style.display = 'block';
+                        hasContent = true;
+                    }
+
+                    // Handle generated code
+                    if (part.executableCode && part.executableCode.code) {
+                        document.getElementById('code-block').textContent = part.executableCode.code;
+                        document.getElementById('code-section').style.display = 'block';
+                        hasContent = true;
+                    }
+
+                    // Handle execution output
+                    if (part.codeExecutionResult && part.codeExecutionResult.output) {
+                        document.getElementById('output-block').textContent = part.codeExecutionResult.output;
+                        document.getElementById('output-section').style.display = 'block';
+                        hasContent = true;
+                    }
+                }
+
+                if (hasContent) {
+                    resultEl.classList.add('visible');
+                } else {
+                    throw new Error('No code execution results in the response');
+                }
+
+            } catch (err) {
+                errorEl.textContent = 'Error: ' + err.message;
+                errorEl.classList.add('visible');
+            } finally {
+                runBtn.disabled = false;
+                runBtn.textContent = 'Run Code';
+            }
+        }
+
+        // Ctrl+Enter shortcut
+        document.getElementById('input-text').addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                runCode();
+            }
+        });
+
+    </script>
+    <script src="markdown.js"></script>
+    <script src="nav.js"></script>
+</body>
+</html>

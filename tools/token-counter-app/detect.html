@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://generativelanguage.googleapis.com https://storage.googleapis.com; img-src 'self' data: blob: https://storage.googleapis.com;">
+    <title>3D Spatial Understanding</title>
+    <!--
+    Copyright 2026 Google LLC.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #ffffff; --bg-elevated: #f5f6f8; --bg-card: #ffffff; --bg-input: #f5f6f8;
+            --border: #e2e4e9; --border-focus: #4f46e5; --text: #111318; --text-secondary: #4b5060; --text-muted: #8b90a0;
+            --accent: #4f46e5; --accent-hover: #4338ca; --accent-soft: #eef2ff;
+            --green: #059669; --green-soft: #ecfdf5; --red: #dc2626; --red-soft: #fef2f2;
+            --amber: #d97706; --amber-soft: #fffbeb;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.08); --radius: 12px;
+        }
+        [data-theme="dark"] {
+            --bg: #0e1117; --bg-elevated: #161b26; --bg-card: #1c2132; --bg-input: #161b26;
+            --border: #2a3045; --border-focus: #818cf8; --text: #eceef4; --text-secondary: #9399ae; --text-muted: #5c6280;
+            --accent: #818cf8; --accent-hover: #a5b4fc; --accent-soft: #1e1b4b40;
+            --green: #34d399; --green-soft: #05966920; --red: #f87171; --red-soft: #dc262620;
+            --amber: #fbbf24; --amber-soft: #d9770620;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2); --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; justify-content: center; padding: 24px; transition: background 0.3s, color 0.3s; }
+        .container { max-width: 900px; width: 100%; }
+        .header { margin-bottom: 32px; }
+        h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px; }
+        .subtitle { font-size: 15px; color: var(--text-secondary); line-height: 1.5; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); transition: background 0.3s, border-color 0.3s; }
+        .field { margin-bottom: 18px; }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+        label { display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
+        input[type="password"], input[type="text"], select, textarea { width: 100%; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-family: inherit; font-size: 14px; color: var(--text); outline: none; transition: all 0.2s; }
+        input:focus, select:focus, textarea:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
+        input::placeholder, textarea::placeholder { color: var(--text-muted); }
+        textarea { resize: vertical; min-height: 60px; }
+        select { cursor: pointer; }
+
+        .mode-toggle { display: flex; gap: 0; background: var(--bg-input); border-radius: 8px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 18px; }
+        .mode-btn { flex: 1; padding: 10px 16px; font-family: inherit; font-size: 13px; font-weight: 600; border: none; background: transparent; color: var(--text-secondary); cursor: pointer; transition: all 0.2s; text-align: center; }
+        .mode-btn.active { background: var(--accent); color: #fff; }
+        .mode-btn:hover:not(.active) { background: var(--accent-soft); color: var(--accent); }
+
+        .drop-zone { border: 2px dashed var(--border); border-radius: var(--radius); padding: 40px 20px; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--bg-input); }
+        .drop-zone:hover, .drop-zone.dragover { border-color: var(--accent); background: var(--accent-soft); }
+        .drop-zone-text { font-size: 14px; color: var(--text-secondary); }
+        .drop-zone-hint { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+        .drop-zone.has-image { padding: 16px; }
+        .image-preview { max-width: 100%; max-height: 400px; border-radius: 8px; margin: 0 auto; display: block; }
+
+        .sample-buttons { display: flex; gap: 8px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
+        .sample-btn { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 8px 16px; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+        .sample-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+        .sample-btn.loading { opacity: 0.5; pointer-events: none; }
+
+        .actions { display: flex; align-items: center; gap: 14px; margin-top: 18px; }
+        button.primary { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 10px 24px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        button.primary:hover { background: var(--accent-hover); }
+        button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .shortcut-hint { font-size: 12px; color: var(--text-muted); }
+        .shortcut-hint kbd { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 2px 5px; font-family: inherit; font-size: 11px; }
+
+        .result { margin-top: 24px; display: none; }
+        .result.visible { display: block; }
+        .result-label { font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 12px; }
+
+        .viz-container { position: relative; display: inline-block; max-width: 100%; }
+        .viz-container img { display: block; max-width: 100%; border-radius: 8px; border: 1px solid var(--border); }
+        .point-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .point-dot { position: absolute; width: 14px; height: 14px; background: #2962FF; border: 2px solid #fff; border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 12px rgba(41,98,255,0.5); pointer-events: auto; cursor: pointer; transition: all 0.2s; z-index: 10; }
+        .point-dot:hover, .point-dot.highlight { transform: translate(-50%, -50%) scale(1.3); background: #FF4081; box-shadow: 0 0 16px rgba(255,64,129,0.6); z-index: 20; }
+        .point-label { position: absolute; background: #2962FF; color: #fff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; transform: translate(-50%, -130%); white-space: nowrap; pointer-events: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: all 0.2s; }
+        .point-dot:hover + .point-label, .point-dot.highlight + .point-label { background: #FF4081; }
+
+        .box3d-layout { display: flex; gap: 20px; flex-wrap: wrap; }
+        .box3d-image-panel { flex: 1; min-width: 300px; position: relative; overflow: hidden; border-radius: 8px; }
+        .box3d-image-panel canvas { max-width: 100%; border-radius: 8px; border: 1px solid var(--border); display: block; }
+        .box3d-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .box3d-overlay .box-label { pointer-events: auto; }
+        .box-line { position: absolute; background: #2962FF; transform-origin: 0 0; box-shadow: 0 0 8px rgba(41,98,255,0.3); transition: all 0.2s; pointer-events: none; }
+        .box-line.highlight { background: #FF4081; box-shadow: 0 0 12px rgba(255,64,129,0.4); z-index: 100; }
+        .box-line.fade { opacity: 0.2; }
+        .box-label { position: absolute; color: #fff; font-size: 11px; font-weight: 600; font-family: inherit; transform: translate(-50%, -50%); background: #2962FF; padding: 3px 8px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); cursor: pointer; z-index: 1000; transition: all 0.2s; }
+        .box-label.highlight { background: #FF4081; transform: translate(-50%, -50%) scale(1.1); z-index: 1001; }
+        .box-label.fade { opacity: 0.2; }
+
+        .box3d-top-panel { width: 320px; flex-shrink: 0; }
+        .top-view { width: 100%; aspect-ratio: 1; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; position: relative; overflow: hidden; }
+        .top-view .grid-line { position: absolute; background: var(--border); pointer-events: none; }
+        .top-view .grid-label { position: absolute; color: var(--text-muted); font-size: 10px; pointer-events: none; }
+        .top-view .axis-line { position: absolute; background: var(--text-muted); pointer-events: none; }
+        .top-view .camera-triangle { position: absolute; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 16px solid var(--accent); pointer-events: none; }
+
+        .slider-row { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+        .slider-row label { margin-bottom: 0; font-size: 12px; white-space: nowrap; }
+        .slider-row input[type="range"] { flex: 1; padding: 0; border: none; background: transparent; box-shadow: none; }
+        .slider-row input[type="range"]:focus { box-shadow: none; }
+        .slider-row .slider-val { font-size: 12px; color: var(--text-muted); min-width: 32px; }
+
+        .detection-list { margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
+        .detection-tag { padding: 5px 12px; font-size: 12px; font-weight: 600; border-radius: 6px; border: 2px solid; cursor: pointer; transition: all 0.2s; }
+        .detection-tag:hover { opacity: 0.8; }
+
+        .error { margin-top: 14px; padding: 10px 14px; background: var(--red-soft); border: 1px solid var(--red); border-radius: 8px; font-size: 13px; color: var(--red); display: none; }
+        .error.visible { display: block; }
+        .footer { margin-top: 24px; }
+        .privacy-notice { margin-top: 16px; padding: 12px 14px; background: var(--green-soft); border-radius: 8px; font-size: 12px; color: var(--green); line-height: 1.5; display: flex; gap: 8px; align-items: flex-start; }
+        .privacy-notice svg { flex-shrink: 0; width: 14px; height: 14px; margin-top: 2px; }
+        .exp-badge { display: inline-block; background: var(--amber-soft); color: var(--amber); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle; }
+
+        @media (max-width: 700px) {
+            h1 { font-size: 28px; } .card { padding: 20px; } .field-row { grid-template-columns: 1fr; }
+            .box3d-layout { flex-direction: column; }
+            .box3d-top-panel { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>3D Spatial <span class="exp-badge">Experimental</span></h1>
+            <p class="subtitle">Explore Gemini's spatial understanding: point to objects in images or detect 3D bounding boxes with interactive visualizations.</p>
+        </div>
+
+        <div class="card">
+            <div class="field-row">
+                <div class="field">
+                    <label for="api-key-input">API Key</label>
+                    <input type="password" id="api-key-input" placeholder="Your Gemini key" autocomplete="off" data-lpignore="true" data-1p-ignore>
+                </div>
+                <div class="field">
+                    <label for="model-input">Model</label>
+                    <input type="text" id="model-input" value="gemini-2.5-flash" placeholder="e.g. gemini-2.5-flash">
+                </div>
+            </div>
+
+            <label>Mode</label>
+            <div class="mode-toggle">
+                <button class="mode-btn active" data-mode="points" onclick="setMode('points')">Points</button>
+                <button class="mode-btn" data-mode="3d" onclick="setMode('3d')">3D Boxes</button>
+            </div>
+
+            <div class="field">
+                <label>Image</label>
+                <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+                    <div class="drop-zone-text">Drop an image here or click to upload</div>
+                    <div class="drop-zone-hint">JPG, PNG, WebP supported</div>
+                </div>
+                <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" style="display:none">
+                <div class="sample-buttons">
+                    <button class="sample-btn" onclick="loadSample('kitchen')">Kitchen</button>
+                    <button class="sample-btn" onclick="loadSample('tool')">Tool</button>
+                    <button class="sample-btn" onclick="loadSample('room')">Room</button>
+                    <button class="sample-btn" onclick="loadSample('spill')">Spill</button>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="preset-select">Preset Prompt</label>
+                <select id="preset-select" onchange="applyPreset()">
+                    <optgroup label="Points">
+                        <option value="points-identify">Identify items</option>
+                        <option value="points-explain">Explain how to use each part</option>
+                        <option value="points-safety">Safety hazards</option>
+                    </optgroup>
+                    <optgroup label="3D Boxes">
+                        <option value="3d-detect">Detect all objects</option>
+                        <option value="3d-search">Search specific objects</option>
+                    </optgroup>
+                    <option value="custom">Custom prompt</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="prompt-input">Prompt</label>
+                <textarea id="prompt-input" rows="3"></textarea>
+            </div>
+
+            <div class="actions">
+                <button class="primary" id="analyze-btn" onclick="analyze()">Analyze</button>
+                <span class="shortcut-hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd></span>
+            </div>
+
+            <div class="result" id="result">
+                <div class="result-label" id="result-label">Results</div>
+
+                <div id="points-result" style="display:none; text-align:center;">
+                    <div class="viz-container" id="points-viz"></div>
+                </div>
+
+                <div id="box3d-result" style="display:none;">
+                    <div class="box3d-layout">
+                        <div class="box3d-image-panel">
+                            <canvas id="box3d-canvas"></canvas>
+                            <div class="box3d-overlay" id="box3d-overlay"></div>
+                            <div class="slider-row">
+                                <label>FOV</label>
+                                <input type="range" id="fov-slider" min="30" max="120" value="60" step="1">
+                                <span class="slider-val" id="fov-val">60</span>
+                            </div>
+                        </div>
+                        <div class="box3d-top-panel">
+                            <div class="top-view" id="top-view">
+                                <div class="box3d-overlay" id="top-overlay"></div>
+                            </div>
+                            <div class="slider-row">
+                                <label>Zoom</label>
+                                <input type="range" id="zoom-slider" min="0.5" max="4" value="1.5" step="0.1">
+                                <span class="slider-val" id="zoom-val">1.5x</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detection-list" id="detection-list"></div>
+            </div>
+
+            <div class="error" id="error"></div>
+        </div>
+
+        <div class="footer">
+            <div class="privacy-notice">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Your API key is saved in your browser's session storage &mdash; shared across all Gemini Tools pages, but automatically cleared when you close the tab. It is only sent directly to the Google Gemini API.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+        var currentMode = 'points';
+        var currentImageData = null;
+        var currentMimeType = null;
+        var currentImageEl = null;
+        var boxesData = [];
+        var panOffset = { x: 0, y: 150 };
+        var isDragging = false;
+        var lastX = 0, lastY = 0;
+
+        var SAMPLE_URLS = {
+            kitchen: 'https://storage.googleapis.com/generativeai-downloads/images/kitchen.jpg',
+            tool: 'https://storage.googleapis.com/generativeai-downloads/images/tool.png',
+            room: 'https://storage.googleapis.com/generativeai-downloads/images/room-clock.jpg',
+            spill: 'https://storage.googleapis.com/generativeai-downloads/images/spill.jpg'
+        };
+
+        var PRESETS = {
+            'points-identify': 'Point to no more than 10 items in the image.\nReturn a JSON array: [{"point": [y, x], "label": "item name"}]. The points are in [y, x] format normalized to 0-1000.',
+            'points-explain': 'Point to no more than 10 items in the image.\nReturn a JSON array: [{"point": [y, x], "label": "item name"}]. The points are in [y, x] format normalized to 0-1000.\nExplain how to use each part, put the explanation in the label field.',
+            'points-safety': 'Point to no more than 10 items in the image that could be safety hazards.\nReturn a JSON array: [{"point": [y, x], "label": "item name"}]. The points are in [y, x] format normalized to 0-1000.\nExplain how to prevent injury, put the advice in the label field.',
+            '3d-detect': 'Detect the 3D bounding boxes of no more than 10 items.\nReturn a JSON array: [{"label": "object name", "box_3d": [x_center, y_center, z_center, x_size, y_size, z_size, roll, pitch, yaw]}].',
+            '3d-search': 'Detect the 3D bounding boxes of the following objects: [describe objects here].\nReturn a JSON array: [{"label": "object name", "box_3d": [x_center, y_center, z_center, x_size, y_size, z_size, roll, pitch, yaw]}].'
+        };
+
+        var COLORS = ['#2962FF','#00C853','#FF6D00','#AA00FF','#D50000','#00BFA5','#FFD600','#C51162','#304FFE','#64DD17'];
+
+        function clearElement(el) {
+            while (el.firstChild) el.removeChild(el.firstChild);
+        }
+
+        function setMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(function(b) {
+                b.classList.toggle('active', b.dataset.mode === mode);
+            });
+            var sel = document.getElementById('preset-select');
+            sel.value = mode === 'points' ? 'points-identify' : '3d-detect';
+            applyPreset();
+            document.getElementById('result').classList.remove('visible');
+        }
+
+        function applyPreset() {
+            var val = document.getElementById('preset-select').value;
+            if (PRESETS[val]) {
+                document.getElementById('prompt-input').value = PRESETS[val];
+            }
+        }
+
+        applyPreset();
+
+        function showPreview(src) {
+            var zone = document.getElementById('drop-zone');
+            zone.classList.add('has-image');
+            clearElement(zone);
+            var img = document.createElement('img');
+            img.src = src;
+            img.className = 'image-preview';
+            img.alt = 'Preview';
+            zone.appendChild(img);
+            currentImageEl = new Image();
+            currentImageEl.crossOrigin = 'anonymous';
+            currentImageEl.src = src;
+        }
+
+        async function loadSample(name) {
+            var url = SAMPLE_URLS[name];
+            if (!url) return;
+            var btns = document.querySelectorAll('.sample-btn');
+            btns.forEach(function(b) { b.classList.add('loading'); });
+            try {
+                var resp = await fetch(url);
+                var blob = await resp.blob();
+                currentMimeType = blob.type || 'image/jpeg';
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var dataUrl = e.target.result;
+                    currentImageData = dataUrl.split(',')[1];
+                    showPreview(dataUrl);
+                    btns.forEach(function(b) { b.classList.remove('loading'); });
+                };
+                reader.readAsDataURL(blob);
+            } catch (err) {
+                btns.forEach(function(b) { b.classList.remove('loading'); });
+                showError('Failed to load sample image: ' + err.message);
+            }
+        }
+
+        function handleFile(file) {
+            if (!file || !file.type.startsWith('image/')) return;
+            currentMimeType = file.type;
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var dataUrl = e.target.result;
+                currentImageData = dataUrl.split(',')[1];
+                showPreview(dataUrl);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        document.getElementById('file-input').addEventListener('change', function(e) { handleFile(e.target.files[0]); });
+        var dropZone = document.getElementById('drop-zone');
+        dropZone.addEventListener('dragover', function(e) { e.preventDefault(); dropZone.classList.add('dragover'); });
+        dropZone.addEventListener('dragleave', function() { dropZone.classList.remove('dragover'); });
+        dropZone.addEventListener('drop', function(e) { e.preventDefault(); dropZone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+
+        function showError(msg) {
+            var el = document.getElementById('error');
+            el.textContent = msg;
+            el.classList.add('visible');
+        }
+
+        function parseJSON(text) {
+            var lines = text.split('\n');
+            for (var i = 0; i < lines.length; i++) {
+                if (lines[i].trim() === '```json') {
+                    text = lines.slice(i + 1).join('\n');
+                    text = text.split('```')[0];
+                    break;
+                }
+            }
+            return JSON.parse(text);
+        }
+
+        async function analyze() {
+            var apiKey = document.getElementById('api-key-input').value.trim();
+            var model = document.getElementById('model-input').value.trim();
+            var prompt = document.getElementById('prompt-input').value.trim();
+            var btn = document.getElementById('analyze-btn');
+            var result = document.getElementById('result');
+            var error = document.getElementById('error');
+
+            error.classList.remove('visible');
+            result.classList.remove('visible');
+
+            if (!apiKey) { showError('Please enter your Gemini API key.'); return; }
+            if (!currentImageData) { showError('Please upload an image or use a sample.'); return; }
+            if (!prompt) { showError('Please enter a prompt.'); return; }
+
+            btn.disabled = true;
+            btn.textContent = 'Analyzing\u2026';
+
+            try {
+                var url = API_BASE + '/models/' + encodeURIComponent(model) + ':generateContent?key=' + encodeURIComponent(apiKey);
+                var resp = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [
+                                { inline_data: { mime_type: currentMimeType, data: currentImageData } },
+                                { text: prompt }
+                            ]
+                        }],
+                        generationConfig: { temperature: 0.5, responseMimeType: 'application/json' }
+                    })
+                });
+
+                var data = await resp.json();
+                if (data.error) throw new Error(data.error.message || 'API error');
+
+                var text = data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text || '[]';
+                var parsed = parseJSON(text);
+                if (!Array.isArray(parsed)) parsed = parsed.items || parsed.objects || parsed.detections || [];
+
+                if (currentMode === 'points') {
+                    visualizePoints(parsed);
+                } else {
+                    visualize3DBoxes(parsed);
+                }
+                result.classList.add('visible');
+            } catch (err) {
+                showError(err.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Analyze';
+            }
+        }
+
+        // ========== POINT VISUALIZATION ==========
+
+        function visualizePoints(points) {
+            var container = document.getElementById('points-viz');
+            clearElement(container);
+            document.getElementById('points-result').style.display = 'block';
+            document.getElementById('box3d-result').style.display = 'none';
+
+            var img = document.createElement('img');
+            img.src = 'data:' + currentMimeType + ';base64,' + currentImageData;
+            img.style.display = 'block';
+            img.style.maxWidth = '100%';
+            img.style.borderRadius = '8px';
+            img.style.border = '1px solid var(--border)';
+            container.appendChild(img);
+
+            var overlay = document.createElement('div');
+            overlay.className = 'point-overlay';
+            container.appendChild(overlay);
+
+            var listDiv = document.getElementById('detection-list');
+            clearElement(listDiv);
+
+            document.getElementById('result-label').textContent = 'Found ' + points.length + ' point' + (points.length !== 1 ? 's' : '');
+
+            points.forEach(function(p, i) {
+                var pt = p.point;
+                if (!pt || pt.length < 2) return;
+                var y = pt[0] / 10;
+                var x = pt[1] / 10;
+                var color = COLORS[i % COLORS.length];
+                var label = p.label || ('Point ' + (i + 1));
+
+                var dot = document.createElement('div');
+                dot.className = 'point-dot';
+                dot.style.top = y + '%';
+                dot.style.left = x + '%';
+                dot.style.backgroundColor = color;
+                dot.style.boxShadow = '0 0 12px ' + color + '80';
+                overlay.appendChild(dot);
+
+                var lbl = document.createElement('div');
+                lbl.className = 'point-label';
+                lbl.textContent = label;
+                lbl.style.top = y + '%';
+                lbl.style.left = x + '%';
+                lbl.style.backgroundColor = color;
+                overlay.appendChild(lbl);
+
+                var tag = document.createElement('span');
+                tag.className = 'detection-tag';
+                tag.style.borderColor = color;
+                tag.style.color = color;
+                tag.textContent = label.length > 40 ? label.substring(0, 37) + '...' : label;
+                tag.title = label;
+                tag.onmouseenter = function() { dot.classList.add('highlight'); };
+                tag.onmouseleave = function() { dot.classList.remove('highlight'); };
+                listDiv.appendChild(tag);
+            });
+        }
+
+        // ========== 3D BOX VISUALIZATION ==========
+
+        function matMul(m, v) {
+            return m.map(function(row) {
+                return row.reduce(function(sum, val, i) { return sum + val * v[i]; }, 0);
+            });
+        }
+
+        function highlightBox(label, highlight) {
+            ['box3d-overlay', 'top-overlay'].forEach(function(id) {
+                var overlay = document.getElementById(id);
+                var els = overlay.querySelectorAll('.box-line, .box-label');
+                els.forEach(function(el) {
+                    if (el.dataset.label === label) {
+                        el.classList.toggle('highlight', highlight);
+                        el.classList.remove('fade');
+                    } else {
+                        el.classList.toggle('fade', highlight);
+                        el.classList.remove('highlight');
+                    }
+                });
+            });
+        }
+
+        function drawTopView() {
+            var overlay = document.getElementById('top-overlay');
+            clearElement(overlay);
+            var zoom = parseFloat(document.getElementById('zoom-slider').value);
+            var rect = document.getElementById('top-view').getBoundingClientRect();
+            var vw = rect.width || 320;
+            var vh = rect.height || 320;
+            var cx = vw / 2 + panOffset.x;
+            var cy = vh / 2 + panOffset.y;
+
+            for (var g = -5; g <= 5; g++) {
+                var gx = cx + g * (vw / 10) * zoom;
+                var gl = document.createElement('div');
+                gl.className = 'grid-line';
+                gl.style.left = gx + 'px'; gl.style.top = '0'; gl.style.width = '1px'; gl.style.height = '100%';
+                overlay.appendChild(gl);
+                var glb = document.createElement('div');
+                glb.className = 'grid-label';
+                glb.textContent = g;
+                glb.style.left = gx + 'px'; glb.style.bottom = '4px';
+                overlay.appendChild(glb);
+            }
+            for (var gy = -5; gy <= 10; gy++) {
+                var gyp = cy - gy * (vh / 10) * zoom;
+                var gly = document.createElement('div');
+                gly.className = 'grid-line';
+                gly.style.left = '0'; gly.style.top = gyp + 'px'; gly.style.width = '100%'; gly.style.height = '1px';
+                overlay.appendChild(gly);
+                var glyb = document.createElement('div');
+                glyb.className = 'grid-label';
+                glyb.textContent = gy;
+                glyb.style.left = '4px'; glyb.style.top = gyp + 'px';
+                overlay.appendChild(glyb);
+            }
+
+            var xAx = document.createElement('div');
+            xAx.className = 'axis-line';
+            xAx.style.left = cx + 'px'; xAx.style.top = '0'; xAx.style.width = '2px'; xAx.style.height = '100%';
+            overlay.appendChild(xAx);
+            var yAx = document.createElement('div');
+            yAx.className = 'axis-line';
+            yAx.style.left = '0'; yAx.style.top = cy + 'px'; yAx.style.width = '100%'; yAx.style.height = '2px';
+            overlay.appendChild(yAx);
+
+            var cam = document.createElement('div');
+            cam.className = 'camera-triangle';
+            cam.style.left = (cx - 8) + 'px'; cam.style.top = (cy - 16) + 'px';
+            overlay.appendChild(cam);
+
+            boxesData.forEach(function(bd) {
+                var center = bd.box_3d.slice(0, 3);
+                var size = bd.box_3d.slice(3, 6);
+                var rpy = bd.box_3d.slice(6).map(function(a) { return a * Math.PI / 180; });
+
+                var bcx = vw / 2 + center[0] * (vw / 10) * zoom + panOffset.x;
+                var bcy = vh / 2 - center[1] * (vh / 10) * zoom + panOffset.y;
+
+                var box = document.createElement('div');
+                box.className = 'box-line';
+                box.dataset.label = bd.label;
+                box.style.width = (size[0] * (vw / 10) * zoom) + 'px';
+                box.style.height = (size[1] * (vh / 10) * zoom) + 'px';
+                box.style.left = (bcx - size[0] * (vw / 20) * zoom) + 'px';
+                box.style.top = (bcy - size[1] * (vh / 20) * zoom) + 'px';
+                box.style.transform = 'rotate(' + (-rpy[2]) + 'rad)';
+                box.style.border = '2px solid #2962FF';
+                box.style.background = 'transparent';
+                overlay.appendChild(box);
+
+                var lbl = document.createElement('div');
+                lbl.className = 'box-label';
+                lbl.dataset.label = bd.label;
+                lbl.textContent = bd.label;
+                lbl.style.left = bcx + 'px';
+                lbl.style.top = bcy + 'px';
+                lbl.addEventListener('mouseenter', function() { highlightBox(bd.label, true); });
+                lbl.addEventListener('mouseleave', function() { highlightBox(bd.label, false); });
+                overlay.appendChild(lbl);
+            });
+        }
+
+        function annotateFrame(fov) {
+            var overlay = document.getElementById('box3d-overlay');
+            clearElement(overlay);
+            var canvas = document.getElementById('box3d-canvas');
+            var width = canvas.width;
+            var height = canvas.height;
+
+            boxesData.forEach(function(bd) {
+                var center = bd.box_3d.slice(0, 3);
+                var size = bd.box_3d.slice(3, 6);
+                var rpy = bd.box_3d.slice(6).map(function(a) { return a * Math.PI / 180; });
+
+                var sr = Math.sin(rpy[0] / 2), cr = Math.cos(rpy[0] / 2);
+                var sp = Math.sin(rpy[1] / 2), cp = Math.cos(rpy[1] / 2);
+                var sy = Math.sin(rpy[2] / 2), cy2 = Math.cos(rpy[2] / 2);
+                var q = [
+                    sr * cp * cy2 - cr * sp * sy,
+                    cr * sp * cy2 + sr * cp * sy,
+                    cr * cp * sy - sr * sp * cy2,
+                    cr * cp * cy2 + sr * sp * sy
+                ];
+
+                var R = [
+                    [1 - 2*q[1]*q[1] - 2*q[2]*q[2], 2*q[0]*q[1] - 2*q[3]*q[2], 2*q[0]*q[2] + 2*q[3]*q[1]],
+                    [2*q[0]*q[1] + 2*q[3]*q[2], 1 - 2*q[0]*q[0] - 2*q[2]*q[2], 2*q[1]*q[2] - 2*q[3]*q[0]],
+                    [2*q[0]*q[2] - 2*q[3]*q[1], 2*q[1]*q[2] + 2*q[3]*q[0], 1 - 2*q[0]*q[0] - 2*q[1]*q[1]]
+                ];
+
+                var f = width / (2 * Math.tan(fov / 2 * Math.PI / 180));
+                var cxI = width / 2, cyI = height / 2;
+                var K = [[f, 0, cxI], [0, f, cyI], [0, 0, 1]];
+
+                var hs = size.map(function(s) { return s / 2; });
+                var rawCorners = [];
+                [-hs[0], hs[0]].forEach(function(x) {
+                    [-hs[1], hs[1]].forEach(function(y) {
+                        [-hs[2], hs[2]].forEach(function(z) {
+                            rawCorners.push([x, y, z]);
+                        });
+                    });
+                });
+                var corners = [rawCorners[1], rawCorners[3], rawCorners[7], rawCorners[5], rawCorners[0], rawCorners[2], rawCorners[6], rawCorners[4]];
+
+                var tilt = 90 * Math.PI / 180;
+                var viewR = [[1,0,0],[0,Math.cos(tilt),-Math.sin(tilt)],[0,Math.sin(tilt),Math.cos(tilt)]];
+
+                var boxVerts = corners.map(function(c) {
+                    var rotated = matMul(R, c);
+                    return rotated.map(function(v, idx) { return v + center[idx]; });
+                });
+
+                var viewPoints = boxVerts.map(function(p) { return matMul(viewR, p); });
+                var dists = viewPoints.map(function(p) { return Math.sqrt(p[0]*p[0]+p[1]*p[1]+p[2]*p[2]); });
+                var minD = Math.min.apply(null, dists);
+                var maxD = Math.max.apply(null, dists);
+                var distRange = maxD - minD || 1;
+
+                var projected = viewPoints.map(function(p) { return matMul(K, p); });
+                var verts = projected.map(function(p) { return [p[0]/p[2], p[1]/p[2]]; });
+
+                var top4 = verts.slice(0, 4);
+                var bot4 = verts.slice(4, 8);
+                var topD = dists.slice(0, 4);
+                var botD = dists.slice(4, 8);
+
+                var displayWidth = canvas.clientWidth || width;
+                var scale = displayWidth / width;
+
+                for (var i = 0; i < 4; i++) {
+                    var edges = [
+                        { s: top4[i], e: top4[(i+1)%4], d: (topD[i]+topD[(i+1)%4])/2 },
+                        { s: bot4[i], e: bot4[(i+1)%4], d: (botD[i]+botD[(i+1)%4])/2 },
+                        { s: top4[i], e: bot4[i], d: (topD[i]+botD[i])/2 }
+                    ];
+                    edges.forEach(function(ln) {
+                        var dx = ln.e[0] - ln.s[0];
+                        var dy = ln.e[1] - ln.s[1];
+                        var len = Math.sqrt(dx*dx + dy*dy) * scale;
+                        var angle = Math.atan2(dy, dx);
+                        var norm = (ln.d - minD) / distRange;
+                        var w = 4 - norm * 3;
+
+                        var line = document.createElement('div');
+                        line.className = 'box-line';
+                        line.dataset.label = bd.label;
+                        line.style.width = len + 'px';
+                        line.style.height = Math.max(1, w) + 'px';
+                        line.style.transform = 'translate(' + (ln.s[0]*scale) + 'px,' + (ln.s[1]*scale) + 'px) rotate(' + angle + 'rad)';
+                        overlay.appendChild(line);
+                    });
+                }
+
+                var avgPt = [0, 0, 0];
+                viewPoints.forEach(function(p) { avgPt[0]+=p[0]; avgPt[1]+=p[1]; avgPt[2]+=p[2]; });
+                avgPt = avgPt.map(function(v) { return v / viewPoints.length; });
+                avgPt[2] += 0.1;
+
+                var proj = matMul(K, avgPt);
+                var tx = proj[0] / proj[2] * scale;
+                var ty = proj[1] / proj[2] * scale;
+
+                var lbl = document.createElement('div');
+                lbl.className = 'box-label';
+                lbl.dataset.label = bd.label;
+                lbl.textContent = bd.label;
+                lbl.style.left = tx + 'px';
+                lbl.style.top = ty + 'px';
+                lbl.addEventListener('mouseenter', function() { highlightBox(bd.label, true); });
+                lbl.addEventListener('mouseleave', function() { highlightBox(bd.label, false); });
+                overlay.appendChild(lbl);
+            });
+        }
+
+        function visualize3DBoxes(boxes) {
+            boxesData = boxes;
+            document.getElementById('points-result').style.display = 'none';
+            document.getElementById('box3d-result').style.display = 'block';
+
+            var canvas = document.getElementById('box3d-canvas');
+            var ctx = canvas.getContext('2d');
+            var img = currentImageEl;
+
+            document.getElementById('result-label').textContent = 'Detected ' + boxes.length + ' object' + (boxes.length !== 1 ? 's' : '') + ' in 3D';
+
+            var listDiv = document.getElementById('detection-list');
+            clearElement(listDiv);
+            boxes.forEach(function(b, i) {
+                var color = COLORS[i % COLORS.length];
+                var tag = document.createElement('span');
+                tag.className = 'detection-tag';
+                tag.style.borderColor = color;
+                tag.style.color = color;
+                tag.textContent = b.label;
+                tag.onmouseenter = function() { highlightBox(b.label, true); };
+                tag.onmouseleave = function() { highlightBox(b.label, false); };
+                listDiv.appendChild(tag);
+            });
+
+            var drawImage = function() {
+                var aspect = img.naturalHeight / img.naturalWidth;
+                canvas.width = Math.min(img.naturalWidth, 800);
+                canvas.height = Math.round(canvas.width * aspect);
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                panOffset = { x: 0, y: 100 };
+                annotateFrame(parseFloat(document.getElementById('fov-slider').value));
+                drawTopView();
+            };
+
+            if (img.complete && img.naturalWidth) {
+                drawImage();
+            } else {
+                img.onload = drawImage;
+            }
+        }
+
+        document.getElementById('fov-slider').addEventListener('input', function(e) {
+            document.getElementById('fov-val').textContent = e.target.value + '\u00B0';
+            annotateFrame(parseFloat(e.target.value));
+        });
+        document.getElementById('zoom-slider').addEventListener('input', function(e) {
+            document.getElementById('zoom-val').textContent = e.target.value + 'x';
+            drawTopView();
+        });
+
+        var topView = document.getElementById('top-view');
+        topView.addEventListener('mousedown', function(e) { isDragging = true; lastX = e.clientX; lastY = e.clientY; });
+        topView.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            panOffset.x += e.clientX - lastX;
+            panOffset.y += e.clientY - lastY;
+            lastX = e.clientX; lastY = e.clientY;
+            drawTopView();
+        });
+        topView.addEventListener('mouseup', function() { isDragging = false; });
+        topView.addEventListener('mouseleave', function() { isDragging = false; });
+
+        document.addEventListener('keydown', function(e) { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) analyze(); });
+
+        // Prepopulate kitchen sample on load
+        window.addEventListener('load', function() { loadSample('kitchen'); });
+    </script>
+    <script src="nav.js"></script>
+</body>
+</html>

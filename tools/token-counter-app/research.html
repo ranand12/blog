@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<!--
+Copyright 2026 Google LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://generativelanguage.googleapis.com;">
+    <title>Gemini Deep Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-elevated: #f5f6f8;
+            --bg-card: #ffffff;
+            --bg-input: #f5f6f8;
+            --border: #e2e4e9;
+            --border-focus: #4f46e5;
+            --text: #111318;
+            --text-secondary: #4b5060;
+            --text-muted: #8b90a0;
+            --accent: #4f46e5;
+            --accent-hover: #4338ca;
+            --accent-soft: #eef2ff;
+            --green: #059669;
+            --green-soft: #ecfdf5;
+            --red: #dc2626;
+            --red-soft: #fef2f2;
+            --amber: #d97706;
+            --amber-soft: #fffbeb;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0e1117;
+            --bg-elevated: #161b26;
+            --bg-card: #1c2132;
+            --bg-input: #161b26;
+            --border: #2a3045;
+            --border-focus: #818cf8;
+            --text: #eceef4;
+            --text-secondary: #9399ae;
+            --text-muted: #5c6280;
+            --accent: #818cf8;
+            --accent-hover: #a5b4fc;
+            --accent-soft: #1e1b4b40;
+            --green: #34d399;
+            --green-soft: #05966920;
+            --red: #f87171;
+            --red-soft: #dc262620;
+            --amber: #fbbf24;
+            --amber-soft: #d9770620;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .header {
+            margin-bottom: 32px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 7px;
+            letter-spacing: 0.01em;
+        }
+
+        input[type="password"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 11px 14px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        input[type="password"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        .warning-notice {
+            background: var(--amber-soft);
+            color: var(--amber);
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-size: 12px;
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+
+        .presets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .preset-btn {
+            padding: 6px 12px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.15s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .preset-btn:hover {
+            background: var(--accent-soft);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        button {
+            padding: 11px 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s, transform 0.1s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        button:hover {
+            background: var(--accent-hover);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress-section {
+            display: none;
+            padding: 24px;
+            text-align: center;
+            margin-top: 24px;
+            background: var(--bg-elevated);
+            border-radius: 8px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .progress-status {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .progress-timer {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        .progress-details {
+            margin-top: 12px;
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .progress-detail-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 4px 10px;
+        }
+
+        .progress-thought {
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-style: italic;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .result {
+            display: none;
+            margin-top: 24px;
+            padding: 24px;
+            background: var(--bg-elevated);
+            border-radius: 8px;
+        }
+
+        .result-inner {
+            color: var(--text);
+        }
+
+        .result-inner h3 {
+            font-size: 18px;
+            margin: 24px 0 12px 0;
+            color: var(--text);
+        }
+
+        .result-inner h3:first-child {
+            margin-top: 0;
+        }
+
+        .result-inner p {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .result-inner ul {
+            margin: 12px 0;
+            padding-left: 24px;
+        }
+
+        .result-inner li {
+            margin-bottom: 6px;
+            line-height: 1.7;
+        }
+
+        .result-inner strong {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .error {
+            display: none;
+            margin-top: 20px;
+            padding: 14px 16px;
+            background: var(--red-soft);
+            color: var(--red);
+            border-radius: 8px;
+            font-size: 13px;
+            border: 1px solid var(--red);
+        }
+
+        .privacy-notice {
+            margin-top: 32px;
+            padding: 16px;
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .privacy-notice strong {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <div class="nav-left">
+                <a href="tokens.html" class="nav-logo">Gemini Tools</a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div class="header">
+            <h1>Deep Research</h1>
+            <p class="subtitle">Launch an AI research agent that searches the web, reads multiple sources, and compiles a comprehensive research report.</p>
+        </div>
+
+        <div class="card">
+            <div class="field">
+                <label for="apiKey">Gemini API Key</label>
+                <input type="password" id="apiKey" placeholder="Enter your API key">
+                <div class="hint">Your key is stored locally and never sent anywhere except Google's API.</div>
+            </div>
+
+            <div class="warning-notice">
+                Deep Research uses a specialized agent that performs multiple web searches. This typically takes 1-5 minutes and uses significant API quota.
+            </div>
+
+            <div class="field">
+                <label>Research Topic Presets</label>
+                <div class="presets">
+                    <button class="preset-btn" onclick="setPreset('What are the latest breakthroughs in quantum computing in 2025? Include key papers, companies, and milestones.')">Quantum Computing</button>
+                    <button class="preset-btn" onclick="setPreset('What are the current leading approaches to AI alignment and safety research? Who are the key organizations and what progress has been made?')">AI Safety</button>
+                    <button class="preset-btn" onclick="setPreset('What are the most promising climate technologies being developed or deployed in 2025?')">Climate Tech</button>
+                    <button class="preset-btn" onclick="setPreset('What are the latest developments in Mars exploration missions? Include both NASA and commercial efforts.')">Space Exploration</button>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="topic">Research Topic</label>
+                <textarea id="topic" rows="4" placeholder="What would you like to research?">What are the latest breakthroughs in quantum computing in 2025? Include key papers, companies, and milestones.</textarea>
+                <div class="hint">Describe your research question in detail. Press Ctrl+Enter to start.</div>
+            </div>
+
+            <div class="actions">
+                <button id="startBtn" onclick="startResearch()">Start Research</button>
+            </div>
+
+            <div class="progress-section" id="progressSection">
+                <div class="spinner"></div>
+                <div class="progress-status">Researching... The agent is searching the web and analyzing sources.</div>
+                <div class="progress-timer" id="progressTimer">Elapsed: 0:00</div>
+                <div class="progress-details" id="progressDetails"></div>
+                <div class="progress-thought" id="progressThought"></div>
+            </div>
+
+            <div class="result" id="result">
+                <div class="result-inner" id="resultInner"></div>
+            </div>
+
+            <div class="error" id="error"></div>
+        </div>
+
+        <footer class="privacy-notice">
+            <strong>Privacy:</strong> Your API key is saved in your browser's session storage &mdash; shared across all Gemini Tools pages, but automatically cleared when you close the tab. It is only sent directly to the Google Gemini API. Research queries and results are processed by Google's servers. This tool runs entirely in your browser.
+        </footer>
+    </div>
+
+    <script src="markdown.js"></script>
+    <script>
+        const API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+        let pollTimer = null;
+        let elapsedTimer = null;
+        let startTime = null;
+
+        // Theme management
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+
+        // API key management
+        function loadApiKey() {
+            // API key is now loaded by nav.js from sessionStorage
+        }
+
+        function saveApiKey(key) {
+            // API key is now saved by nav.js to sessionStorage
+        }
+
+        // Preset management
+        function setPreset(text) {
+            document.getElementById('topic').value = text;
+        }
+
+        // Main research function
+        async function startResearch() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const topic = document.getElementById('topic').value.trim();
+
+            if (!apiKey) {
+                showError('Please enter your Gemini API key.');
+                return;
+            }
+
+            if (!topic) {
+                showError('Please enter a research topic.');
+                return;
+            }
+
+            saveApiKey(apiKey);
+
+            // UI state
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+            document.getElementById('progressSection').style.display = 'block';
+            document.getElementById('progressDetails').textContent = '';
+            document.getElementById('progressThought').textContent = '';
+
+            // Start elapsed timer
+            startTime = Date.now();
+            updateElapsedTime();
+            elapsedTimer = setInterval(updateElapsedTime, 1000);
+
+            try {
+                // Create interaction
+                const createUrl = API_BASE + '/interactions?key=' + encodeURIComponent(apiKey);
+                const resp = await fetch(createUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        input: topic,
+                        agent: 'deep-research-pro-preview-12-2025',
+                        background: true
+                    })
+                });
+
+                const interaction = await resp.json();
+
+                if (interaction.error) {
+                    throw new Error(interaction.error.message || 'Failed to create research interaction');
+                }
+
+                if (!interaction.id) {
+                    throw new Error('No interaction ID returned from API');
+                }
+
+                // Start polling
+                pollForResults(interaction.id, apiKey);
+
+            } catch (error) {
+                clearTimers();
+                showError(error.message);
+                document.getElementById('startBtn').disabled = false;
+                document.getElementById('progressSection').style.display = 'none';
+            }
+        }
+
+        // Poll for research completion
+        function pollForResults(interactionId, apiKey) {
+            let pollCount = 0;
+            const maxPolls = 120; // 20 minutes max (120 * 10 seconds)
+
+            pollTimer = setInterval(async () => {
+                pollCount++;
+
+                if (pollCount > maxPolls) {
+                    clearTimers();
+                    showError('Research timed out after 20 minutes. Please try again.');
+                    document.getElementById('startBtn').disabled = false;
+                    document.getElementById('progressSection').style.display = 'none';
+                    return;
+                }
+
+                try {
+                    const pollUrl = API_BASE + '/interactions/' + encodeURIComponent(interactionId) + '?key=' + encodeURIComponent(apiKey);
+                    const resp = await fetch(pollUrl);
+                    const data = await resp.json();
+
+                    if (data.error) {
+                        throw new Error(data.error.message || 'Polling error');
+                    }
+
+                    // Update status display
+                    if (data.status) {
+                        const statusLabels = {
+                            'in_progress': 'Researching — the agent is searching the web and analyzing sources',
+                            'completed': 'Research complete',
+                            'failed': 'Research failed',
+                            'requires_action': 'Waiting for action'
+                        };
+                        document.querySelector('.progress-status').textContent =
+                            statusLabels[data.status] || ('Status: ' + data.status);
+                    }
+
+                    // Update progress details (token usage)
+                    if (data.usage) {
+                        const details = document.getElementById('progressDetails');
+                        const items = [];
+                        if (data.usage.total_tokens) {
+                            items.push('Tokens: ' + data.usage.total_tokens.toLocaleString());
+                        }
+                        if (data.usage.prompt_tokens) {
+                            items.push('Prompt: ' + data.usage.prompt_tokens.toLocaleString());
+                        }
+                        if (data.usage.candidates_tokens) {
+                            items.push('Output: ' + data.usage.candidates_tokens.toLocaleString());
+                        }
+                        details.textContent = '';
+                        items.forEach(text => {
+                            const span = document.createElement('span');
+                            span.className = 'progress-detail-item';
+                            span.textContent = text;
+                            details.appendChild(span);
+                        });
+                    }
+
+                    // Show latest thought summary if available
+                    if (data.outputs && data.outputs.length > 0) {
+                        const thoughts = data.outputs.filter(o => o.type === 'thought' && o.summary);
+                        if (thoughts.length > 0) {
+                            document.getElementById('progressThought').textContent =
+                                thoughts[thoughts.length - 1].summary;
+                        }
+                    }
+
+                    // Check if completed
+                    if (data.status === 'completed') {
+                        clearTimers();
+
+                        // Extract result text from outputs array
+                        let resultText = null;
+                        if (data.outputs && data.outputs.length > 0) {
+                            const textOutputs = data.outputs.filter(o => o.text && o.type !== 'thought');
+                            if (textOutputs.length > 0) {
+                                resultText = textOutputs[textOutputs.length - 1].text;
+                            } else {
+                                resultText = data.outputs[data.outputs.length - 1].text;
+                            }
+                        }
+
+                        if (resultText) {
+                            showResult(resultText);
+                        } else {
+                            throw new Error('No result text found in response');
+                        }
+
+                        document.getElementById('startBtn').disabled = false;
+                        document.getElementById('progressSection').style.display = 'none';
+                    } else if (data.status === 'failed' || data.status === 'cancelled') {
+                        throw new Error('Research ' + data.status + '. Please try again.');
+                    }
+                    // Otherwise, keep polling (status is 'in_progress')
+
+                } catch (error) {
+                    clearTimers();
+                    showError(error.message);
+                    document.getElementById('startBtn').disabled = false;
+                    document.getElementById('progressSection').style.display = 'none';
+                }
+            }, 10000); // Poll every 10 seconds (research takes minutes)
+        }
+
+        // Update elapsed time display
+        function updateElapsedTime() {
+            if (!startTime) return;
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const minutes = Math.floor(elapsed / 60);
+            const seconds = elapsed % 60;
+            document.getElementById('progressTimer').textContent =
+                `Elapsed: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Clear all timers
+        function clearTimers() {
+            if (pollTimer) {
+                clearInterval(pollTimer);
+                pollTimer = null;
+            }
+            if (elapsedTimer) {
+                clearInterval(elapsedTimer);
+                elapsedTimer = null;
+            }
+            startTime = null;
+        }
+
+        // Show result
+        function showResult(text) {
+            const container = document.getElementById('resultInner');
+            renderMarkdown(text, container);
+            document.getElementById('result').style.display = 'block';
+        }
+
+        // Show error
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+
+        // Keyboard shortcut
+        document.getElementById('topic').addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                startResearch();
+            }
+        });
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            clearTimers();
+        });
+
+        // Initialize
+        initTheme();
+        loadApiKey();
+    </script>
+    <script src="nav.js"></script>
+</body>
+</html>

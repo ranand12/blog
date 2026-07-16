@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://generativelanguage.googleapis.com; img-src 'self' data: blob:; media-src blob: data:;">
+    <title>Gemini Video Analyzer</title>
+    <!--
+    Copyright 2026 Google LLC.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #ffffff; --bg-elevated: #f5f6f8; --bg-card: #ffffff; --bg-input: #f5f6f8;
+            --border: #e2e4e9; --border-focus: #4f46e5;
+            --text: #111318; --text-secondary: #4b5060; --text-muted: #8b90a0;
+            --accent: #4f46e5; --accent-hover: #4338ca; --accent-soft: #eef2ff;
+            --green: #059669; --green-soft: #ecfdf5;
+            --red: #dc2626; --red-soft: #fef2f2;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+        [data-theme="dark"] {
+            --bg: #0e1117; --bg-elevated: #161b26; --bg-card: #1c2132; --bg-input: #161b26;
+            --border: #2a3045; --border-focus: #818cf8;
+            --text: #eceef4; --text-secondary: #9399ae; --text-muted: #5c6280;
+            --accent: #818cf8; --accent-hover: #a5b4fc; --accent-soft: #1e1b4b40;
+            --green: #34d399; --green-soft: #05966920;
+            --red: #f87171; --red-soft: #dc262620;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2); --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg); color: var(--text); min-height: 100vh;
+            display: flex; justify-content: center; align-items: center; padding: 24px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .container { max-width: 760px; width: 100%; }
+        .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
+        .nav-brand { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.03em; }
+        .nav-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .nav-link { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 6px 14px; border-radius: 8px; transition: all 0.2s; }
+        .nav-link:hover { background: var(--bg-elevated); color: var(--text); }
+        .theme-toggle { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-elevated); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; padding: 0; }
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+        .theme-toggle svg { width: 18px; height: 18px; }
+        .icon-sun, [data-theme="dark"] .icon-moon { display: none; }
+        [data-theme="dark"] .icon-sun { display: block; }
+        .header { margin-bottom: 32px; }
+        h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px; }
+        .subtitle { font-size: 15px; color: var(--text-secondary); line-height: 1.5; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); transition: background 0.3s, border-color 0.3s; }
+        .field { margin-bottom: 18px; }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+        label { display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
+        input[type="password"], input[type="text"], textarea {
+            width: 100%; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px;
+            padding: 10px 14px; font-family: inherit; font-size: 14px; color: var(--text); outline: none; transition: all 0.2s;
+        }
+        textarea { resize: vertical; min-height: 60px; }
+        input:focus, textarea:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
+        input::placeholder, textarea::placeholder { color: var(--text-muted); }
+
+        .drop-zone {
+            border: 2px dashed var(--border); border-radius: var(--radius); padding: 40px 20px;
+            text-align: center; cursor: pointer; transition: all 0.2s; background: var(--bg-input);
+        }
+        .drop-zone:hover, .drop-zone.dragover { border-color: var(--accent); background: var(--accent-soft); }
+        .drop-zone-text { font-size: 14px; color: var(--text-secondary); }
+        .drop-zone-hint { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+        .drop-zone.has-video { padding: 16px; }
+        .video-preview { max-width: 100%; max-height: 360px; border-radius: 8px; margin: 0 auto; display: block; }
+        .file-info { font-size: 13px; color: var(--text-secondary); margin-top: 8px; text-align: center; }
+
+        .sample-btn {
+            background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border);
+            border-radius: 8px; padding: 8px 16px; font-family: inherit; font-size: 13px; font-weight: 500;
+            cursor: pointer; transition: all 0.2s; margin-top: 10px;
+        }
+        .sample-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+        .presets { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        .preset {
+            background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border);
+            border-radius: 8px; padding: 6px 14px; font-family: inherit; font-size: 12px; font-weight: 500;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .preset:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+        .actions { display: flex; align-items: center; gap: 14px; margin-top: 18px; }
+        button.primary { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 10px 24px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        button.primary:hover { background: var(--accent-hover); }
+        button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .shortcut-hint { font-size: 12px; color: var(--text-muted); }
+        .shortcut-hint kbd { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 2px 5px; font-family: inherit; font-size: 11px; }
+
+        .result { margin-top: 24px; display: none; }
+        .result.visible { display: block; }
+        .result-inner { background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+        .result-label { font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 12px; }
+        .result-text { font-size: 14px; color: var(--text); line-height: 1.7; white-space: pre-wrap; }
+
+        .error { margin-top: 14px; padding: 10px 14px; background: var(--red-soft); border: 1px solid var(--red); border-radius: 8px; font-size: 13px; color: var(--red); display: none; }
+        .error.visible { display: block; }
+
+        .footer { margin-top: 24px; }
+        .privacy-notice { margin-top: 16px; padding: 12px 14px; background: var(--green-soft); border-radius: 8px; font-size: 12px; color: var(--green); line-height: 1.5; display: flex; gap: 8px; align-items: flex-start; }
+        .privacy-notice svg { flex-shrink: 0; width: 14px; height: 14px; margin-top: 2px; }
+
+        .progress-bar { width: 100%; height: 4px; background: var(--bg-elevated); border-radius: 2px; margin-top: 12px; display: none; overflow: hidden; }
+        .progress-bar.visible { display: block; }
+        .progress-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.3s; width: 0%; }
+
+        @media (max-width: 520px) {
+            h1 { font-size: 28px; }
+            .card { padding: 20px; }
+            .field-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <span class="nav-brand">Gemini Tools</span>
+            <div class="nav-right">
+                <a href="tokens.html" class="nav-link">Tokens</a>
+                <a href="models.html" class="nav-link">Models</a>
+                <a href="describe.html" class="nav-link">Describer</a>
+                <a href="embed.html" class="nav-link">Embeddings</a>
+                <a href="extract.html" class="nav-link">Extractor</a>
+                <a href="prompt.html" class="nav-link">Playground</a>
+                <a href="search.html" class="nav-link">Search</a>
+                <a href="detect.html" class="nav-link">Detector</a>
+                <a href="pdf.html" class="nav-link">PDF</a>
+                <a href="story.html" class="nav-link">Story</a>
+                <a href="animate.html" class="nav-link">Animate</a>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+            </div>
+        </nav>
+
+        <div class="header">
+            <h1>Video Analyzer</h1>
+            <p class="subtitle">Upload a video and analyze it using Gemini's multimodal video understanding. Ask questions, get summaries, extract timestamps, and more.</p>
+        </div>
+
+        <div class="card">
+            <div class="field-row">
+                <div class="field">
+                    <label for="api-key-input">API Key</label>
+                    <input type="password" id="api-key-input" placeholder="Your Gemini key" autocomplete="off" data-lpignore="true" data-1p-ignore>
+                </div>
+                <div class="field">
+                    <label for="model-input">Model</label>
+                    <input type="text" id="model-input" value="gemini-2.5-flash" placeholder="e.g. gemini-2.5-flash">
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Video</label>
+                <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+                    <div class="drop-zone-text">Drop a video here or click to upload</div>
+                    <div class="drop-zone-hint">MP4, WebM, MOV supported &mdash; max ~20MB for inline upload</div>
+                </div>
+                <input type="file" id="file-input" accept="video/mp4,video/webm,video/quicktime" style="display:none">
+                <div style="text-align:center">
+                    <button class="sample-btn" onclick="generateSampleVideo()">Use Sample Animation</button>
+                </div>
+                <div class="file-info" id="file-info" style="display:none"></div>
+                <div class="progress-bar" id="progress-bar"><div class="progress-bar-fill" id="progress-fill"></div></div>
+            </div>
+
+            <div class="field">
+                <label for="question-input">Question</label>
+                <div class="presets">
+                    <button class="preset" onclick="setQuestion('Describe what happens in this video scene by scene. Include details about actions, objects, and any text visible.')">Describe</button>
+                    <button class="preset" onclick="setQuestion('List all distinct scenes or segments in this video with approximate timestamps and what happens in each.')">Timestamps</button>
+                    <button class="preset" onclick="setQuestion('What is the main topic or subject of this video? Summarize the key points in 3-5 bullet points.')">Summarize</button>
+                    <button class="preset" onclick="setQuestion('Extract any text, numbers, labels, or captions visible in this video.')">Extract Text</button>
+                    <button class="preset" onclick="setQuestion('Describe the visual style, cinematography, colors, and mood of this video.')">Visual Style</button>
+                </div>
+                <textarea id="question-input" rows="3" placeholder="Ask anything about the video...">Describe what happens in this video scene by scene. Include details about actions, objects, and any text visible.</textarea>
+            </div>
+
+            <div class="actions">
+                <button class="primary" id="analyze-btn" onclick="analyzeVideo()">Analyze Video</button>
+                <span class="shortcut-hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd></span>
+            </div>
+
+            <div class="result" id="result">
+                <div class="result-inner">
+                    <div class="result-label">Analysis</div>
+                    <div class="result-text" id="result-text"></div>
+                </div>
+            </div>
+
+            <div class="error" id="error"></div>
+        </div>
+
+        <div class="footer">
+            <div class="privacy-notice">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Your API key is saved in your browser's session storage &mdash; shared across all Gemini Tools pages, but automatically cleared when you close the tab. It is only sent directly to the Google Gemini API.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+        let currentVideoData = null;
+        let currentMimeType = null;
+
+        function getPreferredTheme() {
+            const stored = localStorage.getItem('theme');
+            if (stored) return stored;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        function applyTheme(theme) { document.documentElement.setAttribute('data-theme', theme); localStorage.setItem('theme', theme); }
+        function toggleTheme() { const c = document.documentElement.getAttribute('data-theme'); applyTheme(c === 'dark' ? 'light' : 'dark'); }
+        applyTheme(getPreferredTheme());
+
+        function setQuestion(q) { document.getElementById('question-input').value = q; }
+
+        function generateSampleVideo() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 640;
+            canvas.height = 360;
+            const ctx = canvas.getContext('2d');
+            const stream = canvas.captureStream(30);
+            const recorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+            const chunks = [];
+
+            recorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
+            recorder.onstop = () => {
+                const blob = new Blob(chunks, { type: 'video/webm' });
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    currentVideoData = e.target.result.split(',')[1];
+                    currentMimeType = 'video/webm';
+                    showVideoPreview(URL.createObjectURL(blob));
+                    showFileInfo('sample-animation.webm', blob.size);
+                };
+                reader.readAsDataURL(blob);
+            };
+
+            recorder.start();
+            let frame = 0;
+            const totalFrames = 90;
+
+            function drawFrame() {
+                const t = frame / totalFrames;
+
+                // Sky gradient (day to sunset)
+                const skyGrad = ctx.createLinearGradient(0, 0, 0, 200);
+                if (t < 0.5) {
+                    skyGrad.addColorStop(0, 'hsl(210, 80%, ' + (60 + t * 30) + '%)');
+                    skyGrad.addColorStop(1, 'hsl(200, 60%, ' + (80 - t * 20) + '%)');
+                } else {
+                    skyGrad.addColorStop(0, 'hsl(' + (210 + (t - 0.5) * 80) + ', 70%, ' + (75 - (t - 0.5) * 40) + '%)');
+                    skyGrad.addColorStop(1, 'hsl(' + (30 + (t - 0.5) * 20) + ', 80%, ' + (70 - (t - 0.5) * 20) + '%)');
+                }
+                ctx.fillStyle = skyGrad;
+                ctx.fillRect(0, 0, 640, 240);
+
+                // Sun moving across sky
+                var sunX = 80 + t * 480;
+                var sunY = 180 - Math.sin(t * Math.PI) * 140;
+                ctx.fillStyle = t < 0.7 ? '#FFD700' : 'hsl(' + (30 - (t - 0.7) * 60) + ', 90%, 55%)';
+                ctx.beginPath();
+                ctx.arc(sunX, sunY, 30, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Clouds drifting
+                ctx.fillStyle = 'rgba(255,255,255,' + (0.8 - t * 0.3) + ')';
+                [[100 + frame * 1.2, 60, 1], [350 + frame * 0.8, 40, 0.8], [500 + frame * 0.5, 80, 0.6]].forEach(function(c) {
+                    ctx.beginPath();
+                    ctx.arc(c[0], c[1], 20 * c[2], 0, Math.PI * 2);
+                    ctx.arc(c[0] + 25 * c[2], c[1] - 8 * c[2], 22 * c[2], 0, Math.PI * 2);
+                    ctx.arc(c[0] + 50 * c[2], c[1], 18 * c[2], 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // Ground and mountains
+                ctx.fillStyle = '#228B22';
+                ctx.fillRect(0, 240, 640, 120);
+                ctx.fillStyle = '#2d5a1e';
+                ctx.beginPath();
+                ctx.moveTo(0, 240); ctx.lineTo(120, 170); ctx.lineTo(220, 240);
+                ctx.lineTo(300, 185); ctx.lineTo(420, 240);
+                ctx.lineTo(500, 190); ctx.lineTo(600, 240); ctx.lineTo(640, 240);
+                ctx.fill();
+
+                // Houses
+                ctx.fillStyle = '#8B4513';
+                ctx.fillRect(150, 210, 60, 40);
+                ctx.fillStyle = '#DC143C';
+                ctx.beginPath(); ctx.moveTo(145, 210); ctx.lineTo(180, 180); ctx.lineTo(215, 210); ctx.fill();
+                ctx.fillStyle = '#D2691E';
+                ctx.fillRect(420, 215, 50, 35);
+                ctx.fillStyle = '#4169E1';
+                ctx.beginPath(); ctx.moveTo(415, 215); ctx.lineTo(445, 188); ctx.lineTo(475, 215); ctx.fill();
+
+                // Tree swaying
+                var sway = Math.sin(frame * 0.1) * 3;
+                ctx.fillStyle = '#4a2800';
+                ctx.fillRect(318, 215, 8, 35);
+                ctx.fillStyle = '#006400';
+                ctx.beginPath(); ctx.arc(322 + sway, 200, 25, 0, Math.PI * 2); ctx.fill();
+
+                // Car moving across
+                var carX = -60 + frame * 5;
+                if (carX < 700) {
+                    ctx.fillStyle = '#e63946';
+                    ctx.fillRect(carX, 258, 50, 18);
+                    ctx.fillStyle = '#a8dadc';
+                    ctx.fillRect(carX + 10, 250, 25, 10);
+                    ctx.fillStyle = '#333';
+                    ctx.beginPath();
+                    ctx.arc(carX + 12, 278, 6, 0, Math.PI * 2);
+                    ctx.arc(carX + 40, 278, 6, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                // Birds
+                ctx.strokeStyle = '#333';
+                ctx.lineWidth = 1.5;
+                for (var i = 0; i < 3; i++) {
+                    var bx = 200 + i * 40 + frame * 1;
+                    var by = 100 + Math.sin(frame * 0.15 + i) * 10;
+                    ctx.beginPath();
+                    ctx.moveTo(bx - 6, by + 3);
+                    ctx.quadraticCurveTo(bx - 3, by - 3, bx, by);
+                    ctx.quadraticCurveTo(bx + 3, by - 3, bx + 6, by + 3);
+                    ctx.stroke();
+                }
+
+                // Stars at end
+                if (t > 0.7) {
+                    ctx.fillStyle = 'rgba(255,255,255,' + ((t - 0.7) * 3) + ')';
+                    [[50, 30], [200, 50], [400, 25], [550, 55], [130, 70], [480, 40]].forEach(function(s) {
+                        ctx.beginPath(); ctx.arc(s[0], s[1], 1.5, 0, Math.PI * 2); ctx.fill();
+                    });
+                }
+
+                // Label
+                ctx.fillStyle = 'rgba(255,255,255,0.9)';
+                ctx.font = 'bold 16px DM Sans, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('Sample: Day to Sunset Timelapse', 320, 340);
+
+                frame++;
+                if (frame < totalFrames) {
+                    requestAnimationFrame(drawFrame);
+                } else {
+                    setTimeout(function() { recorder.stop(); }, 100);
+                }
+            }
+            drawFrame();
+        }
+
+        function showVideoPreview(src) {
+            var zone = document.getElementById('drop-zone');
+            zone.classList.add('has-video');
+            while (zone.firstChild) zone.removeChild(zone.firstChild);
+            var video = document.createElement('video');
+            video.src = src;
+            video.controls = true;
+            video.className = 'video-preview';
+            video.muted = true;
+            zone.appendChild(video);
+        }
+
+        function showFileInfo(name, size) {
+            var info = document.getElementById('file-info');
+            var sizeMB = (size / 1048576).toFixed(2);
+            info.textContent = name + ' (' + sizeMB + ' MB)';
+            info.style.display = 'block';
+        }
+
+        function handleFile(file) {
+            if (!file || !file.type.startsWith('video/')) return;
+            if (file.size > 20 * 1048576) {
+                var error = document.getElementById('error');
+                error.textContent = 'File too large. Max ~20MB for inline upload.';
+                error.classList.add('visible');
+                return;
+            }
+            currentMimeType = file.type;
+            var reader = new FileReader();
+            var progressBar = document.getElementById('progress-bar');
+            var progressFill = document.getElementById('progress-fill');
+            progressBar.classList.add('visible');
+            reader.onprogress = function(e) {
+                if (e.lengthComputable) {
+                    progressFill.style.width = ((e.loaded / e.total) * 100) + '%';
+                }
+            };
+            reader.onload = function(e) {
+                var dataUrl = e.target.result;
+                currentVideoData = dataUrl.split(',')[1];
+                showVideoPreview(URL.createObjectURL(file));
+                showFileInfo(file.name, file.size);
+                progressBar.classList.remove('visible');
+                progressFill.style.width = '0%';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        document.getElementById('file-input').addEventListener('change', function(e) { handleFile(e.target.files[0]); });
+
+        var dropZone = document.getElementById('drop-zone');
+        dropZone.addEventListener('dragover', function(e) { e.preventDefault(); dropZone.classList.add('dragover'); });
+        dropZone.addEventListener('dragleave', function() { dropZone.classList.remove('dragover'); });
+        dropZone.addEventListener('drop', function(e) {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            handleFile(e.dataTransfer.files[0]);
+        });
+
+        function renderMarkdownText(text, container) {
+            while (container.firstChild) container.removeChild(container.firstChild);
+            var paragraphs = text.split('\n\n');
+            paragraphs.forEach(function(para) {
+                var p = document.createElement('p');
+                var lines = para.split('\n');
+                lines.forEach(function(line, idx) {
+                    if (idx > 0) p.appendChild(document.createElement('br'));
+                    if (line.startsWith('- ') || line.startsWith('* ')) {
+                        var bullet = document.createTextNode('\u2022 ' + line.substring(2));
+                        p.appendChild(bullet);
+                    } else {
+                        var parts = line.split(/\*\*(.*?)\*\*/g);
+                        for (var i = 0; i < parts.length; i++) {
+                            if (i % 2 === 1) {
+                                var strong = document.createElement('strong');
+                                strong.textContent = parts[i];
+                                p.appendChild(strong);
+                            } else {
+                                p.appendChild(document.createTextNode(parts[i]));
+                            }
+                        }
+                    }
+                });
+                container.appendChild(p);
+            });
+        }
+
+        async function analyzeVideo() {
+            var apiKey = document.getElementById('api-key-input').value.trim();
+            var model = document.getElementById('model-input').value.trim();
+            var question = document.getElementById('question-input').value.trim();
+            var btn = document.getElementById('analyze-btn');
+            var result = document.getElementById('result');
+            var error = document.getElementById('error');
+
+            error.classList.remove('visible');
+            result.classList.remove('visible');
+
+            if (!apiKey) { error.textContent = 'Please enter your Gemini API key.'; error.classList.add('visible'); return; }
+            if (!model) { error.textContent = 'Please enter a model name.'; error.classList.add('visible'); return; }
+            if (!currentVideoData) { error.textContent = 'Please upload a video or use the sample animation.'; error.classList.add('visible'); return; }
+            if (!question) { error.textContent = 'Please enter a question about the video.'; error.classList.add('visible'); return; }
+
+            btn.disabled = true;
+            btn.textContent = 'Analyzing\u2026';
+
+            try {
+                var url = API_BASE + '/models/' + encodeURIComponent(model) + ':generateContent?key=' + encodeURIComponent(apiKey);
+                var resp = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [
+                                { text: question },
+                                { inline_data: { mime_type: currentMimeType, data: currentVideoData } }
+                            ]
+                        }]
+                    })
+                });
+
+                var data = await resp.json();
+                if (data.error) throw new Error(data.error.message || 'API error');
+
+                var text = (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text) || 'No analysis returned.';
+                renderMarkdownText(text, document.getElementById('result-text'));
+                result.classList.add('visible');
+            } catch (err) {
+                error.textContent = err.message;
+                error.classList.add('visible');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Analyze Video';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) analyzeVideo();
+        });
+    </script>
+    <script src="nav.js"></script>
+</body>
+</html>

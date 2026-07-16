@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://generativelanguage.googleapis.com; media-src blob: data:">
+    <title>Gemini Text to Speech</title>
+    <!--
+    Copyright 2026 Google LLC
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #ffffff; --bg-elevated: #f5f6f8; --bg-card: #ffffff; --bg-input: #f5f6f8;
+            --border: #e2e4e9; --border-focus: #4f46e5; --text: #111318; --text-secondary: #4b5060; --text-muted: #8b90a0;
+            --accent: #4f46e5; --accent-hover: #4338ca; --accent-soft: #eef2ff;
+            --green: #059669; --green-soft: #ecfdf5; --red: #dc2626; --red-soft: #fef2f2;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.08); --radius: 12px;
+        }
+        [data-theme="dark"] {
+            --bg: #0e1117; --bg-elevated: #161b26; --bg-card: #1c2132; --bg-input: #161b26;
+            --border: #2a3045; --border-focus: #818cf8; --text: #eceef4; --text-secondary: #9399ae; --text-muted: #5c6280;
+            --accent: #818cf8; --accent-hover: #a5b4fc; --accent-soft: #1e1b4b40;
+            --green: #34d399; --green-soft: #05966920; --red: #f87171; --red-soft: #dc262620;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2); --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header {
+            margin-bottom: 32px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 15px;
+            font-family: inherit;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            transition: all 0.2s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--border-focus);
+            background: var(--bg-card);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button.primary {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        button.primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        button.primary:active {
+            transform: translateY(0);
+        }
+
+        button.primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .presets {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .preset {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+
+        .preset:hover {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .shortcut-hint {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .audio-result {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .audio-result audio {
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        .download-btn {
+            background: var(--green);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            width: 100%;
+        }
+
+        .download-btn:hover {
+            background: #047857;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        .error {
+            margin-top: 16px;
+            padding: 12px 16px;
+            background: var(--red-soft);
+            border: 1px solid var(--red);
+            border-radius: 8px;
+            color: var(--red);
+            font-size: 14px;
+            display: none;
+        }
+
+        .footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .privacy-notice {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .privacy-notice a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .privacy-notice a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <span class="nav-brand">Gemini Tools</span>
+            <div class="nav-links">
+                <a href="tokens.html" class="nav-link">Home</a>
+                <a href="search.html" class="nav-link">Search</a>
+                <a href="vision.html" class="nav-link">Vision</a>
+                <a href="story.html" class="nav-link">Story</a>
+                <a href="animate.html" class="nav-link">Animate</a>
+                <a href="tts.html" class="nav-link active">TTS</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <span class="theme-icon"></span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="header">
+            <h1>Text to Speech</h1>
+            <p class="subtitle">Convert text to natural-sounding speech using Gemini's TTS models. Choose from multiple voices and styles.</p>
+        </div>
+
+        <div class="card">
+            <div class="field-row">
+                <div class="field">
+                    <label for="apiKey">API Key</label>
+                    <input type="password" id="apiKey" placeholder="Enter your Gemini API key">
+                </div>
+                <div class="field">
+                    <label for="model">Model</label>
+                    <input type="text" id="model" value="gemini-2.5-flash-preview-tts">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="voice">Voice</label>
+                <select id="voice">
+                    <option value="Zephyr">Zephyr</option>
+                    <option value="Puck">Puck</option>
+                    <option value="Charon">Charon</option>
+                    <option value="Kore">Kore</option>
+                    <option value="Fenrir">Fenrir</option>
+                    <option value="Aoede">Aoede</option>
+                    <option value="Leda">Leda</option>
+                    <option value="Orus">Orus</option>
+                    <option value="Perseus">Perseus</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Presets</label>
+                <div class="presets">
+                    <button class="preset" onclick="setPreset('Once upon a time, in a land far away, there lived a curious little fox who dreamed of touching the stars.')">Storytelling</button>
+                    <button class="preset" onclick="setPreset('Breaking news tonight: Scientists have discovered a new species of deep-sea creature in the Mariana Trench.')">News Anchor</button>
+                    <button class="preset" onclick="setPreset('Hey there! Great to see you today! I hope you\'re having an absolutely wonderful time.')">Cheerful Greeting</button>
+                    <button class="preset" onclick="setPreset('It was a dark and stormy night. The wind howled through the ancient trees as shadows danced across the walls.')">Dramatic Reading</button>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="text">Text to Convert</label>
+                <textarea id="text" placeholder="Enter the text you want to convert to speech...">Welcome to Gemini Tools! This is a demonstration of text-to-speech. The model can speak naturally, with emotion and expression.</textarea>
+            </div>
+
+            <div class="actions">
+                <button class="primary" onclick="generateSpeech()" id="generateBtn">Generate Speech</button>
+                <span class="shortcut-hint">Ctrl+Enter</span>
+            </div>
+
+            <div class="audio-result" id="audioResult" style="display: none;">
+                <audio id="audioPlayer" controls></audio>
+                <button class="download-btn" id="downloadBtn">Download Audio</button>
+            </div>
+
+            <div class="error" id="error"></div>
+        </div>
+
+        <div class="footer">
+            <p class="privacy-notice">
+                Your API key is saved in your browser's session storage &mdash; shared across all Gemini Tools pages, but automatically cleared when you close the tab. It is only sent directly to the Google Gemini API.
+                See <a href="https://ai.google.dev/gemini-api/docs/api-key" target="_blank">API documentation</a> for more information.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+
+        function getPreferredTheme() {
+            const stored = localStorage.getItem('theme');
+            if (stored) return stored;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            const next = current === 'light' ? 'dark' : 'light';
+            applyTheme(next);
+        }
+
+        applyTheme(getPreferredTheme());
+
+        function setPreset(text) {
+            document.getElementById('text').value = text;
+        }
+
+        // Wrap raw PCM data in a WAV container so browsers can play it
+        function createWavFromPcm(pcmData, sampleRate, numChannels, bitsPerSample) {
+            const byteRate = sampleRate * numChannels * (bitsPerSample / 8);
+            const blockAlign = numChannels * (bitsPerSample / 8);
+            const dataSize = pcmData.length;
+            const buffer = new ArrayBuffer(44 + dataSize);
+            const view = new DataView(buffer);
+
+            function writeString(offset, str) {
+                for (let i = 0; i < str.length; i++) {
+                    view.setUint8(offset + i, str.charCodeAt(i));
+                }
+            }
+
+            writeString(0, 'RIFF');
+            view.setUint32(4, 36 + dataSize, true);
+            writeString(8, 'WAVE');
+            writeString(12, 'fmt ');
+            view.setUint32(16, 16, true);            // subchunk1 size
+            view.setUint16(20, 1, true);             // PCM format
+            view.setUint16(22, numChannels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, byteRate, true);
+            view.setUint16(32, blockAlign, true);
+            view.setUint16(34, bitsPerSample, true);
+            writeString(36, 'data');
+            view.setUint32(40, dataSize, true);
+
+            new Uint8Array(buffer, 44).set(pcmData);
+            return buffer;
+        }
+
+        async function generateSpeech() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const model = document.getElementById('model').value.trim();
+            const voice = document.getElementById('voice').value;
+            const text = document.getElementById('text').value.trim();
+            const errorDiv = document.getElementById('error');
+            const generateBtn = document.getElementById('generateBtn');
+            const audioResult = document.getElementById('audioResult');
+
+            errorDiv.style.display = 'none';
+            errorDiv.textContent = '';
+
+            if (!apiKey) {
+                errorDiv.textContent = 'Please enter your API key.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            if (!model) {
+                errorDiv.textContent = 'Please enter a model name.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            if (!text) {
+                errorDiv.textContent = 'Please enter text to convert to speech.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            generateBtn.disabled = true;
+            generateBtn.textContent = 'Generating...';
+
+            try {
+                const response = await fetch(API_BASE + '/models/' + encodeURIComponent(model) + ':generateContent?key=' + encodeURIComponent(apiKey), {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: text
+                            }]
+                        }],
+                        generationConfig: {
+                            responseModalities: ["AUDIO"],
+                            speechConfig: {
+                                voiceConfig: {
+                                    prebuiltVoiceConfig: {
+                                        voiceName: voice
+                                    }
+                                }
+                            }
+                        }
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error?.message || 'API request failed');
+                }
+
+                const data = await response.json();
+
+                if (!data.candidates || !data.candidates[0] || !data.candidates[0].content || !data.candidates[0].content.parts || !data.candidates[0].content.parts[0] || !data.candidates[0].content.parts[0].inlineData) {
+                    throw new Error('Invalid response format from API');
+                }
+
+                const audioData = data.candidates[0].content.parts[0].inlineData;
+                const audioBytes = atob(audioData.data);
+                const pcmData = new Uint8Array(audioBytes.length);
+                for (let i = 0; i < audioBytes.length; i++) {
+                    pcmData[i] = audioBytes.charCodeAt(i);
+                }
+
+                // The API returns raw PCM (24kHz, mono, 16-bit) — wrap in WAV header
+                const wavBuffer = createWavFromPcm(pcmData, 24000, 1, 16);
+                const blob = new Blob([wavBuffer], { type: 'audio/wav' });
+                const audioUrl = URL.createObjectURL(blob);
+
+                const audioPlayer = document.getElementById('audioPlayer');
+                audioPlayer.src = audioUrl;
+                audioResult.style.display = 'block';
+                audioPlayer.play().catch(function() {});
+
+                const downloadBtn = document.getElementById('downloadBtn');
+                downloadBtn.onclick = function() {
+                    const a = document.createElement('a');
+                    a.href = audioUrl;
+                    a.download = 'gemini-tts-' + Date.now() + '.wav';
+                    a.click();
+                };
+
+            } catch (error) {
+                errorDiv.textContent = 'Error: ' + error.message;
+                errorDiv.style.display = 'block';
+            } finally {
+                generateBtn.disabled = false;
+                generateBtn.textContent = 'Generate Speech';
+            }
+        }
+
+        document.getElementById('text').addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                generateSpeech();
+            }
+        });
+
+    </script>
+
+    <script src="nav.js"></script>
+</body>
+</html>

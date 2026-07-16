@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://generativelanguage.googleapis.com;">
+    <title>Gemini Embeddings Similarity</title>
+    <!--
+    Copyright 2026 Google LLC.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-elevated: #f5f6f8;
+            --bg-card: #ffffff;
+            --bg-input: #f5f6f8;
+            --border: #e2e4e9;
+            --border-focus: #4f46e5;
+            --text: #111318;
+            --text-secondary: #4b5060;
+            --text-muted: #8b90a0;
+            --accent: #4f46e5;
+            --accent-hover: #4338ca;
+            --accent-soft: #eef2ff;
+            --green: #059669;
+            --green-soft: #ecfdf5;
+            --red: #dc2626;
+            --red-soft: #fef2f2;
+            --amber: #d97706;
+            --amber-soft: #fffbeb;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0e1117;
+            --bg-elevated: #161b26;
+            --bg-card: #1c2132;
+            --bg-input: #161b26;
+            --border: #2a3045;
+            --border-focus: #818cf8;
+            --text: #eceef4;
+            --text-secondary: #9399ae;
+            --text-muted: #5c6280;
+            --accent: #818cf8;
+            --accent-hover: #a5b4fc;
+            --accent-soft: #1e1b4b40;
+            --green: #34d399;
+            --green-soft: #05966920;
+            --red: #f87171;
+            --red-soft: #dc262620;
+            --amber: #fbbf24;
+            --amber-soft: #d9770620;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 32px 24px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .page { max-width: 900px; margin: 0 auto; }
+
+        .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
+        .nav-brand { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.03em; }
+        .nav-right { display: flex; align-items: center; gap: 8px; }
+        .nav-link { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 6px 14px; border-radius: 8px; transition: all 0.2s; }
+        .nav-link:hover { background: var(--bg-elevated); color: var(--text); }
+
+        .theme-toggle { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-elevated); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; padding: 0; }
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+        .theme-toggle svg { width: 18px; height: 18px; }
+        .icon-sun, [data-theme="dark"] .icon-moon { display: none; }
+        [data-theme="dark"] .icon-sun { display: block; }
+
+        .header { margin-bottom: 32px; }
+        h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px; }
+        .subtitle { font-size: 15px; color: var(--text-secondary); line-height: 1.5; }
+
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); transition: background 0.3s, border-color 0.3s; }
+        .field { margin-bottom: 18px; }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+        label { display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
+
+        input[type="password"], input[type="text"] {
+            width: 100%; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px;
+            padding: 10px 14px; font-family: inherit; font-size: 14px; color: var(--text); outline: none; transition: all 0.2s;
+        }
+        input:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
+        input::placeholder { color: var(--text-muted); }
+
+        textarea {
+            width: 100%; height: 180px; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px;
+            padding: 12px 14px; font-family: inherit; font-size: 14px; line-height: 1.6; color: var(--text);
+            resize: vertical; outline: none; transition: all 0.2s;
+        }
+        textarea:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
+        textarea::placeholder { color: var(--text-muted); }
+
+        .actions { display: flex; align-items: center; gap: 14px; margin-top: 18px; }
+        button.primary { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 10px 24px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        button.primary:hover { background: var(--accent-hover); }
+        button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .shortcut-hint { font-size: 12px; color: var(--text-muted); }
+        .shortcut-hint kbd { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 2px 5px; font-family: inherit; font-size: 11px; }
+
+        .result { margin-top: 24px; display: none; }
+        .result.visible { display: block; }
+
+        .matrix-container { overflow-x: auto; }
+
+        table.matrix {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 13px;
+        }
+        table.matrix th, table.matrix td {
+            padding: 10px 8px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        table.matrix th {
+            background: var(--bg-elevated);
+            font-weight: 600;
+            font-size: 12px;
+            color: var(--text-secondary);
+            max-width: 120px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        table.matrix th.row-label {
+            text-align: left;
+            max-width: 180px;
+        }
+        table.matrix td {
+            font-weight: 600;
+            font-size: 13px;
+            min-width: 60px;
+        }
+
+        .legend {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .legend-bar {
+            width: 120px;
+            height: 12px;
+            border-radius: 6px;
+            background: linear-gradient(to right, #ef4444, #f59e0b, #22c55e);
+        }
+
+        .error { margin-top: 14px; padding: 10px 14px; background: var(--red-soft); border: 1px solid var(--red); border-radius: 8px; font-size: 13px; color: var(--red); display: none; }
+        .error.visible { display: block; }
+
+        .footer { margin-top: 24px; }
+        .privacy-notice { margin-top: 16px; padding: 12px 14px; background: var(--green-soft); border-radius: 8px; font-size: 12px; color: var(--green); line-height: 1.5; display: flex; gap: 8px; align-items: flex-start; }
+        .privacy-notice svg { flex-shrink: 0; width: 14px; height: 14px; margin-top: 2px; }
+
+        @media (max-width: 520px) {
+            h1 { font-size: 28px; }
+            .card { padding: 20px; }
+            .field-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <nav class="nav">
+            <span class="nav-brand">Gemini Tools</span>
+            <div class="nav-right">
+                <a href="tokens.html" class="nav-link">Tokens</a>
+                <a href="models.html" class="nav-link">Models</a>
+                <a href="describe.html" class="nav-link">Describer</a>
+                <a href="extract.html" class="nav-link">Extractor</a>
+                <a href="prompt.html" class="nav-link">Playground</a>
+                <a href="search.html" class="nav-link">Search</a>
+                <a href="detect.html" class="nav-link">Detector</a>
+                <a href="pdf.html" class="nav-link">PDF</a>
+                <a href="video.html" class="nav-link">Video</a>
+                <a href="story.html" class="nav-link">Story</a>
+                <a href="animate.html" class="nav-link">Animate</a>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+            </div>
+        </nav>
+
+        <div class="header">
+            <h1>Embeddings Similarity</h1>
+            <p class="subtitle">Enter sentences (one per line) to compare their semantic similarity using Gemini embeddings.</p>
+        </div>
+
+        <div class="card">
+            <div class="field-row">
+                <div class="field">
+                    <label for="api-key-input">API Key</label>
+                    <input type="password" id="api-key-input" placeholder="Your Gemini key" autocomplete="off" data-lpignore="true" data-1p-ignore>
+                </div>
+                <div class="field">
+                    <label for="model-input">Model</label>
+                    <input type="text" id="model-input" value="text-embedding-004" placeholder="e.g. text-embedding-004">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="text-input">Sentences (one per line)</label>
+                <textarea id="text-input">The cat sat on the mat.
+A kitten was resting on the rug.
+The stock market crashed yesterday.
+Financial markets experienced a downturn.
+I love eating pizza for dinner.</textarea>
+            </div>
+
+            <div class="actions">
+                <button class="primary" id="embed-btn" onclick="computeEmbeddings()">Compute Embeddings</button>
+                <span class="shortcut-hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd></span>
+            </div>
+
+            <div class="result" id="result">
+                <div class="matrix-container" id="matrix-container"></div>
+                <div class="legend">
+                    <span>Low</span>
+                    <div class="legend-bar"></div>
+                    <span>High similarity</span>
+                </div>
+            </div>
+
+            <div class="error" id="error"></div>
+        </div>
+
+        <div class="footer">
+            <div class="privacy-notice">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Your API key is saved in your browser's session storage &mdash; shared across all Gemini Tools pages, but automatically cleared when you close the tab. It is only sent directly to the Google Gemini API.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+
+        function getPreferredTheme() {
+            const stored = localStorage.getItem('theme');
+            if (stored) return stored;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        function applyTheme(theme) { document.documentElement.setAttribute('data-theme', theme); localStorage.setItem('theme', theme); }
+        function toggleTheme() { const c = document.documentElement.getAttribute('data-theme'); applyTheme(c === 'dark' ? 'light' : 'dark'); }
+        applyTheme(getPreferredTheme());
+
+        function cosineSimilarity(a, b) {
+            let dot = 0, magA = 0, magB = 0;
+            for (let i = 0; i < a.length; i++) {
+                dot += a[i] * b[i];
+                magA += a[i] * a[i];
+                magB += b[i] * b[i];
+            }
+            return dot / (Math.sqrt(magA) * Math.sqrt(magB));
+        }
+
+        function similarityColor(val) {
+            const clamped = Math.max(0, Math.min(1, val));
+            if (clamped < 0.5) {
+                const t = clamped * 2;
+                const r = Math.round(239 + (245 - 239) * t);
+                const g = Math.round(68 + (158 - 68) * t);
+                const b = Math.round(68 + (11 - 68) * t);
+                return `rgb(${r},${g},${b})`;
+            } else {
+                const t = (clamped - 0.5) * 2;
+                const r = Math.round(245 + (34 - 245) * t);
+                const g = Math.round(158 + (197 - 158) * t);
+                const b = Math.round(11 + (94 - 11) * t);
+                return `rgb(${r},${g},${b})`;
+            }
+        }
+
+        function truncate(str, len) {
+            return str.length > len ? str.substring(0, len) + '\u2026' : str;
+        }
+
+        async function computeEmbeddings() {
+            const apiKey = document.getElementById('api-key-input').value.trim();
+            const model = document.getElementById('model-input').value.trim();
+            const text = document.getElementById('text-input').value;
+            const btn = document.getElementById('embed-btn');
+            const result = document.getElementById('result');
+            const error = document.getElementById('error');
+
+            error.classList.remove('visible');
+            result.classList.remove('visible');
+
+            const sentences = text.split('\n').map(s => s.trim()).filter(s => s.length > 0);
+
+            if (!apiKey) { error.textContent = 'Please enter your Gemini API key.'; error.classList.add('visible'); return; }
+            if (!model) { error.textContent = 'Please enter a model name.'; error.classList.add('visible'); return; }
+            if (sentences.length < 2) { error.textContent = 'Please enter at least 2 sentences (one per line).'; error.classList.add('visible'); return; }
+
+            btn.disabled = true;
+            btn.textContent = 'Computing\u2026';
+
+            try {
+                const url = `${API_BASE}/models/${encodeURIComponent(model)}:batchEmbedContents?key=${encodeURIComponent(apiKey)}`;
+                const resp = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        requests: sentences.map(s => ({
+                            model: `models/${model}`,
+                            content: { parts: [{ text: s }] }
+                        }))
+                    })
+                });
+
+                const data = await resp.json();
+                if (data.error) throw new Error(data.error.message || 'API error');
+
+                const embeddings = data.embeddings.map(e => e.values);
+                renderMatrix(sentences, embeddings);
+                result.classList.add('visible');
+            } catch (err) {
+                error.textContent = err.message;
+                error.classList.add('visible');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Compute Embeddings';
+            }
+        }
+
+        function renderMatrix(sentences, embeddings) {
+            const container = document.getElementById('matrix-container');
+            const n = sentences.length;
+
+            let html = '<table class="matrix"><thead><tr><th></th>';
+            for (let j = 0; j < n; j++) {
+                html += `<th title="${escapeAttr(sentences[j])}">${escapeHtml(truncate(sentences[j], 25))}</th>`;
+            }
+            html += '</tr></thead><tbody>';
+
+            for (let i = 0; i < n; i++) {
+                html += `<tr><th class="row-label" title="${escapeAttr(sentences[i])}">${escapeHtml(truncate(sentences[i], 30))}</th>`;
+                for (let j = 0; j < n; j++) {
+                    const sim = cosineSimilarity(embeddings[i], embeddings[j]);
+                    const color = similarityColor(sim);
+                    const textColor = sim > 0.6 ? '#fff' : '#111';
+                    html += `<td style="background:${color};color:${textColor}">${sim.toFixed(2)}</td>`;
+                }
+                html += '</tr>';
+            }
+
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function escapeAttr(str) {
+            return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        document.getElementById('text-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) computeEmbeddings();
+        });
+
+    </script>
+    <script src="nav.js"></script>
+</body>
+</html>

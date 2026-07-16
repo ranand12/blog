@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://generativelanguage.googleapis.com;">
+    <title>Gemini Tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg: #f8f9fc;
+            --bg-elevated: #ffffff;
+            --bg-card: #ffffff;
+            --border: #e4e7ee;
+            --text: #111318;
+            --text-secondary: #4b5060;
+            --text-muted: #8b90a0;
+            --accent: #4f46e5;
+            --accent-soft: #eef2ff;
+            --purple: #7c3aed;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.10);
+            --dot-color: #d8dbe4;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0b0e14;
+            --bg-elevated: #141824;
+            --bg-card: #161b2a;
+            --border: #232a3e;
+            --text: #eceef4;
+            --text-secondary: #9399ae;
+            --text-muted: #5c6280;
+            --accent: #818cf8;
+            --accent-soft: #1e1b4b40;
+            --purple: #a78bfa;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.25);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.35);
+            --dot-color: #1e2438;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+            background-size: 24px 24px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 48px 28px 80px;
+        }
+
+        /* Compact hero */
+        .hero {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.5s ease forwards;
+        }
+
+        .hero h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-search {
+            flex: 1;
+            min-width: 180px;
+            max-width: 320px;
+            position: relative;
+        }
+
+        .hero-search svg {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .hero-search input {
+            width: 100%;
+            padding: 8px 12px 8px 34px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg-elevated);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .hero-search input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .hero-search input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
+        }
+
+        .hero-search .search-count {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        /* Category filter pills */
+        .filters {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.5s ease 0.1s forwards;
+        }
+
+        .filter-pill {
+            padding: 5px 14px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            background: var(--bg-elevated);
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .filter-pill:hover {
+            border-color: var(--pill-color, var(--accent));
+            color: var(--pill-color, var(--accent));
+        }
+
+        .filter-pill.active {
+            background: var(--pill-color, var(--accent));
+            border-color: var(--pill-color, var(--accent));
+            color: #fff;
+        }
+
+        /* Tile grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 8px;
+            opacity: 0;
+            animation: fadeUp 0.5s ease 0.2s forwards;
+        }
+
+        .tile {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            aspect-ratio: 1;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 10px 8px;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .tile::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 16px;
+            right: 16px;
+            height: 2px;
+            border-radius: 2px 2px 0 0;
+            background: var(--tile-color);
+            opacity: 0.5;
+            transition: opacity 0.2s, height 0.2s;
+        }
+
+        .tile:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--tile-color);
+        }
+
+        .tile:hover::after {
+            opacity: 1;
+            height: 3px;
+        }
+
+        .tile-icon {
+            font-size: 28px;
+            line-height: 1;
+            margin-bottom: 8px;
+            transition: transform 0.25s ease;
+        }
+
+        .tile:hover .tile-icon {
+            transform: scale(1.15);
+        }
+
+        .tile-name {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.2;
+            transition: color 0.2s;
+        }
+
+        .tile:hover .tile-name {
+            color: var(--tile-color);
+        }
+
+        .tile-tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--tile-color);
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        /* Tooltip on hover */
+        .tile .tile-tip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            background: var(--text);
+            color: var(--bg);
+            font-size: 11px;
+            line-height: 1.4;
+            padding: 6px 10px;
+            border-radius: 8px;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s, transform 0.2s;
+            z-index: 10;
+            max-width: 220px;
+            white-space: normal;
+            text-align: center;
+        }
+
+        .tile:hover .tile-tip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-6px);
+        }
+
+        /* Hidden tiles (filtered out) */
+        .tile.hidden {
+            display: none;
+        }
+
+        /* Category colors */
+        [data-cat="create"]    { --tile-color: #d97706; }
+        [data-cat="tools"]     { --tile-color: #7c3aed; }
+        [data-cat="research"]  { --tile-color: #059669; }
+        [data-cat="multimodal"]{ --tile-color: #0891b2; }
+        [data-cat="explore"]   { --tile-color: #4f46e5; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 640px) {
+            .page { padding: 36px 16px 60px; }
+            .hero h1 { font-size: 22px; }
+            .grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+            .tile-tip { display: none; }
+        }
+
+        @media (min-width: 641px) and (max-width: 900px) {
+            .grid { grid-template-columns: repeat(5, 1fr); }
+        }
+
+        @media (min-width: 901px) {
+            .grid { grid-template-columns: repeat(7, 1fr); }
+        }
+    </style>
+    <script>
+        (function() {
+            var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+</head>
+<body>
+
+<div class="page">
+    <div class="hero">
+        <h1>Explore <span>Gemini</span> Tools</h1>
+        <div class="hero-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="hero-filter" placeholder="Filter tools..." autocomplete="off">
+            <span class="search-count" id="search-count"></span>
+        </div>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+</div>
+
+<script>
+(function() {
+    var cats = [
+        { id: 'all', label: 'All', color: 'var(--accent)' },
+        { id: 'create', label: 'Create', color: '#d97706' },
+        { id: 'tools', label: 'Tools', color: '#7c3aed' },
+        { id: 'research', label: 'Research', color: '#059669' },
+        { id: 'multimodal', label: 'Vision', color: '#0891b2' },
+        { id: 'explore', label: 'Models', color: '#4f46e5' },
+    ];
+
+    var items = [
+        { cat: 'create', href: 'tts.html', icon: '\u{1F399}\uFE0F', name: 'Text to Speech', desc: 'Natural speech from text', tag: 'Audio' },
+        { cat: 'create', href: 'story.html', icon: '\u{1F4D6}', name: 'Story Illustrator', desc: 'Illustrated storybooks', tag: 'Images' },
+        { cat: 'create', href: 'animate.html', icon: '\u{1F3AC}', name: 'AI Video Generator (Veo)', desc: 'AI story videos', tag: 'Video' },
+        { cat: 'tools', href: 'think.html', icon: '\u{1F9E0}', name: 'Thinking', desc: 'Step-by-step reasoning', tag: 'Reasoning' },
+        { cat: 'tools', href: 'code.html', icon: '\u{1F4BB}', name: 'Code Runner', desc: 'Run Python with AI', tag: 'Execution' },
+        { cat: 'tools', href: 'maps.html', icon: '\u{1F5FA}\uFE0F', name: 'Maps', desc: 'Location-aware queries', tag: 'Grounding' },
+        { cat: 'tools', href: 'extract.html', icon: '\u{1F4CB}', name: 'Extractor', desc: 'Structured data extraction', tag: 'Structured' },
+        { cat: 'tools', href: 'embed.html', icon: '\u{1F9EE}', name: 'Embeddings', desc: 'Semantic similarity', tag: 'Vectors' },
+        { cat: 'research', href: 'prompt.html', icon: '\u{1F4AC}', name: 'Playground', desc: 'Chat with Gemini', tag: 'Chat' },
+        { cat: 'research', href: 'search.html', icon: '\u{1F310}', name: 'Search', desc: 'Grounded web search', tag: 'Grounding' },
+        { cat: 'research', href: 'pdf.html', icon: '\u{1F4C4}', name: 'PDF Analyzer', desc: 'Query PDF content', tag: 'Documents' },
+        { cat: 'research', href: 'url.html', icon: '\u{1F517}', name: 'URL Context', desc: 'Analyze web pages', tag: 'Web' },
+        { cat: 'research', href: 'files.html', icon: '\u{1F4C2}', name: 'File Search', desc: 'Search across documents', tag: 'Documents' },
+        { cat: 'research', href: 'research.html', icon: '\u{1F50E}', name: 'Deep Research', desc: 'Multi-step research agent', tag: 'Agent' },
+        { cat: 'research', href: 'live.html', icon: '\u{1F3A4}', name: 'Live Chat', desc: 'Real-time voice & text', tag: 'Streaming' },
+        { cat: 'research', href: 'cache.html', icon: '\u{1F4E6}', name: 'Context Cache', desc: 'Cache & reuse content', tag: 'Caching' },
+        { cat: 'multimodal', href: 'describe.html', icon: '\u{1F5BC}', name: 'Image Describer', desc: 'AI image descriptions', tag: 'Vision' },
+        { cat: 'multimodal', href: 'detect.html', icon: '\u{1F3AF}', name: 'Object Detector', desc: 'Detect objects in images', tag: 'Vision' },
+        { cat: 'multimodal', href: 'video.html', icon: '\u{1F3AC}', name: 'Video Analyzer', desc: 'Query video content', tag: 'Vision' },
+        { cat: 'explore', href: 'tokens.html', icon: '\u{1F522}', name: 'Token Counter', desc: 'Count tokens & costs', tag: 'Core' },
+        { cat: 'explore', href: 'models.html', icon: '\u{1F916}', name: 'Model Explorer', desc: 'Browse Gemini models', tag: 'Reference' },
+    ];
+
+    // Build filter pills
+    var filtersEl = document.getElementById('filters');
+    var activeFilter = 'all';
+
+    cats.forEach(function(c) {
+        var pill = document.createElement('button');
+        pill.className = 'filter-pill' + (c.id === 'all' ? ' active' : '');
+        pill.textContent = c.label;
+        pill.style.setProperty('--pill-color', c.color);
+        pill.setAttribute('data-filter', c.id);
+        if (c.id === 'all') {
+            pill.style.background = 'var(--accent)';
+            pill.style.borderColor = 'var(--accent)';
+            pill.style.color = '#fff';
+        }
+        pill.addEventListener('click', function() {
+            activeFilter = c.id;
+            filtersEl.querySelectorAll('.filter-pill').forEach(function(p) {
+                p.classList.remove('active');
+                p.style.background = '';
+                p.style.borderColor = '';
+                p.style.color = '';
+            });
+            pill.classList.add('active');
+            applyFilter();
+        });
+        filtersEl.appendChild(pill);
+    });
+
+    // Text search
+    var heroFilter = document.getElementById('hero-filter');
+    var searchCount = document.getElementById('search-count');
+    var searchQuery = '';
+
+    heroFilter.addEventListener('input', function() {
+        searchQuery = this.value.toLowerCase().trim();
+        applyFilter();
+    });
+
+    function applyFilter() {
+        var tiles = document.querySelectorAll('.tile');
+        var visible = 0;
+        tiles.forEach(function(t) {
+            var catMatch = activeFilter === 'all' || t.getAttribute('data-cat') === activeFilter;
+            var textMatch = !searchQuery ||
+                t.getAttribute('data-name').indexOf(searchQuery) !== -1 ||
+                t.getAttribute('data-desc').indexOf(searchQuery) !== -1 ||
+                t.getAttribute('data-tag').indexOf(searchQuery) !== -1;
+            if (catMatch && textMatch) {
+                t.classList.remove('hidden');
+                visible++;
+            } else {
+                t.classList.add('hidden');
+            }
+        });
+        searchCount.textContent = visible + '/' + tiles.length;
+    }
+
+    // Build tiles
+    var gridEl = document.getElementById('grid');
+
+    items.forEach(function(item) {
+        var a = document.createElement('a');
+        a.className = 'tile';
+        a.href = item.href;
+        a.setAttribute('data-cat', item.cat);
+        a.setAttribute('data-name', item.name.toLowerCase());
+        a.setAttribute('data-desc', item.desc.toLowerCase());
+        a.setAttribute('data-tag', item.tag.toLowerCase());
+
+        var tip = document.createElement('div');
+        tip.className = 'tile-tip';
+        tip.textContent = item.desc;
+        a.appendChild(tip);
+
+        var icon = document.createElement('div');
+        icon.className = 'tile-icon';
+        icon.textContent = item.icon;
+        a.appendChild(icon);
+
+        var name = document.createElement('div');
+        name.className = 'tile-name';
+        name.textContent = item.name;
+        a.appendChild(name);
+
+        var tag = document.createElement('div');
+        tag.className = 'tile-tag';
+        tag.textContent = item.tag;
+        a.appendChild(tag);
+
+        gridEl.appendChild(a);
+    });
+
+    // Show initial count
+    applyFilter();
+})();
+</script>
+
+<script src="nav.js"></script>
+</body>
+</html>
