@@ -542,4 +542,87 @@
         var input = document.getElementById('api-key-input') || document.getElementById('apiKey');
         if (input) input.value = '';
     };
+    // --- Model selector auto-population ---
+    var MODEL_CACHE_KEY = 'gemini-models-cache';
+    var MODEL_CACHE_TTL = 5 * 60 * 1000;
+    var modelFetchInFlight = false;
+
+    var MODEL_FILTERS = {
+        generateContent: function(m) { return m.supportedGenerationMethods && m.supportedGenerationMethods.indexOf('generateContent') !== -1; },
+        embedContent: function(m) { return m.supportedGenerationMethods && m.supportedGenerationMethods.indexOf('embedContent') !== -1; },
+        tts: function(m) { return m.name && m.name.indexOf('tts') !== -1; },
+        veo: function(m) { return m.name && m.name.indexOf('veo') !== -1; },
+        image: function(m) { return m.name && (m.name.indexOf('image') !== -1 || m.name.indexOf('imagen') !== -1); }
+    };
+
+    function populateModelSelectors(models) {
+        var inputs = document.querySelectorAll('input[data-model-type]');
+        inputs.forEach(function(input) {
+            var type = input.getAttribute('data-model-type');
+            var filter = MODEL_FILTERS[type];
+            if (!filter) return;
+
+            var filtered = models.filter(filter);
+            filtered.sort(function(a, b) { return (a.displayName || a.name).localeCompare(b.displayName || b.name); });
+
+            var listId = 'model-list-' + (input.id || Math.random().toString(36).substr(2, 6));
+            var datalist = document.getElementById(listId);
+            if (!datalist) {
+                datalist = document.createElement('datalist');
+                datalist.id = listId;
+                input.parentNode.appendChild(datalist);
+                input.setAttribute('list', listId);
+            }
+            datalist.textContent = '';
+
+            filtered.forEach(function(m) {
+                var opt = document.createElement('option');
+                var val = m.name.replace(/^models\//, '');
+                opt.value = val;
+                if (m.displayName && m.displayName !== val) opt.label = m.displayName;
+                datalist.appendChild(opt);
+            });
+        });
+    }
+
+    function fetchAndPopulateModels() {
+        var apiKey = sessionStorage.getItem(STORAGE_KEY);
+        if (!apiKey || modelFetchInFlight) return;
+
+        var cached = sessionStorage.getItem(MODEL_CACHE_KEY);
+        if (cached) {
+            try {
+                var parsed = JSON.parse(cached);
+                if (Date.now() - parsed.ts < MODEL_CACHE_TTL) {
+                    populateModelSelectors(parsed.models);
+                    return;
+                }
+            } catch(e) {}
+        }
+
+        modelFetchInFlight = true;
+        fetch('https://generativelanguage.googleapis.com/v1beta/models?key=' + apiKey + '&pageSize=1000')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                var models = data.models || [];
+                sessionStorage.setItem(MODEL_CACHE_KEY, JSON.stringify({ ts: Date.now(), models: models }));
+                populateModelSelectors(models);
+            })
+            .catch(function() {})
+            .then(function() { modelFetchInFlight = false; });
+    }
+
+    if (document.querySelectorAll('input[data-model-type]').length > 0) {
+        fetchAndPopulateModels();
+
+        if (keyInput) {
+            var debounceTimer;
+            keyInput.addEventListener('input', function() {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(fetchAndPopulateModels, 500);
+            });
+        }
+
+        window.addEventListener('focus', fetchAndPopulateModels);
+    }
 })();
