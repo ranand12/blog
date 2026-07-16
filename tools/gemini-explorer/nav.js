@@ -1,4 +1,4 @@
-/* Shared sidebar navigation - Gemini Tools */
+/* Shared sidebar navigation - Gemini Explorer */
 (function() {
     'use strict';
 
@@ -65,7 +65,7 @@
 
     var brand = document.createElement('a');
     brand.className = 'gt-topbar-brand';
-    brand.textContent = 'Gemini Tools';
+    brand.textContent = 'Gemini Explorer';
     brand.href = 'index.html';
     brand.style.textDecoration = 'none';
     brand.style.color = 'inherit';
@@ -190,7 +190,7 @@
 
     var sidebarBrand = document.createElement('a');
     sidebarBrand.className = 'gt-sidebar-brand';
-    sidebarBrand.textContent = 'Gemini Tools';
+    sidebarBrand.textContent = 'Gemini Explorer';
     sidebarBrand.href = 'index.html';
     sidebarBrand.style.textDecoration = 'none';
     sidebarBrand.style.color = 'inherit';
