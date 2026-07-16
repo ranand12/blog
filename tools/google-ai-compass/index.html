@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google AI Compass</title>
+<style>
+  :root {
+    color-scheme: light;
+    --surface-1: #fcfcfb; --page: #f9f9f7;
+    --ink-1: #0b0b0b; --ink-2: #52514e; --ink-3: #898781;
+    --grid: #e1e0d9; --baseline: #c3c2b7;
+    --border: rgba(11,11,11,0.10);
+    --good: #0ca30c; --warning: #fab219;
+    --p-notebooklm: #2a78d6; --p-aistudio: #008300; --p-agmanager: #e87ba4;
+    --p-agcli: #eda100; --p-agide: #1baf7a; --p-genterprise: #eb6834; --p-gworkspace: #4a3aa7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --surface-1: #1a1a19; --page: #0d0d0d;
+      --ink-1: #ffffff; --ink-2: #c3c2b7; --ink-3: #898781;
+      --grid: #2c2c2a; --baseline: #383835;
+      --border: rgba(255,255,255,0.10);
+      --p-notebooklm: #3987e5; --p-aistudio: #008300; --p-agmanager: #d55181;
+      --p-agcli: #c98500; --p-agide: #199e70; --p-genterprise: #d95926; --p-gworkspace: #9085e9;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-1: #1a1a19; --page: #0d0d0d;
+    --ink-1: #ffffff; --ink-2: #c3c2b7; --ink-3: #898781;
+    --grid: #2c2c2a; --baseline: #383835;
+    --border: rgba(255,255,255,0.10);
+    --p-notebooklm: #3987e5; --p-aistudio: #008300; --p-agmanager: #d55181;
+    --p-agcli: #c98500; --p-agide: #199e70; --p-genterprise: #d95926; --p-gworkspace: #9085e9;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--page); color: var(--ink-1);
+    line-height: 1.5; padding: 24px 20px 80px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+  h1 { font-size: 22px; font-weight: 700; }
+  .sub { color: var(--ink-2); font-size: 13px; margin-bottom: 18px; }
+  .sub em { color: var(--ink-3); font-style: normal; }
+  #themeBtn {
+    border: 1px solid var(--border); background: var(--surface-1); color: var(--ink-2);
+    border-radius: 8px; padding: 6px 12px; font-size: 13px; cursor: pointer;
+  }
+  nav { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+  nav button {
+    border: 1px solid var(--border); background: var(--surface-1); color: var(--ink-2);
+    border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer;
+  }
+  nav button.active { background: var(--ink-1); color: var(--page); border-color: var(--ink-1); font-weight: 600; }
+  .view { display: none; } .view.active { display: block; }
+
+  /* product chip */
+  .chip { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--ink-1); }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+
+  /* cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px; border-top: 3px solid var(--accent, var(--grid));
+  }
+  .card h3 { font-size: 16px; display: flex; align-items: center; gap: 8px; }
+  .card .tag { font-size: 11px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .04em; margin: 2px 0 8px; }
+  .card p.bestfor { font-size: 12.5px; font-weight: 600; color: var(--ink-1); margin-bottom: 6px; }
+  .card p.one { color: var(--ink-2); font-size: 13.5px; margin-bottom: 10px; }
+  .card ul { padding-left: 18px; font-size: 13px; color: var(--ink-2); margin-bottom: 10px; }
+  .card li { margin: 3px 0; }
+  .card li b { color: var(--ink-1); font-weight: 600; }
+  .meta { font-size: 12.5px; color: var(--ink-2); border-top: 1px solid var(--grid); padding-top: 8px; margin-top: 4px; }
+  .meta div { margin: 3px 0; }
+  .meta span.k { color: var(--ink-3); }
+  .card a { color: inherit; }
+  .card.spotlight { animation: spot 2.2s ease; }
+  @keyframes spot {
+    0%, 60% { box-shadow: 0 0 0 3px var(--accent, var(--ink-1)); }
+    100% { box-shadow: 0 0 0 3px transparent; }
+  }
+
+  /* tier toggle */
+  .tierbar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  .tierlabel { font-size: 13px; color: var(--ink-2); }
+  .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; background: var(--surface-1); }
+  .seg button { border: none; background: none; color: var(--ink-2); padding: 7px 14px; font-size: 13px; cursor: pointer; }
+  .seg button.sel { background: var(--ink-1); color: var(--page); font-weight: 600; }
+  .tiernote { font-size: 12.5px; color: var(--ink-3); }
+  .tiercond { font-size: 12.5px; color: var(--ink-1); background: color-mix(in srgb, var(--good) 8%, var(--surface-1)); border: 1px solid color-mix(in srgb, var(--good) 25%, var(--border)); border-radius: 8px; padding: 8px 10px; margin-top: 10px; }
+  .tiercond b { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-3); margin-bottom: 3px; }
+
+  /* matrix */
+  .matrix-hint { font-size: 12.5px; color: var(--ink-3); margin-bottom: 10px; }
+  .matrix-scroll { overflow-x: auto; background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; }
+  table.matrix { border-collapse: collapse; width: 100%; min-width: 900px; font-size: 13px; }
+  .matrix th, .matrix td { padding: 9px 10px; text-align: center; border-bottom: 1px solid var(--grid); }
+  .matrix thead th { position: sticky; top: 0; background: var(--surface-1); z-index: 2; font-size: 12px; vertical-align: bottom; padding-top: 14px; }
+  .matrix thead th .chip { flex-direction: column; gap: 4px; font-size: 12px; line-height: 1.25; }
+  .matrix td.cap { text-align: left; font-weight: 600; color: var(--ink-1); min-width: 210px; position: sticky; left: 0; background: var(--surface-1); z-index: 1; }
+  .matrix td.cell { cursor: default; }
+  .matrix tr:hover td { background: color-mix(in srgb, var(--ink-1) 4%, var(--surface-1)); }
+  .lvl { display: inline-block; min-width: 60px; padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+  .lvl-core { background: color-mix(in srgb, var(--good) 16%, var(--surface-1)); color: var(--ink-1); }
+  .lvl-yes  { background: color-mix(in srgb, var(--good) 8%, var(--surface-1)); color: var(--ink-1); }
+  .lvl-part { background: color-mix(in srgb, var(--warning) 14%, var(--surface-1)); color: var(--ink-1); }
+  .lvl-no   { color: var(--ink-3); }
+  #tooltip {
+    position: fixed; z-index: 50; max-width: 320px; background: var(--ink-1); color: var(--page);
+    font-size: 12.5px; line-height: 1.45; padding: 10px 12px; border-radius: 8px; pointer-events: none;
+    display: none; box-shadow: 0 4px 16px rgba(0,0,0,.25);
+  }
+  #tooltip .tip-head { font-weight: 700; }
+  #tooltip .tip-body { margin-top: 4px; opacity: .9; }
+  #tooltip .tip-list { margin: 5px 0 0; padding-left: 16px; opacity: .9; }
+  #tooltip .tip-list li { margin: 2px 0; }
+
+  /* decision helper */
+  .helper { display: grid; grid-template-columns: minmax(300px, 400px) 1fr; gap: 18px; align-items: start; }
+  @media (max-width: 860px) { .helper { grid-template-columns: 1fr; } }
+  .qbox, .rbox { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .q { margin-bottom: 16px; }
+  .q h4 { font-size: 13.5px; margin-bottom: 7px; }
+  .opts { display: flex; flex-wrap: wrap; gap: 6px; }
+  .opts button {
+    border: 1px solid var(--border); background: var(--page); color: var(--ink-2);
+    border-radius: 8px; padding: 6px 11px; font-size: 13px; cursor: pointer;
+  }
+  .opts button.sel { background: var(--ink-1); color: var(--page); border-color: var(--ink-1); font-weight: 600; }
+  #resetBtn { font-size: 12.5px; background: none; border: none; color: var(--ink-3); cursor: pointer; text-decoration: underline; padding: 0; }
+  .rec { border: 1px solid var(--border); border-left: 4px solid var(--accent, var(--grid)); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
+  .rec .score { float: right; font-size: 12px; color: var(--ink-3); }
+  .rec h4 { font-size: 14.5px; display: flex; gap: 8px; align-items: center; }
+  .rec p { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+  .rec.top { background: color-mix(in srgb, var(--good) 6%, var(--surface-1)); }
+  .rec.top .rank { font-size: 11px; font-weight: 700; color: var(--good); text-transform: uppercase; letter-spacing: .05em; }
+  .rbox .placeholder { color: var(--ink-3); font-size: 13.5px; }
+
+  /* scenarios */
+  .scen { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+  .scen summary { cursor: pointer; padding: 12px 16px; font-size: 14px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+  .scen summary::-webkit-details-marker { display: none; }
+  .scen summary .chip { flex: none; }
+  .scen .body { padding: 0 16px 14px; font-size: 13.5px; color: var(--ink-2); }
+  footer { margin-top: 28px; font-size: 12px; color: var(--ink-3); }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Google AI Compass</h1>
+    <button id="themeBtn">◐ Theme</button>
+  </header>
+  <p class="sub">Find the right Google AI tool for the job. <em style="font-size:11px;">Last refreshed: July 15, 2026</em></p>
+
+  <nav id="tabs">
+    <button data-view="helper" class="active">Decision Helper</button>
+    <button data-view="matrix">Feature Matrix</button>
+    <button data-view="scenarios">Scenarios</button>
+    <button data-view="products">Products</button>
+  </nav>
+
+  <section id="view-products" class="view">
+    <div class="tierbar">
+      <span class="tierlabel">Show products available on:</span>
+      <div class="seg" id="tierSeg">
+        <button data-tier="all" class="sel">All</button>
+        <button data-tier="free">Free tier</button>
+        <button data-tier="gcp">GCP-linked / Enterprise</button>
+      </div>
+      <span class="tiernote" id="tierNote"></span>
+    </div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section id="view-matrix" class="view">
+    <p class="matrix-hint">Hover any cell for detail. <b>Core</b> = the product's main job · <b>Yes</b> = fully supported · <b>Partial</b> = with caveats · <b>—</b> = not offered. Free-vs-paid conditions per product are on the Products tab.</p>
+    <div class="matrix-scroll"><table class="matrix" id="matrixTable"></table></div>
+  </section>
+
+  <section id="view-helper" class="view active">
+    <div class="helper">
+      <div class="qbox">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;">
+          <h3 style="font-size:15px;">Answer what applies</h3><button id="resetBtn">reset</button>
+        </div>
+        <div id="questions"></div>
+      </div>
+      <div class="rbox" id="results"><p class="placeholder">Pick at least one answer on the left — products are ranked here as you go.</p></div>
+    </div>
+  </section>
+
+  <section id="view-scenarios" class="view" ><div id="scenList"></div></section>
+
+  <footer>Disclaimer: this is an informal comparison based on publicly available information as of the date shown above. Google AI products evolve quickly — details here may be out of date or inaccurate, and no responsibility is taken for any inaccuracies. Always verify against official Google documentation and pricing pages before making decisions.</footer>
+</div>
+<div id="tooltip"></div>
+
+<script>
+const PRODUCTS = [
+  { id:"notebooklm", name:"NotebookLM", varName:"--p-notebooklm", tag:"Research assistant",
+    one:"Source-grounded research: answers only from the sources you upload, with citations.",
+    feats:[
+      ["Grounded Q&A","Answers strictly from your uploaded sources, with citations; refuses if the answer isn't there."],
+      ["Studio outputs","Audio & Video Overviews (podcasts), reports, quizzes, flashcards, mind maps, slide decks."],
+      ["Deep Research","Finds and adds web sources itself (tiered quotas)."]],
+    price:"Free tier → Google AI Plus/Pro/Ultra for higher limits; Enterprise via GCP",
+    privacy:"Not used to train models (consumer & enterprise)",
+    users:"Researchers, students, analysts, knowledge workers",
+    caveat:"500K-word / 200MB per-source cap applies on every plan." },
+  { id:"aistudio", name:"AI Studio", varName:"--p-aistudio", tag:"Developer playground",
+    one:"Free browser playground + API-key hub for the Gemini API, with prompt-to-app Build mode.",
+    feats:[
+      ["Prompt playground","Try Gemini models and tools free in the browser, then export the code."],
+      ["Self-serve API keys","Get a Gemini API key with no GCP project setup."],
+      ["Build mode","Prompt-to-app: full-stack web and native Android; deploy to Cloud Run."]],
+    price:"Studio free; Gemini API free tier + pay-as-you-go",
+    privacy:"Free tier: data may be used to improve Google products; paid tier covered by enterprise data-protection terms (DPA)",
+    users:"Developers prototyping with Gemini",
+    caveat:"No fine-tuning since May 2025 — enterprise controls (IAM, regions) come with Vertex AI." },
+  { id:"agmanager", name:"Antigravity Agent Manager", varName:"--p-agmanager", tag:"Agent orchestration",
+    one:"\u201CMission control\u201D desktop app: spawn and supervise multiple async coding agents in parallel.",
+    feats:[
+      ["Parallel async agents","Run several coding agents at once: agent groups, subagents, scheduled tasks."],
+      ["Artifacts, not logs","Review plans, Walkthroughs, screenshots, and browser recordings; comment Google-Docs-style."],
+      ["Browser verification","Agents drive Chrome to test end-to-end flows."]],
+    price:"Included with Google AI Pro $20/mo; Ultra tiers for higher limits",
+    privacy:"Free/Pro: interaction data used to improve products unless opted out; GCP route: not used for training, Cloud DPA",
+    users:"Developers delegating task-level work",
+    caveat:"Antigravity 2.0 migration issues reported by early users." },
+  { id:"agcli", name:"Antigravity CLI (agy)", varName:"--p-agcli", tag:"Terminal agent",
+    one:"Terminal surface of Antigravity; official successor to Gemini CLI (Go rewrite, I/O 2026).",
+    feats:[
+      ["Agentic terminal","Multi-file edits, tool calling, background subagents; built for SSH and remote work."],
+      ["Extensible","Agent Skills (Claude Code-compatible), hooks, plugins, AGENTS.md project instructions."],
+      ["Gemini CLI retired","Stopped serving individual users June 18, 2026 — agy is the official successor."]],
+    price:"Free in public preview; post-preview pricing not yet announced",
+    privacy:"Free/Pro: interaction data used to improve products unless opted out; GCP route: not used for training, Cloud DPA",
+    users:"Terminal-first devs, remote/SSH sessions",
+    caveat:"Headless/CI support is not officially documented — verify before relying on it." },
+  { id:"agide", name:"Antigravity IDE", varName:"--p-agide", tag:"Agentic editor",
+    one:"VS Code-style agentic editor for synchronous, hands-on coding with an embedded agent panel.",
+    feats:[
+      ["Editor + agent","Tab completions, inline commands, Agent Panel, deep codebase understanding."],
+      ["/browser sub-agent","Chrome-debugging browser agent for testing what you build."],
+      ["MCP Store","One-click installs to connect external tools; Workspace connectors (Docs/Sheets/Calendar) built in."]],
+    price:"Same Antigravity quota tiers (AI Pro / Ultra)",
+    privacy:"Free/Pro: interaction data used to improve products unless opted out; GCP route: not used for training, Cloud DPA",
+    users:"Developers coding interactively",
+    caveat:"Free-tier limits were cut sharply in March 2026." },
+  { id:"genterprise", name:"Gemini Enterprise app (GCP)", varName:"--p-genterprise", tag:"Enterprise AI hub",
+    one:"The end-user AI hub for the whole org: permission-aware search over company data, no-code agents, partner agent gallery. Successor to Agentspace.",
+    feats:[
+      ["Enterprise search","Permission-aware answers over 80+ connectors: M365/SharePoint, Salesforce, ServiceNow, Jira, Slack, SAP…"],
+      ["No-code agents","Agent Designer (preview): build agents in natural language, with scheduling and monitoring."],
+      ["Agent Gallery","Google-validated partner agents (Oracle, Salesforce, ServiceNow, Adobe, Workday) with IT approval workflow."]],
+    price:"Per-seat licensing (Business / Standard / Plus editions) — contact Google sales",
+    privacy:"Data stays in your GCP project under enterprise data-protection terms (DPA), with enterprise security controls (VPC-SC, IAM)",
+    users:"Whole organizations: knowledge workers + IT",
+    caveat:"Agent Designer is still in preview, and the Business edition is capped at 500 seats." },
+  { id:"gworkspace", name:"Gemini app in Workspace", varName:"--p-gworkspace", tag:"Everyday work AI",
+    one:"Gemini chat + Gemini embedded in Gmail/Docs/Sheets/Slides/Meet — bundled into Workspace Business/Enterprise since Jan 2025.",
+    feats:[
+      ["Gemini app","Gemini 3 Pro chat, Deep Research (web + your Gmail/Drive/Chat), Gems, Canvas."],
+      ["Embedded everywhere","Side panel in Gmail/Docs/Sheets/Slides/Drive/Chat; Help me write; Sheets analysis."],
+      ["Meet","Take notes for me, real-time translated captions (~65+ languages)."]],
+    price:"Included in Business/Enterprise editions; Starter limited",
+    privacy:"Never trains on customer data; respects access permissions; ISO 42001, SOC, DPA",
+    users:"Every Workspace knowledge worker",
+    caveat:"Business Starter gets only a limited subset (Gmail + Vids side panel)." },
+];
+
+/* ---- capability matrix: 0 no, 1 partial, 2 yes, 3 core ---- */
+/* Matrix columns: the three Antigravity surfaces are merged into one column for readability; per-surface differences are stated in the cell notes. */
+const MATRIX_COLS = [
+  { id:"notebooklm", name:"NotebookLM", varName:"--p-notebooklm" },
+  { id:"aistudio", name:"AI Studio", varName:"--p-aistudio" },
+  { id:"antigravity", name:"Antigravity (Manager · IDE · CLI)", varName:"--p-agmanager" },
+  { id:"genterprise", name:"Gemini Enterprise app (GCP)", varName:"--p-genterprise" },
+  { id:"gworkspace", name:"Gemini app in Workspace", varName:"--p-gworkspace" },
+];
+const CAPS = [
+  ["Grounded Q&A on your documents",
+    {notebooklm:[3,"Core purpose — per-notebook sources with citations"], aistudio:[0,"Only via RAG you build on the API"], antigravity:[1,"Codebase-grounded only"], genterprise:[3,"Core of the app: company-wide, permission-aware, 80+ connectors"], gworkspace:[2,"Side panel + connected Gmail/Drive/Chat"]}],
+  ["Deep Research (agentic web research)",
+    {notebooklm:[2,"Tiered quotas (10/mo free → 200/day Ultra)"], aistudio:[0,""], antigravity:[0,""], genterprise:[2,"Included in the end-user app"], gworkspace:[2,"In the Gemini app; can also search your Workspace data"]}],
+  ["Writes / edits code",
+    {notebooklm:[1,"Executes code internally for analysis (June 2026), not a coding tool"], aistudio:[2,"Build mode generates full apps"], antigravity:[3,"Core purpose — delegate tasks (Agent Manager), code interactively (IDE), or work in the terminal (CLI)"], genterprise:[0,"Not in the app — pro-code lives in the separate Agent Platform"], gworkspace:[1,"Canvas light prototyping"]}],
+  ["Multiple parallel / async agents",
+    {notebooklm:[0,""], aistudio:[0,""], antigravity:[3,"Agent Manager is mission control (groups, subagents, schedules); IDE and CLI run background subagents"], genterprise:[1,"Scheduled/trigger-based no-code agents"], gworkspace:[0,""]}],
+  ["Build custom AI agents",
+    {notebooklm:[0,""], aistudio:[1,"Prototype only — no governance"], antigravity:[1,"Coding agents only"], genterprise:[2,"No-code Agent Designer (preview) + Agent Gallery partner agents"], gworkspace:[1,"Gems + Workspace Studio (simple)"]}],
+  ["Enterprise connectors (M365, Salesforce…)",
+    {notebooklm:[0,""], aistudio:[0,""], antigravity:[0,""], genterprise:[3,"80+ prebuilt connectors, federated or indexed"], gworkspace:[1,"Workspace apps only"]}],
+  ["Gemini API access / keys",
+    {notebooklm:[0,""], aistudio:[3,"Self-serve keys, playground, code export"], antigravity:[0,"Consumes models; no API-key auth on any tier"], genterprise:[0,"Not in the app — API/SDK access is the separate Agent Platform (Vertex AI lineage)"], gworkspace:[0,""]}],
+  ["Audio / Video Overviews (podcasts)",
+    {notebooklm:[3,"Signature feature; Cinematic on paid tiers"], aistudio:[0,""], antigravity:[0,""], genterprise:[2,"Via NotebookLM Enterprise"], gworkspace:[2,"Via bundled enhanced NotebookLM"]}],
+  ["Media generation (image / video / music)",
+    {notebooklm:[1,"Images inside generated outputs"], aistudio:[2,"Veo 3.1, Lyria 3, Nano Banana — paid API tier"], antigravity:[0,""], genterprise:[2,"Image + video generation in the app"], gworkspace:[2,"Slides/Vids image generation"]}],
+  ["Data NOT used for training",
+    {notebooklm:[2,"Consumer & enterprise (unless you submit feedback)"], aistudio:[1,"Free tier: data may be used to improve products; paid tier covered by enterprise data-protection terms (DPA)"], antigravity:[1,"Free/Pro: interaction data used to improve products unless opted out; GCP route: not used for training, Cloud DPA"], genterprise:[2,"Cloud DPA; data stays in your GCP project"], gworkspace:[2,"Workspace terms; no ads use"]}],
+  ["Enterprise governance (IAM, VPC-SC, DLP, audit)",
+    {notebooklm:[1,"Enterprise version only"], aistudio:[0,"None — enterprise controls come with Vertex AI"], antigravity:[1,"Via a GCP project: billed to project, Cloud DPA; desktop app + CLI only (not the classic IDE)"], genterprise:[3,"Agent Identity, Gateway, Model Armor, VPC-SC, IAM"], gworkspace:[2,"DLP, classification, data regions on Enterprise editions"]}],
+  ["Free tier",
+    {notebooklm:[2,"100 notebooks, 50 sources each, 50 chats/day"], aistudio:[2,"Studio free + API free tier (see data note above)"], antigravity:[1,"Free with limited quotas (cut March 2026); CLI free in public preview"], genterprise:[0,"30-day Business trial only"], gworkspace:[1,"Bundled with paid Workspace, not free per se"]}],
+  ["Connect to MCP servers / tools",
+    {notebooklm:[0,"No API at all — only unofficial browser-automation bridges"], aistudio:[2,"SDK: pass an MCP client session in tools= (experimental); Interactions API supports remote MCP natively"], antigravity:[3,"First-class: one shared config across Manager/IDE/CLI, MCP Store one-click installs, local + remote servers"], genterprise:[2,"Custom MCP Server connector, or governed via Agent Registry + Agent Gateway (IAM, egress policies)"], gworkspace:[0,"No user-facing MCP; Gems are prompt+files only"]}],
+  ["Agent Skills (open SKILL.md format)",
+    {notebooklm:[0,""], aistudio:[0,""], antigravity:[2,"Same SKILL.md standard as Claude Code/Cursor — skills portable unchanged, shared across all three surfaces"], genterprise:[1,"No SKILL.md — extensibility via connectors and gallery agents"], gworkspace:[0,"Gems: instructions + files only, no tools"]}],
+];
+
+const LVL = [["—","lvl-no"],["Partial","lvl-part"],["Yes","lvl-yes"],["Core","lvl-core"]];
+
+/* ---- decision helper ---- */
+const QUESTIONS = [
+  { id:"role", title:"Who is this for?", opts:[
+    ["Non-technical worker",{gworkspace:3,notebooklm:2,genterprise:1}],
+    ["Individual developer",{aistudio:3,agide:2,agcli:2,agmanager:2}],
+    ["Enterprise dev team",{genterprise:3,aistudio:1}],
+    ["IT / whole org",{genterprise:3,gworkspace:2}]]},
+  { id:"job", title:"Main job to be done?", opts:[
+    ["Understand documents",{notebooklm:3,gworkspace:1,genterprise:1}],
+    ["Write code interactively",{agide:3,agcli:2}],
+    ["Delegate coding tasks",{agmanager:3,agcli:2,agide:1}],
+    ["Prototype an AI app",{aistudio:3}],
+    ["Company-wide search / agents",{genterprise:3}],
+    ["Everyday drafting & meetings",{gworkspace:3,notebooklm:1}]]},
+  { id:"data", title:"Data sensitivity?", opts:[
+    ["Confidential / regulated",{gworkspace:2,genterprise:2,notebooklm:1,aistudio:-3,agmanager:-1,agcli:-1,agide:-1}]]},
+  { id:"mcp", title:"Need to connect external tools & systems? (MCP)", opts:[
+    ["Yes, while coding",{agmanager:3,agide:3,agcli:3,gworkspace:-2,notebooklm:-2}],
+    ["Yes, from my own app's code",{aistudio:3}],
+    ["Yes, org-wide with governance",{genterprise:3,aistudio:-1}],
+    ["Reuse my Claude Code skills",{agide:3,agcli:3,agmanager:3}],
+    ["Not needed",{}]]},
+  { id:"ground", title:"What should it know about?", opts:[
+    ["A set of documents I pick",{notebooklm:3,gworkspace:1,genterprise:1}],
+    ["My email / Drive / calendar",{gworkspace:3}],
+    ["All company systems (M365, SFDC…)",{genterprise:3}],
+    ["A codebase",{agide:2,agmanager:2,agcli:2}],
+    ["Whatever I wire up myself",{aistudio:3,agmanager:2,agcli:2,agide:2,genterprise:1}]]},
+];
+const WHY = {
+  notebooklm:"Strictly source-grounded answers with citations, plus podcast/video/quiz outputs no other product has.",
+  aistudio:"Fastest zero-setup way to try Gemini and prototype — for confidential work, link billing for enterprise data-protection (DPA) terms.",
+  agmanager:"Built to supervise multiple async coding agents with reviewable plans, walkthroughs, and browser-verified testing.",
+  agcli:"The terminal/SSH surface of Antigravity — the official Gemini CLI successor with background subagents and skills.",
+  agide:"Hands-on agentic editor: completions and inline commands with the agent panel one keystroke away.",
+  genterprise:"The only end-user hub with cross-system enterprise connectors (M365, Salesforce, ServiceNow…), no-code agents, and IT governance.",
+  gworkspace:"Already bundled in Workspace Business/Enterprise with enterprise data protections — the natural default for everyday work.",
+};
+
+/* ---- scenarios ---- */
+const SCENARIOS = [
+  ["\u201CSummarize these 40 PDFs and make a briefing podcast\u201D","notebooklm","Upload the PDFs as sources, ask grounded questions, generate an Audio Overview. No other product does source-cited synthesis + podcast output."],
+  ["\u201CHackathon demo of an AI feature by Friday\u201D","aistudio","Build mode: prompt-to-app with a full-stack runtime, deploy to Cloud Run. Free, zero setup."],
+  ["\u201CFix this bug while I keep building the feature\u201D","agmanager","Spawn an agent on the bug in a worktree via the Agent Manager while you stay in the IDE; review its Walkthrough artifact when done."],
+  ["\u201CEmployees keep pasting contracts into a public chatbot\u201D","gworkspace","Roll out the bundled, governed Gemini app + NotebookLM; step up to Gemini Enterprise if they also need M365/Salesforce search."],
+  ["\u201CHR agent answering onboarding questions from SharePoint\u201D","genterprise","SharePoint connector + no-code Agent Designer; permission-aware answers with IT governance."],
+  ["\u201CCompetitive analysis report by tomorrow\u201D","gworkspace","Gemini app Deep Research for the cited report; move findings into NotebookLM if it becomes an ongoing research base."],
+  ["\u201CWire my coding agent to Jira, Postgres, and internal APIs via MCP\u201D","agide","Antigravity: add servers once in ~/.gemini/config/mcp_config.json (or the IDE's MCP Store) and all three surfaces — IDE, Agent Manager, CLI — see them. Local stdio and remote HTTP both work. Caveat: OAuth re-auth per surface (practitioner-reported)."],
+];
+
+/* ================= render ================= */
+const $ = s => document.querySelector(s);
+const byId = Object.fromEntries(PRODUCTS.map(p=>[p.id,p]));
+const color = p => `var(${p.varName})`;
+const chip = (p,small) => `<span class="chip"${small?' style="font-size:12px"':''}><span class="dot" style="background:${color(p)}"></span>${p.name}</span>`;
+
+/* tier availability + conditions per product */
+const TIER_INFO = {
+  notebooklm: {
+    free:{ok:true, cond:"Fully usable free with a personal Google account: 100 notebooks, 50 sources each, 50 chats/day, 3 Audio/Video Overviews/day, Deep Research 10/month. 500K-word/200MB per-source cap. Data not used for training."},
+    gcp:{ok:true, cond:"NotebookLM Enterprise / via Gemini Enterprise plans (admin-assigned): \u201C5X or more\u201D artifact limits, Advanced Sharing, VPC-SC + IAM; data stays in your GCP project with data-region compliance.",
+      caveat:"The 500K-word / 200MB per-source cap is a NotebookLM product limit, not a GCP quota — it applies on all tiers, and no official page says Enterprise raises it (Enterprise's \u201C5X\u201D applies to artifact limits)."}},
+  aistudio: {
+    free:{ok:true, cond:"Studio itself is free; free API key needs no billing. Note: prompts/outputs may be used to improve products, incl. human review (EEA/CH/UK excepted) — best for non-sensitive work. No Veo/Lyria/image-gen/Batch/caching/Computer Use; free-tier rate caps."},
+    gcp:{ok:true, cond:"Two steps up: (1) link a Cloud Billing account to the key's project — data terms flip to no-training/DPA, unlocks media gen + Batch + caching, spend-tier limits; (2) full Vertex / Agent Platform — IAM/service accounts (no API keys), regions, VPC-SC/CMEK, Provisioned Throughput.",
+      caveat:"No fine-tuning on the Gemini Developer API since May 2025 — supervised tuning is only on the Vertex/Agent Platform side. AI Studio-tuned models must be retrained when migrating."}},
+  agmanager: {
+    free:{ok:true, cond:"Free with a Google account, but lowest quotas on a WEEKLY refresh (paid = 5-hour), metered by agent \u201Cwork done\u201D. Note: interaction data is used to improve products unless you opt out in settings."},
+    gcp:{ok:true, cond:"Supported via GCP project (Agent Platform): Cloud OAuth, enable aiplatform.googleapis.com, roles/aiplatform.user, set project ID + region. Billed to the project; no training on code/prompts (automatic carve-out), Cloud DPA."}},
+  agcli: {
+    free:{ok:true, cond:"Free in public preview with Google sign-in (post-preview pricing not yet announced). Same weekly-refresh individual quotas and training-unless-opt-out data terms as the desktop app."},
+    gcp:{ok:true, cond:"Supported via GCP project (Agent Platform) — same Cloud OAuth setup as the desktop app; inference inside your cloud boundary, billed to the project, training carve-out automatic."}},
+  agide: {
+    free:{ok:true, cond:"Free with a Google account (same individual quotas/data terms as other surfaces; free tier cut sharply March 2026)."},
+    gcp:{ok:false, cond:"Not supported for enterprise: the GCP/Agent Platform route covers only the Antigravity 2.0 desktop app and CLI — the classic IDE is excluded (antigravity.google/docs/enterprise)."}},
+  genterprise: {
+    free:{ok:false, cond:"No free tier — 30-day Business-edition trial only. Paid per-seat licensing (Business / Standard / Plus editions)."},
+    gcp:{ok:true, cond:"This IS the GCP product: per-seat licenses (Business / Standard / Plus editions), admin-assigned via your Google Cloud org. Governance: Agent Gateway/Registry, VPC-SC, IAM; data under Cloud DPA. (Pro-code agent development is the separate Agent Platform.)"}},
+  gworkspace: {
+    free:{ok:false, cond:"Not free — bundled only with paid Workspace Business/Enterprise editions (Starter gets a limited subset: Gmail + Vids side panel, basic app access)."},
+    gcp:{ok:false, cond:"Not a GCP product — licensed and governed through Google Workspace (Admin console), not a GCP project. For GCP-governed AI, use Gemini Enterprise; the two share connectors to Workspace data."}},
+};
+
+/* cards */
+let tierMode = "all";
+const cardHTML = p => `
+  <div class="card" id="card-${p.id}" style="--accent:${color(p)}">
+    <h3><span class="dot" style="background:${color(p)}"></span>${p.name}</h3>
+    <div class="tag">${p.tag}</div>
+    <p class="bestfor">Best for: ${p.users}</p>
+    <p class="one">${p.one}</p>
+    <ul>${p.feats.map(f=>`<li><b>${f[0]}.</b> ${f[1]}</li>`).join("")}</ul>
+    <div class="meta">
+      <div><span class="k">Cost:</span> ${p.price}</div>
+      <div><span class="k">Data:</span> ${p.privacy}</div>
+    </div>
+    ${tierMode!=="all" ? `<div class="tiercond"><b>${tierMode==="free"?"Free-tier conditions":"GCP / enterprise conditions"}</b>${TIER_INFO[p.id][tierMode].cond}</div>` : ""}
+  </div>`;
+
+function renderCards(){
+  const list = tierMode==="all" ? PRODUCTS : PRODUCTS.filter(p=>TIER_INFO[p.id][tierMode].ok);
+  const excluded = tierMode==="all" ? [] : PRODUCTS.filter(p=>!TIER_INFO[p.id][tierMode].ok);
+  $("#cards").innerHTML = list.map(cardHTML).join("") +
+    (excluded.length ? `<div class="card" style="--accent:var(--baseline)">
+      <h3>Not available on this tier</h3>
+      <ul style="margin-top:10px;">${excluded.map(p=>`<li style="margin-bottom:8px;"><span class="chip"><span class="dot" style="background:${color(p)}"></span>${p.name}</span><br><span style="font-size:12.5px;">${TIER_INFO[p.id][tierMode].cond}</span></li>`).join("")}</ul>
+    </div>` : "");
+  $("#tierNote").textContent = tierMode==="free" ? `${list.length} of ${PRODUCTS.length} products usable at $0`
+    : tierMode==="gcp" ? `${list.length} of ${PRODUCTS.length} products with a GCP-project / enterprise path` : "";
+}
+renderCards();
+$("#tierSeg").addEventListener("click", e=>{
+  const b = e.target.closest("button"); if(!b) return;
+  tierMode = b.dataset.tier;
+  document.querySelectorAll("#tierSeg button").forEach(x=>x.classList.toggle("sel", x===b));
+  renderCards();
+});
+
+/* matrix */
+const mt = $("#matrixTable");
+mt.innerHTML = `<thead><tr><th style="text-align:left"></th>${MATRIX_COLS.map(p=>`<th>${chip(p,true)}</th>`).join("")}</tr></thead>
+<tbody>${CAPS.map(([cap,row])=>`<tr><td class="cap">${cap}</td>${MATRIX_COLS.map(p=>{
+  const [lvl,note]=row[p.id]; const [label,cls]=LVL[lvl];
+  return `<td class="cell" data-name="${p.name}" data-lvl="${label}" data-note="${(note||"").replace(/"/g,'&quot;')}"><span class="lvl ${cls}">${label}</span></td>`;
+}).join("")}</tr>`).join("")}</tbody>`;
+
+const tip = $("#tooltip");
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+mt.addEventListener("mousemove", e=>{
+  const c = e.target.closest("[data-name]");
+  if(!c){ tip.style.display="none"; return; }
+  const parts = c.dataset.note ? c.dataset.note.split(/;\s+/) : [];
+  tip.innerHTML = `<div class="tip-head">${esc(c.dataset.name)} — ${esc(c.dataset.lvl)}</div>` +
+    (parts.length > 1
+      ? `<ul class="tip-list">${parts.map(n=>`<li>${esc(n)}</li>`).join("")}</ul>`
+      : parts.length === 1 ? `<div class="tip-body">${esc(parts[0])}</div>` : "");
+  tip.style.display="block";
+  const x = Math.min(e.clientX+14, innerWidth-340), y = Math.min(e.clientY+16, innerHeight-120);
+  tip.style.left=x+"px"; tip.style.top=y+"px";
+});
+mt.addEventListener("mouseleave", ()=> tip.style.display="none");
+
+/* helper */
+const answers = {};
+$("#questions").innerHTML = QUESTIONS.map(q=>`
+  <div class="q"><h4>${q.title}</h4><div class="opts" data-q="${q.id}">
+    ${q.opts.map((o,i)=>`<button data-i="${i}">${o[0]}</button>`).join("")}
+  </div></div>`).join("");
+
+$("#questions").addEventListener("click", e=>{
+  const b = e.target.closest("button"); if(!b) return;
+  const qid = b.parentElement.dataset.q, i = +b.dataset.i;
+  if(answers[qid]===i){ delete answers[qid]; b.classList.remove("sel"); }
+  else {
+    answers[qid]=i;
+    [...b.parentElement.children].forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel");
+  }
+  renderResults();
+});
+$("#resetBtn").onclick = ()=>{ Object.keys(answers).forEach(k=>delete answers[k]);
+  document.querySelectorAll(".opts button").forEach(b=>b.classList.remove("sel")); renderResults(); };
+
+function renderResults(){
+  const box = $("#results");
+  const picked = Object.keys(answers);
+  if(!picked.length){ box.innerHTML = `<p class="placeholder">Pick at least one answer on the left — products are ranked here as you go.</p>`; return; }
+  const scores = Object.fromEntries(PRODUCTS.map(p=>[p.id,0]));
+  for(const q of QUESTIONS){
+    if(!(q.id in answers)) continue;
+    const w = q.opts[answers[q.id]][1];
+    for(const [pid,v] of Object.entries(w)) scores[pid]+=v;
+  }
+  const ranked = PRODUCTS.map(p=>({p,s:scores[p.id]})).sort((a,b)=>b.s-a.s).filter(r=>r.s>0).slice(0,4);
+  if(!ranked.length){ box.innerHTML = `<p class="placeholder">No strong match for that combination — consider relaxing a constraint (e.g. data sensitivity).</p>`; return; }
+  const max = ranked[0].s;
+  box.innerHTML = `<h3 style="font-size:15px;margin-bottom:12px;">Recommendation <span style="font-weight:400;font-size:12px;color:var(--ink-3);">· click a product for details</span></h3>` + ranked.map((r,i)=>`
+    <div class="rec ${i===0?"top":""}" data-pid="${r.p.id}" style="--accent:${color(r.p)};cursor:pointer;" title="View ${r.p.name} details">
+      <span class="score">match ${Math.round(100*r.s/max)}%</span>
+      ${i===0?`<div class="rank">Best fit</div>`:""}
+      <h4><span class="dot" style="background:${color(r.p)}"></span>${r.p.name}</h4>
+      <p>${WHY[r.p.id]}</p>
+    </div>`).join("") +
+    ((answers.data===0)?`<p style="font-size:12.5px;color:var(--ink-2);margin-top:8px;">For confidential data, use paid/enterprise tiers — they include Data Processing Addendum coverage and your data is not used for model training.</p>`:"");
+}
+
+/* scenarios */
+$("#scenList").innerHTML = SCENARIOS.map(([t,pid,body])=>{
+  const p = byId[pid];
+  return `<details class="scen"><summary><span>${t}</span>${chip(p,true)}</summary><div class="body">${body}</div></details>`;
+}).join("");
+
+/* tabs + theme */
+function showView(name){
+  document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x.dataset.view===name));
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active", v.id==="view-"+name));
+}
+$("#tabs").addEventListener("click", e=>{
+  const b = e.target.closest("button"); if(!b) return;
+  showView(b.dataset.view);
+});
+
+/* jump to a product card with a highlight */
+function gotoProduct(pid){
+  if(tierMode!=="all" && !TIER_INFO[pid][tierMode].ok){ tierMode="all";
+    document.querySelectorAll("#tierSeg button").forEach(x=>x.classList.toggle("sel", x.dataset.tier==="all"));
+    renderCards();
+  }
+  showView("products");
+  const card = document.getElementById("card-"+pid);
+  if(card){
+    card.scrollIntoView({behavior:"smooth", block:"start"});
+    card.classList.add("spotlight");
+    setTimeout(()=>card.classList.remove("spotlight"), 2200);
+  }
+}
+$("#results").addEventListener("click", e=>{
+  const rec = e.target.closest(".rec[data-pid]"); if(!rec) return;
+  gotoProduct(rec.dataset.pid);
+});
+
+$("#themeBtn").onclick = ()=>{
+  const r = document.documentElement;
+  const cur = r.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  r.dataset.theme = cur==="dark" ? "light" : "dark";
+};
+</script>
+</body>
+</html>
