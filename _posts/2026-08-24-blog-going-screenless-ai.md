@@ -13,7 +13,11 @@ excerpt: "A tinkering project to reduce screen time by moving everyday personal 
 permalink: "blog/going-screenless-using-ai/"
 header:
   overlay_color: "#333"
+  og_image: /assets/blogposts/bloginvest/going-screenless-ai.png
+  teaser: /assets/blogposts/bloginvest/going-screenless-ai.png
 ---
+
+![Going Screenless Using AI: An Experiment in Minimizing Screen Time](/assets/blogposts/bloginvest/going-screenless-ai.png)
 
 Every now and then, I think we all need to do a project purely for the sake of it. No outcome, no ROI—just because you can. This is one of those projects.
 
