@@ -77,3 +77,5 @@ If you think this is totally absurd, I completely understand. But hey, atleast y
 ---
 
 Originally published on [LinkedIn](https://www.linkedin.com/pulse/going-screenless-using-ai-experiment-minimizing-screen-anand-kumar-v30ec/).
+
+Project source code and setup notes: [Going Screenless Using AI on GitHub](https://github.com/ranand12/going-screenless).
