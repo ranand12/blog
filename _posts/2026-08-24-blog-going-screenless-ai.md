@@ -21,6 +21,11 @@ header:
 
 Every now and then, I think we all need to do a project purely for the sake of it. No outcome, no ROI—just because you can. This is one of those projects.
 
+<video controls playsinline preload="metadata" poster="/assets/blogposts/bloginvest/going-screenless-ai.png" style="display:block;width:100%;max-width:720px;height:auto;margin:1.5rem auto" aria-label="Screenless AI experiment video">
+  <source src="/assets/blogposts/bloginvest/screenless-ai-demo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 I've been trying to cut down my screen time for a while now. I've failed more than once. If you're already thinking, "Isn't this completely pointless and a complete waste of time?" - yeah, probably. But I'm doing this purely because it's fun and its the sort of thing that quenches the tinkerer thirst in me :).
 
 If DIY just for the sake of it isn't your thing, I respect that—feel free to bail now and reclaim those five minutes.
@@ -35,7 +40,11 @@ I created a page with the key findings if you are interested in that kind of stu
 
 I've tried all the usual tricks. Locking the phone in a physical box.
 
+![The physical phone lockbox used in the screen-time experiment](/assets/blogposts/bloginvest/phone-lockbox.jpg)
+
 Turning my phone screen to grayscale + assistive access.
+
+![Phone accessibility settings used to reduce screen appeal](/assets/blogposts/bloginvest/phone-screen-settings.jpg)
 
 Using NFC Tags to screenlock ([Foqos](https://www.foqos.app)). Moving the TV out of the living room and down to the basement so watching anything requires a deliberate trek downstairs. Each one of them helped to some extent but the pull of the screen is just too strong (atleast for me) when almost your daily workflows run through it. So the plan became: swap my daily workflows for a pure audio interface. And honestly, what better way to do it than with AI :)
 
@@ -44,6 +53,8 @@ When I sat down and really thought about it, my phone usage came down to three t
 ### The Setup
 
 Ok so what did I do? I set up a Raspberry Pi connected to a microphone running Gemini Live for real-time, conversational voice input which has access to a agent (the brain is the hermes in this case powered by Gemini 3.7 flash) ([Hermes agent](https://github.com/NousResearch/hermes-agent)).
+
+![Architecture of the Raspberry Pi, Gemini Live voice interface, and Hermes agent](/assets/blogposts/bloginvest/voice-agent-architecture.png)
 
 > I would not not recommend trying this if you are unsure of how things work under the hood. This is good for personal experimentation only. Running an agent like Hermes requires proper security considerations. I'm doing this in a sandbox environment with all the security controls in place. Please do your due diligence before you try something similar on your own.
 
