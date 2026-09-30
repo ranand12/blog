@@ -14,11 +14,12 @@ layout: default
 
   {% if site.tools.size > 0 %}
     <div class="tools-grid">
-      {% for tool in site.tools %}
+      {% assign projects = site.tools | sort: "published" | reverse %}
+      {% for tool in projects %}
         <div class="tool-card">
           <div class="tool-name">{{ tool.name }}</div>
-          {% if tool.role %}
-            <div class="tool-role">{{ tool.role }}</div>
+          {% if tool.published %}
+            <div class="tool-role"><time datetime="{{ tool.published | date: '%Y-%m-%d' }}">{{ tool.published | date: "%B %-d, %Y" }}</time></div>
           {% endif %}
           {% if tool.description %}
             <div class="tool-desc">{{ tool.description }}</div>

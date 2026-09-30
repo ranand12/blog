@@ -1,6 +1,6 @@
 ---
 layout: tools
-title: "Tools"
-subtitle: "projects and tools I've built or contributed to."
+title: "Projects"
+subtitle: "things I've built or contributed to."
 permalink: /tools/
 ---

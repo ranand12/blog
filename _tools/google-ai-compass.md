@@ -1,6 +1,6 @@
 ---
 name: "Google AI Compass"
-role: "Creator"
+published: "2026-07-16"
 description: "Interactive comparison of 7 Google AI products — decision helper, feature matrix, and scenario guide to pick the right tool for the job."
 link: "/tools/google-ai-compass/"
 source: "https://github.com/ranand12/google-ai-compass"
