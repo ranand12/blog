@@ -1,25 +1,89 @@
 ---
 layout: default
-title: "Pocket AI: An E-Ink Voice Assistant for Your Local AI Agent"
+title: "Going Screenless, Again: A Tiny E Ink AI Assistant for My Pocket"
 permalink: /tools/pocket-ai-eink/
-description: "Build a distraction-free ESP32-S3 pocket voice assistant with an e-paper display and a self-hosted AI agent backend."
+description: "A pocket E Ink assistant with Gemini Live conversations, Hermes workflows, quiet completion notifications, and real light sleep."
+image: /assets/images/pocket-ai-eink/ready-attention-cover-highlighted.png
 ---
+<style>
+  .pocket-ai-project { max-width: 760px; margin: 0 auto; }
+  .pocket-ai-project .pocket-ai-figure { margin: 1.5rem 0 2rem; }
+  .pocket-ai-project .pocket-ai-figure img { width: 100%; height: auto; margin: 0; }
+  .pocket-ai-project figcaption { margin-top: .5rem; color: var(--text-muted); font-size: 13px; line-height: 1.5; text-align: center; }
+</style>
 <div class="post-nav"><a href="{{ '/tools/' | relative_url }}" class="back-link">&larr; projects</a></div>
-<article class="post">
+<article class="post pocket-ai-project">
   <header class="post-header"><h1 class="post-title">{{ page.title }}</h1></header>
   <div class="post-content">
-    <p>A pocket voice assistant without the distractions of a phone. Ask a question, delegate a task, and check its status on a quiet e-paper display.</p>
-    <img src="{{ '/assets/images/pocket-ai-eink.png' | relative_url }}" alt="Pocket AI device with a white enclosure and an e-paper display showing connection and battery status" style="display:block;width:100%;max-width:460px;height:auto;margin:2rem auto;" loading="lazy">
-    <h2>What it does</h2>
-    <p>The ESP32-S3 handles microphone and speaker audio, an e-paper status display, battery indication, light sleep, and backup Wi-Fi. Gemini Live provides voice conversations. A separate AI agent backend handles delegated tasks and sends completion notifications back to the device.</p>
-    <p>The firmware includes acoustic echo cancellation and an interchangeable backend interface, so you can connect an agent through a compatible API or adapter.</p>
-    <h2>Where local AI fits</h2>
-    <p>Your Hermes agent can run on your own computer or server and use local AI models. The ESP32 is the voice interface; it does not run the language model. This version uses cloud-based Gemini Live for voice conversations, so the complete setup is not fully offline.</p>
-    <h2>Live demo</h2>
-    <p>Watch the device in action in this short video.</p>
+    <figure class="pocket-ai-figure">
+      <img src="{{ '/assets/images/pocket-ai-eink/ready-attention-cover-highlighted.png' | relative_url }}" alt="Ready state — firmware-based screen composite." width="1672" height="941" loading="eager">
+      <figcaption>Ready state — firmware-based screen composite.</figcaption>
+    </figure>
+    <p>I wanted an AI assistant without another distracting screen.</p>
+    <p>So, I built a small, quiet E ink device. E Ink. No feed to refresh. No apps to browse. Just enough information to tell me what’s happening, and then leave me alone but with the power of an agent behind.</p>
+    <p>My <a href="https://www.linkedin.com/pulse/going-screenless-using-ai-experiment-minimizing-screen-anand-kumar-v30ec/">earlier screenless experiment</a> used Gemini Live and a Hermes agent to handle everyday tasks through voice using raspberry Pi. The one thing that made it limited was it was wired in and lets face it - the form factor wasn&#x27;t great :).</p>
+    <p>This is the next version: a tiny wireless device I can carry in my pocket.</p>
+    <p>The question is still the same: can I keep the useful parts of technology while spending less time looking at it?</p>
+    <h2>What can it do?</h2>
+    <p>Press a button and talk to it. Ask a question, post a thought to X, create slides and email them to me, or find a coloring page and print it on my home printer.</p>
+    <p>Gemini Live handles the conversation. Hermes handles the tasks that need my tools and workflows. And I don’t have to stand there waiting.</p>
     <p><a href="https://www.youtube.com/shorts/2kSqseHDv_8" target="_blank" rel="noopener">Watch the live demo on YouTube &rarr;</a></p>
-    <h2>Source code</h2>
-    <p>The repository includes the ESP32-S3 firmware, build guide, setup instructions, privacy notes, and agent backend interface documentation. The backend service is configured separately and is not included in the firmware repository.</p>
-    <p><a href="https://github.com/ranand12/gemini-charm-esp32-eink" target="_blank" rel="noopener">View source code and build guides on GitHub &rarr;</a></p>
+    <h2>Gemini Live: just talk to it</h2>
+    <figure class="pocket-ai-figure">
+      <img src="{{ '/assets/images/pocket-ai-eink/listening-setting.png' | relative_url }}" alt="Listening: speak naturally to Gemini Live. Firmware-based screen composite." width="1536" height="1024" loading="lazy">
+      <figcaption>Listening: speak naturally to Gemini Live. Firmware-based screen composite.</figcaption>
+    </figure>
+    <p>The conversational side uses Gemini Live. I can speak naturally instead of typing a prompt into an app.</p>
+    <p>In this setup, Google Search is enabled too. In the demo, I ask for Google’s latest stock price while another task is being processed. The useful part is being able to ask for current information without opening a browser.</p>
+    <h2>It talks back—and I can keep talking</h2>
+    <figure class="pocket-ai-figure">
+      <img src="{{ '/assets/images/pocket-ai-eink/speaking-setting.png' | relative_url }}" alt="Speaking: hear the response while Hermes handles background tasks. Firmware-based screen composite." width="1536" height="1024" loading="lazy">
+      <figcaption>Speaking: hear the response while Hermes handles background tasks. Firmware-based screen composite.</figcaption>
+    </figure>
+    <p>Listening and speaking have their own screen states. The little face changes expression, so I can tell what the device is doing at a glance.</p>
+    <p>I can also continue having a live conversation while Hermes works in the background. Asking it to make a presentation doesn’t mean I have to wait before asking my next question.</p>
+    <h2>Hermes: where things actually get done</h2>
+    <figure class="pocket-ai-figure">
+      <img src="{{ '/assets/images/pocket-ai-eink/ready-setting.png' | relative_url }}" alt="Ready: Gemini Live connects voice requests to my Hermes workflows. Firmware-based screen composite." width="1536" height="1024" loading="lazy">
+      <figcaption>Ready: Gemini Live connects voice requests to my Hermes workflows. Firmware-based screen composite.</figcaption>
+    </figure>
+    <p>Gemini Live hands tool-based requests to my Hermes agent, which is connected to my tools, connectors, skills, and home network.</p>
+    <p>For example: “Create five slides on AI agents and send them to my email.”</p>
+    <p>Hermes researches the topic, creates the slides using my existing slide creation skills, uploads the result, and emails me the link. When I open it, the presentation follows the style I already use.</p>
+    <p>That’s the useful part for me: starting an existing workflow with my voice.</p>
+    <h2>Post a thought to X</h2>
+    <p>In the demo, I ask it to post a thought about AI requiring less of our attention.</p>
+    <p>It acknowledges the request and hands it to the agent. When the task finishes, I can hear the completion result, then check the published post.</p>
+    <h2>Ask, then carry on</h2>
+    <figure class="pocket-ai-figure">
+      <img src="{{ '/assets/images/pocket-ai-eink/task-complete-setting.png' | relative_url }}" alt="Task complete: the bell signals a result is ready to hear. Firmware-based screen composite." width="1536" height="1024" loading="lazy">
+      <figcaption>Task complete: the bell signals a result is ready to hear. Firmware-based screen composite.</figcaption>
+    </figure>
+    <p>Longer tasks run asynchronously. I can keep talking to Gemini Live, or end the conversation while the agent continues working.</p>
+    <p>The live WebSocket connection doesn’t need to stay open just because a background task is still running. Keeping those separate avoids holding an unnecessary live session while waiting.</p>
+    <p>When a result arrives, a bell appears above the home character. I can press BOOT to start a conversation and hear the result.</p>
+    <p>A small visual signal is enough to tell me something is ready.</p>
+    <h2>A voice request that turns into something on paper</h2>
+    <p>“Look for a cute coloring page picture and print it out on my printer.”</p>
+    <p>Because Hermes is connected to my home network, it can handle finding the picture and sending it to my printer.</p>
+    <p>A little later, there’s an actual coloring page on paper. That was probably my favorite part of the demo. :)</p>
+    <h2>The sleep screen actually means sleep</h2>
+    <figure class="pocket-ai-figure">
+      <img src="{{ '/assets/images/pocket-ai-eink/light-sleep-setting.png' | relative_url }}" alt="Light sleep: Wi-Fi and audio turn off; press BOOT to wake. Firmware-based screen composite." width="1536" height="1024" loading="lazy">
+      <figcaption>Light sleep: Wi-Fi and audio turn off; press BOOT to wake. Firmware-based screen composite.</figcaption>
+    </figure>
+    <p>E Ink can retain the image without continuously powering the display. But a sleeping character alone wouldn’t tell us much about the rest of the device.</p>
+    <p>In this firmware, idle light sleep closes the microphone and speaker, turns Wi-Fi off, puts the display into sleep, and then enters ESP32 light sleep. Pressing BOOT wakes it and the device reconnects.</p>
+    <p>The firmware checks for pending agent work before entering idle sleep. While asleep, Wi-Fi is off, so it isn’t receiving new network notifications.</p>
+    <p>I haven’t measured battery life yet. But the power-saving behavior is real, rather than just a different picture on the screen.</p>
+    <h2>Why E Ink?</h2>
+    <p>I wanted something that could sit quietly until I needed it. No glowing display. No scrolling. No stream of unrelated notifications competing for my attention.</p>
+    <p>Gemini Live and the remote agent still need network access. But around the house, this gives me a deliberate way to reach the assistant without picking up my phone.</p>
+    <p>Could I do many of these things from a phone? Yes. But I know what happens when I pick it up for one small thing. There’s usually a second thing waiting. And a third. :)</p>
+    <h2>Build your own version</h2>
+    <p>The <a href="https://github.com/ranand12/gemini-charm-esp32-eink">source code and complete build guide are on GitHub</a>.</p>
+    <p>I chose E Ink because a quiet display was the point. You could use another ESP32 device, including one with an AMOLED display, and build on the same idea.</p>
+    <p>For me, the interesting question is how little interface I need before the assistant becomes useful.</p>
+    <p><strong>AI should require less of our attention, not more.</strong></p>
   </div>
 </article>
