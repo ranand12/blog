@@ -1,0 +1,25 @@
+---
+layout: default
+title: "Pocket AI: An E-Ink Voice Assistant for Your Local AI Agent"
+permalink: /tools/pocket-ai-eink/
+description: "Build a distraction-free ESP32-S3 pocket voice assistant with an e-paper display and a self-hosted AI agent backend."
+---
+<div class="post-nav"><a href="{{ '/tools/' | relative_url }}" class="back-link">&larr; projects</a></div>
+<article class="post">
+  <header class="post-header"><h1 class="post-title">{{ page.title }}</h1></header>
+  <div class="post-content">
+    <p>A pocket voice assistant without the distractions of a phone. Ask a question, delegate a task, and check its status on a quiet e-paper display.</p>
+    <img src="{{ '/assets/images/pocket-ai-eink.png' | relative_url }}" alt="Pocket AI device with a white enclosure and an e-paper display showing connection and battery status" style="display:block;width:100%;max-width:460px;height:auto;margin:2rem auto;" loading="lazy">
+    <h2>What it does</h2>
+    <p>The ESP32-S3 handles microphone and speaker audio, an e-paper status display, battery indication, light sleep, and backup Wi-Fi. Gemini Live provides voice conversations. A separate AI agent backend handles delegated tasks and sends completion notifications back to the device.</p>
+    <p>The firmware includes acoustic echo cancellation and an interchangeable backend interface, so you can connect an agent through a compatible API or adapter.</p>
+    <h2>Where local AI fits</h2>
+    <p>Your Hermes agent can run on your own computer or server and use local AI models. The ESP32 is the voice interface; it does not run the language model. This version uses cloud-based Gemini Live for voice conversations, so the complete setup is not fully offline.</p>
+    <h2>Live demo</h2>
+    <p>Watch the device in action in this short video.</p>
+    <p><a href="https://www.youtube.com/shorts/2kSqseHDv_8" target="_blank" rel="noopener">Watch the live demo on YouTube &rarr;</a></p>
+    <h2>Source code</h2>
+    <p>The repository includes the ESP32-S3 firmware, build guide, setup instructions, privacy notes, and agent backend interface documentation. The backend service is configured separately and is not included in the firmware repository.</p>
+    <p><a href="https://github.com/ranand12/gemini-charm-esp32-eink" target="_blank" rel="noopener">View source code and build guides on GitHub &rarr;</a></p>
+  </div>
+</article>
