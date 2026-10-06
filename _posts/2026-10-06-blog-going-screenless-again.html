@@ -1,27 +1,37 @@
 ---
-layout: default
 title: "A Tiny E Ink AI Assistant for My Pocket (Going Screenless, Again)"
-permalink: /tools/pocket-ai-eink/
+date: 2026-10-06
+layout: single
+categories:
+  - blog
+tags:
+  - ai
+  - personal-projects
+  - screen-time
+  - gemini-live
+  - hermes
 description: "A pocket E Ink assistant with Gemini Live conversations, Hermes workflows, quiet completion notifications, and real light sleep."
+excerpt: "AI should require less of our attention, not more. A tiny wireless E Ink device brings Gemini Live and my Hermes workflows into my pocket."
+permalink: /blog/going-screenless-again/
 image: /assets/images/pocket-ai-eink/ready-attention-cover-highlighted.png
+header:
+  og_image: /assets/images/pocket-ai-eink/ready-attention-cover-highlighted.png
+  teaser: /assets/images/pocket-ai-eink/ready-attention-cover-highlighted.png
 ---
+
 <style>
-  .pocket-ai-project { max-width: 760px; margin: 0 auto; }
-  .pocket-ai-project .pocket-ai-figure { margin: 1.5rem 0 2rem; }
-  .pocket-ai-project .pocket-ai-figure img { width: 100%; height: auto; margin: 0; }
-  .pocket-ai-project figcaption { margin-top: .5rem; color: var(--text-muted); font-size: 13px; line-height: 1.5; text-align: center; }
+  .post-content .pocket-ai-figure { margin: 1.5rem 0 2rem; }
+  .post-content .pocket-ai-figure img { width: 100%; height: auto; margin: 0; }
+  .post-content .pocket-ai-figure figcaption { margin-top: .5rem; color: var(--text-muted); font-size: 13px; line-height: 1.5; text-align: center; }
 </style>
-<div class="post-nav"><a href="{{ '/tools/' | relative_url }}" class="back-link">&larr; projects</a></div>
-<article class="post pocket-ai-project">
-  <header class="post-header"><h1 class="post-title">{{ page.title }}</h1></header>
-  <div class="post-content">
+
     <figure class="pocket-ai-figure">
       <img src="{{ '/assets/images/pocket-ai-eink/ready-attention-cover-highlighted.png' | relative_url }}" alt="Ready state — firmware-based screen composite." width="1672" height="941" loading="eager">
       <figcaption>Ready state — firmware-based screen composite.</figcaption>
     </figure>
     <p>I wanted an AI assistant without another distracting screen.</p>
     <p>So, I built a small, quiet E ink device. E Ink. No feed to refresh. No apps to browse. Just enough information to tell me what’s happening, and then leave me alone but with the power of an agent behind it.</p>
-    <p>My <a href="https://www.linkedin.com/pulse/going-screenless-using-ai-experiment-minimizing-screen-anand-kumar-v30ec/">earlier screenless experiment</a> used Gemini Live and a Hermes agent to handle everyday tasks through voice using raspberry Pi. The one thing that made it limited was it was wired in and lets face it - the form factor wasn&#x27;t great :).</p>
+    <p>My <a href="{{ '/blog/going-screenless-using-ai/' | relative_url }}">earlier screenless experiment</a> used Gemini Live and a Hermes agent to handle everyday tasks through voice using raspberry Pi. The one thing that made it limited was it was wired in and lets face it - the form factor wasn&#x27;t great :).</p>
     <p>This is the next version: a tiny wireless device I can carry in my pocket.</p>
     <p>The question is still the same: can I keep the useful parts of technology while spending less time looking at it?</p>
     <h2>What can it do?</h2>
@@ -85,5 +95,6 @@ image: /assets/images/pocket-ai-eink/ready-attention-cover-highlighted.png
     <p>I chose E Ink because a quiet display was the point. You could use another ESP32 device, including one with an AMOLED display, and build on the same idea.</p>
     <p>For me, the interesting question is how little interface I need before the assistant becomes useful.</p>
     <p><strong>AI should require less of our attention, not more.</strong></p>
-  </div>
-</article>
+
+<hr>
+<p>Originally published on <a href="https://www.linkedin.com/pulse/going-screenless-again-tiny-e-ink-ai-assistant-my-pocket-anand-kumar-uvv1c/">LinkedIn</a>.</p>
