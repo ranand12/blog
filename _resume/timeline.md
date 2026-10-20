@@ -1,10 +1,16 @@
 ---
 ---
 
+
 ## 2026
 
-### [work] customer engineer · google
+### [work] role · organization
+- an achievement or milestone.
 
-helping customers understand and use google cloud.
+### [life] a personal milestone
+a short description.
+
+### [outside-of-work] a project or hobby
+a short description.
 
 - sharing cloud concepts in plain english through [cloud-monk](https://www.cloud-monk.com/).
