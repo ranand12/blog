@@ -826,5 +826,9 @@ main {
 
   .nav {
     margin-bottom: 24px;
+    gap: 12px;
   }
+
+  .nav-right { gap: 12px; }
+  .nav-kbd { display: none; }
 }
