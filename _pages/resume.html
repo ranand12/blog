@@ -1,0 +1,30 @@
+---
+layout: default
+title: resume
+permalink: /resume/
+description: "a living resume — work, life, and outside of work."
+---
+<link rel="stylesheet" href="{{ '/assets/css/resume.css' | relative_url }}">
+<div class="resume">
+  <header class="resume-header">
+    <p class="resume-eyebrow">living resume</p>
+    <h1>{{ site.author.name | escape }}</h1>
+    <p class="resume-intro">a year-by-year record of work, life, and the things in between.</p>
+    <div class="resume-contact"><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a><span> · </span><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}/">linkedin</a><span> · </span><a href="https://github.com/{{ site.author.github }}">github</a></div>
+  </header>
+  <div class="resume-controls">
+    <fieldset class="resume-filters">
+      <legend>show in resume</legend>
+      <label><input type="checkbox" value="work" checked role="switch"><span class="resume-switch" aria-hidden="true"></span>work</label>
+      <label><input type="checkbox" value="life" role="switch"><span class="resume-switch" aria-hidden="true"></span>life</label>
+      <label><input type="checkbox" value="outside-of-work" role="switch"><span class="resume-switch" aria-hidden="true"></span>outside of work</label>
+    </fieldset>
+    <button type="button" class="resume-export" disabled>export pdf <span aria-hidden="true">↗</span></button>
+    <p class="resume-export-hint">export includes your selected categories. choose “save as pdf” in the print dialog.</p>
+  </div>
+  <p class="resume-status" role="status" aria-live="polite"></p>
+  <div class="resume-timeline"></div>
+  <noscript><p>enable javascript to filter and export this resume.</p></noscript>
+  <template id="resume-source">{% for record in site.resume %}{{ record.content | markdownify }}{% endfor %}</template>
+</div>
+<script src="{{ '/assets/js/resume.js' | relative_url }}" defer></script>

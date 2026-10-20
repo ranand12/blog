@@ -38,6 +38,8 @@ encoding: "utf-8"
 
 # Collections
 collections:
+  resume:
+    output: false
   tools:
     output: false
 
