@@ -4,557 +4,669 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Google AI Compass</title>
-<meta name="description" content="Find the right Google AI tool for the job">
+<meta name="description" content="Six Google AI products, one table — find the right Google AI tool for the job.">
 <meta property="og:title" content="Google AI Compass">
-<meta property="og:description" content="Find the right Google AI tool for the job">
+<meta property="og:description" content="Six Google AI products, one table — find the right tool for the job.">
 <meta property="og:image" content="https://www.cloud-monk.com/tools/google-ai-compass/og-image.png">
 <meta property="og:url" content="https://www.cloud-monk.com/tools/google-ai-compass/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="cloud-monk.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Google AI Compass">
-<meta name="twitter:description" content="Find the right Google AI tool for the job">
+<meta name="twitter:description" content="Six Google AI products, one table — find the right tool for the job.">
 <meta name="twitter:image" content="https://www.cloud-monk.com/tools/google-ai-compass/og-image.png">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    color-scheme: light;
-    --surface-1: #fcfcfb; --page: #f9f9f7;
-    --ink-1: #0b0b0b; --ink-2: #52514e; --ink-3: #898781;
-    --grid: #e1e0d9; --baseline: #c3c2b7;
-    --border: rgba(11,11,11,0.10);
-    --good: #0ca30c; --warning: #fab219;
-    --p-gnotebook: #2a78d6; --p-aistudio: #008300; --p-agmanager: #e87ba4;
-    --p-agcli: #eda100; --p-agide: #1baf7a; --p-genterprise: #eb6834; --p-gworkspace: #4a3aa7;
+:root{
+  color-scheme:light;
+  --blue:#4285F4;--red:#EA4335;--yellow:#FBBC04;--green:#34A853;
+  --page:#fff;--surface:#F8F9FA;--raised:#fff;
+  --text:#202124;--secondary:#5F6368;--muted:#80868B;
+  --border:#DADCE0;--hair:#ECEDEF;
+  --core-bg:#1E8E3E;--core-fg:#fff;
+  --yes-bg:#E6F4EA;--yes-fg:#137333;
+  --part-bg:#FEF7E0;--part-fg:#8A5A00;
+  --hl:#E8F0FE;--accent:#1967D2;
+  --font:'Google Sans',Arial,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme:dark;
+    --page:#131314;--surface:#1E1F20;--raised:#232425;
+    --text:#E8EAED;--secondary:#BDC1C6;--muted:#9AA0A6;
+    --border:#3C4043;--hair:#2D2F31;
+    --core-bg:#34A853;--core-fg:#0B1F10;
+    --yes-bg:#16301E;--yes-fg:#81C995;
+    --part-bg:#33290F;--part-fg:#FDD663;
+    --hl:#1C2B41;--accent:#8AB4F8;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:where(:not([data-theme="light"])) {
-      color-scheme: dark;
-      --surface-1: #1a1a19; --page: #0d0d0d;
-      --ink-1: #ffffff; --ink-2: #c3c2b7; --ink-3: #898781;
-      --grid: #2c2c2a; --baseline: #383835;
-      --border: rgba(255,255,255,0.10);
-      --p-gnotebook: #3987e5; --p-aistudio: #008300; --p-agmanager: #d55181;
-      --p-agcli: #c98500; --p-agide: #199e70; --p-genterprise: #d95926; --p-gworkspace: #9085e9;
-    }
-  }
-  :root[data-theme="dark"] {
-    color-scheme: dark;
-    --surface-1: #1a1a19; --page: #0d0d0d;
-    --ink-1: #ffffff; --ink-2: #c3c2b7; --ink-3: #898781;
-    --grid: #2c2c2a; --baseline: #383835;
-    --border: rgba(255,255,255,0.10);
-    --p-gnotebook: #3987e5; --p-aistudio: #008300; --p-agmanager: #d55181;
-    --p-agcli: #c98500; --p-agide: #199e70; --p-genterprise: #d95926; --p-gworkspace: #9085e9;
-  }
-  * { box-sizing: border-box; margin: 0; }
-  body {
-    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-    background: var(--page); color: var(--ink-1);
-    line-height: 1.5; padding: 24px 20px 80px;
-  }
-  .wrap { max-width: 1180px; margin: 0 auto; }
-  .back-home { display: inline-block; font-size: 13px; color: var(--ink-3); text-decoration: none; margin-bottom: 10px; }
-  .back-home:hover { color: var(--ink-1); text-decoration: underline; }
-  header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
-  h1 { font-size: 22px; font-weight: 700; }
-  .sub { color: var(--ink-2); font-size: 13px; margin-bottom: 18px; }
-  .sub em { color: var(--ink-3); font-style: normal; }
-  #themeBtn {
-    border: 1px solid var(--border); background: var(--surface-1); color: var(--ink-2);
-    border-radius: 8px; padding: 6px 12px; font-size: 13px; cursor: pointer;
-  }
-  nav { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
-  nav button {
-    border: 1px solid var(--border); background: var(--surface-1); color: var(--ink-2);
-    border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer;
-  }
-  nav button.active { background: var(--ink-1); color: var(--page); border-color: var(--ink-1); font-weight: 600; }
-  .view { display: none; } .view.active { display: block; }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --page:#131314;--surface:#1E1F20;--raised:#232425;
+  --text:#E8EAED;--secondary:#BDC1C6;--muted:#9AA0A6;
+  --border:#3C4043;--hair:#2D2F31;
+  --core-bg:#34A853;--core-fg:#0B1F10;
+  --yes-bg:#16301E;--yes-fg:#81C995;
+  --part-bg:#33290F;--part-fg:#FDD663;
+  --hl:#1C2B41;--accent:#8AB4F8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{font-family:var(--font);background:var(--page);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+.band{display:flex;height:5px}.band div{flex:1}
+.b1{background:var(--blue)}.b2{background:var(--red)}.b3{background:var(--yellow)}.b4{background:var(--green)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 
-  /* product chip */
-  .chip { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--ink-1); }
-  .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+/* top bar */
+.topbar{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--page) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
+.topbar .wrap{display:flex;align-items:center;gap:6px;height:52px}
+.brand{font-weight:700;font-size:15px;margin-right:auto;white-space:nowrap;color:var(--text);text-decoration:none}
+.brand span{color:var(--muted);font-weight:400}
+.topbar nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.topbar nav a{font-size:13.5px;color:var(--secondary);text-decoration:none;padding:6px 10px;border-radius:100px;white-space:nowrap}
+.topbar nav a:hover{background:var(--surface);color:var(--text)}
+#themeBtn{border:1px solid var(--border);background:var(--raised);border-radius:100px;width:32px;height:32px;cursor:pointer;flex:none;color:var(--secondary)}
 
-  /* cards */
-  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 14px; }
-  .card {
-    background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px;
-    padding: 18px; border-top: 3px solid var(--accent, var(--grid));
-  }
-  .card h3 { font-size: 16px; display: flex; align-items: center; gap: 8px; }
-  .card .tag { font-size: 11px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .04em; margin: 2px 0 8px; }
-  .card p.bestfor { font-size: 12.5px; font-weight: 600; color: var(--ink-1); margin-bottom: 6px; }
-  .card p.one { color: var(--ink-2); font-size: 13.5px; margin-bottom: 10px; }
-  .card ul { padding-left: 18px; font-size: 13px; color: var(--ink-2); margin-bottom: 10px; }
-  .card li { margin: 3px 0; }
-  .card li b { color: var(--ink-1); font-weight: 600; }
-  .meta { font-size: 12.5px; color: var(--ink-2); border-top: 1px solid var(--grid); padding-top: 8px; margin-top: 4px; }
-  .meta div { margin: 3px 0; }
-  .meta span.k { color: var(--ink-3); }
-  .card a { color: inherit; }
-  .card.spotlight { animation: spot 2.2s ease; }
-  @keyframes spot {
-    0%, 60% { box-shadow: 0 0 0 3px var(--accent, var(--ink-1)); }
-    100% { box-shadow: 0 0 0 3px transparent; }
-  }
+/* hero */
+.hero{padding:28px 0 18px}
+.back{font-size:13px;color:var(--muted);text-decoration:none}
+.back:hover{color:var(--text)}
+h1{font-size:2rem;font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-top:10px}
+.lede{color:var(--secondary);font-size:1rem;margin-top:8px;max-width:760px}
+.updated{display:inline-block;margin-top:10px;font-size:12px;color:var(--muted);background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:3px 10px}
 
-  /* tier toggle */
-  .tierbar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
-  .tierlabel { font-size: 13px; color: var(--ink-2); }
-  .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; background: var(--surface-1); }
-  .seg button { border: none; background: none; color: var(--ink-2); padding: 7px 14px; font-size: 13px; cursor: pointer; }
-  .seg button.sel { background: var(--ink-1); color: var(--page); font-weight: 600; }
-  .tiernote { font-size: 12.5px; color: var(--ink-3); }
-  .tiercond { font-size: 12.5px; color: var(--ink-1); background: color-mix(in srgb, var(--good) 8%, var(--surface-1)); border: 1px solid color-mix(in srgb, var(--good) 25%, var(--border)); border-radius: 8px; padding: 8px 10px; margin-top: 10px; }
-  .tiercond b { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-3); margin-bottom: 3px; }
+/* controls */
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:6px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:100px;background:var(--raised);overflow:hidden}
+.seg button{border:none;background:none;padding:6px 14px;font-size:13px;cursor:pointer;color:var(--secondary)}
+.seg button.sel{background:var(--text);color:var(--page);font-weight:500}
+.ctl-label{font-size:13px;color:var(--secondary)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--secondary);margin-left:auto}
+.legend span{display:inline-flex;align-items:center;gap:6px}
 
-  /* matrix */
-  .matrix-hint { font-size: 12.5px; color: var(--ink-3); margin-bottom: 10px; }
-  .matrix-scroll { overflow-x: auto; background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; }
-  table.matrix { border-collapse: collapse; width: 100%; min-width: 900px; font-size: 13px; }
-  .matrix th, .matrix td { padding: 9px 10px; text-align: center; border-bottom: 1px solid var(--grid); }
-  .matrix thead th { position: sticky; top: 0; background: var(--surface-1); z-index: 2; font-size: 12px; vertical-align: bottom; padding-top: 14px; }
-  .matrix thead th .chip { flex-direction: column; gap: 4px; font-size: 12px; line-height: 1.25; }
-  .matrix td.cap { text-align: left; font-weight: 600; color: var(--ink-1); min-width: 210px; position: sticky; left: 0; background: var(--surface-1); z-index: 1; }
-  .matrix td.cell { cursor: default; }
-  .matrix tr:hover td { background: color-mix(in srgb, var(--ink-1) 4%, var(--surface-1)); }
-  .lvl { display: inline-block; min-width: 60px; padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: 600; }
-  .lvl-core { background: color-mix(in srgb, var(--good) 16%, var(--surface-1)); color: var(--ink-1); }
-  .lvl-yes  { background: color-mix(in srgb, var(--good) 8%, var(--surface-1)); color: var(--ink-1); }
-  .lvl-part { background: color-mix(in srgb, var(--warning) 14%, var(--surface-1)); color: var(--ink-1); }
-  .lvl-no   { color: var(--ink-3); }
-  #tooltip {
-    position: fixed; z-index: 50; max-width: 320px; background: var(--ink-1); color: var(--page);
-    font-size: 12.5px; line-height: 1.45; padding: 10px 12px; border-radius: 8px; pointer-events: none;
-    display: none; box-shadow: 0 4px 16px rgba(0,0,0,.25);
-  }
-  #tooltip .tip-head { font-weight: 700; }
-  #tooltip .tip-body { margin-top: 4px; opacity: .9; }
-  #tooltip .tip-list { margin: 5px 0 0; padding-left: 16px; opacity: .9; }
-  #tooltip .tip-list li { margin: 2px 0; }
+/* level badges */
+.lv{display:inline-flex;align-items:center;justify-content:center;min-width:64px;padding:3px 9px;border-radius:100px;font-size:12px;font-weight:500;line-height:1.3}
+.lv3{background:var(--core-bg);color:var(--core-fg)}
+.lv2{background:var(--yes-bg);color:var(--yes-fg)}
+.lv1{background:var(--part-bg);color:var(--part-fg)}
+.lv0{color:var(--muted);font-weight:400}
+.legend .lv{min-width:0}
 
-  /* decision helper */
-  .helper { display: grid; grid-template-columns: minmax(300px, 400px) 1fr; gap: 18px; align-items: start; }
-  @media (max-width: 860px) { .helper { grid-template-columns: 1fr; } }
-  .qbox, .rbox { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
-  .q { margin-bottom: 16px; }
-  .q h4 { font-size: 13.5px; margin-bottom: 7px; }
-  .opts { display: flex; flex-wrap: wrap; gap: 6px; }
-  .opts button {
-    border: 1px solid var(--border); background: var(--page); color: var(--ink-2);
-    border-radius: 8px; padding: 6px 11px; font-size: 13px; cursor: pointer;
-  }
-  .opts button.sel { background: var(--ink-1); color: var(--page); border-color: var(--ink-1); font-weight: 600; }
-  #resetBtn { font-size: 12.5px; background: none; border: none; color: var(--ink-3); cursor: pointer; text-decoration: underline; padding: 0; }
-  .rec { border: 1px solid var(--border); border-left: 4px solid var(--accent, var(--grid)); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
-  .rec .score { float: right; font-size: 12px; color: var(--ink-3); }
-  .rec h4 { font-size: 14.5px; display: flex; gap: 8px; align-items: center; }
-  .rec p { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
-  .rec.top { background: color-mix(in srgb, var(--good) 6%, var(--surface-1)); }
-  .rec.top .rank { font-size: 11px; font-weight: 700; color: var(--good); text-transform: uppercase; letter-spacing: .05em; }
-  .rbox .placeholder { color: var(--ink-3); font-size: 13.5px; }
+/* matrix */
+.mx-scroll{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:var(--raised)}
+table.mx{border-collapse:separate;border-spacing:0;width:100%;min-width:900px;font-size:13.5px}
+.mx th,.mx td{border-bottom:1px solid var(--hair);padding:9px 8px;text-align:center;vertical-align:middle}
+.mx thead th{vertical-align:top;padding:16px 8px 12px;background:var(--raised);border-bottom:1px solid var(--border)}
+.mx thead th:first-child{text-align:left;vertical-align:bottom;font-size:12px;font-weight:400;color:var(--muted);padding-left:16px}
+.ph{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%;border:none;background:none;cursor:pointer;padding:6px 4px;border-radius:10px}
+.ph:hover{background:var(--surface)}
+.ph img{width:32px;height:32px;object-fit:contain}
+.ph .nm{font-weight:700;font-size:14px;line-height:1.2}
+.ph .bf{font-size:11.5px;color:var(--secondary);font-weight:400;line-height:1.35;max-width:150px}
+.ph .more{font-size:11.5px;color:var(--accent);font-weight:500}
+.mx td.feat{text-align:left;padding-left:16px;min-width:220px;position:sticky;left:0;background:var(--raised);z-index:1}
+.mx thead th:first-child{position:sticky;left:0;z-index:2}
+.feat b{display:block;font-weight:500;font-size:13.5px}
+.feat small{display:block;color:var(--muted);font-size:12px;line-height:1.35}
+.mx tr.grp td{background:var(--surface);text-align:left;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--secondary);padding:8px 16px;border-bottom:1px solid var(--border)}
+.mx tr.grp td:first-child{position:sticky;left:0}
+.mx td.c{cursor:pointer}
+.mx tbody tr:not(.grp):hover td{background:color-mix(in srgb,var(--hl) 60%,var(--raised))}
+.mx td.c.on{background:var(--hl)!important;box-shadow:inset 0 0 0 2px var(--accent)}
+.mx .dim{opacity:.28}
+.mx .hot{background:color-mix(in srgb,var(--hl) 55%,var(--raised))}
+.mx tbody tr:last-child td{border-bottom:none}
+.hint{font-size:12.5px;color:var(--muted);margin-top:8px}
 
-  /* scenarios */
-  .scen { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
-  .scen summary { cursor: pointer; padding: 12px 16px; font-size: 14px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
-  .scen summary::-webkit-details-marker { display: none; }
-  .scen summary .chip { flex: none; }
-  .scen .body { padding: 0 16px 14px; font-size: 13.5px; color: var(--ink-2); }
-  footer { margin-top: 28px; font-size: 12px; color: var(--ink-3); }
-  footer a { color: inherit; }
+/* popover */
+#pop{position:fixed;z-index:60;width:300px;max-width:calc(100vw - 24px);background:var(--text);color:var(--page);border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.45;box-shadow:0 8px 24px rgba(0,0,0,.25);display:none}
+#pop .ph1{font-weight:700}
+#pop .ph2{opacity:.75;font-size:12px;margin-bottom:6px}
+#pop button{margin-top:8px;border:none;background:none;color:inherit;opacity:.85;text-decoration:underline;cursor:pointer;font-size:12.5px;padding:0}
+
+/* sections */
+section.blk{padding:44px 0 8px}
+h2{font-size:1.4rem;font-weight:700;letter-spacing:-.01em}
+.h2sub{color:var(--secondary);font-size:14px;margin:4px 0 16px}
+.picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px}
+.pick{display:flex;gap:12px;align-items:flex-start;text-align:left;border:1px solid var(--border);background:var(--raised);border-radius:12px;padding:14px;cursor:pointer}
+.pick:hover{border-color:var(--accent)}
+.pick img{width:26px;height:26px;object-fit:contain;flex:none;margin-top:2px}
+.pick q{display:block;font-weight:500;font-size:14px;quotes:"\201C" "\201D"}
+.pick span{display:block;font-size:13px;color:var(--secondary);margin-top:3px}
+.pick em{font-style:normal;font-weight:500;color:var(--text)}
+
+.rn{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--raised)}
+.rn-row{display:grid;grid-template-columns:minmax(150px,1fr) 28px minmax(150px,1fr) 1.4fr;gap:10px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--hair);font-size:13.5px}
+.rn-row:last-child{border-bottom:none}
+.rn-row .old{color:var(--secondary);text-decoration:line-through;text-decoration-color:var(--muted)}
+.rn-row .arrow{color:var(--muted);text-align:center}
+.rn-row .new{font-weight:500}
+.rn-row .when{color:var(--muted);font-size:12.5px}
+.rn-head{background:var(--surface);font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--secondary);padding:8px 16px;border-bottom:1px solid var(--border)}
+.tag-r{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1px 7px;border-radius:100px;background:color-mix(in srgb,var(--red) 14%,var(--raised));color:var(--red);margin-left:6px;text-decoration:none;vertical-align:1px}
+@media (max-width:720px){.rn-row{grid-template-columns:1fr 20px 1fr}.rn-row .when{grid-column:1/-1}}
+
+.tl{list-style:none;border-left:2px solid var(--border);margin-left:6px}
+.tl li{position:relative;padding:0 0 14px 18px;font-size:14px}
+.tl li::before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--raised);border:2px solid var(--blue)}
+.tl .d{font-size:12px;color:var(--muted);display:block}
+
+footer{margin:48px 0 40px;padding-top:16px;border-top:1px solid var(--hair);font-size:12px;color:var(--muted)}
+
+/* drawer */
+#scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:70;opacity:0;pointer-events:none;transition:opacity .2s}
+#scrim.open{opacity:1;pointer-events:auto}
+#drawer{position:fixed;top:0;right:0;bottom:0;width:min(520px,100vw);background:var(--page);z-index:80;transform:translateX(100%);visibility:hidden;transition:transform .25s ease,visibility 0s .25s;overflow-y:auto;box-shadow:-8px 0 30px rgba(0,0,0,.15);border-left:1px solid var(--border)}
+#drawer.open{transform:none;visibility:visible;transition:transform .25s ease}
+.dr-head{position:sticky;top:0;background:var(--page);padding:20px 22px 14px;border-bottom:1px solid var(--hair);display:flex;gap:14px;align-items:flex-start}
+.dr-head img{width:44px;height:44px;object-fit:contain;flex:none}
+.dr-head h3{font-size:1.3rem;line-height:1.2}
+.dr-head .tg{font-size:13px;color:var(--secondary)}
+.dr-head .fm{font-size:12px;color:var(--muted)}
+#drClose{margin-left:auto;border:1px solid var(--border);background:var(--raised);border-radius:100px;width:32px;height:32px;cursor:pointer;flex:none;font-size:16px;line-height:1}
+.dr-body{padding:16px 22px 40px}
+.dr-body h4{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--secondary);margin:20px 0 8px}
+.dr-body h4:first-child{margin-top:4px}
+.dr-body p,.dr-body li{font-size:14px}
+.dr-body ul{padding-left:18px}
+.dr-body li{margin:5px 0}
+.dr-body li b{font-weight:500}
+.dr-body .best{font-size:15px;font-weight:500}
+.dr-body .warn{background:var(--part-bg);color:var(--text);border-radius:10px;padding:10px 12px;font-size:13.5px}
+.dr-body .site{display:inline-block;margin-top:18px;font-weight:500;font-size:14px}
+
+/* small screens */
+@media (max-width:720px){
+  .brand span,.ctl-label{display:none}
+  h1{font-size:1.6rem}
+  .controls{gap:10px}
+  .seg{max-width:100%;overflow-x:auto;scrollbar-width:none}
+  .seg button{white-space:nowrap;padding:6px 12px}
+  .legend{margin-left:0;gap:8px 12px}
+  table.mx{min-width:740px;font-size:13px}
+  .mx td.feat{min-width:128px;max-width:128px;padding-left:12px}
+  .feat b{font-size:12.5px;line-height:1.3}
+  .feat small{display:none}
+  .mx thead th{padding:10px 4px 8px}
+  .ph img{width:26px;height:26px}
+  .ph .nm{font-size:12.5px}
+  .ph .bf{display:none}
+  .lv{min-width:0;padding:3px 8px;font-size:11.5px}
+  .picks{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <a class="back-home" href="https://www.cloud-monk.com/">&larr; cloud-monk.com</a>
-  <header>
-    <h1>Google AI Compass</h1>
-    <button id="themeBtn">◐ Theme</button>
-  </header>
-  <p class="sub">Find the right Google AI tool for the job. <em style="font-size:11px;">Last refreshed: July 16, 2026</em></p>
-
-  <nav id="tabs">
-    <button data-view="helper" class="active">Decision Helper</button>
-    <button data-view="matrix">Feature Matrix</button>
-    <button data-view="scenarios">Scenarios</button>
-    <button data-view="products">Products</button>
+<div class="band"><div class="b1"></div><div class="b2"></div><div class="b3"></div><div class="b4"></div></div>
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="#compare">Google AI Compass <span>· cloud-monk</span></a>
+  <nav>
+    <a href="#compare">Compare</a>
+    <a href="#picks">Quick picks</a>
+    <a href="#renamed">Renamed &amp; retired</a>
+    <a href="#new">What's new</a>
   </nav>
+  <button id="themeBtn" title="Toggle theme" aria-label="Toggle theme">◐</button>
+</div></div>
 
-  <section id="view-products" class="view">
-    <div class="tierbar">
-      <span class="tierlabel">Show products available on:</span>
-      <div class="seg" id="tierSeg">
-        <button data-tier="all" class="sel">All</button>
-        <button data-tier="free">Free tier</button>
-        <button data-tier="gcp">GCP-linked / Enterprise</button>
-      </div>
-      <span class="tiernote" id="tierNote"></span>
+<main class="wrap">
+  <div class="hero" id="compare">
+    <a class="back" href="https://www.cloud-monk.com/">&larr; cloud-monk.com</a>
+    <h1>Which Google AI tool should I use?</h1>
+    <p class="lede">Six products, one table. Tap any cell for the details, or a product name for the full picture — plans, data terms, and what to watch out for.</p>
+    <span class="updated">Updated October 30, 2026</span>
+  </div>
+
+  <div class="controls">
+    <span class="ctl-label">Highlight for:</span>
+    <div class="seg" id="who">
+      <button data-who="all" class="sel">Everyone</button>
+      <button data-who="me">Personal use</button>
+      <button data-who="dev">Developers</button>
+      <button data-who="org">Organizations</button>
     </div>
-    <div class="cards" id="cards"></div>
-  </section>
-
-  <section id="view-matrix" class="view">
-    <p class="matrix-hint">Hover any cell for detail. <b>Core</b> = the product's main job · <b>Yes</b> = fully supported · <b>Partial</b> = with caveats · <b>—</b> = not offered. Free-vs-paid conditions per product are on the Products tab.</p>
-    <div class="matrix-scroll"><table class="matrix" id="matrixTable"></table></div>
-  </section>
-
-  <section id="view-helper" class="view active">
-    <div class="helper">
-      <div class="qbox">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;">
-          <h3 style="font-size:15px;">Answer what applies</h3><button id="resetBtn">reset</button>
-        </div>
-        <div id="questions"></div>
-      </div>
-      <div class="rbox" id="results"><p class="placeholder">Pick at least one answer on the left — products are ranked here as you go.</p></div>
+    <div class="legend">
+      <span><span class="lv lv3">Main job</span> what it's built for</span>
+      <span><span class="lv lv2">Yes</span> fully supported</span>
+      <span><span class="lv lv1">Limited</span> with caveats</span>
+      <span><span class="lv lv0">—</span> not offered</span>
     </div>
+  </div>
+
+  <div class="mx-scroll"><table class="mx" id="mx"></table></div>
+  <p class="hint">Scroll sideways on small screens. Prices are US list prices.</p>
+
+  <section class="blk" id="picks">
+    <h2>Quick picks</h2>
+    <p class="h2sub">Common jobs and the tool to start with. Tap one for that product's details.</p>
+    <div class="picks" id="pickList"></div>
   </section>
 
-  <section id="view-scenarios" class="view" ><div id="scenList"></div></section>
+  <section class="blk" id="renamed">
+    <h2>Renamed &amp; retired</h2>
+    <p class="h2sub">Google renames things often. If you know the old name, here's what it's called now — or what replaces it.</p>
+    <div class="rn" id="rnList"></div>
+  </section>
 
-  <footer>Disclaimer: this is an informal comparison based on publicly available information as of the date shown above. Google AI products evolve quickly — details here may be out of date or inaccurate, and no responsibility is taken for any inaccuracies. Always verify against official Google documentation and pricing pages before making decisions.</footer>
-</div>
-<div id="tooltip"></div>
+  <section class="blk" id="new">
+    <h2>What's new since July</h2>
+    <p class="h2sub">The changes that matter for picking a tool, July 16 – October 30, 2026.</p>
+    <ul class="tl" id="tlList"></ul>
+  </section>
+
+  <footer>Informal comparison based on publicly available information as of October 30, 2026. Google AI products change quickly — details may be out of date or inaccurate, and no responsibility is taken for errors. Always check official Google documentation and pricing before deciding. Product names and logos belong to Google.</footer>
+</main>
+
+<div id="pop" role="dialog"></div>
+<div id="scrim"></div>
+<aside id="drawer" aria-hidden="true">
+  <div class="dr-head"><img id="drLogo" alt=""><div><h3 id="drName"></h3><div class="tg" id="drTag"></div><div class="fm" id="drFormer"></div></div><button id="drClose" aria-label="Close">✕</button></div>
+  <div class="dr-body" id="drBody"></div>
+</aside>
 
 <script>
+/* ===== products ===== */
 const PRODUCTS = [
-  { id:"notebooklm", name:"Gemini Notebook", varName:"--p-gnotebook", tag:"Research assistant (formerly NotebookLM)",
-    one:"Source-grounded research: answers only from the sources you upload, with citations. Renamed from NotebookLM in July 2026.",
-    feats:[
-      ["Grounded Q&A","Answers strictly from your uploaded sources, with citations; refuses if the answer isn't there."],
-      ["Studio outputs","Audio & Video Overviews (incl. Cinematic), reports, quizzes, flashcards, mind maps, slide decks (PPTX export), infographics."],
-      ["Code Execution","Each notebook runs in a secure container — generate code for interactive data analysis directly in the tool."],
-      ["Deep Research","Finds and adds web sources itself (tiered quotas)."],
-      ["Cross-app syncing","Notebooks accessible inside the Gemini app and soon in AI Mode in Search."]],
-    price:"Free tier → Google AI Plus/Pro/Ultra for higher limits; Enterprise via GCP",
-    privacy:"Not used to train models (consumer & enterprise)",
-    users:"Researchers, students, analysts, knowledge workers",
-    caveat:"500K-word / 200MB per-source cap applies on every plan. Powered by Gemini 3.5 + Antigravity." },
-  { id:"aistudio", name:"AI Studio", varName:"--p-aistudio", tag:"Developer playground",
-    one:"Free browser playground + API-key hub for the Gemini API, with prompt-to-app Build mode.",
-    feats:[
-      ["Prompt playground","Try Gemini models and tools free in the browser, then export the code."],
-      ["Self-serve API keys","Get a Gemini API key with no GCP project setup."],
-      ["Build mode","Prompt-to-app: full-stack web and native Android; deploy to Cloud Run."]],
-    price:"Studio free; Gemini API free tier + pay-as-you-go",
-    privacy:"Free tier: data may be used to improve Google products; paid tier covered by enterprise data-protection terms (DPA)",
-    users:"Developers prototyping with Gemini",
-    caveat:"No fine-tuning since May 2025 — enterprise controls (IAM, regions) come with Vertex AI." },
-  { id:"agmanager", name:"Antigravity Agent Manager", varName:"--p-agmanager", tag:"Agent orchestration",
-    one:"\u201CMission control\u201D desktop app: spawn and supervise multiple async coding agents in parallel.",
-    feats:[
-      ["Parallel async agents","Run several coding agents at once: agent groups, subagents, scheduled tasks."],
-      ["Artifacts, not logs","Review plans, Walkthroughs, screenshots, and browser recordings; comment Google-Docs-style."],
-      ["Browser verification","Agents drive Chrome to test end-to-end flows."]],
-    price:"Included with Google AI Pro $20/mo; Ultra tiers for higher limits",
-    privacy:"Free/Pro: interaction data used to improve products unless opted out; GCP route: not used for training, Cloud DPA",
-    users:"Developers delegating task-level work",
-    caveat:"Antigravity 2.0 migration issues reported by early users." },
-  { id:"agcli", name:"Antigravity CLI (agy)", varName:"--p-agcli", tag:"Terminal agent",
-    one:"Terminal surface of Antigravity; official successor to Gemini CLI (Go rewrite, I/O 2026).",
-    feats:[
-      ["Agentic terminal","Multi-file edits, tool calling, background subagents; built for SSH and remote work."],
-      ["Extensible","Agent Skills (Claude Code-compatible), hooks, plugins, AGENTS.md project instructions."],
-      ["Gemini CLI retired","Stopped serving individual users June 18, 2026 — agy is the official successor."]],
-    price:"Free in public preview; post-preview pricing not yet announced",
-    privacy:"Free/Pro: interaction data used to improve products unless opted out; GCP route: not used for training, Cloud DPA",
-    users:"Terminal-first devs, remote/SSH sessions",
-    caveat:"Headless/CI support is not officially documented — verify before relying on it." },
-  { id:"agide", name:"Antigravity IDE", varName:"--p-agide", tag:"Agentic editor",
-    one:"VS Code-style agentic editor for synchronous, hands-on coding with an embedded agent panel.",
-    feats:[
-      ["Editor + agent","Tab completions, inline commands, Agent Panel, deep codebase understanding."],
-      ["/browser sub-agent","Chrome-debugging browser agent for testing what you build."],
-      ["MCP Store","One-click installs to connect external tools; Workspace connectors (Docs/Sheets/Calendar) built in."]],
-    price:"Same Antigravity quota tiers (AI Pro / Ultra)",
-    privacy:"Free/Pro: interaction data used to improve products unless opted out; GCP route: not used for training, Cloud DPA",
-    users:"Developers coding interactively",
-    caveat:"Free-tier limits were cut sharply in March 2026." },
-  { id:"genterprise", name:"Gemini Enterprise app (GCP)", varName:"--p-genterprise", tag:"Enterprise AI hub",
-    one:"The end-user AI hub for the whole org: permission-aware search over company data, no-code agents, partner agent gallery. Successor to Agentspace.",
-    feats:[
-      ["Enterprise search","Permission-aware answers over 80+ connectors: M365/SharePoint, Salesforce, ServiceNow, Jira, Slack, SAP…"],
-      ["No-code agents","Agent Designer (preview): build agents in natural language, with scheduling and monitoring."],
-      ["Agent Gallery","Google-validated partner agents (Oracle, Salesforce, ServiceNow, Adobe, Workday) with IT approval workflow."]],
-    price:"Per-seat licensing (Business / Standard / Plus editions) — contact Google sales",
-    privacy:"Data stays in your GCP project under enterprise data-protection terms (DPA), with enterprise security controls (VPC-SC, IAM)",
-    users:"Whole organizations: knowledge workers + IT",
-    caveat:"Agent Designer is still in preview, and the Business edition is capped at 500 seats." },
-  { id:"gworkspace", name:"Gemini app in Workspace", varName:"--p-gworkspace", tag:"Everyday work AI",
-    one:"Gemini chat + Gemini embedded in Gmail/Docs/Sheets/Slides/Meet — bundled into Workspace Business/Enterprise since Jan 2025.",
-    feats:[
-      ["Gemini app","Gemini 3 Pro chat, Deep Research (web + your Gmail/Drive/Chat), Gems, Canvas."],
-      ["Embedded everywhere","Side panel in Gmail/Docs/Sheets/Slides/Drive/Chat; Help me write; Sheets analysis."],
-      ["Meet","Take notes for me, real-time translated captions (~65+ languages)."]],
-    price:"Included in Business/Enterprise editions; Starter limited",
-    privacy:"Never trains on customer data; respects access permissions; ISO 42001, SOC, DPA",
-    users:"Every Workspace knowledge worker",
-    caveat:"Business Starter gets only a limited subset (Gmail + Vids side panel)." },
+  { id:"gemini", name:"Gemini app", logo:"logos/gemini.png", sub:"Personal & Workspace",
+    best:"Everyday work: chat, writing, research, and Gemini inside Gmail, Docs, Sheets & Meet",
+    tag:"Everyday AI assistant — on its own or built into Google Workspace",
+    who:["me","org"], site:"https://gemini.google.com",
+    highlights:[
+      ["Gemini 4 Argon","Google's newest flagship model, on AI Pro and Ultra (Oct 13, 2026)."],
+      ["Deep Research","Cited research reports from the web — and from your Gmail, Drive and Chat on Workspace."],
+      ["Inside Workspace","Side panel in Gmail, Docs, Sheets, Slides, Drive and Chat; edit whole Slides decks; Fill with Gemini in Sheets now cites cells."],
+      ["Meet","Take notes for me, meeting recaps in Chat, and real-time speech translation in 63 languages."],
+      ["Skills (replacing Gems)","Reusable instructions and workflows, rolling out Oct–Nov 2026."],
+      ["Tasks & coding","Tasks mode for longer jobs and Antigravity coding in the macOS app (AI Pro/Ultra)."],
+      ["Gemini Notebook built in","Use @Gemini Notebook to query or create notebooks from chat."]],
+    plans:[
+      ["Free","Gemini Flash-Lite, 15 GB storage."],
+      ["Google AI Plus — $4.99/mo","2× limits, Omni Flash video, Gemini in Gmail."],
+      ["Google AI Pro — $19.99/mo","Gemini 4 Argon, 4× limits, 5 TB, entry Antigravity access."],
+      ["Google AI Ultra — $99.99 or $199.99/mo","5× or 20× Pro limits, earliest access to new features."],
+      ["Workspace","Included in Business and Enterprise editions (Business Starter gets a limited set). AI Expanded Access add-on for higher limits."]],
+    data:"Workspace: your data isn't used for training or reviewed by humans, and existing access permissions apply. Personal accounts: chats may be used to improve Google AI unless you turn off Gemini Apps Activity.",
+    watch:"On Workspace, Gemini 4 Argon access and limits depend on your edition and add-ons. Gems stop working on Business/Enterprise accounts no earlier than March 1, 2027 — move them to Skills.",
+    recent:["Oct 30 — Edit entire Slides decks with Gemini","Oct 29 — Create and edit files inside Gemini chats","Oct 22 — Meet speech translation expands to 63 languages","Oct 13 — Gemini 4 Argon for AI Pro & Ultra","Oct 5 — Skills start rolling out in Workspace"] },
+
+  { id:"notebook", name:"Gemini Notebook", logo:"logos/notebook.svg", sub:"formerly NotebookLM",
+    best:"Making sense of a stack of documents — with citations, podcasts and study guides",
+    tag:"Research assistant that only answers from the sources you give it",
+    former:"Formerly NotebookLM (renamed July 16, 2026)",
+    who:["me","org"], site:"https://notebook.google.com",
+    highlights:[
+      ["Answers from your sources","Every answer cites the documents you uploaded; it won't make things up from the web."],
+      ["Studio outputs","Audio & Video Overviews (incl. 60-second shorts), slide decks, reports, quizzes, flashcards, mind maps and infographics."],
+      ["Creative control","Review the outline or producer notes before a slide deck or video is generated (Oct 2026)."],
+      ["Code Execution","Each notebook gets a secure cloud computer for data analysis (AI Ultra; rolling out to Pro)."],
+      ["Deep Research","Finds web sources for you and adds them to the notebook."],
+      ["Everywhere","Notebooks in the Gemini app and in AI Mode in Search (personal accounts, English, rolling out since Aug 2026)."]],
+    plans:[
+      ["Free","100 notebooks, 50 sources each."],
+      ["Google AI Plus","200 notebooks × 100 sources, 2× usage."],
+      ["Google AI Pro","500 notebooks × 300 sources, 4× usage."],
+      ["Google AI Ultra","500 notebooks × 500–600 sources, highest usage."],
+      ["Enterprise","Gemini Notebook Enterprise via Google Cloud / Gemini Enterprise, with an Enterprise API (v1alpha)."]],
+    data:"Your sources, questions and outputs aren't used to train models — on personal and enterprise accounts.",
+    watch:"Since Sept 2, 2026 usage is compute-based: it refreshes every 5 hours up to a weekly cap, replacing the old fixed daily counts. There's no consumer API.",
+    recent:["Oct 23 — Connected app inside Gemini (@Gemini Notebook)","Oct 16 — Review outlines for slide decks & Video Overviews","Sep 2 — Compute-based usage limits","Aug 19 — Notebooks in AI Mode in Search","Jul 16 — Renamed from NotebookLM"] },
+
+  { id:"aistudio", name:"AI Studio", logo:"logos/aistudio.png", sub:"+ Gemini API",
+    best:"Developers trying Gemini models, prototyping AI apps, and getting an API key",
+    tag:"Free developer playground and home of the Gemini API",
+    who:["dev"], site:"https://aistudio.google.com",
+    highlights:[
+      ["Playground","Try every Gemini model in the browser, then export the code."],
+      ["API keys in seconds","Self-serve keys with no Google Cloud setup; new gemini-api CLI (beta)."],
+      ["Build mode","Prompt to a full-stack web app (React + Node) or native Android app; deploy to Cloud Run, sync to GitHub, set up Firebase."],
+      ["Latest models","Gemini 4 Argon, 3.8 Flash, 3.5 Flash-Lite; Nano Banana 2.1 (images), Lyria 3.5 (music), Gemini Omni Flash (video)."],
+      ["Agent tools","Computer Use (GA Oct 30), MCP support in the SDK and Interactions API, Deep Research agent."]],
+    plans:[
+      ["AI Studio","Free."],
+      ["Gemini API free tier","No billing needed; rate-limited; no Gemini 4 Argon or media models."],
+      ["Paid tier","Pay per token. Gemini 4 Argon: $2 / $10 per 1M tokens (in/out) until Nov 30, then $4 / $20. Flex (~½ price) and Priority tiers."]],
+    data:"Free tier: prompts and outputs may be used to improve Google products, including human review. Paid tier: not used for training.",
+    watch:"New paid projects store requests by default since Oct 26, 2026. Veo 3.1 previews were shut down in the Gemini API on Oct 22 — use Gemini Omni Flash, or Veo on Agent Platform. Need IAM, regions or VPC-SC? Move to Agent Platform.",
+    recent:["Oct 30 — Computer Use GA","Oct 27 — gemini-api CLI (beta)","Oct 22 — Veo 3.1 previews retired → Omni Flash","Oct 13 — Gemini 4 Argon GA","Sep 2 — Gemini 3.8 Flash GA"] },
+
+  { id:"antigravity", name:"Antigravity", logo:"logos/antigravity.png", sub:"App · CLI · IDE",
+    best:"Developers handing coding work to AI agents — or coding side-by-side with one",
+    tag:"Google's agentic coding platform",
+    former:"Replaces Gemini CLI, Gemini Code Assist and Jules",
+    who:["dev","org"], site:"https://antigravity.google",
+    highlights:[
+      ["Desktop app","Mission control for parallel agents: Automations (scheduled runs), subagents, reviewable plans and walkthroughs, browser testing, Remote Control from any browser."],
+      ["CLI (agy)","Terminal agent and Gemini CLI's successor; headless mode for CI (agy -p, JSON output)."],
+      ["IDE extensions","VS Code, Visual Studio, JetBrains, Zed and Xcode — on every plan, including free (Aug 2026)."],
+      ["Plugin Marketplace","One install bundles skills, MCP servers, hooks and custom agents — Vercel, Notion, Linear, Sentry, Supabase and more (Oct 29)."],
+      ["Models","Gemini 3.8 Flash on every plan; Gemini 4 Argon and Claude Sonnet/Opus 5.5 on paid plans."]],
+    plans:[
+      ["Free","$0 with a Google account; weekly quota."],
+      ["Google AI Pro — $19.99/mo","Quota refreshes every 5 hours up to a weekly cap."],
+      ["Google AI Ultra — $99.99 or $199.99/mo","Highest caps; buy AI credits for overage."],
+      ["Business","Through Google Cloud: Gemini Enterprise Standard/Plus seats (from $30/seat/mo, with pooled credits) or pay-as-you-go."]],
+    data:"Free/Pro/Ultra: interaction data is collected to improve products unless you opt out. Business (Google Cloud): not used to train models.",
+    watch:"Business plans cover the desktop app, CLI and IDE extensions — not the older standalone IDE. Gemini models and Claude/GPT models have separate quotas.",
+    recent:["Oct 29 — Plugin Marketplace","Oct 15 — Pick a model per Automation","Oct 13 — Gemini 4 Argon","Aug 20 — IDE extensions + Antigravity in Gemini Enterprise","Aug 12 — Custom agents"] },
+
+  { id:"genterprise", name:"Gemini Enterprise", logo:"logos/gemini.png", sub:"for organizations",
+    best:"Whole organizations: AI search across every work app, plus no-code agents with IT control",
+    tag:"The company-wide AI hub on Google Cloud",
+    former:"Successor to Agentspace",
+    who:["org"], site:"https://cloud.google.com/gemini-enterprise",
+    highlights:[
+      ["Search across work apps","Permission-aware answers over Google Workspace, Microsoft 365/SharePoint, Salesforce, ServiceNow, Jira, Confluence, Slack, Teams, Notion and more."],
+      ["Workflow Builder","No-code agents that run on a schedule, on demand or by @-mention; import ADK/A2A agents (GA Sep 3, 2026)."],
+      ["Agent Gallery","Google-built and partner agents, approved by IT."],
+      ["Built in","Deep Research, Gemini Notebook Enterprise, image & video generation in every edition."],
+      ["Models","Gemini 4 Argon by default (Oct 27); Claude Opus/Sonnet 5.5 pay-as-you-go."],
+      ["Coming","The Gemini agent: long-running tasks with its own sub-agents (private preview, announced Oct 8)."]],
+    plans:[
+      ["Business — $21/user/mo","Annual; for 1–500 users."],
+      ["Standard / Plus","Per seat, larger orgs and extra controls; include Antigravity credits."],
+      ["Pay-as-you-go","No seat fee, usage-billed (GA Aug 1, 2026)."],
+      ["Frontline","For 150+ frontline workers."],
+      ["Trial","30 days."]],
+    data:"Covered by Google Cloud data terms — not used for training. VPC-SC, CMEK and granular IAM per app and data store.",
+    watch:"New or renewed Standard/Plus subscriptions no longer include Gemini Code Assist (Sept 17, 2026) — use Antigravity instead. Google's product page now also calls it “Gemini for Business”.",
+    recent:["Oct 27 — Gemini 4 Argon is the default model","Oct 15 — Claude Opus & Sonnet 5.5 available","Oct 8 — Gemini agent announced (preview)","Sep 3 — Workflow Builder GA","Aug 7 — Custom MCP connector GA"] },
+
+  { id:"agentplatform", name:"Agent Platform", logo:"logos/cloud.png", sub:"formerly Vertex AI",
+    best:"Engineering teams building production AI apps and agents on Google Cloud",
+    tag:"Gemini Enterprise Agent Platform — pro-code AI on Google Cloud",
+    former:"Formerly Vertex AI (renamed April 2026)",
+    who:["dev","org"], site:"https://cloud.google.com/gemini-enterprise-agent-platform",
+    highlights:[
+      ["Models","Gemini 4 Argon and the full Gemini family, plus partner and open models in Model Garden; Veo 3.1 (GA), Nano Banana, Lyria."],
+      ["Build & run agents","Agent Development Kit (ADK), Agent Runtime (formerly Agent Engine), Agent Studio (formerly Vertex AI Studio)."],
+      ["Governance","Agent Identity, Agent Registry, Agent Gateway and Model Armor; IAM, VPC-SC, CMEK, data regions."],
+      ["Ship to users","Publish your agents into Gemini Enterprise."],
+      ["Production extras","Tuning, Provisioned Throughput, batch."]],
+    plans:[
+      ["Pay-as-you-go","Billed to your Google Cloud project; new Cloud accounts get trial credits."]],
+    data:"Google Cloud data terms — not used for training; your data stays in your project and chosen region.",
+    watch:"Agent Gateway currently governs agents hosted on Agent Platform only; GKE and Cloud Run support is “coming soon”.",
+    recent:["Oct 27 — Private connectivity to MCP servers via Agent Gateway","Oct 13 — Gemini 4 Argon available","Apr 22 — Renamed from Vertex AI"] },
 ];
 
-/* ---- capability matrix: 0 no, 1 partial, 2 yes, 3 core ---- */
-/* Matrix columns: the three Antigravity surfaces are merged into one column for readability; per-surface differences are stated in the cell notes. */
-const MATRIX_COLS = [
-  { id:"notebooklm", name:"Gemini Notebook", varName:"--p-gnotebook" },
-  { id:"aistudio", name:"AI Studio", varName:"--p-aistudio" },
-  { id:"antigravity", name:"Antigravity (Manager · IDE · CLI)", varName:"--p-agmanager" },
-  { id:"genterprise", name:"Gemini Enterprise app (GCP)", varName:"--p-genterprise" },
-  { id:"gworkspace", name:"Gemini app in Workspace", varName:"--p-gworkspace" },
+/* ===== matrix: 0 none · 1 limited · 2 yes · 3 main job ===== */
+const GROUPS = [
+  ["What it can work from", [
+    ["Files you upload","PDFs, docs, slides, notes", {
+      gemini:[2,"Attach files to a chat; in Workspace the side panel works on the doc you have open."],
+      notebook:[3,"Its whole purpose: 50–600 sources per notebook depending on plan, and every answer cites them."],
+      aistudio:[1,"Attach files in the playground; anything more is RAG you build yourself."],
+      antigravity:[1,"Reads files in your project — built for code, not document research."],
+      genterprise:[2,"Upload files in chat, plus Gemini Notebook Enterprise for source-grounded research."],
+      agentplatform:[1,"Build it yourself with Google Cloud search and RAG services."]}],
+    ["Your Gmail, Drive & Calendar","", {
+      gemini:[3,"Its home turf on Workspace: Gmail, Drive, Calendar, Chat and Meet, permission-aware."],
+      notebook:[1,"Add Google Docs, Slides and Drive files as sources."],
+      aistudio:[0,""],
+      antigravity:[1,"Via the Google Workspace plugin."],
+      genterprise:[2,"Google Workspace connectors, permission-aware, alongside other apps."],
+      agentplatform:[1,"Only what you wire up through APIs."]}],
+    ["Company apps beyond Google","Microsoft 365, Salesforce, Jira, Slack…", {
+      gemini:[1,"Limited to the connected-apps hub (40+ apps) in Workspace."],
+      notebook:[0,""],
+      aistudio:[0,"Only what you build."],
+      antigravity:[1,"Through MCP servers and plugins — Jira, Linear, Notion, Sentry and others — for coding work."],
+      genterprise:[3,"Its main job: permission-aware search across M365/SharePoint, Salesforce, ServiceNow, Jira, Confluence, Slack, Teams, Notion and many more."],
+      agentplatform:[2,"Agents you build can call any system; govern access with Agent Gateway."]}],
+    ["Your codebase","Repos, terminal, git", {
+      gemini:[1,"Antigravity coding inside the macOS app (AI Pro/Ultra); Canvas for small snippets."],
+      notebook:[0,""],
+      aistudio:[1,"Build mode works on the app it generates, with GitHub sync — not your existing repos."],
+      antigravity:[3,"Its main job: local repos, terminal, git, SSH and WSL."],
+      genterprise:[0,"Use Antigravity — Standard/Plus seats include credits for it."],
+      agentplatform:[0,""]}],
+  ]],
+  ["Research & create", [
+    ["Deep Research reports","Multi-step web research with citations", {
+      gemini:[2,"Cited reports from the web, plus your Gmail, Drive and Chat on Workspace."],
+      notebook:[2,"Finds web sources and adds them to your notebook."],
+      aistudio:[2,"Deep Research agent available through the Gemini API."],
+      antigravity:[0,""],
+      genterprise:[2,"Included in every edition."],
+      agentplatform:[1,"Build your own with ADK and Google Search grounding."]}],
+    ["Audio & video overviews","Podcast-style summaries, explainer videos", {
+      gemini:[2,"Audio Overviews in the app; the full studio via @Gemini Notebook."],
+      notebook:[3,"Signature feature: Audio & Video Overviews, 60-second shorts and slide decks, with outline review."],
+      aistudio:[1,"Build your own with text-to-speech models."],
+      antigravity:[0,""],
+      genterprise:[2,"Through Gemini Notebook Enterprise."],
+      agentplatform:[1,"Build your own with text-to-speech models."]}],
+    ["Images, video & music","", {
+      gemini:[2,"Image generation and Omni Flash video (AI Plus and up), plus Flow credits on paid plans."],
+      notebook:[1,"Only as part of infographics and slide decks."],
+      aistudio:[2,"Nano Banana 2.1, Lyria 3.5 and Gemini Omni Flash — paid tier only."],
+      antigravity:[0,""],
+      genterprise:[2,"Image and video generation in every edition."],
+      agentplatform:[2,"Veo 3.1 (GA), Nano Banana and Lyria via API."]}],
+  ]],
+  ["Build", [
+    ["Build an app from a prompt","Describe it, get a working app", {
+      gemini:[1,"Canvas prototypes; Workspace can publish Gemini-built apps to Sites."],
+      notebook:[0,""],
+      aistudio:[3,"Its main job: Build mode makes full-stack web or native Android apps and deploys to Cloud Run."],
+      antigravity:[2,"Agents scaffold and build whole apps, and test them in a browser."],
+      genterprise:[0,""],
+      agentplatform:[0,"Builds agents, not apps."]}],
+    ["Coding agents","AI that edits code, runs tests, works in parallel", {
+      gemini:[1,"Antigravity tasks inside the macOS Gemini app (AI Pro/Ultra)."],
+      notebook:[1,"Code Execution runs analysis inside a notebook — not a coding tool."],
+      aistudio:[1,"Build mode's agent edits its own app only."],
+      antigravity:[3,"Its main job: parallel agents, Automations, subagents, and a headless CLI for CI."],
+      genterprise:[1,"Via Antigravity, included with Standard/Plus seats."],
+      agentplatform:[0,""]}],
+    ["Build your own AI agents","", {
+      gemini:[1,"Skills (replacing Gems) and simple Workspace Studio flows."],
+      notebook:[0,""],
+      aistudio:[1,"Prototype with the API — no hosting or governance."],
+      antigravity:[1,"Custom coding agents and Automations."],
+      genterprise:[3,"Main job for no-code: Workflow Builder agents (scheduled, on demand, @-mention), Agent Gallery, import ADK/A2A agents."],
+      agentplatform:[3,"Main job for pro-code: ADK, Agent Runtime and Agent Studio; publish into Gemini Enterprise."]}],
+    ["Plug in external tools","MCP servers, skills, plugins", {
+      gemini:[1,"Connected apps and Skills; no custom MCP servers."],
+      notebook:[0,"No integrations."],
+      aistudio:[2,"MCP via the Gemini SDK and Interactions API."],
+      antigravity:[3,"First-class: MCP, SKILL.md skills, hooks and the Plugin Marketplace."],
+      genterprise:[2,"Custom MCP connector (admin-enabled), alongside the prebuilt connector catalog."],
+      agentplatform:[2,"MCP in ADK; Agent Gateway and Registry govern tool access."]}],
+    ["API access","Call it from your own code", {
+      gemini:[0,""],
+      notebook:[1,"Enterprise API only (v1alpha)."],
+      aistudio:[3,"Its main job: self-serve API keys, SDKs and the gemini-api CLI."],
+      antigravity:[1,"Scriptable headless CLI (agy -p with JSON output) — not an API."],
+      genterprise:[0,"Use Agent Platform for programmatic access."],
+      agentplatform:[3,"Its main job: Gemini and partner models with IAM, regions and VPC-SC."]}],
+  ]],
+  ["Cost & trust", [
+    ["Free to start","", {
+      gemini:[2,"Free tier; paid plans from $4.99/mo; bundled with Workspace Business/Enterprise."],
+      notebook:[2,"Free: 100 notebooks × 50 sources."],
+      aistudio:[2,"Studio is free; the API free tier needs no billing (no Gemini 4 Argon or media models)."],
+      antigravity:[2,"$0 plan with a weekly quota; IDE extensions work on every plan."],
+      genterprise:[0,"30-day trial; Business from $21/user/mo, or pay-as-you-go."],
+      agentplatform:[1,"Pay-as-you-go; new Google Cloud accounts get trial credits."]}],
+    ["Your data isn't used for training","", {
+      gemini:[1,"Workspace: never. Personal: may be used to improve Google AI unless Gemini Apps Activity is off."],
+      notebook:[2,"Not used for training, on personal and enterprise accounts."],
+      aistudio:[1,"Free tier: may be used, including human review. Paid tier: not used."],
+      antigravity:[1,"Free/Pro/Ultra: collected unless you opt out. Business: not used."],
+      genterprise:[2,"Google Cloud data terms."],
+      agentplatform:[2,"Google Cloud data terms."]}],
+    ["Admin & security controls","SSO, DLP, VPC-SC, audit", {
+      gemini:[2,"Workspace Admin: DLP, data regions, Vault (now incl. Gemini). Personal plans: none."],
+      notebook:[1,"Enterprise edition only."],
+      aistudio:[0,"None — move to Agent Platform."],
+      antigravity:[2,"Via Google Cloud for the app, CLI and IDE extensions (not the standalone IDE)."],
+      genterprise:[3,"Built for IT: IAM per app and data store, VPC-SC, CMEK, spend caps."],
+      agentplatform:[3,"IAM, VPC-SC, CMEK, regions, Agent Identity, Agent Gateway, Model Armor."]}],
+  ]],
 ];
-const CAPS = [
-  ["Grounded Q&A on your documents",
-    {notebooklm:[3,"Core purpose — per-notebook sources with citations"], aistudio:[0,"Only via RAG you build on the API"], antigravity:[1,"Codebase-grounded only"], genterprise:[3,"Core of the app: company-wide, permission-aware, 80+ connectors"], gworkspace:[2,"Side panel + connected Gmail/Drive/Chat"]}],
-  ["Deep Research (agentic web research)",
-    {notebooklm:[2,"Tiered quotas (10/mo free → 200/day Ultra)"], aistudio:[0,""], antigravity:[0,""], genterprise:[2,"Included in the end-user app"], gworkspace:[2,"In the Gemini app; can also search your Workspace data"]}],
-  ["Writes / edits code",
-    {notebooklm:[1,"Code Execution in secure containers for data analysis (July 2026), not a coding tool"], aistudio:[2,"Build mode generates full apps"], antigravity:[3,"Core purpose — delegate tasks (Agent Manager), code interactively (IDE), or work in the terminal (CLI)"], genterprise:[0,"Not in the app — pro-code lives in the separate Agent Platform"], gworkspace:[1,"Canvas light prototyping"]}],
-  ["Multiple parallel / async agents",
-    {notebooklm:[0,""], aistudio:[0,""], antigravity:[3,"Agent Manager is mission control (groups, subagents, schedules); IDE and CLI run background subagents"], genterprise:[1,"Scheduled/trigger-based no-code agents"], gworkspace:[0,""]}],
-  ["Build custom AI agents",
-    {notebooklm:[0,""], aistudio:[1,"Prototype only — no governance"], antigravity:[1,"Coding agents only"], genterprise:[2,"No-code Agent Designer (preview) + Agent Gallery partner agents"], gworkspace:[1,"Gems + Workspace Studio (simple)"]}],
-  ["Enterprise connectors (M365, Salesforce…)",
-    {notebooklm:[0,""], aistudio:[0,""], antigravity:[0,""], genterprise:[3,"80+ prebuilt connectors, federated or indexed"], gworkspace:[1,"Workspace apps only"]}],
-  ["Gemini API access / keys",
-    {notebooklm:[0,""], aistudio:[3,"Self-serve keys, playground, code export"], antigravity:[0,"Consumes models; no API-key auth on any tier"], genterprise:[0,"Not in the app — API/SDK access is the separate Agent Platform (Vertex AI lineage)"], gworkspace:[0,""]}],
-  ["Audio / Video Overviews (podcasts)",
-    {notebooklm:[3,"Signature feature; Cinematic Video Overviews on paid tiers"], aistudio:[0,""], antigravity:[0,""], genterprise:[2,"Via Gemini Notebook Enterprise"], gworkspace:[2,"Via bundled enhanced Gemini Notebook"]}],
-  ["Media generation (image / video / music)",
-    {notebooklm:[1,"Images inside generated outputs"], aistudio:[2,"Veo 3.1, Lyria 3, Nano Banana — paid API tier"], antigravity:[0,""], genterprise:[2,"Image + video generation in the app"], gworkspace:[2,"Slides/Vids image generation"]}],
-  ["Data NOT used for training",
-    {notebooklm:[2,"Consumer & enterprise (unless you submit feedback)"], aistudio:[1,"Free tier: data may be used to improve products; paid tier covered by enterprise data-protection terms (DPA)"], antigravity:[1,"Free/Pro: interaction data used to improve products unless opted out; GCP route: not used for training, Cloud DPA"], genterprise:[2,"Cloud DPA; data stays in your GCP project"], gworkspace:[2,"Workspace terms; no ads use"]}],
-  ["Enterprise governance (IAM, VPC-SC, DLP, audit)",
-    {notebooklm:[1,"Enterprise version only"], aistudio:[0,"None — enterprise controls come with Vertex AI"], antigravity:[1,"Via a GCP project: billed to project, Cloud DPA; desktop app + CLI only (not the classic IDE)"], genterprise:[3,"Agent Identity, Gateway, Model Armor, VPC-SC, IAM"], gworkspace:[2,"DLP, classification, data regions on Enterprise editions"]}],
-  ["Free tier",
-    {notebooklm:[2,"100 notebooks, 50 sources each, 50 chats/day"], aistudio:[2,"Studio free + API free tier (see data note above)"], antigravity:[1,"Free with limited quotas (cut March 2026); CLI free in public preview"], genterprise:[0,"30-day Business trial only"], gworkspace:[1,"Bundled with paid Workspace, not free per se"]}],
-  ["Connect to MCP servers / tools",
-    {notebooklm:[0,"No API at all — only unofficial browser-automation bridges"], aistudio:[2,"SDK: pass an MCP client session in tools= (experimental); Interactions API supports remote MCP natively"], antigravity:[3,"First-class: one shared config across Manager/IDE/CLI, MCP Store one-click installs, local + remote servers"], genterprise:[2,"Custom MCP Server connector, or governed via Agent Registry + Agent Gateway (IAM, egress policies)"], gworkspace:[0,"No user-facing MCP; Gems are prompt+files only"]}],
-  ["Agent Skills (open SKILL.md format)",
-    {notebooklm:[0,""], aistudio:[0,""], antigravity:[2,"Same SKILL.md standard as Claude Code/Cursor — skills portable unchanged, shared across all three surfaces"], genterprise:[1,"No SKILL.md — extensibility via connectors and gallery agents"], gworkspace:[0,"Gems: instructions + files only, no tools"]}],
+const LV = [["—","lv0","Not offered"],["Limited","lv1","Limited"],["Yes","lv2","Yes"],["Main job","lv3","Main job"]];
+
+/* ===== quick picks ===== */
+const PICKS = [
+  ["Summarize 40 PDFs and turn them into a podcast","notebook","Upload them as sources, ask cited questions, generate an Audio Overview."],
+  ["Draft emails, prep for meetings, analyze a Sheet","gemini","Already in Gmail, Docs, Sheets and Meet if your company uses Workspace."],
+  ["A cited competitive analysis by tomorrow","gemini","Deep Research writes the report; move it into Gemini Notebook if it becomes ongoing."],
+  ["A working AI demo for Friday's hackathon","aistudio","Build mode: describe the app, deploy to Cloud Run. Free to start."],
+  ["Fix this bug while I keep building the feature","antigravity","Hand the bug to an agent in the desktop app; review its walkthrough when it's done."],
+  ["Run a coding agent in CI","antigravity","Antigravity CLI headless mode: agy -p with JSON output."],
+  ["An HR agent that answers from SharePoint","genterprise","SharePoint connector + Workflow Builder; answers respect file permissions."],
+  ["Ship a governed customer-facing agent to production","agentplatform","Build with ADK, run on Agent Runtime, govern with Agent Gateway."],
+  ["Staff keep pasting contracts into public chatbots","gemini","Roll out Gemini in Workspace (no training on your data); add Gemini Enterprise if they also need M365 or Salesforce."],
 ];
 
-const LVL = [["—","lvl-no"],["Partial","lvl-part"],["Yes","lvl-yes"],["Core","lvl-core"]];
-
-/* ---- decision helper ---- */
-const QUESTIONS = [
-  { id:"role", title:"Who is this for?", opts:[
-    ["Non-technical worker",{gworkspace:3,notebooklm:2,genterprise:1}],
-    ["Individual developer",{aistudio:3,agide:2,agcli:2,agmanager:2}],
-    ["Enterprise dev team",{genterprise:3,aistudio:1}],
-    ["IT / whole org",{genterprise:3,gworkspace:2}]]},
-  { id:"job", title:"Main job to be done?", opts:[
-    ["Understand documents",{notebooklm:3,gworkspace:1,genterprise:1}],
-    ["Write code interactively",{agide:3,agcli:2}],
-    ["Delegate coding tasks",{agmanager:3,agcli:2,agide:1}],
-    ["Prototype an AI app",{aistudio:3}],
-    ["Company-wide search / agents",{genterprise:3}],
-    ["Everyday drafting & meetings",{gworkspace:3,notebooklm:1}]]},
-  { id:"data", title:"Data sensitivity?", opts:[
-    ["Confidential / regulated",{gworkspace:2,genterprise:2,notebooklm:1,aistudio:-3,agmanager:-1,agcli:-1,agide:-1}]]},
-  { id:"mcp", title:"Need to connect external tools & systems? (MCP)", opts:[
-    ["Yes, while coding",{agmanager:3,agide:3,agcli:3,gworkspace:-2,notebooklm:-2}],
-    ["Yes, from my own app's code",{aistudio:3}],
-    ["Yes, org-wide with governance",{genterprise:3,aistudio:-1}],
-    ["Reuse my Claude Code skills",{agide:3,agcli:3,agmanager:3}],
-    ["Not needed",{}]]},
-  { id:"ground", title:"What should it know about?", opts:[
-    ["A set of documents I pick",{notebooklm:3,gworkspace:1,genterprise:1}],
-    ["My email / Drive / calendar",{gworkspace:3}],
-    ["All company systems (M365, SFDC…)",{genterprise:3}],
-    ["A codebase",{agide:2,agmanager:2,agcli:2}],
-    ["Whatever I wire up myself",{aistudio:3,agmanager:2,agcli:2,agide:2,genterprise:1}]]},
+/* ===== renamed & retired ===== */
+const RENAMED = [
+  ["NotebookLM","Gemini Notebook","Jul 16, 2026"],
+  ["Vertex AI","Agent Platform","Apr 2026 · Agent Engine → Agent Runtime, Vertex AI Studio → Agent Studio"],
+  ["Agentspace","Gemini Enterprise","Oct 2025"],
+  ["Agent Designer","Workflow Builder","GA Sep 3, 2026 (in Gemini Enterprise)"],
+  ["Gemini CLI","Antigravity CLI (agy)","Stopped serving individuals Jun 18, 2026"],
+  ["Gems","Skills","Rolling out Oct–Nov 2026; Gems end on business accounts no earlier than Mar 1, 2027"],
+  ["Scheduled tasks","Automations","In Antigravity, Oct 2026"],
 ];
-const WHY = {
-  notebooklm:"Strictly source-grounded answers with citations, plus podcast/video/quiz outputs no other product has. Formerly NotebookLM.",
-  aistudio:"Fastest zero-setup way to try Gemini and prototype — for confidential work, link billing for enterprise data-protection (DPA) terms.",
-  agmanager:"Built to supervise multiple async coding agents with reviewable plans, walkthroughs, and browser-verified testing.",
-  agcli:"The terminal/SSH surface of Antigravity — the official Gemini CLI successor with background subagents and skills.",
-  agide:"Hands-on agentic editor: completions and inline commands with the agent panel one keystroke away.",
-  genterprise:"The only end-user hub with cross-system enterprise connectors (M365, Salesforce, ServiceNow…), no-code agents, and IT governance.",
-  gworkspace:"Already bundled in Workspace Business/Enterprise with enterprise data protections — the natural default for everyday work.",
-};
-
-/* ---- scenarios ---- */
-const SCENARIOS = [
-  ["\u201CSummarize these 40 PDFs and make a briefing podcast\u201D","notebooklm","Upload the PDFs as sources, ask grounded questions, generate an Audio Overview. No other product does source-cited synthesis + podcast output."],
-  ["\u201CHackathon demo of an AI feature by Friday\u201D","aistudio","Build mode: prompt-to-app with a full-stack runtime, deploy to Cloud Run. Free, zero setup."],
-  ["\u201CFix this bug while I keep building the feature\u201D","agmanager","Spawn an agent on the bug in a worktree via the Agent Manager while you stay in the IDE; review its Walkthrough artifact when done."],
-  ["\u201CEmployees keep pasting contracts into a public chatbot\u201D","gworkspace","Roll out the bundled, governed Gemini app + Gemini Notebook; step up to Gemini Enterprise if they also need M365/Salesforce search."],
-  ["\u201CHR agent answering onboarding questions from SharePoint\u201D","genterprise","SharePoint connector + no-code Agent Designer; permission-aware answers with IT governance."],
-  ["\u201CCompetitive analysis report by tomorrow\u201D","gworkspace","Gemini app Deep Research for the cited report; move findings into Gemini Notebook if it becomes an ongoing research base."],
-  ["\u201CWire my coding agent to Jira, Postgres, and internal APIs via MCP\u201D","agide","Antigravity: add servers once in ~/.gemini/config/mcp_config.json (or the IDE's MCP Store) and all three surfaces — IDE, Agent Manager, CLI — see them. Local stdio and remote HTTP both work. Caveat: OAuth re-auth per surface (practitioner-reported)."],
+const RETIRED = [
+  ["Jules","Antigravity","Read-only Nov 11; shuts down Dec 31, 2026"],
+  ["Gemini Code Assist","Antigravity","No new subscriptions since Oct 9, 2026; renewals until 2027"],
+  ["Opal","Gemini Skills","Shuts down Nov 17, 2026"],
+  ["Veo 3.1 preview (Gemini API)","Gemini Omni Flash","Shut down Oct 22, 2026; GA Veo stays on Agent Platform","retired"],
 ];
 
-/* ================= render ================= */
+/* ===== what's new ===== */
+const TIMELINE = [
+  ["Oct 30","Computer Use tool goes GA in the Gemini API."],
+  ["Oct 29","Antigravity Plugin Marketplace — skills, MCP servers and agents in one install. Jules shutdown announced."],
+  ["Oct 13","Gemini 4 Argon launches across the Gemini API, Gemini app (AI Pro/Ultra), Antigravity and Gemini Enterprise."],
+  ["Oct 9","Gemini Code Assist stops taking new subscriptions; Google points customers to Antigravity."],
+  ["Oct 8","Gemini agent for business announced — long-running tasks with sub-agents (private preview)."],
+  ["Oct 5","Skills begin replacing Gems in Workspace and the Gemini app."],
+  ["Sep 3","Workflow Builder (formerly Agent Designer) goes GA in Gemini Enterprise."],
+  ["Sep 2","Gemini 3.8 Flash GA. Gemini Notebook switches to compute-based usage limits."],
+  ["Aug 20","Antigravity IDE extensions for VS Code, JetBrains, Zed, Xcode and Visual Studio; Antigravity comes to Gemini Enterprise."],
+  ["Aug 19","Notebooks from Gemini Notebook start appearing in AI Mode in Search."],
+  ["Aug 1","Gemini Enterprise adds a pay-as-you-go edition."],
+];
+
+/* ===== render ===== */
 const $ = s => document.querySelector(s);
 const byId = Object.fromEntries(PRODUCTS.map(p=>[p.id,p]));
-const color = p => `var(${p.varName})`;
-const chip = (p,small) => `<span class="chip"${small?' style="font-size:12px"':''}><span class="dot" style="background:${color(p)}"></span>${p.name}</span>`;
-
-/* tier availability + conditions per product */
-const TIER_INFO = {
-  notebooklm: {
-    free:{ok:true, cond:"Fully usable free with a personal Google account: 100 notebooks, 50 sources each, 50 chats/day, 3 Audio/Video Overviews/day, Deep Research 10/month. 500K-word/200MB per-source cap. Data not used for training."},
-    gcp:{ok:true, cond:"Gemini Notebook Enterprise / via Gemini Enterprise plans (admin-assigned): \u201C5X or more\u201D artifact limits, Advanced Sharing, VPC-SC + IAM; data stays in your GCP project with data-region compliance.",
-      caveat:"The 500K-word / 200MB per-source cap is a Gemini Notebook product limit, not a GCP quota — it applies on all tiers, and no official page says Enterprise raises it (Enterprise's \u201C5X\u201D applies to artifact limits)."}},
-  aistudio: {
-    free:{ok:true, cond:"Studio itself is free; free API key needs no billing. Note: prompts/outputs may be used to improve products, incl. human review (EEA/CH/UK excepted) — best for non-sensitive work. No Veo/Lyria/image-gen/Batch/caching/Computer Use; free-tier rate caps."},
-    gcp:{ok:true, cond:"Two steps up: (1) link a Cloud Billing account to the key's project — data terms flip to no-training/DPA, unlocks media gen + Batch + caching, spend-tier limits; (2) full Vertex / Agent Platform — IAM/service accounts (no API keys), regions, VPC-SC/CMEK, Provisioned Throughput.",
-      caveat:"No fine-tuning on the Gemini Developer API since May 2025 — supervised tuning is only on the Vertex/Agent Platform side. AI Studio-tuned models must be retrained when migrating."}},
-  agmanager: {
-    free:{ok:true, cond:"Free with a Google account, but lowest quotas on a WEEKLY refresh (paid = 5-hour), metered by agent \u201Cwork done\u201D. Note: interaction data is used to improve products unless you opt out in settings."},
-    gcp:{ok:true, cond:"Supported via GCP project (Agent Platform): Cloud OAuth, enable aiplatform.googleapis.com, roles/aiplatform.user, set project ID + region. Billed to the project; no training on code/prompts (automatic carve-out), Cloud DPA."}},
-  agcli: {
-    free:{ok:true, cond:"Free in public preview with Google sign-in (post-preview pricing not yet announced). Same weekly-refresh individual quotas and training-unless-opt-out data terms as the desktop app."},
-    gcp:{ok:true, cond:"Supported via GCP project (Agent Platform) — same Cloud OAuth setup as the desktop app; inference inside your cloud boundary, billed to the project, training carve-out automatic."}},
-  agide: {
-    free:{ok:true, cond:"Free with a Google account (same individual quotas/data terms as other surfaces; free tier cut sharply March 2026)."},
-    gcp:{ok:false, cond:"Not supported for enterprise: the GCP/Agent Platform route covers only the Antigravity 2.0 desktop app and CLI — the classic IDE is excluded (antigravity.google/docs/enterprise)."}},
-  genterprise: {
-    free:{ok:false, cond:"No free tier — 30-day Business-edition trial only. Paid per-seat licensing (Business / Standard / Plus editions)."},
-    gcp:{ok:true, cond:"This IS the GCP product: per-seat licenses (Business / Standard / Plus editions), admin-assigned via your Google Cloud org. Governance: Agent Gateway/Registry, VPC-SC, IAM; data under Cloud DPA. (Pro-code agent development is the separate Agent Platform.)"}},
-  gworkspace: {
-    free:{ok:false, cond:"Not free — bundled only with paid Workspace Business/Enterprise editions (Starter gets a limited subset: Gmail + Vids side panel, basic app access)."},
-    gcp:{ok:false, cond:"Not a GCP product — licensed and governed through Google Workspace (Admin console), not a GCP project. For GCP-governed AI, use Gemini Enterprise; the two share connectors to Workspace data."}},
-};
-
-/* cards */
-let tierMode = "all";
-const cardHTML = p => `
-  <div class="card" id="card-${p.id}" style="--accent:${color(p)}">
-    <h3><span class="dot" style="background:${color(p)}"></span>${p.name}</h3>
-    <div class="tag">${p.tag}</div>
-    <p class="bestfor">Best for: ${p.users}</p>
-    <p class="one">${p.one}</p>
-    <ul>${p.feats.map(f=>`<li><b>${f[0]}.</b> ${f[1]}</li>`).join("")}</ul>
-    <div class="meta">
-      <div><span class="k">Cost:</span> ${p.price}</div>
-      <div><span class="k">Data:</span> ${p.privacy}</div>
-    </div>
-    ${tierMode!=="all" ? `<div class="tiercond"><b>${tierMode==="free"?"Free-tier conditions":"GCP / enterprise conditions"}</b>${TIER_INFO[p.id][tierMode].cond}</div>` : ""}
-  </div>`;
-
-function renderCards(){
-  const list = tierMode==="all" ? PRODUCTS : PRODUCTS.filter(p=>TIER_INFO[p.id][tierMode].ok);
-  const excluded = tierMode==="all" ? [] : PRODUCTS.filter(p=>!TIER_INFO[p.id][tierMode].ok);
-  $("#cards").innerHTML = list.map(cardHTML).join("") +
-    (excluded.length ? `<div class="card" style="--accent:var(--baseline)">
-      <h3>Not available on this tier</h3>
-      <ul style="margin-top:10px;">${excluded.map(p=>`<li style="margin-bottom:8px;"><span class="chip"><span class="dot" style="background:${color(p)}"></span>${p.name}</span><br><span style="font-size:12.5px;">${TIER_INFO[p.id][tierMode].cond}</span></li>`).join("")}</ul>
-    </div>` : "");
-  $("#tierNote").textContent = tierMode==="free" ? `${list.length} of ${PRODUCTS.length} products usable at $0`
-    : tierMode==="gcp" ? `${list.length} of ${PRODUCTS.length} products with a GCP-project / enterprise path` : "";
-}
-renderCards();
-$("#tierSeg").addEventListener("click", e=>{
-  const b = e.target.closest("button"); if(!b) return;
-  tierMode = b.dataset.tier;
-  document.querySelectorAll("#tierSeg button").forEach(x=>x.classList.toggle("sel", x===b));
-  renderCards();
-});
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 
 /* matrix */
-const mt = $("#matrixTable");
-mt.innerHTML = `<thead><tr><th style="text-align:left"></th>${MATRIX_COLS.map(p=>`<th>${chip(p,true)}</th>`).join("")}</tr></thead>
-<tbody>${CAPS.map(([cap,row])=>`<tr><td class="cap">${cap}</td>${MATRIX_COLS.map(p=>{
-  const [lvl,note]=row[p.id]; const [label,cls]=LVL[lvl];
-  return `<td class="cell" data-name="${p.name}" data-lvl="${label}" data-note="${(note||"").replace(/"/g,'&quot;')}"><span class="lvl ${cls}">${label}</span></td>`;
-}).join("")}</tr>`).join("")}</tbody>`;
+$("#mx").innerHTML =
+  `<thead><tr><th>Tap a product for details</th>${PRODUCTS.map(p=>`
+    <th data-col="${p.id}"><button class="ph" data-open="${p.id}">
+      <img src="${p.logo}" alt="">
+      <span class="nm">${p.name}</span>
+      <span class="bf">${p.sub}</span>
+      <span class="more">Details →</span>
+    </button></th>`).join("")}</tr></thead>
+  <tbody>${GROUPS.map(([g,rows])=>`
+    <tr class="grp"><td colspan="${PRODUCTS.length+1}">${g}</td></tr>
+    ${rows.map(([feat,hint,cells],ri)=>`<tr>
+      <td class="feat"><b>${feat}</b>${hint?`<small>${hint}</small>`:""}</td>
+      ${PRODUCTS.map(p=>{ const [l] = cells[p.id];
+        return `<td class="c" data-col="${p.id}" data-g="${esc(g)}" data-f="${esc(feat)}" tabindex="0"><span class="lv ${LV[l][1]}">${LV[l][0]}</span></td>`;}).join("")}
+    </tr>`).join("")}`).join("")}</tbody>`;
 
-const tip = $("#tooltip");
-const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-mt.addEventListener("mousemove", e=>{
-  const c = e.target.closest("[data-name]");
-  if(!c){ tip.style.display="none"; return; }
-  const parts = c.dataset.note ? c.dataset.note.split(/;\s+/) : [];
-  tip.innerHTML = `<div class="tip-head">${esc(c.dataset.name)} — ${esc(c.dataset.lvl)}</div>` +
-    (parts.length > 1
-      ? `<ul class="tip-list">${parts.map(n=>`<li>${esc(n)}</li>`).join("")}</ul>`
-      : parts.length === 1 ? `<div class="tip-body">${esc(parts[0])}</div>` : "");
-  tip.style.display="block";
-  const x = Math.min(e.clientX+14, innerWidth-340), y = Math.min(e.clientY+16, innerHeight-120);
-  tip.style.left=x+"px"; tip.style.top=y+"px";
+const cellData = (td) => {
+  const rows = GROUPS.find(([g])=>g===td.dataset.g)[1];
+  const row = rows.find(r=>r[0]===td.dataset.f);
+  return row[2][td.dataset.col];
+};
+
+/* popover */
+const pop = $("#pop");
+let pinned = null;
+function showPop(td, pin){
+  const [l,note] = cellData(td); const p = byId[td.dataset.col];
+  pop.innerHTML = `<div class="ph1">${esc(p.name)} · ${LV[l][2]}</div><div class="ph2">${esc(td.dataset.f)}</div>${note?esc(note):"Not offered."}${pin?`<br><button data-open="${p.id}">More about ${esc(p.name)} →</button>`:""}`;
+  pop.style.display = "block";
+  const r = td.getBoundingClientRect(), w = pop.offsetWidth, h = pop.offsetHeight;
+  let x = Math.min(Math.max(12, r.left + r.width/2 - w/2), innerWidth - w - 12);
+  let y = r.bottom + 8; if (y + h > innerHeight - 12) y = r.top - h - 8;
+  pop.style.left = x+"px"; pop.style.top = y+"px";
+}
+function hidePop(){ pop.style.display="none"; if(pinned){ pinned.classList.remove("on"); pinned=null; } }
+const fine = matchMedia("(hover:hover) and (pointer:fine)").matches;
+const mx = $("#mx");
+if (fine){
+  mx.addEventListener("mouseover", e=>{ if(pinned) return; const td=e.target.closest("td.c"); td ? showPop(td,false) : (pop.style.display="none"); });
+  mx.addEventListener("mouseleave", ()=>{ if(!pinned) pop.style.display="none"; });
+}
+mx.addEventListener("click", e=>{
+  const td = e.target.closest("td.c"); if(!td) return;
+  e.stopPropagation();
+  if (pinned===td){ hidePop(); return; }
+  hidePop(); pinned = td; td.classList.add("on"); showPop(td,true);
 });
-mt.addEventListener("mouseleave", ()=> tip.style.display="none");
+mx.addEventListener("keydown", e=>{ if(e.key==="Enter"){ const td=e.target.closest("td.c"); if(td) td.click(); }});
+document.addEventListener("click", e=>{ if(!e.target.closest("#pop")) hidePop(); });
+addEventListener("scroll", ()=>{ if(pop.style.display==="block") hidePop(); }, {passive:true});
+$(".mx-scroll").addEventListener("scroll", ()=>hidePop(), {passive:true});
 
-/* helper */
-const answers = {};
-$("#questions").innerHTML = QUESTIONS.map(q=>`
-  <div class="q"><h4>${q.title}</h4><div class="opts" data-q="${q.id}">
-    ${q.opts.map((o,i)=>`<button data-i="${i}">${o[0]}</button>`).join("")}
-  </div></div>`).join("");
-
-$("#questions").addEventListener("click", e=>{
+/* audience highlight */
+$("#who").addEventListener("click", e=>{
   const b = e.target.closest("button"); if(!b) return;
-  const qid = b.parentElement.dataset.q, i = +b.dataset.i;
-  if(answers[qid]===i){ delete answers[qid]; b.classList.remove("sel"); }
-  else {
-    answers[qid]=i;
-    [...b.parentElement.children].forEach(x=>x.classList.remove("sel"));
-    b.classList.add("sel");
-  }
-  renderResults();
-});
-$("#resetBtn").onclick = ()=>{ Object.keys(answers).forEach(k=>delete answers[k]);
-  document.querySelectorAll(".opts button").forEach(b=>b.classList.remove("sel")); renderResults(); };
-
-function renderResults(){
-  const box = $("#results");
-  const picked = Object.keys(answers);
-  if(!picked.length){ box.innerHTML = `<p class="placeholder">Pick at least one answer on the left — products are ranked here as you go.</p>`; return; }
-  const scores = Object.fromEntries(PRODUCTS.map(p=>[p.id,0]));
-  for(const q of QUESTIONS){
-    if(!(q.id in answers)) continue;
-    const w = q.opts[answers[q.id]][1];
-    for(const [pid,v] of Object.entries(w)) scores[pid]+=v;
-  }
-  const ranked = PRODUCTS.map(p=>({p,s:scores[p.id]})).sort((a,b)=>b.s-a.s).filter(r=>r.s>0).slice(0,4);
-  if(!ranked.length){ box.innerHTML = `<p class="placeholder">No strong match for that combination — consider relaxing a constraint (e.g. data sensitivity).</p>`; return; }
-  const max = ranked[0].s;
-  box.innerHTML = `<h3 style="font-size:15px;margin-bottom:12px;">Recommendation <span style="font-weight:400;font-size:12px;color:var(--ink-3);">· click a product for details</span></h3>` + ranked.map((r,i)=>`
-    <div class="rec ${i===0?"top":""}" data-pid="${r.p.id}" style="--accent:${color(r.p)};cursor:pointer;" title="View ${r.p.name} details">
-      <span class="score">match ${Math.round(100*r.s/max)}%</span>
-      ${i===0?`<div class="rank">Best fit</div>`:""}
-      <h4><span class="dot" style="background:${color(r.p)}"></span>${r.p.name}</h4>
-      <p>${WHY[r.p.id]}</p>
-    </div>`).join("") +
-    ((answers.data===0)?`<p style="font-size:12.5px;color:var(--ink-2);margin-top:8px;">For confidential data, use paid/enterprise tiers — they include Data Processing Addendum coverage and your data is not used for model training.</p>`:"");
-}
-
-/* scenarios */
-$("#scenList").innerHTML = SCENARIOS.map(([t,pid,body])=>{
-  const p = byId[pid];
-  return `<details class="scen"><summary><span>${t}</span>${chip(p,true)}</summary><div class="body">${body}</div></details>`;
-}).join("");
-
-/* tabs + theme */
-function showView(name){
-  document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x.dataset.view===name));
-  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active", v.id==="view-"+name));
-}
-$("#tabs").addEventListener("click", e=>{
-  const b = e.target.closest("button"); if(!b) return;
-  showView(b.dataset.view);
+  document.querySelectorAll("#who button").forEach(x=>x.classList.toggle("sel", x===b));
+  const w = b.dataset.who;
+  document.querySelectorAll("#mx [data-col]").forEach(el=>{
+    el.classList.toggle("dim", w!=="all" && !byId[el.dataset.col].who.includes(w));
+  });
 });
 
-/* jump to a product card with a highlight */
-function gotoProduct(pid){
-  if(tierMode!=="all" && !TIER_INFO[pid][tierMode].ok){ tierMode="all";
-    document.querySelectorAll("#tierSeg button").forEach(x=>x.classList.toggle("sel", x.dataset.tier==="all"));
-    renderCards();
-  }
-  showView("products");
-  const card = document.getElementById("card-"+pid);
-  if(card){
-    card.scrollIntoView({behavior:"smooth", block:"start"});
-    card.classList.add("spotlight");
-    setTimeout(()=>card.classList.remove("spotlight"), 2200);
-  }
-}
-$("#results").addEventListener("click", e=>{
-  const rec = e.target.closest(".rec[data-pid]"); if(!rec) return;
-  gotoProduct(rec.dataset.pid);
-});
+/* quick picks */
+$("#pickList").innerHTML = PICKS.map(([q,pid,how])=>{ const p=byId[pid];
+  return `<button class="pick" data-open="${pid}"><img src="${p.logo}" alt=""><div><q>${q}</q><span><em>${p.name}</em> — ${how}</span></div></button>`;}).join("");
 
+/* renamed */
+const rnRow = ([o,n,w,st],ret) => `<div class="rn-row"><span><span class="old">${o}</span>${ret?`<span class="tag-r">${st||"retiring"}</span>`:""}</span><span class="arrow">→</span><span class="new">${n}</span><span class="when">${w}</span></div>`;
+$("#rnList").innerHTML = `<div class="rn-head">Renamed</div>${RENAMED.map(r=>rnRow(r,false)).join("")}<div class="rn-head">Retired or retiring — and what replaces it</div>${RETIRED.map(r=>rnRow(r,true)).join("")}`;
+
+/* timeline */
+$("#tlList").innerHTML = TIMELINE.map(([d,t])=>`<li><span class="d">${d}, 2026</span>${t}</li>`).join("");
+
+/* drawer */
+const drawer = $("#drawer"), scrim = $("#scrim");
+function openProduct(id, push=true){
+  const p = byId[id]; if(!p) return;
+  hidePop();
+  $("#drLogo").src = p.logo; $("#drName").textContent = p.name;
+  $("#drTag").textContent = p.tag; $("#drFormer").textContent = p.former || "";
+  $("#drBody").innerHTML = `
+    <h4>Best for</h4><p class="best">${p.best}</p>
+    <h4>Highlights</h4><ul>${p.highlights.map(([k,v])=>`<li><b>${k}.</b> ${v}</li>`).join("")}</ul>
+    <h4>Plans &amp; cost</h4><ul>${p.plans.map(([k,v])=>`<li><b>${k}:</b> ${v}</li>`).join("")}</ul>
+    <h4>Your data</h4><p>${p.data}</p>
+    <h4>Watch out for</h4><p class="warn">${p.watch}</p>
+    <h4>Recent changes</h4><ul>${p.recent.map(r=>`<li>${r}</li>`).join("")}</ul>
+    <a class="site" href="${p.site}" target="_blank" rel="noopener">Official site →</a>`;
+  drawer.classList.add("open"); scrim.classList.add("open"); drawer.setAttribute("aria-hidden","false");
+  drawer.scrollTop = 0; $("#drClose").focus({preventScroll:true});
+  if(push) history.replaceState(null,"","#"+id);
+}
+function closeProduct(){
+  drawer.classList.remove("open"); scrim.classList.remove("open"); drawer.setAttribute("aria-hidden","true");
+  if(byId[location.hash.slice(1)]) history.replaceState(null,"",location.pathname);
+}
+document.addEventListener("click", e=>{
+  const o = e.target.closest("[data-open]"); if(!o) return;
+  e.stopPropagation(); openProduct(o.dataset.open);
+});
+$("#drClose").onclick = closeProduct; scrim.onclick = closeProduct;
+addEventListener("keydown", e=>{ if(e.key==="Escape"){ hidePop(); closeProduct(); }});
+if(byId[location.hash.slice(1)]) openProduct(location.hash.slice(1), false);
+
+/* theme */
 $("#themeBtn").onclick = ()=>{
   const r = document.documentElement;
   const cur = r.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
