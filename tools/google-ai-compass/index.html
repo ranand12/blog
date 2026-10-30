@@ -52,6 +52,7 @@
   --hl:#1C2B41;--accent:#8AB4F8;
 }
 *{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:64px}
 body{font-family:var(--font);background:var(--page);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
 a{color:var(--accent)}
@@ -76,7 +77,8 @@ button{font:inherit;color:inherit}
 .back:hover{color:var(--text)}
 h1{font-size:2rem;font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-top:10px}
 .lede{color:var(--secondary);font-size:1rem;margin-top:8px;max-width:760px}
-.updated{display:inline-block;margin-top:10px;font-size:12px;color:var(--muted);background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:3px 10px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.updated{display:inline-block;font-size:12px;color:var(--muted);background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:3px 10px}
 
 /* controls */
 .controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:6px 0 12px}
@@ -155,7 +157,13 @@ h2{font-size:1.4rem;font-weight:700;letter-spacing:-.01em}
 .tl li::before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--raised);border:2px solid var(--blue)}
 .tl .d{font-size:12px;color:var(--muted);display:block}
 
-footer{margin:48px 0 40px;padding-top:16px;border-top:1px solid var(--hair);font-size:12px;color:var(--muted)}
+footer{margin:48px 0 40px;padding-top:16px;border-top:1px solid var(--hair);font-size:12px;color:var(--muted);max-width:900px}
+footer p{margin-bottom:8px}
+footer b{color:var(--secondary);font-weight:500}
+footer a{color:var(--secondary)}
+.indep{margin-top:12px;font-size:13px;color:var(--secondary)}
+.indep b{font-weight:500;color:var(--text)}
+.indep a{white-space:nowrap}
 
 /* drawer */
 #scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:70;opacity:0;pointer-events:none;transition:opacity .2s}
@@ -217,8 +225,9 @@ footer{margin:48px 0 40px;padding-top:16px;border-top:1px solid var(--hair);font
   <div class="hero" id="compare">
     <a class="back" href="https://www.cloud-monk.com/">&larr; cloud-monk.com</a>
     <h1>Which Google AI tool should I use?</h1>
-    <p class="lede">Six products, one table. Tap any cell for the details, or a product name for the full picture — plans, data terms, and what to watch out for.</p>
-    <span class="updated">Updated October 30, 2026</span>
+    <p class="lede" id="lede">Tap any cell for the details, or a product name for the full picture — plans, data terms, and what to watch out for.</p>
+    <div class="badges"><span class="updated" id="updated">Updated —</span><span class="updated ver"></span><span class="updated" id="visits" hidden></span></div>
+    <p class="indep"><b>Independent guide — not an official Google product.</b> Made by Anand Kumar R as a personal project. <a href="https://www.linkedin.com/in/ranand12" target="_blank" rel="noopener">Spot something off? Tell me on LinkedIn →</a></p>
   </div>
 
   <div class="controls">
@@ -258,7 +267,12 @@ footer{margin:48px 0 40px;padding-top:16px;border-top:1px solid var(--hair);font
     <ul class="tl" id="tlList"></ul>
   </section>
 
-  <footer>Informal comparison based on publicly available information as of October 30, 2026. Google AI products change quickly — details may be out of date or inaccurate, and no responsibility is taken for errors. Always check official Google documentation and pricing before deciding. Product names and logos belong to Google.</footer>
+  <footer>
+    <p><b>Not an official Google product.</b> Google AI Compass is an independent, personal project by <a href="https://www.linkedin.com/in/ranand12" target="_blank" rel="noopener">Anand Kumar R</a>. It isn't created, sponsored, endorsed or reviewed by Google. Views and assessments are my own and don't represent my employer.</p>
+    <p><b>Check before you decide.</b> Content reflects public information as of <span id="asOf"></span>. It is checked against official Google sources every day and updated automatically with AI assistance, without human review of each change, so it can contain mistakes. Google AI products, prices, limits and data terms change often and differ by country, edition and contract, so details here may be incomplete, out of date or wrong. Nothing here is legal, compliance, security or purchasing advice — always confirm with official Google documentation, pricing pages and your agreement. No responsibility is accepted for decisions made using this page.</p>
+    <p><b>Trademarks.</b> Google, Gemini, Google Workspace, Google Cloud and related names and logos are trademarks of Google LLC, shown here only to identify the products.</p>
+    <p>Spot something off or out of date? <a href="https://www.linkedin.com/in/ranand12" target="_blank" rel="noopener">Reach out on LinkedIn</a>. · Google AI Compass <span class="ver"></span> · <a href="https://www.cloud-monk.com/">cloud-monk.com</a></p>
+  </footer>
 </main>
 
 <div id="pop" role="dialog"></div>
@@ -269,327 +283,73 @@ footer{margin:48px 0 40px;padding-top:16px;border-top:1px solid var(--hair);font
 </aside>
 
 <script>
-/* ===== products ===== */
-const PRODUCTS = [
-  { id:"gemini", name:"Gemini app", logo:"logos/gemini.png", sub:"Personal & Workspace",
-    best:"Everyday work: chat, writing, research, and Gemini inside Gmail, Docs, Sheets & Meet",
-    tag:"Everyday AI assistant — on its own or built into Google Workspace",
-    who:["me","org"], site:"https://gemini.google.com",
-    highlights:[
-      ["Gemini 4 Argon","Google's newest flagship model, on AI Pro and Ultra (Oct 13, 2026)."],
-      ["Deep Research","Cited research reports from the web — and from your Gmail, Drive and Chat on Workspace."],
-      ["Inside Workspace","Side panel in Gmail, Docs, Sheets, Slides, Drive and Chat; edit whole Slides decks; Fill with Gemini in Sheets now cites cells."],
-      ["Meet","Take notes for me, meeting recaps in Chat, and real-time speech translation in 63 languages."],
-      ["Skills (replacing Gems)","Reusable instructions and workflows, rolling out Oct–Nov 2026."],
-      ["Tasks & coding","Tasks mode for longer jobs and Antigravity coding in the macOS app (AI Pro/Ultra)."],
-      ["Gemini Notebook built in","Use @Gemini Notebook to query or create notebooks from chat."]],
-    plans:[
-      ["Free","Gemini Flash-Lite, 15 GB storage."],
-      ["Google AI Plus — $4.99/mo","2× limits, Omni Flash video, Gemini in Gmail."],
-      ["Google AI Pro — $19.99/mo","Gemini 4 Argon, 4× limits, 5 TB, entry Antigravity access."],
-      ["Google AI Ultra — $99.99 or $199.99/mo","5× or 20× Pro limits, earliest access to new features."],
-      ["Workspace","Included in Business and Enterprise editions (Business Starter gets a limited set). AI Expanded Access add-on for higher limits."]],
-    data:"Workspace: your data isn't used for training or reviewed by humans, and existing access permissions apply. Personal accounts: chats may be used to improve Google AI unless you turn off Gemini Apps Activity.",
-    watch:"On Workspace, Gemini 4 Argon access and limits depend on your edition and add-ons. Gems stop working on Business/Enterprise accounts no earlier than March 1, 2027 — move them to Skills.",
-    recent:["Oct 30 — Edit entire Slides decks with Gemini","Oct 29 — Create and edit files inside Gemini chats","Oct 22 — Meet speech translation expands to 63 languages","Oct 13 — Gemini 4 Argon for AI Pro & Ultra","Oct 5 — Skills start rolling out in Workspace"] },
+/* Site version — bump on layout/feature releases. Content freshness is data.updated. */
+const SITE_VERSION = "2.0";
+/* Live data from the Compass API (refreshed daily), falling back to the bundled copy. */
+const API = "https://compass-api-sf5dwxg56a-uc.a.run.app";
+const DATA_URLS = [API + "/data", "data.json"];
+/* Visitor counter: every page load POSTs once and gets the running total. */
+const COUNTER_URL = API + "/hit";
 
-  { id:"notebook", name:"Gemini Notebook", logo:"logos/notebook.svg", sub:"formerly NotebookLM",
-    best:"Making sense of a stack of documents — with citations, podcasts and study guides",
-    tag:"Research assistant that only answers from the sources you give it",
-    former:"Formerly NotebookLM (renamed July 16, 2026)",
-    who:["me","org"], site:"https://notebook.google.com",
-    highlights:[
-      ["Answers from your sources","Every answer cites the documents you uploaded; it won't make things up from the web."],
-      ["Studio outputs","Audio & Video Overviews (incl. 60-second shorts), slide decks, reports, quizzes, flashcards, mind maps and infographics."],
-      ["Creative control","Review the outline or producer notes before a slide deck or video is generated (Oct 2026)."],
-      ["Code Execution","Each notebook gets a secure cloud computer for data analysis (AI Ultra; rolling out to Pro)."],
-      ["Deep Research","Finds web sources for you and adds them to the notebook."],
-      ["Everywhere","Notebooks in the Gemini app and in AI Mode in Search (personal accounts, English, rolling out since Aug 2026)."]],
-    plans:[
-      ["Free","100 notebooks, 50 sources each."],
-      ["Google AI Plus","200 notebooks × 100 sources, 2× usage."],
-      ["Google AI Pro","500 notebooks × 300 sources, 4× usage."],
-      ["Google AI Ultra","500 notebooks × 500–600 sources, highest usage."],
-      ["Enterprise","Gemini Notebook Enterprise via Google Cloud / Gemini Enterprise, with an Enterprise API (v1alpha)."]],
-    data:"Your sources, questions and outputs aren't used to train models — on personal and enterprise accounts.",
-    watch:"Since Sept 2, 2026 usage is compute-based: it refreshes every 5 hours up to a weekly cap, replacing the old fixed daily counts. There's no consumer API.",
-    recent:["Oct 23 — Connected app inside Gemini (@Gemini Notebook)","Oct 16 — Review outlines for slide decks & Video Overviews","Sep 2 — Compute-based usage limits","Aug 19 — Notebooks in AI Mode in Search","Jul 16 — Renamed from NotebookLM"] },
-
-  { id:"aistudio", name:"AI Studio", logo:"logos/aistudio.png", sub:"+ Gemini API",
-    best:"Developers trying Gemini models, prototyping AI apps, and getting an API key",
-    tag:"Free developer playground and home of the Gemini API",
-    who:["dev"], site:"https://aistudio.google.com",
-    highlights:[
-      ["Playground","Try every Gemini model in the browser, then export the code."],
-      ["API keys in seconds","Self-serve keys with no Google Cloud setup; new gemini-api CLI (beta)."],
-      ["Build mode","Prompt to a full-stack web app (React + Node) or native Android app; deploy to Cloud Run, sync to GitHub, set up Firebase."],
-      ["Latest models","Gemini 4 Argon, 3.8 Flash, 3.5 Flash-Lite; Nano Banana 2.1 (images), Lyria 3.5 (music), Gemini Omni Flash (video)."],
-      ["Agent tools","Computer Use (GA Oct 30), MCP support in the SDK and Interactions API, Deep Research agent."]],
-    plans:[
-      ["AI Studio","Free."],
-      ["Gemini API free tier","No billing needed; rate-limited; no Gemini 4 Argon or media models."],
-      ["Paid tier","Pay per token. Gemini 4 Argon: $2 / $10 per 1M tokens (in/out) until Nov 30, then $4 / $20. Flex (~½ price) and Priority tiers."]],
-    data:"Free tier: prompts and outputs may be used to improve Google products, including human review. Paid tier: not used for training.",
-    watch:"New paid projects store requests by default since Oct 26, 2026. Veo 3.1 previews were shut down in the Gemini API on Oct 22 — use Gemini Omni Flash, or Veo on Agent Platform. Need IAM, regions or VPC-SC? Move to Agent Platform.",
-    recent:["Oct 30 — Computer Use GA","Oct 27 — gemini-api CLI (beta)","Oct 22 — Veo 3.1 previews retired → Omni Flash","Oct 13 — Gemini 4 Argon GA","Sep 2 — Gemini 3.8 Flash GA"] },
-
-  { id:"antigravity", name:"Antigravity", logo:"logos/antigravity.png", sub:"App · CLI · IDE",
-    best:"Developers handing coding work to AI agents — or coding side-by-side with one",
-    tag:"Google's agentic coding platform",
-    former:"Replaces Gemini CLI, Gemini Code Assist and Jules",
-    who:["dev","org"], site:"https://antigravity.google",
-    highlights:[
-      ["Desktop app","Mission control for parallel agents: Automations (scheduled runs), subagents, reviewable plans and walkthroughs, browser testing, Remote Control from any browser."],
-      ["CLI (agy)","Terminal agent and Gemini CLI's successor; headless mode for CI (agy -p, JSON output)."],
-      ["IDE extensions","VS Code, Visual Studio, JetBrains, Zed and Xcode — on every plan, including free (Aug 2026)."],
-      ["Plugin Marketplace","One install bundles skills, MCP servers, hooks and custom agents — Vercel, Notion, Linear, Sentry, Supabase and more (Oct 29)."],
-      ["Models","Gemini 3.8 Flash on every plan; Gemini 4 Argon and Claude Sonnet/Opus 5.5 on paid plans."]],
-    plans:[
-      ["Free","$0 with a Google account; weekly quota."],
-      ["Google AI Pro — $19.99/mo","Quota refreshes every 5 hours up to a weekly cap."],
-      ["Google AI Ultra — $99.99 or $199.99/mo","Highest caps; buy AI credits for overage."],
-      ["Business","Through Google Cloud: Gemini Enterprise Standard/Plus seats (from $30/seat/mo, with pooled credits) or pay-as-you-go."]],
-    data:"Free/Pro/Ultra: interaction data is collected to improve products unless you opt out. Business (Google Cloud): not used to train models.",
-    watch:"Business plans cover the desktop app, CLI and IDE extensions — not the older standalone IDE. Gemini models and Claude/GPT models have separate quotas.",
-    recent:["Oct 29 — Plugin Marketplace","Oct 15 — Pick a model per Automation","Oct 13 — Gemini 4 Argon","Aug 20 — IDE extensions + Antigravity in Gemini Enterprise","Aug 12 — Custom agents"] },
-
-  { id:"genterprise", name:"Gemini Enterprise", logo:"logos/gemini.png", sub:"for organizations",
-    best:"Whole organizations: AI search across every work app, plus no-code agents with IT control",
-    tag:"The company-wide AI hub on Google Cloud",
-    former:"Successor to Agentspace",
-    who:["org"], site:"https://cloud.google.com/gemini-enterprise",
-    highlights:[
-      ["Search across work apps","Permission-aware answers over Google Workspace, Microsoft 365/SharePoint, Salesforce, ServiceNow, Jira, Confluence, Slack, Teams, Notion and more."],
-      ["Workflow Builder","No-code agents that run on a schedule, on demand or by @-mention; import ADK/A2A agents (GA Sep 3, 2026)."],
-      ["Agent Gallery","Google-built and partner agents, approved by IT."],
-      ["Built in","Deep Research, Gemini Notebook Enterprise, image & video generation in every edition."],
-      ["Models","Gemini 4 Argon by default (Oct 27); Claude Opus/Sonnet 5.5 pay-as-you-go."],
-      ["Coming","The Gemini agent: long-running tasks with its own sub-agents (private preview, announced Oct 8)."]],
-    plans:[
-      ["Business — $21/user/mo","Annual; for 1–500 users."],
-      ["Standard / Plus","Per seat, larger orgs and extra controls; include Antigravity credits."],
-      ["Pay-as-you-go","No seat fee, usage-billed (GA Aug 1, 2026)."],
-      ["Frontline","For 150+ frontline workers."],
-      ["Trial","30 days."]],
-    data:"Covered by Google Cloud data terms — not used for training. VPC-SC, CMEK and granular IAM per app and data store.",
-    watch:"New or renewed Standard/Plus subscriptions no longer include Gemini Code Assist (Sept 17, 2026) — use Antigravity instead. Google's product page now also calls it “Gemini for Business”.",
-    recent:["Oct 27 — Gemini 4 Argon is the default model","Oct 15 — Claude Opus & Sonnet 5.5 available","Oct 8 — Gemini agent announced (preview)","Sep 3 — Workflow Builder GA","Aug 7 — Custom MCP connector GA"] },
-
-  { id:"agentplatform", name:"Agent Platform", logo:"logos/cloud.png", sub:"formerly Vertex AI",
-    best:"Engineering teams building production AI apps and agents on Google Cloud",
-    tag:"Gemini Enterprise Agent Platform — pro-code AI on Google Cloud",
-    former:"Formerly Vertex AI (renamed April 2026)",
-    who:["dev","org"], site:"https://cloud.google.com/gemini-enterprise-agent-platform",
-    highlights:[
-      ["Models","Gemini 4 Argon and the full Gemini family, plus partner and open models in Model Garden; Veo 3.1 (GA), Nano Banana, Lyria."],
-      ["Build & run agents","Agent Development Kit (ADK), Agent Runtime (formerly Agent Engine), Agent Studio (formerly Vertex AI Studio)."],
-      ["Governance","Agent Identity, Agent Registry, Agent Gateway and Model Armor; IAM, VPC-SC, CMEK, data regions."],
-      ["Ship to users","Publish your agents into Gemini Enterprise."],
-      ["Production extras","Tuning, Provisioned Throughput, batch."]],
-    plans:[
-      ["Pay-as-you-go","Billed to your Google Cloud project; new Cloud accounts get trial credits."]],
-    data:"Google Cloud data terms — not used for training; your data stays in your project and chosen region.",
-    watch:"Agent Gateway currently governs agents hosted on Agent Platform only; GKE and Cloud Run support is “coming soon”.",
-    recent:["Oct 27 — Private connectivity to MCP servers via Agent Gateway","Oct 13 — Gemini 4 Argon available","Apr 22 — Renamed from Vertex AI"] },
-];
-
-/* ===== matrix: 0 none · 1 limited · 2 yes · 3 main job ===== */
-const GROUPS = [
-  ["What it can work from", [
-    ["Files you upload","PDFs, docs, slides, notes", {
-      gemini:[2,"Attach files to a chat; in Workspace the side panel works on the doc you have open."],
-      notebook:[3,"Its whole purpose: 50–600 sources per notebook depending on plan, and every answer cites them."],
-      aistudio:[1,"Attach files in the playground; anything more is RAG you build yourself."],
-      antigravity:[1,"Reads files in your project — built for code, not document research."],
-      genterprise:[2,"Upload files in chat, plus Gemini Notebook Enterprise for source-grounded research."],
-      agentplatform:[1,"Build it yourself with Google Cloud search and RAG services."]}],
-    ["Your Gmail, Drive & Calendar","", {
-      gemini:[3,"Its home turf on Workspace: Gmail, Drive, Calendar, Chat and Meet, permission-aware."],
-      notebook:[1,"Add Google Docs, Slides and Drive files as sources."],
-      aistudio:[0,""],
-      antigravity:[1,"Via the Google Workspace plugin."],
-      genterprise:[2,"Google Workspace connectors, permission-aware, alongside other apps."],
-      agentplatform:[1,"Only what you wire up through APIs."]}],
-    ["Company apps beyond Google","Microsoft 365, Salesforce, Jira, Slack…", {
-      gemini:[1,"Limited to the connected-apps hub (40+ apps) in Workspace."],
-      notebook:[0,""],
-      aistudio:[0,"Only what you build."],
-      antigravity:[1,"Through MCP servers and plugins — Jira, Linear, Notion, Sentry and others — for coding work."],
-      genterprise:[3,"Its main job: permission-aware search across M365/SharePoint, Salesforce, ServiceNow, Jira, Confluence, Slack, Teams, Notion and many more."],
-      agentplatform:[2,"Agents you build can call any system; govern access with Agent Gateway."]}],
-    ["Your codebase","Repos, terminal, git", {
-      gemini:[1,"Antigravity coding inside the macOS app (AI Pro/Ultra); Canvas for small snippets."],
-      notebook:[0,""],
-      aistudio:[1,"Build mode works on the app it generates, with GitHub sync — not your existing repos."],
-      antigravity:[3,"Its main job: local repos, terminal, git, SSH and WSL."],
-      genterprise:[0,"Use Antigravity — Standard/Plus seats include credits for it."],
-      agentplatform:[0,""]}],
-  ]],
-  ["Research & create", [
-    ["Deep Research reports","Multi-step web research with citations", {
-      gemini:[2,"Cited reports from the web, plus your Gmail, Drive and Chat on Workspace."],
-      notebook:[2,"Finds web sources and adds them to your notebook."],
-      aistudio:[2,"Deep Research agent available through the Gemini API."],
-      antigravity:[0,""],
-      genterprise:[2,"Included in every edition."],
-      agentplatform:[1,"Build your own with ADK and Google Search grounding."]}],
-    ["Audio & video overviews","Podcast-style summaries, explainer videos", {
-      gemini:[2,"Audio Overviews in the app; the full studio via @Gemini Notebook."],
-      notebook:[3,"Signature feature: Audio & Video Overviews, 60-second shorts and slide decks, with outline review."],
-      aistudio:[1,"Build your own with text-to-speech models."],
-      antigravity:[0,""],
-      genterprise:[2,"Through Gemini Notebook Enterprise."],
-      agentplatform:[1,"Build your own with text-to-speech models."]}],
-    ["Images, video & music","", {
-      gemini:[2,"Image generation and Omni Flash video (AI Plus and up), plus Flow credits on paid plans."],
-      notebook:[1,"Only as part of infographics and slide decks."],
-      aistudio:[2,"Nano Banana 2.1, Lyria 3.5 and Gemini Omni Flash — paid tier only."],
-      antigravity:[0,""],
-      genterprise:[2,"Image and video generation in every edition."],
-      agentplatform:[2,"Veo 3.1 (GA), Nano Banana and Lyria via API."]}],
-  ]],
-  ["Build", [
-    ["Build an app from a prompt","Describe it, get a working app", {
-      gemini:[1,"Canvas prototypes; Workspace can publish Gemini-built apps to Sites."],
-      notebook:[0,""],
-      aistudio:[3,"Its main job: Build mode makes full-stack web or native Android apps and deploys to Cloud Run."],
-      antigravity:[2,"Agents scaffold and build whole apps, and test them in a browser."],
-      genterprise:[0,""],
-      agentplatform:[0,"Builds agents, not apps."]}],
-    ["Coding agents","AI that edits code, runs tests, works in parallel", {
-      gemini:[1,"Antigravity tasks inside the macOS Gemini app (AI Pro/Ultra)."],
-      notebook:[1,"Code Execution runs analysis inside a notebook — not a coding tool."],
-      aistudio:[1,"Build mode's agent edits its own app only."],
-      antigravity:[3,"Its main job: parallel agents, Automations, subagents, and a headless CLI for CI."],
-      genterprise:[1,"Via Antigravity, included with Standard/Plus seats."],
-      agentplatform:[0,""]}],
-    ["Build your own AI agents","", {
-      gemini:[1,"Skills (replacing Gems) and simple Workspace Studio flows."],
-      notebook:[0,""],
-      aistudio:[1,"Prototype with the API — no hosting or governance."],
-      antigravity:[1,"Custom coding agents and Automations."],
-      genterprise:[3,"Main job for no-code: Workflow Builder agents (scheduled, on demand, @-mention), Agent Gallery, import ADK/A2A agents."],
-      agentplatform:[3,"Main job for pro-code: ADK, Agent Runtime and Agent Studio; publish into Gemini Enterprise."]}],
-    ["Plug in external tools","MCP servers, skills, plugins", {
-      gemini:[1,"Connected apps and Skills; no custom MCP servers."],
-      notebook:[0,"No integrations."],
-      aistudio:[2,"MCP via the Gemini SDK and Interactions API."],
-      antigravity:[3,"First-class: MCP, SKILL.md skills, hooks and the Plugin Marketplace."],
-      genterprise:[2,"Custom MCP connector (admin-enabled), alongside the prebuilt connector catalog."],
-      agentplatform:[2,"MCP in ADK; Agent Gateway and Registry govern tool access."]}],
-    ["API access","Call it from your own code", {
-      gemini:[0,""],
-      notebook:[1,"Enterprise API only (v1alpha)."],
-      aistudio:[3,"Its main job: self-serve API keys, SDKs and the gemini-api CLI."],
-      antigravity:[1,"Scriptable headless CLI (agy -p with JSON output) — not an API."],
-      genterprise:[0,"Use Agent Platform for programmatic access."],
-      agentplatform:[3,"Its main job: Gemini and partner models with IAM, regions and VPC-SC."]}],
-  ]],
-  ["Cost & trust", [
-    ["Free to start","", {
-      gemini:[2,"Free tier; paid plans from $4.99/mo; bundled with Workspace Business/Enterprise."],
-      notebook:[2,"Free: 100 notebooks × 50 sources."],
-      aistudio:[2,"Studio is free; the API free tier needs no billing (no Gemini 4 Argon or media models)."],
-      antigravity:[2,"$0 plan with a weekly quota; IDE extensions work on every plan."],
-      genterprise:[0,"30-day trial; Business from $21/user/mo, or pay-as-you-go."],
-      agentplatform:[1,"Pay-as-you-go; new Google Cloud accounts get trial credits."]}],
-    ["Your data isn't used for training","", {
-      gemini:[1,"Workspace: never. Personal: may be used to improve Google AI unless Gemini Apps Activity is off."],
-      notebook:[2,"Not used for training, on personal and enterprise accounts."],
-      aistudio:[1,"Free tier: may be used, including human review. Paid tier: not used."],
-      antigravity:[1,"Free/Pro/Ultra: collected unless you opt out. Business: not used."],
-      genterprise:[2,"Google Cloud data terms."],
-      agentplatform:[2,"Google Cloud data terms."]}],
-    ["Admin & security controls","SSO, DLP, VPC-SC, audit", {
-      gemini:[2,"Workspace Admin: DLP, data regions, Vault (now incl. Gemini). Personal plans: none."],
-      notebook:[1,"Enterprise edition only."],
-      aistudio:[0,"None — move to Agent Platform."],
-      antigravity:[2,"Via Google Cloud for the app, CLI and IDE extensions (not the standalone IDE)."],
-      genterprise:[3,"Built for IT: IAM per app and data store, VPC-SC, CMEK, spend caps."],
-      agentplatform:[3,"IAM, VPC-SC, CMEK, regions, Agent Identity, Agent Gateway, Model Armor."]}],
-  ]],
-];
-const LV = [["—","lv0","Not offered"],["Limited","lv1","Limited"],["Yes","lv2","Yes"],["Main job","lv3","Main job"]];
-
-/* ===== quick picks ===== */
-const PICKS = [
-  ["Summarize 40 PDFs and turn them into a podcast","notebook","Upload them as sources, ask cited questions, generate an Audio Overview."],
-  ["Draft emails, prep for meetings, analyze a Sheet","gemini","Already in Gmail, Docs, Sheets and Meet if your company uses Workspace."],
-  ["A cited competitive analysis by tomorrow","gemini","Deep Research writes the report; move it into Gemini Notebook if it becomes ongoing."],
-  ["A working AI demo for Friday's hackathon","aistudio","Build mode: describe the app, deploy to Cloud Run. Free to start."],
-  ["Fix this bug while I keep building the feature","antigravity","Hand the bug to an agent in the desktop app; review its walkthrough when it's done."],
-  ["Run a coding agent in CI","antigravity","Antigravity CLI headless mode: agy -p with JSON output."],
-  ["An HR agent that answers from SharePoint","genterprise","SharePoint connector + Workflow Builder; answers respect file permissions."],
-  ["Ship a governed customer-facing agent to production","agentplatform","Build with ADK, run on Agent Runtime, govern with Agent Gateway."],
-  ["Staff keep pasting contracts into public chatbots","gemini","Roll out Gemini in Workspace (no training on your data); add Gemini Enterprise if they also need M365 or Salesforce."],
-];
-
-/* ===== renamed & retired ===== */
-const RENAMED = [
-  ["NotebookLM","Gemini Notebook","Jul 16, 2026"],
-  ["Vertex AI","Agent Platform","Apr 2026 · Agent Engine → Agent Runtime, Vertex AI Studio → Agent Studio"],
-  ["Agentspace","Gemini Enterprise","Oct 2025"],
-  ["Agent Designer","Workflow Builder","GA Sep 3, 2026 (in Gemini Enterprise)"],
-  ["Gemini CLI","Antigravity CLI (agy)","Stopped serving individuals Jun 18, 2026"],
-  ["Gems","Skills","Rolling out Oct–Nov 2026; Gems end on business accounts no earlier than Mar 1, 2027"],
-  ["Scheduled tasks","Automations","In Antigravity, Oct 2026"],
-];
-const RETIRED = [
-  ["Jules","Antigravity","Read-only Nov 11; shuts down Dec 31, 2026"],
-  ["Gemini Code Assist","Antigravity","No new subscriptions since Oct 9, 2026; renewals until 2027"],
-  ["Opal","Gemini Skills","Shuts down Nov 17, 2026"],
-  ["Veo 3.1 preview (Gemini API)","Gemini Omni Flash","Shut down Oct 22, 2026; GA Veo stays on Agent Platform","retired"],
-];
-
-/* ===== what's new ===== */
-const TIMELINE = [
-  ["Oct 30","Computer Use tool goes GA in the Gemini API."],
-  ["Oct 29","Antigravity Plugin Marketplace — skills, MCP servers and agents in one install. Jules shutdown announced."],
-  ["Oct 13","Gemini 4 Argon launches across the Gemini API, Gemini app (AI Pro/Ultra), Antigravity and Gemini Enterprise."],
-  ["Oct 9","Gemini Code Assist stops taking new subscriptions; Google points customers to Antigravity."],
-  ["Oct 8","Gemini agent for business announced — long-running tasks with sub-agents (private preview)."],
-  ["Oct 5","Skills begin replacing Gems in Workspace and the Gemini app."],
-  ["Sep 3","Workflow Builder (formerly Agent Designer) goes GA in Gemini Enterprise."],
-  ["Sep 2","Gemini 3.8 Flash GA. Gemini Notebook switches to compute-based usage limits."],
-  ["Aug 20","Antigravity IDE extensions for VS Code, JetBrains, Zed, Xcode and Visual Studio; Antigravity comes to Gemini Enterprise."],
-  ["Aug 19","Notebooks from Gemini Notebook start appearing in AI Mode in Search."],
-  ["Aug 1","Gemini Enterprise adds a pay-as-you-go edition."],
-];
-
-/* ===== render ===== */
 const $ = s => document.querySelector(s);
-const byId = Object.fromEntries(PRODUCTS.map(p=>[p.id,p]));
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const LV_CLASS = ["lv0","lv1","lv2","lv3"];
+const LV_SHORT = ["—","Limited","Yes","Main job"];
+const fmtDate = (iso, opts={month:"long",day:"numeric",year:"numeric"}) =>
+  new Date(iso+"T12:00:00Z").toLocaleDateString("en-US", {...opts, timeZone:"UTC"});
+let D, byId;
 
-/* matrix */
-$("#mx").innerHTML =
-  `<thead><tr><th>Tap a product for details</th>${PRODUCTS.map(p=>`
-    <th data-col="${p.id}"><button class="ph" data-open="${p.id}">
-      <img src="${p.logo}" alt="">
-      <span class="nm">${p.name}</span>
-      <span class="bf">${p.sub}</span>
-      <span class="more">Details →</span>
-    </button></th>`).join("")}</tr></thead>
-  <tbody>${GROUPS.map(([g,rows])=>`
-    <tr class="grp"><td colspan="${PRODUCTS.length+1}">${g}</td></tr>
-    ${rows.map(([feat,hint,cells],ri)=>`<tr>
-      <td class="feat"><b>${feat}</b>${hint?`<small>${hint}</small>`:""}</td>
-      ${PRODUCTS.map(p=>{ const [l] = cells[p.id];
-        return `<td class="c" data-col="${p.id}" data-g="${esc(g)}" data-f="${esc(feat)}" tabindex="0"><span class="lv ${LV[l][1]}">${LV[l][0]}</span></td>`;}).join("")}
-    </tr>`).join("")}`).join("")}</tbody>`;
+async function loadData(){
+  for (const url of DATA_URLS){
+    try { const r = await fetch(url, {cache:"no-cache"}); if (r.ok) return await r.json(); } catch(e) {}
+  }
+  throw new Error("No data source reachable");
+}
 
-const cellData = (td) => {
-  const rows = GROUPS.find(([g])=>g===td.dataset.g)[1];
-  const row = rows.find(r=>r[0]===td.dataset.f);
-  return row[2][td.dataset.col];
-};
+function render(){
+  byId = Object.fromEntries(D.products.map(p=>[p.id,p]));
+  const P = D.products;
+  const updated = fmtDate(D.updated);
+  $("#updated").textContent = `Updated ${updated}`;
+  $("#asOf").textContent = updated;
+  $("#lede").textContent = `${P.length} products, one table. Tap any cell for the details, or a product name for the full picture — plans, data terms, and what to watch out for.`;
+
+  /* matrix */
+  $("#mx").innerHTML =
+    `<thead><tr><th>Tap a product for details</th>${P.map(p=>`
+      <th data-col="${p.id}"><button class="ph" data-open="${p.id}">
+        <img src="${p.logo}" alt="">
+        <span class="nm">${esc(p.name)}</span>
+        <span class="bf">${esc(p.sub)}</span>
+        <span class="more">Details →</span>
+      </button></th>`).join("")}</tr></thead>
+    <tbody>${D.features.map((g,gi)=>`
+      <tr class="grp"><td colspan="${P.length+1}">${esc(g.group)}</td></tr>
+      ${g.rows.map((row,ri)=>`<tr>
+        <td class="feat"><b>${esc(row.name)}</b>${row.hint?`<small>${esc(row.hint)}</small>`:""}</td>
+        ${P.map(p=>{ const c = row.cells[p.id] || {level:0,note:""};
+          return `<td class="c" data-col="${p.id}" data-g="${gi}" data-r="${ri}" tabindex="0"><span class="lv ${LV_CLASS[c.level]}">${LV_SHORT[c.level]}</span></td>`;}).join("")}
+      </tr>`).join("")}`).join("")}</tbody>`;
+
+  /* quick picks */
+  $("#pickList").innerHTML = D.picks.map(k=>{ const p=byId[k.product];
+    return `<button class="pick" data-open="${p.id}"><img src="${p.logo}" alt=""><div><q>${esc(k.task)}</q><span><em>${esc(p.name)}</em> — ${esc(k.how)}</span></div></button>`;}).join("");
+
+  /* renamed & retired */
+  const rnRow = (r,tag) => `<div class="rn-row"><span><span class="old">${esc(r.from)}</span>${tag?`<span class="tag-r">${esc(tag)}</span>`:""}</span><span class="arrow">→</span><span class="new">${esc(r.to)}</span><span class="when">${esc(r.when)}</span></div>`;
+  $("#rnList").innerHTML = `<div class="rn-head">Renamed</div>${D.renamed.map(r=>rnRow(r)).join("")}<div class="rn-head">Retired or retiring — and what replaces it</div>${D.retired.map(r=>rnRow(r,r.status)).join("")}`;
+
+  /* timeline */
+  $("#tlList").innerHTML = D.timeline.map(t=>`<li><span class="d">${fmtDate(t.date)}</span>${esc(t.text)}</li>`).join("");
+}
 
 /* popover */
 const pop = $("#pop");
 let pinned = null;
+const cellOf = td => D.features[td.dataset.g].rows[td.dataset.r];
 function showPop(td, pin){
-  const [l,note] = cellData(td); const p = byId[td.dataset.col];
-  pop.innerHTML = `<div class="ph1">${esc(p.name)} · ${LV[l][2]}</div><div class="ph2">${esc(td.dataset.f)}</div>${note?esc(note):"Not offered."}${pin?`<br><button data-open="${p.id}">More about ${esc(p.name)} →</button>`:""}`;
+  const row = cellOf(td), c = row.cells[td.dataset.col] || {level:0,note:""}, p = byId[td.dataset.col];
+  pop.innerHTML = `<div class="ph1">${esc(p.name)} · ${esc(D.levels[c.level])}</div><div class="ph2">${esc(row.name)}</div>${c.note?esc(c.note):"Not offered."}${pin?`<br><button data-open="${p.id}">More about ${esc(p.name)} →</button>`:""}`;
   pop.style.display = "block";
   const r = td.getBoundingClientRect(), w = pop.offsetWidth, h = pop.offsetHeight;
   let x = Math.min(Math.max(12, r.left + r.width/2 - w/2), innerWidth - w - 12);
@@ -620,20 +380,9 @@ $("#who").addEventListener("click", e=>{
   document.querySelectorAll("#who button").forEach(x=>x.classList.toggle("sel", x===b));
   const w = b.dataset.who;
   document.querySelectorAll("#mx [data-col]").forEach(el=>{
-    el.classList.toggle("dim", w!=="all" && !byId[el.dataset.col].who.includes(w));
+    el.classList.toggle("dim", w!=="all" && !byId[el.dataset.col].audiences.includes(w));
   });
 });
-
-/* quick picks */
-$("#pickList").innerHTML = PICKS.map(([q,pid,how])=>{ const p=byId[pid];
-  return `<button class="pick" data-open="${pid}"><img src="${p.logo}" alt=""><div><q>${q}</q><span><em>${p.name}</em> — ${how}</span></div></button>`;}).join("");
-
-/* renamed */
-const rnRow = ([o,n,w,st],ret) => `<div class="rn-row"><span><span class="old">${o}</span>${ret?`<span class="tag-r">${st||"retiring"}</span>`:""}</span><span class="arrow">→</span><span class="new">${n}</span><span class="when">${w}</span></div>`;
-$("#rnList").innerHTML = `<div class="rn-head">Renamed</div>${RENAMED.map(r=>rnRow(r,false)).join("")}<div class="rn-head">Retired or retiring — and what replaces it</div>${RETIRED.map(r=>rnRow(r,true)).join("")}`;
-
-/* timeline */
-$("#tlList").innerHTML = TIMELINE.map(([d,t])=>`<li><span class="d">${d}, 2026</span>${t}</li>`).join("");
 
 /* drawer */
 const drawer = $("#drawer"), scrim = $("#scrim");
@@ -643,20 +392,20 @@ function openProduct(id, push=true){
   $("#drLogo").src = p.logo; $("#drName").textContent = p.name;
   $("#drTag").textContent = p.tag; $("#drFormer").textContent = p.former || "";
   $("#drBody").innerHTML = `
-    <h4>Best for</h4><p class="best">${p.best}</p>
-    <h4>Highlights</h4><ul>${p.highlights.map(([k,v])=>`<li><b>${k}.</b> ${v}</li>`).join("")}</ul>
-    <h4>Plans &amp; cost</h4><ul>${p.plans.map(([k,v])=>`<li><b>${k}:</b> ${v}</li>`).join("")}</ul>
-    <h4>Your data</h4><p>${p.data}</p>
-    <h4>Watch out for</h4><p class="warn">${p.watch}</p>
-    <h4>Recent changes</h4><ul>${p.recent.map(r=>`<li>${r}</li>`).join("")}</ul>
-    <a class="site" href="${p.site}" target="_blank" rel="noopener">Official site →</a>`;
+    <h4>Best for</h4><p class="best">${esc(p.best)}</p>
+    <h4>Highlights</h4><ul>${p.highlights.map(h=>`<li><b>${esc(h.title)}.</b> ${esc(h.text)}</li>`).join("")}</ul>
+    <h4>Plans &amp; cost</h4><ul>${p.plans.map(x=>`<li><b>${esc(x.name)}:</b> ${esc(x.detail)}</li>`).join("")}</ul>
+    <h4>Your data</h4><p>${esc(p.data)}</p>
+    <h4>Watch out for</h4><p class="warn">${esc(p.watch)}</p>
+    <h4>Recent changes</h4><ul>${p.recent.map(r=>`<li>${esc(r)}</li>`).join("")}</ul>
+    <a class="site" href="${esc(p.site)}" target="_blank" rel="noopener">Official site →</a>`;
   drawer.classList.add("open"); scrim.classList.add("open"); drawer.setAttribute("aria-hidden","false");
   drawer.scrollTop = 0; $("#drClose").focus({preventScroll:true});
   if(push) history.replaceState(null,"","#"+id);
 }
 function closeProduct(){
   drawer.classList.remove("open"); scrim.classList.remove("open"); drawer.setAttribute("aria-hidden","true");
-  if(byId[location.hash.slice(1)]) history.replaceState(null,"",location.pathname);
+  if(byId && byId[location.hash.slice(1)]) history.replaceState(null,"",location.pathname);
 }
 document.addEventListener("click", e=>{
   const o = e.target.closest("[data-open]"); if(!o) return;
@@ -664,7 +413,18 @@ document.addEventListener("click", e=>{
 });
 $("#drClose").onclick = closeProduct; scrim.onclick = closeProduct;
 addEventListener("keydown", e=>{ if(e.key==="Escape"){ hidePop(); closeProduct(); }});
-if(byId[location.hash.slice(1)]) openProduct(location.hash.slice(1), false);
+
+/* version + visitor counter */
+document.querySelectorAll(".ver").forEach(el=>el.textContent = "v"+SITE_VERSION);
+async function countVisit(){
+  if(!COUNTER_URL) return;
+  try {
+    const r = await fetch(COUNTER_URL, {method:"POST"});
+    const {count} = await r.json();
+    $("#visits").textContent = `${Number(count).toLocaleString("en-US")} visits`;
+    $("#visits").hidden = false;
+  } catch(e) {}
+}
 
 /* theme */
 $("#themeBtn").onclick = ()=>{
@@ -672,6 +432,15 @@ $("#themeBtn").onclick = ()=>{
   const cur = r.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   r.dataset.theme = cur==="dark" ? "light" : "dark";
 };
+
+/* boot */
+loadData().then(d=>{
+  D = d; render();
+  if(byId[location.hash.slice(1)]) openProduct(location.hash.slice(1), false);
+}).catch(()=>{
+  $("#mx").innerHTML = `<tbody><tr><td style="padding:24px">Couldn't load the comparison data — please refresh.</td></tr></tbody>`;
+});
+countVisit();
 </script>
 </body>
 </html>

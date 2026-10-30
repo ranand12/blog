@@ -1,0 +1,1018 @@
+{
+  "updated": "2026-10-30",
+  "products": [
+    {
+      "id": "gemini",
+      "name": "Gemini app",
+      "logo": "logos/gemini.png",
+      "sub": "Personal & Workspace",
+      "tag": "Everyday AI assistant — on its own or built into Google Workspace",
+      "best": "Everyday work: chat, writing, research, and Gemini inside Gmail, Docs, Sheets & Meet",
+      "audiences": [
+        "me",
+        "org"
+      ],
+      "site": "https://gemini.google.com",
+      "highlights": [
+        {
+          "title": "Gemini 4 Argon",
+          "text": "Google's newest flagship model, on AI Pro and Ultra (Oct 13, 2026)."
+        },
+        {
+          "title": "Deep Research",
+          "text": "Cited research reports from the web — and from your Gmail, Drive and Chat on Workspace."
+        },
+        {
+          "title": "Inside Workspace",
+          "text": "Side panel in Gmail, Docs, Sheets, Slides, Drive and Chat; edit whole Slides decks; Fill with Gemini in Sheets now cites cells."
+        },
+        {
+          "title": "Meet",
+          "text": "Take notes for me, meeting recaps in Chat, and real-time speech translation in 63 languages."
+        },
+        {
+          "title": "Skills (replacing Gems)",
+          "text": "Reusable instructions and workflows, rolling out Oct–Nov 2026."
+        },
+        {
+          "title": "Tasks & coding",
+          "text": "Tasks mode for longer jobs and Antigravity coding in the macOS app (AI Pro/Ultra)."
+        },
+        {
+          "title": "Gemini Notebook built in",
+          "text": "Use @Gemini Notebook to query or create notebooks from chat."
+        }
+      ],
+      "plans": [
+        {
+          "name": "Free",
+          "detail": "Gemini Flash-Lite, 15 GB storage."
+        },
+        {
+          "name": "Google AI Plus — $4.99/mo",
+          "detail": "2× limits, Omni Flash video, Gemini in Gmail."
+        },
+        {
+          "name": "Google AI Pro — $19.99/mo",
+          "detail": "Gemini 4 Argon, 4× limits, 5 TB, entry Antigravity access."
+        },
+        {
+          "name": "Google AI Ultra — $99.99 or $199.99/mo",
+          "detail": "5× or 20× Pro limits, earliest access to new features."
+        },
+        {
+          "name": "Workspace",
+          "detail": "Included in Business and Enterprise editions (Business Starter gets a limited set). AI Expanded Access add-on for higher limits."
+        }
+      ],
+      "data": "Workspace: your data isn't used for training or reviewed by humans, and existing access permissions apply. Personal accounts: chats may be used to improve Google AI unless you turn off Gemini Apps Activity.",
+      "watch": "On Workspace, Gemini 4 Argon access and limits depend on your edition and add-ons. Gems stop working on Business/Enterprise accounts no earlier than March 1, 2027 — move them to Skills.",
+      "recent": [
+        "Oct 30 — Edit entire Slides decks with Gemini",
+        "Oct 29 — Create and edit files inside Gemini chats",
+        "Oct 22 — Meet speech translation expands to 63 languages",
+        "Oct 13 — Gemini 4 Argon for AI Pro & Ultra",
+        "Oct 5 — Skills start rolling out in Workspace"
+      ]
+    },
+    {
+      "id": "notebook",
+      "name": "Gemini Notebook",
+      "logo": "logos/notebook.svg",
+      "sub": "formerly NotebookLM",
+      "tag": "Research assistant that only answers from the sources you give it",
+      "former": "Formerly NotebookLM (renamed July 16, 2026)",
+      "best": "Making sense of a stack of documents — with citations, podcasts and study guides",
+      "audiences": [
+        "me",
+        "org"
+      ],
+      "site": "https://notebook.google.com",
+      "highlights": [
+        {
+          "title": "Answers from your sources",
+          "text": "Every answer cites the documents you uploaded; it won't make things up from the web."
+        },
+        {
+          "title": "Studio outputs",
+          "text": "Audio & Video Overviews (incl. 60-second shorts), slide decks, reports, quizzes, flashcards, mind maps and infographics."
+        },
+        {
+          "title": "Creative control",
+          "text": "Review the outline or producer notes before a slide deck or video is generated (Oct 2026)."
+        },
+        {
+          "title": "Code Execution",
+          "text": "Each notebook gets a secure cloud computer for data analysis (AI Ultra; rolling out to Pro)."
+        },
+        {
+          "title": "Deep Research",
+          "text": "Finds web sources for you and adds them to the notebook."
+        },
+        {
+          "title": "Everywhere",
+          "text": "Notebooks in the Gemini app and in AI Mode in Search (personal accounts, English, rolling out since Aug 2026)."
+        }
+      ],
+      "plans": [
+        {
+          "name": "Free",
+          "detail": "100 notebooks, 50 sources each."
+        },
+        {
+          "name": "Google AI Plus",
+          "detail": "200 notebooks × 100 sources, 2× usage."
+        },
+        {
+          "name": "Google AI Pro",
+          "detail": "500 notebooks × 300 sources, 4× usage."
+        },
+        {
+          "name": "Google AI Ultra",
+          "detail": "500 notebooks × 500–600 sources, highest usage."
+        },
+        {
+          "name": "Enterprise",
+          "detail": "Gemini Notebook Enterprise via Google Cloud / Gemini Enterprise, with an Enterprise API (v1alpha)."
+        }
+      ],
+      "data": "Your sources, questions and outputs aren't used to train models — on personal and enterprise accounts.",
+      "watch": "Since Sept 2, 2026 usage is compute-based: it refreshes every 5 hours up to a weekly cap, replacing the old fixed daily counts. There's no consumer API.",
+      "recent": [
+        "Oct 23 — Connected app inside Gemini (@Gemini Notebook)",
+        "Oct 16 — Review outlines for slide decks & Video Overviews",
+        "Sep 2 — Compute-based usage limits",
+        "Aug 19 — Notebooks in AI Mode in Search",
+        "Jul 16 — Renamed from NotebookLM"
+      ]
+    },
+    {
+      "id": "aistudio",
+      "name": "AI Studio",
+      "logo": "logos/aistudio.png",
+      "sub": "+ Gemini API",
+      "tag": "Free developer playground and home of the Gemini API",
+      "best": "Developers trying Gemini models, prototyping AI apps, and getting an API key",
+      "audiences": [
+        "dev"
+      ],
+      "site": "https://aistudio.google.com",
+      "highlights": [
+        {
+          "title": "Playground",
+          "text": "Try every Gemini model in the browser, then export the code."
+        },
+        {
+          "title": "API keys in seconds",
+          "text": "Self-serve keys with no Google Cloud setup; new gemini-api CLI (beta)."
+        },
+        {
+          "title": "Build mode",
+          "text": "Prompt to a full-stack web app (React + Node) or native Android app; deploy to Cloud Run, sync to GitHub, set up Firebase."
+        },
+        {
+          "title": "Latest models",
+          "text": "Gemini 4 Argon, 3.8 Flash, 3.5 Flash-Lite; Nano Banana 2.1 (images), Lyria 3.5 (music), Gemini Omni Flash (video)."
+        },
+        {
+          "title": "Agent tools",
+          "text": "Computer Use (GA Oct 30), MCP support in the SDK and Interactions API, Deep Research agent."
+        }
+      ],
+      "plans": [
+        {
+          "name": "AI Studio",
+          "detail": "Free."
+        },
+        {
+          "name": "Gemini API free tier",
+          "detail": "No billing needed; rate-limited; no Gemini 4 Argon or media models."
+        },
+        {
+          "name": "Paid tier",
+          "detail": "Pay per token. Gemini 4 Argon: $2 / $10 per 1M tokens (in/out) until Nov 30, then $4 / $20. Flex (~½ price) and Priority tiers."
+        }
+      ],
+      "data": "Free tier: prompts and outputs may be used to improve Google products, including human review. Paid tier: not used for training.",
+      "watch": "New paid projects store requests by default since Oct 26, 2026. Veo 3.1 previews were shut down in the Gemini API on Oct 22 — use Gemini Omni Flash, or Veo on Agent Platform. Need IAM, regions or VPC-SC? Move to Agent Platform.",
+      "recent": [
+        "Oct 30 — Computer Use GA",
+        "Oct 27 — gemini-api CLI (beta)",
+        "Oct 22 — Veo 3.1 previews retired → Omni Flash",
+        "Oct 13 — Gemini 4 Argon GA",
+        "Sep 2 — Gemini 3.8 Flash GA"
+      ]
+    },
+    {
+      "id": "antigravity",
+      "name": "Antigravity",
+      "logo": "logos/antigravity.png",
+      "sub": "App · CLI · IDE",
+      "tag": "Google's agentic coding platform",
+      "former": "Replaces Gemini CLI, Gemini Code Assist and Jules",
+      "best": "Developers handing coding work to AI agents — or coding side-by-side with one",
+      "audiences": [
+        "dev",
+        "org"
+      ],
+      "site": "https://antigravity.google",
+      "highlights": [
+        {
+          "title": "Desktop app",
+          "text": "Mission control for parallel agents: Automations (scheduled runs), subagents, reviewable plans and walkthroughs, browser testing, Remote Control from any browser."
+        },
+        {
+          "title": "CLI (agy)",
+          "text": "Terminal agent and Gemini CLI's successor; headless mode for CI (agy -p, JSON output)."
+        },
+        {
+          "title": "IDE extensions",
+          "text": "VS Code, Visual Studio, JetBrains, Zed and Xcode — on every plan, including free (Aug 2026)."
+        },
+        {
+          "title": "Plugin Marketplace",
+          "text": "One install bundles skills, MCP servers, hooks and custom agents — Vercel, Notion, Linear, Sentry, Supabase and more (Oct 29)."
+        },
+        {
+          "title": "Models",
+          "text": "Gemini 3.8 Flash on every plan; Gemini 4 Argon and Claude Sonnet/Opus 5.5 on paid plans."
+        }
+      ],
+      "plans": [
+        {
+          "name": "Free",
+          "detail": "$0 with a Google account; weekly quota."
+        },
+        {
+          "name": "Google AI Pro — $19.99/mo",
+          "detail": "Quota refreshes every 5 hours up to a weekly cap."
+        },
+        {
+          "name": "Google AI Ultra — $99.99 or $199.99/mo",
+          "detail": "Highest caps; buy AI credits for overage."
+        },
+        {
+          "name": "Business",
+          "detail": "Through Google Cloud: Gemini Enterprise Standard/Plus seats (from $30/seat/mo, with pooled credits) or pay-as-you-go."
+        }
+      ],
+      "data": "Free/Pro/Ultra: interaction data is collected to improve products unless you opt out. Business (Google Cloud): not used to train models.",
+      "watch": "Business plans cover the desktop app, CLI and IDE extensions — not the older standalone IDE. Gemini models and Claude/GPT models have separate quotas.",
+      "recent": [
+        "Oct 29 — Plugin Marketplace",
+        "Oct 15 — Pick a model per Automation",
+        "Oct 13 — Gemini 4 Argon",
+        "Aug 20 — IDE extensions + Antigravity in Gemini Enterprise",
+        "Aug 12 — Custom agents"
+      ]
+    },
+    {
+      "id": "genterprise",
+      "name": "Gemini Enterprise",
+      "logo": "logos/gemini.png",
+      "sub": "for organizations",
+      "tag": "The company-wide AI hub on Google Cloud",
+      "former": "Successor to Agentspace",
+      "best": "Whole organizations: AI search across every work app, plus no-code agents with IT control",
+      "audiences": [
+        "org"
+      ],
+      "site": "https://cloud.google.com/gemini-enterprise",
+      "highlights": [
+        {
+          "title": "Search across work apps",
+          "text": "Permission-aware answers over Google Workspace, Microsoft 365/SharePoint, Salesforce, ServiceNow, Jira, Confluence, Slack, Teams, Notion and more."
+        },
+        {
+          "title": "Workflow Builder",
+          "text": "No-code agents that run on a schedule, on demand or by @-mention; import ADK/A2A agents (GA Sep 3, 2026)."
+        },
+        {
+          "title": "Agent Gallery",
+          "text": "Google-built and partner agents, approved by IT."
+        },
+        {
+          "title": "Built in",
+          "text": "Deep Research, Gemini Notebook Enterprise, image & video generation in every edition."
+        },
+        {
+          "title": "Models",
+          "text": "Gemini 4 Argon by default (Oct 27); Claude Opus/Sonnet 5.5 pay-as-you-go."
+        },
+        {
+          "title": "Coming",
+          "text": "The Gemini agent: long-running tasks with its own sub-agents (private preview, announced Oct 8)."
+        }
+      ],
+      "plans": [
+        {
+          "name": "Business — $21/user/mo",
+          "detail": "Annual; for 1–500 users."
+        },
+        {
+          "name": "Standard / Plus",
+          "detail": "Per seat, larger orgs and extra controls; include Antigravity credits."
+        },
+        {
+          "name": "Pay-as-you-go",
+          "detail": "No seat fee, usage-billed (GA Aug 1, 2026)."
+        },
+        {
+          "name": "Frontline",
+          "detail": "For 150+ frontline workers."
+        },
+        {
+          "name": "Trial",
+          "detail": "30 days."
+        }
+      ],
+      "data": "Covered by Google Cloud data terms — not used for training. VPC-SC, CMEK and granular IAM per app and data store.",
+      "watch": "New or renewed Standard/Plus subscriptions no longer include Gemini Code Assist (Sept 17, 2026) — use Antigravity instead. Google's product page now also calls it “Gemini for Business”.",
+      "recent": [
+        "Oct 27 — Gemini 4 Argon is the default model",
+        "Oct 15 — Claude Opus & Sonnet 5.5 available",
+        "Oct 8 — Gemini agent announced (preview)",
+        "Sep 3 — Workflow Builder GA",
+        "Aug 7 — Custom MCP connector GA"
+      ]
+    },
+    {
+      "id": "agentplatform",
+      "name": "Agent Platform",
+      "logo": "logos/cloud.png",
+      "sub": "formerly Vertex AI",
+      "tag": "Gemini Enterprise Agent Platform — pro-code AI on Google Cloud",
+      "former": "Formerly Vertex AI (renamed April 2026)",
+      "best": "Engineering teams building production AI apps and agents on Google Cloud",
+      "audiences": [
+        "dev",
+        "org"
+      ],
+      "site": "https://cloud.google.com/gemini-enterprise-agent-platform",
+      "highlights": [
+        {
+          "title": "Models",
+          "text": "Gemini 4 Argon and the full Gemini family, plus partner and open models in Model Garden; Veo 3.1 (GA), Nano Banana, Lyria."
+        },
+        {
+          "title": "Build & run agents",
+          "text": "Agent Development Kit (ADK), Agent Runtime (formerly Agent Engine), Agent Studio (formerly Vertex AI Studio)."
+        },
+        {
+          "title": "Governance",
+          "text": "Agent Identity, Agent Registry, Agent Gateway and Model Armor; IAM, VPC-SC, CMEK, data regions."
+        },
+        {
+          "title": "Ship to users",
+          "text": "Publish your agents into Gemini Enterprise."
+        },
+        {
+          "title": "Production extras",
+          "text": "Tuning, Provisioned Throughput, batch."
+        }
+      ],
+      "plans": [
+        {
+          "name": "Pay-as-you-go",
+          "detail": "Billed to your Google Cloud project; new Cloud accounts get trial credits."
+        }
+      ],
+      "data": "Google Cloud data terms — not used for training; your data stays in your project and chosen region.",
+      "watch": "Agent Gateway currently governs agents hosted on Agent Platform only; GKE and Cloud Run support is “coming soon”.",
+      "recent": [
+        "Oct 27 — Private connectivity to MCP servers via Agent Gateway",
+        "Oct 13 — Gemini 4 Argon available",
+        "Apr 22 — Renamed from Vertex AI"
+      ]
+    }
+  ],
+  "levels": {
+    "0": "Not offered",
+    "1": "Limited",
+    "2": "Yes",
+    "3": "Main job"
+  },
+  "features": [
+    {
+      "group": "What it can work from",
+      "rows": [
+        {
+          "name": "Files you upload",
+          "hint": "PDFs, docs, slides, notes",
+          "cells": {
+            "gemini": {
+              "level": 2,
+              "note": "Attach files to a chat; in Workspace the side panel works on the doc you have open."
+            },
+            "notebook": {
+              "level": 3,
+              "note": "Its whole purpose: 50–600 sources per notebook depending on plan, and every answer cites them."
+            },
+            "aistudio": {
+              "level": 1,
+              "note": "Attach files in the playground; anything more is RAG you build yourself."
+            },
+            "antigravity": {
+              "level": 1,
+              "note": "Reads files in your project — built for code, not document research."
+            },
+            "genterprise": {
+              "level": 2,
+              "note": "Upload files in chat, plus Gemini Notebook Enterprise for source-grounded research."
+            },
+            "agentplatform": {
+              "level": 1,
+              "note": "Build it yourself with Google Cloud search and RAG services."
+            }
+          }
+        },
+        {
+          "name": "Your Gmail, Drive & Calendar",
+          "cells": {
+            "gemini": {
+              "level": 3,
+              "note": "Its home turf on Workspace: Gmail, Drive, Calendar, Chat and Meet, permission-aware."
+            },
+            "notebook": {
+              "level": 1,
+              "note": "Add Google Docs, Slides and Drive files as sources."
+            },
+            "aistudio": {
+              "level": 0,
+              "note": ""
+            },
+            "antigravity": {
+              "level": 1,
+              "note": "Via the Google Workspace plugin."
+            },
+            "genterprise": {
+              "level": 2,
+              "note": "Google Workspace connectors, permission-aware, alongside other apps."
+            },
+            "agentplatform": {
+              "level": 1,
+              "note": "Only what you wire up through APIs."
+            }
+          }
+        },
+        {
+          "name": "Company apps beyond Google",
+          "hint": "Microsoft 365, Salesforce, Jira, Slack…",
+          "cells": {
+            "gemini": {
+              "level": 1,
+              "note": "Limited to the connected-apps hub (40+ apps) in Workspace."
+            },
+            "notebook": {
+              "level": 0,
+              "note": ""
+            },
+            "aistudio": {
+              "level": 0,
+              "note": "Only what you build."
+            },
+            "antigravity": {
+              "level": 1,
+              "note": "Through MCP servers and plugins — Jira, Linear, Notion, Sentry and others — for coding work."
+            },
+            "genterprise": {
+              "level": 3,
+              "note": "Its main job: permission-aware search across M365/SharePoint, Salesforce, ServiceNow, Jira, Confluence, Slack, Teams, Notion and many more."
+            },
+            "agentplatform": {
+              "level": 2,
+              "note": "Agents you build can call any system; govern access with Agent Gateway."
+            }
+          }
+        },
+        {
+          "name": "Your codebase",
+          "hint": "Repos, terminal, git",
+          "cells": {
+            "gemini": {
+              "level": 1,
+              "note": "Antigravity coding inside the macOS app (AI Pro/Ultra); Canvas for small snippets."
+            },
+            "notebook": {
+              "level": 0,
+              "note": ""
+            },
+            "aistudio": {
+              "level": 1,
+              "note": "Build mode works on the app it generates, with GitHub sync — not your existing repos."
+            },
+            "antigravity": {
+              "level": 3,
+              "note": "Its main job: local repos, terminal, git, SSH and WSL."
+            },
+            "genterprise": {
+              "level": 0,
+              "note": "Use Antigravity — Standard/Plus seats include credits for it."
+            },
+            "agentplatform": {
+              "level": 0,
+              "note": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "group": "Research & create",
+      "rows": [
+        {
+          "name": "Deep Research reports",
+          "hint": "Multi-step web research with citations",
+          "cells": {
+            "gemini": {
+              "level": 2,
+              "note": "Cited reports from the web, plus your Gmail, Drive and Chat on Workspace."
+            },
+            "notebook": {
+              "level": 2,
+              "note": "Finds web sources and adds them to your notebook."
+            },
+            "aistudio": {
+              "level": 2,
+              "note": "Deep Research agent available through the Gemini API."
+            },
+            "antigravity": {
+              "level": 0,
+              "note": ""
+            },
+            "genterprise": {
+              "level": 2,
+              "note": "Included in every edition."
+            },
+            "agentplatform": {
+              "level": 1,
+              "note": "Build your own with ADK and Google Search grounding."
+            }
+          }
+        },
+        {
+          "name": "Audio & video overviews",
+          "hint": "Podcast-style summaries, explainer videos",
+          "cells": {
+            "gemini": {
+              "level": 2,
+              "note": "Audio Overviews in the app; the full studio via @Gemini Notebook."
+            },
+            "notebook": {
+              "level": 3,
+              "note": "Signature feature: Audio & Video Overviews, 60-second shorts and slide decks, with outline review."
+            },
+            "aistudio": {
+              "level": 1,
+              "note": "Build your own with text-to-speech models."
+            },
+            "antigravity": {
+              "level": 0,
+              "note": ""
+            },
+            "genterprise": {
+              "level": 2,
+              "note": "Through Gemini Notebook Enterprise."
+            },
+            "agentplatform": {
+              "level": 1,
+              "note": "Build your own with text-to-speech models."
+            }
+          }
+        },
+        {
+          "name": "Images, video & music",
+          "cells": {
+            "gemini": {
+              "level": 2,
+              "note": "Image generation and Omni Flash video (AI Plus and up), plus Flow credits on paid plans."
+            },
+            "notebook": {
+              "level": 1,
+              "note": "Only as part of infographics and slide decks."
+            },
+            "aistudio": {
+              "level": 2,
+              "note": "Nano Banana 2.1, Lyria 3.5 and Gemini Omni Flash — paid tier only."
+            },
+            "antigravity": {
+              "level": 0,
+              "note": ""
+            },
+            "genterprise": {
+              "level": 2,
+              "note": "Image and video generation in every edition."
+            },
+            "agentplatform": {
+              "level": 2,
+              "note": "Veo 3.1 (GA), Nano Banana and Lyria via API."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "group": "Build",
+      "rows": [
+        {
+          "name": "Build an app from a prompt",
+          "hint": "Describe it, get a working app",
+          "cells": {
+            "gemini": {
+              "level": 1,
+              "note": "Canvas prototypes; Workspace can publish Gemini-built apps to Sites."
+            },
+            "notebook": {
+              "level": 0,
+              "note": ""
+            },
+            "aistudio": {
+              "level": 3,
+              "note": "Its main job: Build mode makes full-stack web or native Android apps and deploys to Cloud Run."
+            },
+            "antigravity": {
+              "level": 2,
+              "note": "Agents scaffold and build whole apps, and test them in a browser."
+            },
+            "genterprise": {
+              "level": 0,
+              "note": ""
+            },
+            "agentplatform": {
+              "level": 0,
+              "note": "Builds agents, not apps."
+            }
+          }
+        },
+        {
+          "name": "Coding agents",
+          "hint": "AI that edits code, runs tests, works in parallel",
+          "cells": {
+            "gemini": {
+              "level": 1,
+              "note": "Antigravity tasks inside the macOS Gemini app (AI Pro/Ultra)."
+            },
+            "notebook": {
+              "level": 1,
+              "note": "Code Execution runs analysis inside a notebook — not a coding tool."
+            },
+            "aistudio": {
+              "level": 1,
+              "note": "Build mode's agent edits its own app only."
+            },
+            "antigravity": {
+              "level": 3,
+              "note": "Its main job: parallel agents, Automations, subagents, and a headless CLI for CI."
+            },
+            "genterprise": {
+              "level": 1,
+              "note": "Via Antigravity, included with Standard/Plus seats."
+            },
+            "agentplatform": {
+              "level": 0,
+              "note": ""
+            }
+          }
+        },
+        {
+          "name": "Build your own AI agents",
+          "cells": {
+            "gemini": {
+              "level": 1,
+              "note": "Skills (replacing Gems) and simple Workspace Studio flows."
+            },
+            "notebook": {
+              "level": 0,
+              "note": ""
+            },
+            "aistudio": {
+              "level": 1,
+              "note": "Prototype with the API — no hosting or governance."
+            },
+            "antigravity": {
+              "level": 1,
+              "note": "Custom coding agents and Automations."
+            },
+            "genterprise": {
+              "level": 3,
+              "note": "Main job for no-code: Workflow Builder agents (scheduled, on demand, @-mention), Agent Gallery, import ADK/A2A agents."
+            },
+            "agentplatform": {
+              "level": 3,
+              "note": "Main job for pro-code: ADK, Agent Runtime and Agent Studio; publish into Gemini Enterprise."
+            }
+          }
+        },
+        {
+          "name": "Plug in external tools",
+          "hint": "MCP servers, skills, plugins",
+          "cells": {
+            "gemini": {
+              "level": 1,
+              "note": "Connected apps and Skills; no custom MCP servers."
+            },
+            "notebook": {
+              "level": 0,
+              "note": "No integrations."
+            },
+            "aistudio": {
+              "level": 2,
+              "note": "MCP via the Gemini SDK and Interactions API."
+            },
+            "antigravity": {
+              "level": 3,
+              "note": "First-class: MCP, SKILL.md skills, hooks and the Plugin Marketplace."
+            },
+            "genterprise": {
+              "level": 2,
+              "note": "Custom MCP connector (admin-enabled), alongside the prebuilt connector catalog."
+            },
+            "agentplatform": {
+              "level": 2,
+              "note": "MCP in ADK; Agent Gateway and Registry govern tool access."
+            }
+          }
+        },
+        {
+          "name": "API access",
+          "hint": "Call it from your own code",
+          "cells": {
+            "gemini": {
+              "level": 0,
+              "note": ""
+            },
+            "notebook": {
+              "level": 1,
+              "note": "Enterprise API only (v1alpha)."
+            },
+            "aistudio": {
+              "level": 3,
+              "note": "Its main job: self-serve API keys, SDKs and the gemini-api CLI."
+            },
+            "antigravity": {
+              "level": 1,
+              "note": "Scriptable headless CLI (agy -p with JSON output) — not an API."
+            },
+            "genterprise": {
+              "level": 0,
+              "note": "Use Agent Platform for programmatic access."
+            },
+            "agentplatform": {
+              "level": 3,
+              "note": "Its main job: Gemini and partner models with IAM, regions and VPC-SC."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "group": "Cost & trust",
+      "rows": [
+        {
+          "name": "Free to start",
+          "cells": {
+            "gemini": {
+              "level": 2,
+              "note": "Free tier; paid plans from $4.99/mo; bundled with Workspace Business/Enterprise."
+            },
+            "notebook": {
+              "level": 2,
+              "note": "Free: 100 notebooks × 50 sources."
+            },
+            "aistudio": {
+              "level": 2,
+              "note": "Studio is free; the API free tier needs no billing (no Gemini 4 Argon or media models)."
+            },
+            "antigravity": {
+              "level": 2,
+              "note": "$0 plan with a weekly quota; IDE extensions work on every plan."
+            },
+            "genterprise": {
+              "level": 0,
+              "note": "30-day trial; Business from $21/user/mo, or pay-as-you-go."
+            },
+            "agentplatform": {
+              "level": 1,
+              "note": "Pay-as-you-go; new Google Cloud accounts get trial credits."
+            }
+          }
+        },
+        {
+          "name": "Your data isn't used for training",
+          "cells": {
+            "gemini": {
+              "level": 1,
+              "note": "Workspace: never. Personal: may be used to improve Google AI unless Gemini Apps Activity is off."
+            },
+            "notebook": {
+              "level": 2,
+              "note": "Not used for training, on personal and enterprise accounts."
+            },
+            "aistudio": {
+              "level": 1,
+              "note": "Free tier: may be used, including human review. Paid tier: not used."
+            },
+            "antigravity": {
+              "level": 1,
+              "note": "Free/Pro/Ultra: collected unless you opt out. Business: not used."
+            },
+            "genterprise": {
+              "level": 2,
+              "note": "Google Cloud data terms."
+            },
+            "agentplatform": {
+              "level": 2,
+              "note": "Google Cloud data terms."
+            }
+          }
+        },
+        {
+          "name": "Admin & security controls",
+          "hint": "SSO, DLP, VPC-SC, audit",
+          "cells": {
+            "gemini": {
+              "level": 2,
+              "note": "Workspace Admin: DLP, data regions, Vault (now incl. Gemini). Personal plans: none."
+            },
+            "notebook": {
+              "level": 1,
+              "note": "Enterprise edition only."
+            },
+            "aistudio": {
+              "level": 0,
+              "note": "None — move to Agent Platform."
+            },
+            "antigravity": {
+              "level": 2,
+              "note": "Via Google Cloud for the app, CLI and IDE extensions (not the standalone IDE)."
+            },
+            "genterprise": {
+              "level": 3,
+              "note": "Built for IT: IAM per app and data store, VPC-SC, CMEK, spend caps."
+            },
+            "agentplatform": {
+              "level": 3,
+              "note": "IAM, VPC-SC, CMEK, regions, Agent Identity, Agent Gateway, Model Armor."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "picks": [
+    {
+      "task": "Summarize 40 PDFs and turn them into a podcast",
+      "product": "notebook",
+      "how": "Upload them as sources, ask cited questions, generate an Audio Overview."
+    },
+    {
+      "task": "Draft emails, prep for meetings, analyze a Sheet",
+      "product": "gemini",
+      "how": "Already in Gmail, Docs, Sheets and Meet if your company uses Workspace."
+    },
+    {
+      "task": "A cited competitive analysis by tomorrow",
+      "product": "gemini",
+      "how": "Deep Research writes the report; move it into Gemini Notebook if it becomes ongoing."
+    },
+    {
+      "task": "A working AI demo for Friday's hackathon",
+      "product": "aistudio",
+      "how": "Build mode: describe the app, deploy to Cloud Run. Free to start."
+    },
+    {
+      "task": "Fix this bug while I keep building the feature",
+      "product": "antigravity",
+      "how": "Hand the bug to an agent in the desktop app; review its walkthrough when it's done."
+    },
+    {
+      "task": "Run a coding agent in CI",
+      "product": "antigravity",
+      "how": "Antigravity CLI headless mode: agy -p with JSON output."
+    },
+    {
+      "task": "An HR agent that answers from SharePoint",
+      "product": "genterprise",
+      "how": "SharePoint connector + Workflow Builder; answers respect file permissions."
+    },
+    {
+      "task": "Ship a governed customer-facing agent to production",
+      "product": "agentplatform",
+      "how": "Build with ADK, run on Agent Runtime, govern with Agent Gateway."
+    },
+    {
+      "task": "Staff keep pasting contracts into public chatbots",
+      "product": "gemini",
+      "how": "Roll out Gemini in Workspace (no training on your data); add Gemini Enterprise if they also need M365 or Salesforce."
+    }
+  ],
+  "renamed": [
+    {
+      "from": "NotebookLM",
+      "to": "Gemini Notebook",
+      "when": "Jul 16, 2026"
+    },
+    {
+      "from": "Vertex AI",
+      "to": "Agent Platform",
+      "when": "Apr 2026 · Agent Engine → Agent Runtime, Vertex AI Studio → Agent Studio"
+    },
+    {
+      "from": "Agentspace",
+      "to": "Gemini Enterprise",
+      "when": "Oct 2025"
+    },
+    {
+      "from": "Agent Designer",
+      "to": "Workflow Builder",
+      "when": "GA Sep 3, 2026 (in Gemini Enterprise)"
+    },
+    {
+      "from": "Gemini CLI",
+      "to": "Antigravity CLI (agy)",
+      "when": "Stopped serving individuals Jun 18, 2026"
+    },
+    {
+      "from": "Gems",
+      "to": "Skills",
+      "when": "Rolling out Oct–Nov 2026; Gems end on business accounts no earlier than Mar 1, 2027"
+    },
+    {
+      "from": "Scheduled tasks",
+      "to": "Automations",
+      "when": "In Antigravity, Oct 2026"
+    }
+  ],
+  "retired": [
+    {
+      "from": "Jules",
+      "to": "Antigravity",
+      "when": "Read-only Nov 11; shuts down Dec 31, 2026",
+      "status": "retiring"
+    },
+    {
+      "from": "Gemini Code Assist",
+      "to": "Antigravity",
+      "when": "No new subscriptions since Oct 9, 2026; renewals until 2027",
+      "status": "retiring"
+    },
+    {
+      "from": "Opal",
+      "to": "Gemini Skills",
+      "when": "Shuts down Nov 17, 2026",
+      "status": "retiring"
+    },
+    {
+      "from": "Veo 3.1 preview (Gemini API)",
+      "to": "Gemini Omni Flash",
+      "when": "Shut down Oct 22, 2026; GA Veo stays on Agent Platform",
+      "status": "retired"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-10-30",
+      "text": "Computer Use tool goes GA in the Gemini API."
+    },
+    {
+      "date": "2026-10-29",
+      "text": "Antigravity Plugin Marketplace — skills, MCP servers and agents in one install. Jules shutdown announced."
+    },
+    {
+      "date": "2026-10-13",
+      "text": "Gemini 4 Argon launches across the Gemini API, Gemini app (AI Pro/Ultra), Antigravity and Gemini Enterprise."
+    },
+    {
+      "date": "2026-10-09",
+      "text": "Gemini Code Assist stops taking new subscriptions; Google points customers to Antigravity."
+    },
+    {
+      "date": "2026-10-08",
+      "text": "Gemini agent for business announced — long-running tasks with sub-agents (private preview)."
+    },
+    {
+      "date": "2026-10-05",
+      "text": "Skills begin replacing Gems in Workspace and the Gemini app."
+    },
+    {
+      "date": "2026-09-03",
+      "text": "Workflow Builder (formerly Agent Designer) goes GA in Gemini Enterprise."
+    },
+    {
+      "date": "2026-09-02",
+      "text": "Gemini 3.8 Flash GA. Gemini Notebook switches to compute-based usage limits."
+    },
+    {
+      "date": "2026-08-20",
+      "text": "Antigravity IDE extensions for VS Code, JetBrains, Zed, Xcode and Visual Studio; Antigravity comes to Gemini Enterprise."
+    },
+    {
+      "date": "2026-08-19",
+      "text": "Notebooks from Gemini Notebook start appearing in AI Mode in Search."
+    },
+    {
+      "date": "2026-08-01",
+      "text": "Gemini Enterprise adds a pay-as-you-go edition."
+    }
+  ]
+}
